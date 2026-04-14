@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Polyline, CircleMarker } from 'react-leaflet';
 import type { LineConfig, ArrivalEvent } from '../types';
 import 'leaflet/dist/leaflet.css';
@@ -27,8 +27,33 @@ function TrainDot({ lat, lng, color, opacity }: { lat: number; lng: number; colo
   );
 }
 
+function useTokyoDaylight(): boolean {
+  const [isDay, setIsDay] = useState(() => {
+    const hour = new Date().toLocaleString('en-US', { timeZone: 'Asia/Tokyo', hour: 'numeric', hour12: false });
+    const h = parseInt(hour, 10);
+    return h >= 6 && h < 18;
+  });
+
+  useEffect(() => {
+    const check = () => {
+      const hour = new Date().toLocaleString('en-US', { timeZone: 'Asia/Tokyo', hour: 'numeric', hour12: false });
+      const h = parseInt(hour, 10);
+      setIsDay(h >= 6 && h < 18);
+    };
+    const id = setInterval(check, 60_000);
+    return () => clearInterval(id);
+  }, []);
+
+  return isDay;
+}
+
+const TILE_DARK = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+const TILE_LIGHT = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+
 export default function MapView({ lines, recentArrivals }: MapViewProps) {
   const center: [number, number] = [35.6812, 139.7671];
+  const isDay = useTokyoDaylight();
+  const tileUrl = isDay ? TILE_LIGHT : TILE_DARK;
 
   const stationLookup = useMemo(() => {
     const lookup = new Map<string, { lat: number; lng: number; color: string }>();
@@ -49,7 +74,8 @@ export default function MapView({ lines, recentArrivals }: MapViewProps) {
       attributionControl={false}
     >
       <TileLayer
-        url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+        key={tileUrl}
+        url={tileUrl}
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>'
       />
 

@@ -43,16 +43,16 @@ export default function HUD({ lines, recentArrivals, weather, onSettingsClick }:
   return (
     <>
       {/* Top-left: Time & Weather */}
-      <div className="absolute top-4 left-4 z-[1000]">
-        <div className="text-3xl font-bold text-white drop-shadow-lg"><TokyoTime /></div>
-        <div className="text-sm text-gray-300 drop-shadow-md">
+      <div className="absolute top-4 left-4 z-[1000] bg-slate-900/70 backdrop-blur-sm rounded-lg px-3 py-2">
+        <div className="text-3xl font-bold text-white"><TokyoTime /></div>
+        <div className="text-sm text-gray-300">
           Tokyo{weather && (<> &middot; {Math.round(weather.temperature)}&deg;C {getWeatherEmoji(weather.condition)}</>)}
         </div>
       </div>
 
       {/* Top-right: Settings button */}
       <div className="absolute top-4 right-4 z-[1000] flex gap-2">
-        <button onClick={onSettingsClick} className="w-10 h-10 bg-slate-800/80 backdrop-blur rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-colors" aria-label="Settings">&#9881;</button>
+        <button onClick={onSettingsClick} className="w-10 h-10 bg-slate-900/70 backdrop-blur-sm rounded-lg flex items-center justify-center text-gray-300 hover:text-white transition-colors" aria-label="Settings">&#9881;</button>
       </div>
 
       {/* Bottom: Now-playing ticker */}
