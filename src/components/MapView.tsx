@@ -92,17 +92,6 @@ export default function MapView({ lines, recentArrivals }: MapViewProps) {
         );
       })}
 
-      {lines.flatMap((line) =>
-        line.stations.map((station) => (
-          <CircleMarker
-            key={`${line.id}-${station.id}`}
-            center={[station.lat, station.lng]}
-            radius={2}
-            pathOptions={{ color: line.color, fillColor: line.color, fillOpacity: 0.3, weight: 0, stroke: false }}
-          />
-        )),
-      )}
-
       {recentArrivals.map((event) => {
         const coords = stationLookup.get(`${event.line}:${event.station}`);
         if (!coords) return null;
