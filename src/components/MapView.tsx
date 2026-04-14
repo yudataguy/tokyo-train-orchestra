@@ -1,0 +1,92 @@
+'use client';
+
+import { useMemo } from 'react';
+import { MapContainer, TileLayer, Polyline, CircleMarker } from 'react-leaflet';
+import type { LineConfig, ArrivalEvent } from '../types';
+import 'leaflet/dist/leaflet.css';
+
+interface MapViewProps {
+  lines: LineConfig[];
+  recentArrivals: ArrivalEvent[];
+}
+
+function TrainDot({ lat, lng, color, opacity }: { lat: number; lng: number; color: string; opacity: number }) {
+  return (
+    <>
+      <CircleMarker
+        center={[lat, lng]}
+        radius={12}
+        pathOptions={{ color, fillColor: color, fillOpacity: opacity * 0.2, weight: 0, stroke: false }}
+      />
+      <CircleMarker
+        center={[lat, lng]}
+        radius={5}
+        pathOptions={{ color, fillColor: color, fillOpacity: opacity * 0.9, weight: 0, stroke: false }}
+      />
+    </>
+  );
+}
+
+export default function MapView({ lines, recentArrivals }: MapViewProps) {
+  const center: [number, number] = [35.6812, 139.7671];
+
+  const stationLookup = useMemo(() => {
+    const lookup = new Map<string, { lat: number; lng: number; color: string }>();
+    for (const line of lines) {
+      for (const station of line.stations) {
+        lookup.set(`${line.id}:${station.id}`, { lat: station.lat, lng: station.lng, color: line.color });
+      }
+    }
+    return lookup;
+  }, [lines]);
+
+  return (
+    <MapContainer
+      center={center}
+      zoom={12}
+      style={{ height: '100vh', width: '100vw' }}
+      zoomControl={false}
+      attributionControl={false}
+    >
+      <TileLayer
+        url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>'
+      />
+
+      {lines.map((line) => (
+        <Polyline
+          key={line.id}
+          positions={line.stations.map((s) => [s.lat, s.lng] as [number, number])}
+          pathOptions={{ color: line.color, weight: 3, opacity: 0.5 }}
+        />
+      ))}
+
+      {lines.flatMap((line) =>
+        line.stations.map((station) => (
+          <CircleMarker
+            key={`${line.id}-${station.id}`}
+            center={[station.lat, station.lng]}
+            radius={2}
+            pathOptions={{ color: line.color, fillColor: line.color, fillOpacity: 0.3, weight: 0, stroke: false }}
+          />
+        )),
+      )}
+
+      {recentArrivals.map((event) => {
+        const coords = stationLookup.get(`${event.line}:${event.station}`);
+        if (!coords) return null;
+        const age = (Date.now() - event.timestamp) / 1000;
+        const opacity = Math.max(0, 1 - age / 5);
+        return (
+          <TrainDot
+            key={`${event.trainId}-${event.timestamp}`}
+            lat={coords.lat}
+            lng={coords.lng}
+            color={coords.color}
+            opacity={opacity}
+          />
+        );
+      })}
+    </MapContainer>
+  );
+}
