@@ -8,7 +8,32 @@ interface LanguageContextValue {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: (key: keyof typeof TRANSLATIONS['ja']) => string;
+  tInstrument: (instrument: string) => string;
 }
+
+const INSTRUMENTS_JA: Record<string, string> = {
+  piano: 'ピアノ',
+  violin: 'バイオリン',
+  frenchhorn: 'フレンチホルン',
+  flute: 'フルート',
+  clarinet: 'クラリネット',
+  harp: 'ハープ',
+  cello: 'チェロ',
+  marimba: 'マリンバ',
+  vibraphone: 'ビブラフォン',
+};
+
+const INSTRUMENTS_EN: Record<string, string> = {
+  piano: 'Piano',
+  violin: 'Violin',
+  frenchhorn: 'French Horn',
+  flute: 'Flute',
+  clarinet: 'Clarinet',
+  harp: 'Harp',
+  cello: 'Cello',
+  marimba: 'Marimba',
+  vibraphone: 'Vibraphone',
+};
 
 const TRANSLATIONS = {
   ja: {
@@ -46,8 +71,12 @@ const LanguageContext = createContext<LanguageContextValue | null>(null);
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>('ja');
   const t = (key: keyof typeof TRANSLATIONS['ja']) => TRANSLATIONS[language][key];
+  const tInstrument = (instrument: string) => {
+    const map = language === 'ja' ? INSTRUMENTS_JA : INSTRUMENTS_EN;
+    return map[instrument] ?? instrument;
+  };
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t, tInstrument }}>
       {children}
     </LanguageContext.Provider>
   );

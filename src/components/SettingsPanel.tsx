@@ -18,7 +18,7 @@ interface SettingsPanelProps {
 export default function SettingsPanel({
   isOpen, onClose, lines, mutedLines, onToggleMute, volume, onVolumeChange, weatherFxEnabled, onWeatherFxToggle,
 }: SettingsPanelProps) {
-  const { language, setLanguage, t } = useLanguage();
+  const { language, setLanguage, t, tInstrument } = useLanguage();
 
   if (!isOpen) return null;
 
@@ -73,7 +73,7 @@ export default function SettingsPanel({
               <button key={line.id} onClick={() => onToggleMute(line.id)} className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${isMuted ? 'opacity-40' : 'opacity-100'} hover:bg-slate-800`}>
                 <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: line.color }} />
                 <span className="text-sm text-gray-200 flex-1 text-left">{lineName}</span>
-                <span className="text-xs text-gray-500">{line.instrument}</span>
+                <span className="text-xs text-gray-500">{tInstrument(line.instrument)}</span>
               </button>
             );
           })}

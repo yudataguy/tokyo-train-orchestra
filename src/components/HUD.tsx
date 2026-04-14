@@ -38,7 +38,7 @@ function TokyoTime() {
 }
 
 export default function HUD({ lines, recentArrivals, weather, onSettingsClick }: HUDProps) {
-  const { language, t } = useLanguage();
+  const { language, t, tInstrument } = useLanguage();
   const lineMap = new Map(lines.map((l) => [l.id, l]));
   const displayedArrivals = recentArrivals.slice(-6);
 
@@ -73,7 +73,7 @@ export default function HUD({ lines, recentArrivals, weather, onSettingsClick }:
                 <div key={`${event.trainId}-${event.timestamp}`} className="flex items-center gap-2 whitespace-nowrap">
                   <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: line.color }} />
                   <span className="text-xs font-semibold" style={{ color: line.color }}>{lineName}</span>
-                  <span className="text-xs text-gray-500">{line.instrument} &middot; {stationName}</span>
+                  <span className="text-xs text-gray-500">{tInstrument(line.instrument)} &middot; {stationName}</span>
                 </div>
               );
             })}
