@@ -1,7 +1,8 @@
 'use client';
 
 import { useMemo, useState, useEffect } from 'react';
-import { MapContainer, TileLayer, Polyline, CircleMarker } from 'react-leaflet';
+import { MapContainer, TileLayer, Polyline, CircleMarker, Marker } from 'react-leaflet';
+import L from 'leaflet';
 import type { LineConfig, ArrivalEvent } from '../types';
 import 'leaflet/dist/leaflet.css';
 
@@ -11,20 +12,17 @@ interface MapViewProps {
 }
 
 function TrainDot({ lat, lng, color, opacity }: { lat: number; lng: number; color: string; opacity: number }) {
-  return (
-    <>
-      <CircleMarker
-        center={[lat, lng]}
-        radius={12}
-        pathOptions={{ color, fillColor: color, fillOpacity: opacity * 0.2, weight: 0, stroke: false }}
-      />
-      <CircleMarker
-        center={[lat, lng]}
-        radius={5}
-        pathOptions={{ color, fillColor: color, fillOpacity: opacity * 0.9, weight: 0, stroke: false }}
-      />
-    </>
-  );
+  const icon = useMemo(() => L.divIcon({
+    className: '',
+    iconSize: [30, 30],
+    iconAnchor: [15, 15],
+    html: `<div style="position:relative;width:30px;height:30px;">
+      <div class="station-pulse" style="position:absolute;top:50%;left:50%;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:${color};"></div>
+      <div style="position:absolute;top:50%;left:50%;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:${color};opacity:${opacity * 0.9};"></div>
+    </div>`,
+  }), [color, opacity]);
+
+  return <Marker position={[lat, lng]} icon={icon} />;
 }
 
 function useTokyoDaylight(): boolean {

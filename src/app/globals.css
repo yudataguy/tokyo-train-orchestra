@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+@keyframes station-pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+.station-pulse {
+  animation: station-pulse 1.5s ease-out forwards;
+  pointer-events: none;
+}
