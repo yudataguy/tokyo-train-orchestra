@@ -23,7 +23,7 @@ export default function SettingsPanel({
   if (!isOpen) return null;
 
   return (
-    <div className="absolute top-0 right-0 bottom-0 z-[1100] w-72 bg-slate-900/95 backdrop-blur-lg border-l border-slate-700 p-5 overflow-y-auto">
+    <div className="absolute top-0 right-0 bottom-0 z-[1100] w-full sm:w-80 bg-slate-900/95 backdrop-blur-lg border-l border-slate-700 p-5 overflow-y-auto">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-white font-semibold text-lg">{t('settings')}</h2>
         <button onClick={onClose} className="text-gray-400 hover:text-white text-xl" aria-label={t('closeSettings')}>&times;</button>

@@ -45,15 +45,15 @@ export default function HUD({ lines, recentArrivals, weather, onSettingsClick }:
   return (
     <>
       {/* Top-left: Time & Weather */}
-      <div className="absolute top-4 left-4 z-[1000] bg-slate-900/70 backdrop-blur-sm rounded-lg px-3 py-2">
-        <div className="text-3xl font-bold text-white"><TokyoTime /></div>
-        <div className="text-sm text-gray-300">
+      <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-[1000] bg-slate-900/70 backdrop-blur-sm rounded-lg px-3 py-2">
+        <div className="text-2xl sm:text-3xl font-bold text-white"><TokyoTime /></div>
+        <div className="text-xs sm:text-sm text-gray-300">
           {t('tokyo')}{weather && (<> &middot; {Math.round(weather.temperature)}&deg;C {getWeatherEmoji(weather.condition)}</>)}
         </div>
       </div>
 
       {/* Top-right: Settings button */}
-      <div className="absolute top-4 right-4 z-[1000] flex gap-2">
+      <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-[1000] flex gap-2">
         <button onClick={onSettingsClick} className="w-10 h-10 bg-slate-900/70 backdrop-blur-sm rounded-lg flex items-center justify-center text-gray-300 hover:text-white transition-colors text-lg" aria-label={t('settings')}>{'\u2699\uFE0E'}</button>
       </div>
 
@@ -62,7 +62,7 @@ export default function HUD({ lines, recentArrivals, weather, onSettingsClick }:
         {displayedArrivals.length === 0 ? (
           <div className="text-gray-500 text-sm">{t('citySleeps')}</div>
         ) : (
-          <div className="flex flex-wrap gap-x-4 gap-y-1.5 pb-1 max-h-32 overflow-y-auto">
+          <div className="flex flex-wrap gap-x-3 sm:gap-x-4 gap-y-1.5 pb-1 max-h-20 sm:max-h-32 overflow-y-auto">
             {displayedArrivals.map((event) => {
               const line = lineMap.get(event.line);
               if (!line) return null;
