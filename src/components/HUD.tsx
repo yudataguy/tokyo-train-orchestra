@@ -54,7 +54,7 @@ export default function HUD({ lines, recentArrivals, weather, onSettingsClick }:
 
       {/* Top-right: Settings button */}
       <div className="absolute top-4 right-4 z-[1000] flex gap-2">
-        <button onClick={onSettingsClick} className="w-10 h-10 bg-slate-900/70 backdrop-blur-sm rounded-lg flex items-center justify-center text-gray-300 hover:text-white transition-colors" aria-label={t('settings')}>&#9881;</button>
+        <button onClick={onSettingsClick} className="w-10 h-10 bg-slate-900/70 backdrop-blur-sm rounded-lg flex items-center justify-center text-gray-300 hover:text-white transition-colors text-lg" aria-label={t('settings')}>{'\u2699\uFE0E'}</button>
       </div>
 
       {/* Bottom: Now-playing ticker */}
