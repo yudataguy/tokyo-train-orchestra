@@ -40,7 +40,7 @@ function TokyoTime() {
 export default function HUD({ lines, recentArrivals, weather, onSettingsClick }: HUDProps) {
   const { language, t, tInstrument } = useLanguage();
   const lineMap = new Map(lines.map((l) => [l.id, l]));
-  const displayedArrivals = recentArrivals.slice(-6);
+  const displayedArrivals = recentArrivals.slice(-20);
 
   return (
     <>
@@ -62,7 +62,7 @@ export default function HUD({ lines, recentArrivals, weather, onSettingsClick }:
         {displayedArrivals.length === 0 ? (
           <div className="text-gray-500 text-sm">{t('citySleeps')}</div>
         ) : (
-          <div className="flex gap-4 overflow-x-auto pb-1">
+          <div className="flex flex-wrap gap-x-4 gap-y-1.5 pb-1 max-h-32 overflow-y-auto">
             {displayedArrivals.map((event) => {
               const line = lineMap.get(event.line);
               if (!line) return null;
