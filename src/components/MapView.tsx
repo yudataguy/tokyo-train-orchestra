@@ -4,6 +4,7 @@ import { useMemo, useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Polyline, CircleMarker, Marker } from 'react-leaflet';
 import L from 'leaflet';
 import type { LineConfig, ArrivalEvent } from '../types';
+import routesData from '../config/routes.json';
 import 'leaflet/dist/leaflet.css';
 
 interface MapViewProps {
@@ -77,13 +78,19 @@ export default function MapView({ lines, recentArrivals }: MapViewProps) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>'
       />
 
-      {lines.map((line) => (
-        <Polyline
-          key={line.id}
-          positions={line.stations.map((s) => [s.lat, s.lng] as [number, number])}
-          pathOptions={{ color: line.color, weight: 3, opacity: 0.5 }}
-        />
-      ))}
+      {lines.map((line) => {
+        const routeCoords = (routesData as unknown as Record<string, [number, number][]>)[line.id];
+        const positions = routeCoords
+          ? routeCoords
+          : line.stations.map((s) => [s.lat, s.lng] as [number, number]);
+        return (
+          <Polyline
+            key={line.id}
+            positions={positions}
+            pathOptions={{ color: line.color, weight: 3, opacity: 0.6 }}
+          />
+        );
+      })}
 
       {lines.flatMap((line) =>
         line.stations.map((station) => (
