@@ -6,6 +6,7 @@ import * as Tone from 'tone';
 import type { ArrivalEvent, LineConfig, WeatherData, WeatherEffect } from '../types';
 import { EventBus } from '../data/EventBus';
 import { TrainDataService } from '../data/TrainDataService';
+import { DemoDataService } from '../data/DemoDataService';
 import { WeatherService } from '../data/WeatherService';
 import { MusicEngine } from '../engine/MusicEngine';
 import HUD from './HUD';
@@ -30,7 +31,7 @@ export default function Orchestra() {
 
   const eventBusRef = useRef<EventBus<AppEvents> | null>(null);
   const musicEngineRef = useRef<MusicEngine | null>(null);
-  const trainServiceRef = useRef<TrainDataService | null>(null);
+  const trainServiceRef = useRef<{ start: () => void; stop: () => void } | null>(null);
   const weatherServiceRef = useRef<WeatherService | null>(null);
 
   const lines: LineConfig[] = linesData as LineConfig[];
@@ -41,7 +42,9 @@ export default function Orchestra() {
     const eventBus = new EventBus<AppEvents>();
     const musicEngine = new MusicEngine(lines);
     const apiKey = process.env.NEXT_PUBLIC_ODPT_API_KEY ?? '';
-    const trainService = new TrainDataService(apiKey, lines, eventBus);
+    const trainService = apiKey
+      ? new TrainDataService(apiKey, lines, eventBus)
+      : new DemoDataService(lines, eventBus);
     const weatherService = new WeatherService();
 
     eventBus.on('arrival', (event) => {
@@ -102,6 +105,8 @@ export default function Orchestra() {
     });
   }, []);
 
+  const isDemoMode = !process.env.NEXT_PUBLIC_ODPT_API_KEY;
+
   if (!started) {
     return (
       <div className="h-screen w-screen bg-slate-950 flex flex-col items-center justify-center gap-6">
@@ -110,6 +115,9 @@ export default function Orchestra() {
           A living orchestra driven by Tokyo&apos;s Metro system. Each line is an instrument.
           Each station arrival plays a note.
         </p>
+        {isDemoMode && (
+          <p className="text-indigo-400 text-sm">Demo Mode — simulated train data</p>
+        )}
         <button
           onClick={handleStart}
           className="px-8 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-colors text-lg"
