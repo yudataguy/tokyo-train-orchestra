@@ -10,7 +10,7 @@ A real-time web app that turns Tokyo's Metro train network into a living orchest
 | Data source | ODPT (Open Data for Public Transportation) API |
 | Music mapping | Each line = one instrument. Station index along the line = pitch. |
 | Instruments | Curated per line based on the line's character (see table below) |
-| Scale | C pentatonic (C-D-E-G-A) across 2 octaves — always consonant |
+| Scale | C pentatonic (C-D-E-G-A) across ~2.5 octaves (C3–E5, 13 notes) — always consonant |
 | Scope (v1) | Tokyo Metro only: 9 lines, ~180 stations |
 | Architecture | Client-only. No backend server. |
 | Stack | Next.js, React, Tone.js, Leaflet (react-leaflet) |
@@ -67,12 +67,17 @@ Browser
 
 ### Pitch mapping
 
-Each line's stations map to a pentatonic scale (C-D-E-G-A) across 2 octaves (C3 to A5):
+The note set is C pentatonic across ~2.5 octaves:
 
 ```
-Station 0 (one end)    → C3  (lowest)
-Station N (other end)  → A5  (highest)
-Intermediate stations  → nearest pentatonic note, linearly interpolated
+NOTES = [C3, D3, E3, G3, A3, C4, D4, E4, G4, A4, C5, D5, E5]  // 13 notes
+```
+
+For a line with N stations (0-indexed), station `i` maps to:
+
+```ts
+noteIndex = Math.round(i / (N - 1) * (NOTES.length - 1))
+note = NOTES[noteIndex]
 ```
 
 This means a train traveling end-to-end traces an ascending or descending scale. The pentatonic constraint ensures any combination of simultaneous notes from different lines sounds consonant.
@@ -81,7 +86,7 @@ This means a train traveling end-to-end traces an ascending or descending scale.
 
 - Soft attack (~100ms), natural decay (~1–2 seconds)
 - Polyphonic: multiple trains on the same line can sound simultaneously
-- Volume scales slightly with active train count per line (busier = louder, like an orchestra section swelling)
+- Volume scales with active train count per line: `gain = baseGain * (1 + 0.05 * activeTrains)`, capped at `baseGain * 1.5`. This creates a subtle swell when many trains are active on one line.
 
 ### Weather audio effects (optional, default off)
 
@@ -111,9 +116,32 @@ Visual effects on station arrival: the station dot briefly pulses/glows in the l
 
 - **API registration:** Free at developer-tokyochallenge.odpt.org
 - **Key endpoint:** `odpt:Train` — returns current train positions per operator
-- **Response data:** line, current station (or between-stations), direction, delay info
 - **Poll interval:** 30 seconds (ODPT data refreshes roughly every 30–60 seconds)
-- **API key:** stored as an environment variable (`NEXT_PUBLIC_ODPT_API_KEY`), exposed client-side
+- **API key:** stored as `NEXT_PUBLIC_ODPT_API_KEY`, exposed client-side. Risk: anyone can extract the key from the bundle. Mitigation for v1: ODPT free tier is rate-limited and the data is public — acceptable risk. If abuse occurs, upgrade to a lightweight API route proxy (Approach 2).
+
+**Relevant ODPT response fields** (from `odpt:Train` array items):
+
+```json
+{
+  "@id": "urn:ucode:_00001C000000000000010000030C3BE4",
+  "owl:sameAs": "odpt.Train:TokyoMetro.Ginza.A1234",   // ← stable train ID for diffing
+  "odpt:railway": "odpt.Railway:TokyoMetro.Ginza",       // ← line identifier
+  "odpt:fromStation": "odpt.Station:TokyoMetro.Ginza.Shibuya",
+  "odpt:toStation": "odpt.Station:TokyoMetro.Ginza.Omotesando",
+  "odpt:railDirection": "odpt.RailDirection:TokyoMetro.Asakusa",
+  "dc:date": "2026-04-13T08:15:30+09:00"
+}
+```
+
+- Use `owl:sameAs` as the stable `trainId` for snapshot diffing
+- A train is "at a station" when `odpt:fromStation` is set and `odpt:toStation` is null (or absent)
+- A train is "between stations" when both `fromStation` and `toStation` are set — **skip these; only emit ArrivalEvents for confirmed station stops**
+
+### Error handling
+
+- **API failure (429/500/network error):** Retry with exponential backoff (1s, 2s, 4s, max 30s). After 3 consecutive failures, show a subtle "data unavailable" indicator on the HUD. Keep the last successful snapshot — music continues from stale data until fresh data arrives.
+- **Invalid API key:** Show a one-time setup prompt asking the user to enter their ODPT API key.
+- **No trains running (late night):** Display "The city sleeps..." on the HUD. Silence is part of the music.
 
 ### Static data (bundled as JSON config)
 
@@ -170,7 +198,7 @@ tokyo-train-orchestra/
 
 ## Deployment
 
-Static export via `next build && next export`. Host on Vercel, Netlify, or GitHub Pages.
+Static export via `output: 'export'` in `next.config.js`, then `next build`. Host on Vercel, Netlify, or GitHub Pages.
 
 ## Future (out of scope for v1)
 
