@@ -1,0 +1,60 @@
+'use client';
+
+import { createContext, useContext, useState, ReactNode } from 'react';
+
+export type Language = 'ja' | 'en';
+
+interface LanguageContextValue {
+  language: Language;
+  setLanguage: (lang: Language) => void;
+  t: (key: keyof typeof TRANSLATIONS['ja']) => string;
+}
+
+const TRANSLATIONS = {
+  ja: {
+    title: '東京電車オーケストラ',
+    description: '東京メトロが奏でる生きたオーケストラ。各路線は一つの楽器。各駅の到着で音が鳴る。',
+    beginListening: '再生を始める',
+    demoMode: 'デモモード — シミュレートされた電車データ',
+    settings: '設定',
+    masterVolume: 'マスター音量',
+    weatherEffects: '天気エフェクト',
+    lines: '路線',
+    citySleeps: '街は眠っている...',
+    tokyo: '東京',
+    language: '言語',
+    closeSettings: '設定を閉じる',
+  },
+  en: {
+    title: 'Tokyo Train Orchestra',
+    description: "A living orchestra driven by Tokyo's Metro system. Each line is an instrument. Each station arrival plays a note.",
+    beginListening: 'Begin Listening',
+    demoMode: 'Demo Mode — simulated train data',
+    settings: 'Settings',
+    masterVolume: 'Master Volume',
+    weatherEffects: 'Weather Effects',
+    lines: 'Lines',
+    citySleeps: 'The city sleeps...',
+    tokyo: 'Tokyo',
+    language: 'Language',
+    closeSettings: 'Close settings',
+  },
+} as const;
+
+const LanguageContext = createContext<LanguageContextValue | null>(null);
+
+export function LanguageProvider({ children }: { children: ReactNode }) {
+  const [language, setLanguage] = useState<Language>('ja');
+  const t = (key: keyof typeof TRANSLATIONS['ja']) => TRANSLATIONS[language][key];
+  return (
+    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+      {children}
+    </LanguageContext.Provider>
+  );
+}
+
+export function useLanguage() {
+  const ctx = useContext(LanguageContext);
+  if (!ctx) throw new Error('useLanguage must be used within LanguageProvider');
+  return ctx;
+}

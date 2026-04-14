@@ -12,6 +12,7 @@ import { MusicEngine } from '../engine/MusicEngine';
 import HUD from './HUD';
 import SettingsPanel from './SettingsPanel';
 import linesData from '../config/lines.json';
+import { LanguageProvider, useLanguage } from '../i18n/useLanguage';
 
 const MapView = dynamic(() => import('./MapView'), { ssr: false });
 
@@ -20,7 +21,8 @@ type AppEvents = {
   error: { message: string };
 };
 
-export default function Orchestra() {
+function OrchestraInner() {
+  const { t } = useLanguage();
   const [started, setStarted] = useState(false);
   const [recentArrivals, setRecentArrivals] = useState<ArrivalEvent[]>([]);
   const [weather, setWeather] = useState<WeatherData | null>(null);
@@ -110,19 +112,18 @@ export default function Orchestra() {
   if (!started) {
     return (
       <div className="h-screen w-screen bg-slate-950 flex flex-col items-center justify-center gap-6">
-        <h1 className="text-4xl font-bold text-white">Tokyo Train Orchestra</h1>
+        <h1 className="text-4xl font-bold text-white">{t('title')}</h1>
         <p className="text-gray-400 text-center max-w-md">
-          A living orchestra driven by Tokyo&apos;s Metro system. Each line is an instrument.
-          Each station arrival plays a note.
+          {t('description')}
         </p>
         {isDemoMode && (
-          <p className="text-indigo-400 text-sm">Demo Mode — simulated train data</p>
+          <p className="text-indigo-400 text-sm">{t('demoMode')}</p>
         )}
         <button
           onClick={handleStart}
           className="px-8 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-colors text-lg"
         >
-          Begin Listening
+          {t('beginListening')}
         </button>
       </div>
     );
@@ -149,5 +150,13 @@ export default function Orchestra() {
         onWeatherFxToggle={() => setWeatherFxEnabled((prev) => !prev)}
       />
     </div>
+  );
+}
+
+export default function Orchestra() {
+  return (
+    <LanguageProvider>
+      <OrchestraInner />
+    </LanguageProvider>
   );
 }
