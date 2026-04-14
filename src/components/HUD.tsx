@@ -58,11 +58,11 @@ export default function HUD({ lines, recentArrivals, weather, onSettingsClick }:
       </div>
 
       {/* Bottom: Now-playing ticker */}
-      <div className="absolute bottom-0 left-0 right-0 z-[1000] bg-gradient-to-t from-slate-900/95 to-transparent px-4 pt-8 pb-3">
+      <div className="absolute bottom-0 left-0 right-0 z-[1000] bg-gradient-to-t from-slate-900/95 to-transparent px-4 pt-4 pb-2">
         {displayedArrivals.length === 0 ? (
           <div className="text-gray-500 text-sm">{t('citySleeps')}</div>
         ) : (
-          <div className="flex flex-wrap gap-x-3 sm:gap-x-4 gap-y-1.5 pb-1 max-h-20 sm:max-h-32 overflow-y-auto">
+          <div className="flex flex-wrap gap-x-3 sm:gap-x-4 gap-y-1.5 pb-1 max-h-20 sm:max-h-24 overflow-y-auto">
             {displayedArrivals.map((event) => {
               const line = lineMap.get(event.line);
               if (!line) return null;
