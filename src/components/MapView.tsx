@@ -87,13 +87,30 @@ export default function MapView({ lines, recentArrivals }: MapViewProps) {
 
   return (
     <>
-      {/* GSI Pale's colored roads compete with our subway polylines. Desaturate
-          the tile raster only when the Japanese tile source is active, so the
-          colored subway lines pop against a near-gray backdrop. Polylines are
-          SVG in a separate pane, so their colors are preserved. Injected as a
-          <style> tag rather than a globals.css rule because Tailwind v4 tree-
-          shakes rules targeting classes (leaflet-tile-pane) not present in
-          our JSX. */}
+      {/* All animation + filter rules live here because Tailwind v4 tree-
+          shakes class selectors it doesn't see in JSX attributes. The
+          station classes are referenced only inside Leaflet divIcon HTML
+          strings, so Tailwind misses them; the map tile filter targets
+          Leaflet's own class names. Injecting the rules inline sidesteps
+          Tailwind's source scanner entirely. */}
+      <style>{`
+        @keyframes tto-pulse {
+          0% { transform: scale(1); opacity: 0.6; }
+          100% { transform: scale(3); opacity: 0; }
+        }
+        .station-pulse {
+          animation: tto-pulse 1.5s ease-out forwards;
+          pointer-events: none;
+        }
+        @keyframes tto-core-fade {
+          0% { opacity: 0.9; }
+          100% { opacity: 0; }
+        }
+        .station-core {
+          animation: tto-core-fade 5s ease-out forwards;
+          pointer-events: none;
+        }
+      `}</style>
       {language === 'ja' && (
         <style>{`.leaflet-tile-pane img.leaflet-tile { filter: saturate(0.35) brightness(1.04); }`}</style>
       )}

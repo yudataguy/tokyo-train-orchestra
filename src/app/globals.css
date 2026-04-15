@@ -4,22 +4,7 @@ body {
   font-family: var(--font-noto-sans-jp), system-ui, -apple-system, sans-serif;
 }
 
-@keyframes station-pulse {
-  0% { transform: scale(1); opacity: 0.6; }
-  100% { transform: scale(3); opacity: 0; }
-}
-
-.station-pulse {
-  animation: station-pulse 1.5s ease-out forwards;
-  pointer-events: none;
-}
-
-@keyframes station-core-fade {
-  0% { opacity: 0.9; }
-  100% { opacity: 0; }
-}
-
-.station-core {
-  animation: station-core-fade 5s ease-out forwards;
-  pointer-events: none;
-}
+/* Station-arrival animations (pulse ring + core-dot fade) are injected as
+   a <style> tag inside MapView instead of living here — Tailwind v4 tree-
+   shakes class selectors that don't appear in any JSX attribute, and these
+   classes are referenced only inside Leaflet divIcon HTML strings. */
