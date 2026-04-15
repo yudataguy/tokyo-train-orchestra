@@ -14,14 +14,20 @@ interface LineState {
 export class MusicEngine {
   private lines = new Map<string, LineState>();
   private reverb: Tone.Reverb | null = null;
+  private masterFilter: Tone.Filter;
   private currentEffect: WeatherEffect = 'none';
   private masterVolume = 0.7;
 
   constructor(lineConfigs: LineConfig[]) {
+    // Gentle lowpass on the master bus tames raw-oscillator brightness.
+    // -12 dB/oct is subtle; cutoff at 4 kHz leaves speech-band content clear
+    // while softening harsh harmonics from square/sawtooth instruments.
+    this.masterFilter = new Tone.Filter({ frequency: 4000, type: 'lowpass', rolloff: -12 }).toDestination();
+
     for (const config of lineConfigs) {
       const instrumentConfig = getInstrumentConfig(config.instrument);
       const synth = instrumentConfig.create() as Tone.PolySynth;
-      synth.toDestination();
+      synth.connect(this.masterFilter);
 
       this.lines.set(config.id, {
         config, synth,
@@ -66,26 +72,26 @@ export class MusicEngine {
     if (this.reverb) {
       this.lines.forEach((state) => {
         state.synth.disconnect();
-        state.synth.toDestination();
+        state.synth.connect(this.masterFilter);
       });
       this.reverb.dispose();
       this.reverb = null;
     }
 
     if (effect === 'rain') {
-      this.reverb = new Tone.Reverb({ decay: 4, wet: 0.4 }).toDestination();
+      this.reverb = new Tone.Reverb({ decay: 4, wet: 0.4 }).connect(this.masterFilter);
       this.lines.forEach((state) => {
         state.synth.disconnect();
         state.synth.connect(this.reverb!);
       });
     } else if (effect === 'clear-night') {
-      this.reverb = new Tone.Reverb({ decay: 8, wet: 0.2 }).toDestination();
+      this.reverb = new Tone.Reverb({ decay: 8, wet: 0.2 }).connect(this.masterFilter);
       this.lines.forEach((state) => {
         state.synth.disconnect();
         state.synth.connect(this.reverb!);
       });
     } else if (effect === 'snow') {
-      this.reverb = new Tone.Reverb({ decay: 3, wet: 0.3 }).toDestination();
+      this.reverb = new Tone.Reverb({ decay: 3, wet: 0.3 }).connect(this.masterFilter);
       this.lines.forEach((state) => {
         state.synth.disconnect();
         state.synth.connect(this.reverb!);
@@ -99,6 +105,7 @@ export class MusicEngine {
   dispose(): void {
     this.lines.forEach((state) => state.synth.dispose());
     this.reverb?.dispose();
+    this.masterFilter.dispose();
     this.lines.clear();
   }
 }

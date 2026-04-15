@@ -12,8 +12,16 @@ jest.mock('tone', () => ({
     dispose: jest.fn(),
   })),
   Synth: jest.fn(),
+  FMSynth: jest.fn(),
+  AMSynth: jest.fn(),
+  Filter: jest.fn().mockImplementation(() => ({
+    toDestination: jest.fn().mockReturnThis(),
+    connect: jest.fn().mockReturnThis(),
+    dispose: jest.fn(),
+  })),
   Reverb: jest.fn().mockImplementation(() => ({
     toDestination: jest.fn().mockReturnThis(),
+    connect: jest.fn().mockReturnThis(),
     wet: { value: 0 },
     dispose: jest.fn(),
   })),
