@@ -146,12 +146,12 @@ function OrchestraInner() {
         <p className="text-gray-400 text-center max-w-md text-sm sm:text-base">
           {t('description')}
         </p>
-        <p className="text-indigo-400 text-sm">
+        <p className="text-[#4A80D4] text-sm">
           {apiKeyPresent ? t('hybridMode') : t('demoMode')}
         </p>
         <button
           onClick={handleStart}
-          className="px-8 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-colors text-lg"
+          className="px-8 py-3 bg-[#003DA5] hover:bg-[#0050C8] text-white font-semibold rounded-xl transition-colors text-lg"
         >
           {t('beginListening')}
         </button>
