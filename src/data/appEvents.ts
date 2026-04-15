@@ -5,10 +5,9 @@
  * type-checks cleanly (EventBus<T> is invariant in T, so the types must
  * match exactly).
  */
-import type { Aircraft, ArrivalEvent } from '../types';
+import type { ArrivalEvent } from '../types';
 
 export type AppEvents = {
   arrival: ArrivalEvent;
-  'flight-batch': { aircraft: Aircraft[]; timestamp: number };
   error: { message: string };
 };

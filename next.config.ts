@@ -1,9 +1,11 @@
 import type { NextConfig } from "next";
 
-// Previously `output: 'export'` for static deployment, but that mode forbids
-// API routes — which we now need for the OpenSky flight proxy (CORS-blocked
-// when called directly from the browser). To restore static export, remove
-// the /api/flights route and the FlightDataService.
-const nextConfig: NextConfig = {};
+// Static export: the whole app runs in the browser (IndexedDB-cached
+// timetables + direct calls to ODPT/Open-Meteo with a public key), so
+// there's no server work to do at runtime and this deploys to any pure
+// static host.
+const nextConfig: NextConfig = {
+  output: 'export',
+};
 
 export default nextConfig;

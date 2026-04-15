@@ -3,7 +3,7 @@
 import { useMemo, useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Polyline, CircleMarker, Marker } from 'react-leaflet';
 import L from 'leaflet';
-import type { LineConfig, ArrivalEvent, Aircraft } from '../types';
+import type { LineConfig, ArrivalEvent } from '../types';
 import routesData from '../config/routes.json';
 import { useLanguage } from '../i18n/useLanguage';
 import 'leaflet/dist/leaflet.css';
@@ -11,85 +11,6 @@ import 'leaflet/dist/leaflet.css';
 interface MapViewProps {
   lines: LineConfig[];
   recentArrivals: ArrivalEvent[];
-  aircraft: Aircraft[];
-}
-
-/**
- * Small airplane glyph as a Leaflet divIcon. The inline SVG is rotated to
- * match the aircraft's heading, and stroked white + filled dark so it reads
- * on both light (GSI Pale / CARTO Positron) and dark (CARTO Dark) tiles.
- * Memoized on color + rounded heading so identical icons are shared.
- */
-function buildAircraftIcon(headingDeg: number, onGround: boolean): L.DivIcon {
-  // Top-down silhouette of a twin-engine passenger jet. Nose points up
-  // (bearing 0°) and the divIcon root is rotated via CSS to match the
-  // true-track heading. Proportions are narrow-body (think 737/A320):
-  // a slender fuselage ~2 units wide on a 24-unit grid, wings swept back
-  // at ~30°, a shorter horizontal stabilizer near the tail, and a tiny
-  // centerline triangle suggesting the vertical fin.
-  const size = 20;
-  const opacity = onGround ? 0.45 : 0.9;
-  const fill = '#1f2937';     // slate-800 for contrast on both tile themes
-  const stroke = '#ffffff';
-
-  // Path walks clockwise starting from the nose tip:
-  //   nose → starboard fuselage → starboard wing (forward, tip, trailing)
-  //   → starboard tail plane (forward, tip, trailing)
-  //   → tail → (mirror on port side back up to nose).
-  const fuselageAndWings = [
-    'M12 2.2',                     // nose
-    'C 12.9 2.2 13.2 3.2 13.2 4.2',// starboard fuselage curve
-    'L 13.2 9',                    // along fuselage to wing root (front)
-    'L 22 13.4',                   // starboard wing leading edge out to tip
-    'L 22 14.4',                   // wingtip trailing corner
-    'L 13.2 12.4',                 // wing trailing edge back to fuselage
-    'L 13.2 16.8',                 // fuselage to horizontal stabilizer root
-    'L 17 18.8',                   // stabilizer leading edge out to tip
-    'L 17 19.4',                   // tip
-    'L 13.2 18.4',                 // stabilizer trailing edge back to fuselage
-    'L 13 21.2',                   // taper to tail cone
-    'L 12 21.6',                   // tail tip (centerline)
-    'L 11 21.2',
-    'L 10.8 18.4',                 // back up port side — mirrors above
-    'L 7 19.4',
-    'L 7 18.8',
-    'L 10.8 16.8',
-    'L 10.8 12.4',
-    'L 2 14.4',
-    'L 2 13.4',
-    'L 10.8 9',
-    'L 10.8 4.2',
-    'C 10.8 3.2 11.1 2.2 12 2.2',
-    'Z',
-  ].join(' ');
-
-  // A small vertical-fin triangle floating above the tail, drawn lighter
-  // so the plane reads as 3-D rather than flat.
-  const verticalFin = `<path d="M 11.6 19.4 L 12.4 19.4 L 12 17.4 Z" fill="${fill}" opacity="0.55" />`;
-
-  const svg = `
-    <svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24"
-         style="transform:rotate(${headingDeg}deg);display:block;opacity:${opacity};">
-      <path d="${fuselageAndWings}"
-            fill="${fill}" stroke="${stroke}" stroke-width="0.6" stroke-linejoin="round"/>
-      ${verticalFin}
-    </svg>`;
-  return L.divIcon({
-    className: '',
-    iconSize: [size, size],
-    iconAnchor: [size / 2, size / 2],
-    html: svg,
-  });
-}
-
-function AircraftMarker({ plane }: { plane: Aircraft }) {
-  // Round heading to 5° so icons are shared across nearby orientations.
-  const headingBucket = Math.round(plane.heading / 5) * 5;
-  const icon = useMemo(
-    () => buildAircraftIcon(headingBucket, plane.onGround),
-    [headingBucket, plane.onGround],
-  );
-  return <Marker position={[plane.lat, plane.lng]} icon={icon} />;
 }
 
 function TrainDot({ lat, lng, color }: { lat: number; lng: number; color: string }) {
@@ -144,7 +65,7 @@ const ATTR_CARTO = '&copy; <a href="https://www.openstreetmap.org/copyright">OSM
 const TILE_GSI_PALE = 'https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png';
 const ATTR_GSI = '<a href="https://maps.gsi.go.jp/development/ichiran.html">地理院タイル</a>';
 
-export default function MapView({ lines, recentArrivals, aircraft }: MapViewProps) {
+export default function MapView({ lines, recentArrivals }: MapViewProps) {
   const center: [number, number] = [35.6812, 139.7671];
   const isDay = useTokyoDaylight();
   const { language } = useLanguage();
@@ -229,10 +150,6 @@ export default function MapView({ lines, recentArrivals, aircraft }: MapViewProp
           />
         );
       })}
-
-      {aircraft.map((plane) => (
-        <AircraftMarker key={plane.icao24} plane={plane} />
-      ))}
 
       {recentArrivals.map((event) => {
         const coords = stationLookup.get(`${event.line}:${event.station}`);

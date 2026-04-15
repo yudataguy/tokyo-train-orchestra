@@ -3,14 +3,13 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import * as Tone from 'tone';
-import type { Aircraft, ArrivalEvent, LineConfig, WeatherData, WeatherEffect } from '../types';
+import type { ArrivalEvent, LineConfig, WeatherData, WeatherEffect } from '../types';
 import { EventBus } from '../data/EventBus';
 import type { AppEvents } from '../data/appEvents';
 import { TrainDataService } from '../data/TrainDataService';
 import { DemoDataService } from '../data/DemoDataService';
 import { TimetableDataService } from '../data/TimetableDataService';
 import { StationTimetableDataService } from '../data/StationTimetableDataService';
-import { FlightDataService } from '../data/FlightDataService';
 import { WeatherService } from '../data/WeatherService';
 import { MusicEngine } from '../engine/MusicEngine';
 import HUD from './HUD';
@@ -29,7 +28,6 @@ function OrchestraInner() {
   const [mutedLines, setMutedLines] = useState<Set<string>>(new Set());
   const [volume, setVolume] = useState(0.2);
   const [weatherFxEnabled, setWeatherFxEnabled] = useState(false);
-  const [aircraft, setAircraft] = useState<Aircraft[]>([]);
 
   const eventBusRef = useRef<EventBus<AppEvents> | null>(null);
   const musicEngineRef = useRef<MusicEngine | null>(null);
@@ -59,8 +57,6 @@ function OrchestraInner() {
     const demoService = apiKey ? null : new DemoDataService(lines, eventBus);
 
     const weatherService = new WeatherService();
-    // Flights are a pure-visual overlay with no audio — independent of ODPT.
-    const flightService = new FlightDataService(eventBus);
 
     eventBus.on('arrival', (event) => {
       musicEngine.handleArrival(event);
@@ -70,15 +66,10 @@ function OrchestraInner() {
       });
     });
 
-    eventBus.on('flight-batch', (batch) => {
-      setAircraft(batch.aircraft);
-    });
-
     trainService?.start();
     void timetableService?.start();
     void stationTimetableService?.start();
     demoService?.start();
-    void flightService.start();
     weatherService.start((w) => setWeather(w));
 
     eventBusRef.current = eventBus;
@@ -90,7 +81,6 @@ function OrchestraInner() {
         timetableService?.stop();
         stationTimetableService?.stop();
         demoService?.stop();
-        flightService.stop();
       },
     };
     weatherServiceRef.current = weatherService;
@@ -161,7 +151,7 @@ function OrchestraInner() {
 
   return (
     <div className="relative h-screen w-screen overflow-hidden">
-      <MapView lines={lines} recentArrivals={recentArrivals} aircraft={aircraft} />
+      <MapView lines={lines} recentArrivals={recentArrivals} />
       <HUD
         lines={lines}
         recentArrivals={recentArrivals}

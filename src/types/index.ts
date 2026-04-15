@@ -41,15 +41,3 @@ export interface WeatherData {
 }
 
 export type WeatherEffect = 'none' | 'rain' | 'clear-night' | 'snow';
-
-export interface Aircraft {
-  icao24: string;    // stable 24-bit ICAO hex id
-  callsign: string;
-  country: string;
-  lat: number;
-  lng: number;
-  altitude: number;  // metres; null from upstream becomes 0
-  heading: number;   // degrees, 0 = north, true track
-  velocity: number;  // m/s
-  onGround: boolean;
-}
