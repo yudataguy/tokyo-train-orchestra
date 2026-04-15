@@ -55,7 +55,7 @@ const TRANSLATIONS = {
   ja: {
     title: '東京電車オーケストラ',
     description: '東京メトロが奏でる、刻々と変化するオーケストラ。各路線はひとつの楽器。各駅への到着が音になる。',
-    beginListening: '発車する',
+    beginListening: '発車',
     demoMode: 'デモモード — シミュレートされた電車データ',
     hybridMode: 'ライブモード — 都営は実際の運行データ、メトロは時刻表ベース',
     settings: '設定',
@@ -70,7 +70,7 @@ const TRANSLATIONS = {
   en: {
     title: 'Tokyo Train Orchestra',
     description: "A living orchestra driven by Tokyo's Metro system. Each line is an instrument. Each station arrival plays a note.",
-    beginListening: 'Begin Listening',
+    beginListening: 'Depart',
     demoMode: 'Demo Mode — simulated train data',
     hybridMode: 'Live Mode — Toei real-time, Metro from timetable',
     settings: 'Settings',
