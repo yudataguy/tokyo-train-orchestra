@@ -1,8 +1,30 @@
 import {
   pickCalendar,
   findArrivalsAt,
+  hashOffset,
   type CompactTimetable,
 } from '../TimetableDataService';
+
+describe('hashOffset', () => {
+  it('returns the same offset for the same key', () => {
+    expect(hashOffset('ginza:A1101:5', 60000)).toBe(hashOffset('ginza:A1101:5', 60000));
+  });
+
+  it('stays within [0, mod)', () => {
+    for (let i = 0; i < 50; i++) {
+      const v = hashOffset(`key-${i}`, 60000);
+      expect(v).toBeGreaterThanOrEqual(0);
+      expect(v).toBeLessThan(60000);
+    }
+  });
+
+  it('spreads different keys across the range', () => {
+    // 100 distinct keys hashed into 10 buckets should roughly fill every bucket.
+    const buckets = new Set<number>();
+    for (let i = 0; i < 100; i++) buckets.add(hashOffset(`train-${i}`, 10));
+    expect(buckets.size).toBeGreaterThanOrEqual(8);
+  });
+});
 
 describe('pickCalendar', () => {
   it('returns Weekday for Monday-Friday', () => {

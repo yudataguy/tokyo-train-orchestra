@@ -57,6 +57,19 @@ export function findArrivalsAt(trains: CompactTimetable[], hhmm: string): Arriva
 }
 
 /**
+ * Deterministic djb2-style hash → integer in [0, mod). Used to pick a stable
+ * sub-minute offset for each arrival so trains nominally scheduled for the
+ * same HH:MM don't all fire in the same JS tick.
+ */
+export function hashOffset(key: string, mod: number): number {
+  let h = 5381;
+  for (let i = 0; i < key.length; i++) {
+    h = ((h << 5) + h + key.charCodeAt(i)) | 0; // | 0 keeps it 32-bit int
+  }
+  return ((h % mod) + mod) % mod;
+}
+
+/**
  * Emits scheduled Tokyo Metro arrivals as they come due. Loads the full daily
  * timetable once, then ticks once a minute (aligned to Tokyo HH:MM rollover)
  * and fires ArrivalEvents for every train scheduled to arrive in that minute.
@@ -65,6 +78,7 @@ export class TimetableDataService {
   private data: TimetableData | null = null;
   private intervalId: ReturnType<typeof setInterval> | null = null;
   private lastFiredMinute = ''; // guards against double-firing within the same HH:MM
+  private pendingTimers = new Set<ReturnType<typeof setTimeout>>();
 
   constructor(
     private metroLines: LineConfig[],
@@ -93,6 +107,8 @@ export class TimetableDataService {
       clearInterval(this.intervalId);
       this.intervalId = null;
     }
+    for (const t of this.pendingTimers) clearTimeout(t);
+    this.pendingTimers.clear();
   }
 
   private tick(): void {
@@ -103,7 +119,11 @@ export class TimetableDataService {
     this.lastFiredMinute = hhmm;
 
     const calendar = pickCalendar(now);
-    const timestamp = now.getTime();
+
+    // We detect the rollover up to ~10s late (the interval checks every 10s),
+    // so compute remaining seconds in this minute to bound offsets.
+    const secondsIntoMinute = Math.floor(now.getTime() / 1000) % 60;
+    const remainingMs = Math.max(1000, (60 - secondsIntoMinute) * 1000);
 
     for (const line of this.metroLines) {
       const trains = this.data[line.id]?.[calendar];
@@ -112,14 +132,26 @@ export class TimetableDataService {
       for (const hit of hits) {
         const station = line.stations[hit.stationIndex];
         if (!station) continue;
-        this.eventBus.emit('arrival', {
-          line: line.id,
-          station: station.id,
-          stationIndex: hit.stationIndex,
-          direction: hit.direction,
-          trainId: `sched-${line.id}-${hit.trainNumber}-${hhmm}`,
-          timestamp,
-        });
+
+        // Deterministic per-train offset within the remaining window. Same
+        // train always lands at the same sub-minute position, so events don't
+        // re-fire if the tick runs twice and the spread feels natural rather
+        // than a volley at the rollover boundary.
+        const key = `${line.id}:${hit.trainNumber}:${hit.stationIndex}`;
+        const offsetMs = hashOffset(key, remainingMs);
+
+        const timer = setTimeout(() => {
+          this.pendingTimers.delete(timer);
+          this.eventBus.emit('arrival', {
+            line: line.id,
+            station: station.id,
+            stationIndex: hit.stationIndex,
+            direction: hit.direction,
+            trainId: `sched-${line.id}-${hit.trainNumber}-${hhmm}`,
+            timestamp: Date.now(),
+          });
+        }, offsetMs);
+        this.pendingTimers.add(timer);
       }
     }
   }
