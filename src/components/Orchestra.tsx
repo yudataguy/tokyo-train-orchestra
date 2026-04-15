@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react';
 import dynamic from 'next/dynamic';
-import * as Tone from 'tone';
 import type { ArrivalEvent, LineConfig, WeatherData, WeatherEffect } from '../types';
 import { EventBus } from '../data/EventBus';
 import type { AppEvents } from '../data/appEvents';
@@ -11,7 +10,9 @@ import { DemoDataService } from '../data/DemoDataService';
 import { TimetableDataService } from '../data/TimetableDataService';
 import { StationTimetableDataService } from '../data/StationTimetableDataService';
 import { WeatherService } from '../data/WeatherService';
-import { MusicEngine } from '../engine/MusicEngine';
+// Type-only import for the ref slot — stripped at build time so the Tone
+// module dependency isn't pulled in at page load.
+import type { MusicEngine as MusicEngineT } from '../engine/MusicEngine';
 import HUD from './HUD';
 import SettingsPanel from './SettingsPanel';
 import linesData from '../config/lines.json';
@@ -30,13 +31,23 @@ function OrchestraInner() {
   const [weatherFxEnabled, setWeatherFxEnabled] = useState(false);
 
   const eventBusRef = useRef<EventBus<AppEvents> | null>(null);
-  const musicEngineRef = useRef<MusicEngine | null>(null);
+  const musicEngineRef = useRef<MusicEngineT | null>(null);
   const trainServiceRef = useRef<{ start: () => void; stop: () => void } | null>(null);
   const weatherServiceRef = useRef<WeatherService | null>(null);
 
   const lines: LineConfig[] = linesData as LineConfig[];
 
   const handleStart = useCallback(async () => {
+    // Lazy-load Tone.js and MusicEngine at click time. Module-level imports
+    // would cause Tone to create a (suspended) AudioContext at page load
+    // before any user gesture — Chrome logs an autoplay-policy warning for
+    // that even though Tone.start() would later resume the context
+    // successfully. Dynamic import defers the whole Web Audio graph until
+    // we have the gesture in hand.
+    const [Tone, { MusicEngine }] = await Promise.all([
+      import('tone'),
+      import('../engine/MusicEngine'),
+    ]);
     await Tone.start();
 
     const eventBus = new EventBus<AppEvents>();
