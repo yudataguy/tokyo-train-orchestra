@@ -21,6 +21,10 @@ const INSTRUMENTS_JA: Record<string, string> = {
   cello: 'チェロ',
   marimba: 'マリンバ',
   vibraphone: 'ビブラフォン',
+  guitar: 'ギター',
+  trumpet: 'トランペット',
+  oboe: 'オーボエ',
+  bass: 'ベース',
 };
 
 const INSTRUMENTS_EN: Record<string, string> = {
@@ -33,6 +37,10 @@ const INSTRUMENTS_EN: Record<string, string> = {
   cello: 'Cello',
   marimba: 'Marimba',
   vibraphone: 'Vibraphone',
+  guitar: 'Guitar',
+  trumpet: 'Trumpet',
+  oboe: 'Oboe',
+  bass: 'Bass',
 };
 
 const TRANSLATIONS = {
@@ -41,6 +49,7 @@ const TRANSLATIONS = {
     description: '東京メトロが奏でる生きたオーケストラ。各路線は一つの楽器。各駅の到着で音が鳴る。',
     beginListening: '再生を始める',
     demoMode: 'デモモード — シミュレートされた電車データ',
+    hybridMode: 'ハイブリッドモード — 都営は実データ、メトロはシミュレート',
     settings: '設定',
     masterVolume: '音量',
     weatherEffects: '天気エフェクト',
@@ -55,6 +64,7 @@ const TRANSLATIONS = {
     description: "A living orchestra driven by Tokyo's Metro system. Each line is an instrument. Each station arrival plays a note.",
     beginListening: 'Begin Listening',
     demoMode: 'Demo Mode — simulated train data',
+    hybridMode: 'Hybrid Mode — Toei live, Metro simulated',
     settings: 'Settings',
     masterVolume: 'Volume',
     weatherEffects: 'Weather Effects',

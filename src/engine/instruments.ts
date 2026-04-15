@@ -83,6 +83,38 @@ const INSTRUMENT_CONFIGS: Record<string, InstrumentConfig> = {
     }),
     attack: 0.02, decay: 0.6, sustain: 0.15, release: 2.5,
   },
+  guitar: {
+    id: 'guitar', name: 'Guitar',
+    create: () => new Tone.PolySynth(Tone.Synth, {
+      oscillator: { type: 'triangle' },
+      envelope: { attack: 0.01, decay: 0.8, sustain: 0.1, release: 1.5 },
+    }),
+    attack: 0.01, decay: 0.8, sustain: 0.1, release: 1.5,
+  },
+  trumpet: {
+    id: 'trumpet', name: 'Trumpet',
+    create: () => new Tone.PolySynth(Tone.Synth, {
+      oscillator: { type: 'square' },
+      envelope: { attack: 0.06, decay: 0.2, sustain: 0.5, release: 1.2 },
+    }),
+    attack: 0.06, decay: 0.2, sustain: 0.5, release: 1.2,
+  },
+  oboe: {
+    id: 'oboe', name: 'Oboe',
+    create: () => new Tone.PolySynth(Tone.Synth, {
+      oscillator: { type: 'sawtooth' },
+      envelope: { attack: 0.08, decay: 0.25, sustain: 0.4, release: 1.5 },
+    }),
+    attack: 0.08, decay: 0.25, sustain: 0.4, release: 1.5,
+  },
+  bass: {
+    id: 'bass', name: 'Bass',
+    create: () => new Tone.PolySynth(Tone.Synth, {
+      oscillator: { type: 'triangle' },
+      envelope: { attack: 0.05, decay: 0.3, sustain: 0.4, release: 1.8 },
+    }),
+    attack: 0.05, decay: 0.3, sustain: 0.4, release: 1.8,
+  },
 };
 
 export function getInstrumentConfig(instrument: string): InstrumentConfig {
