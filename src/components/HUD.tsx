@@ -57,6 +57,11 @@ export default function HUD({ lines, recentArrivals, weather, onSettingsClick }:
         <button onClick={onSettingsClick} className="w-10 h-10 bg-slate-900/70 backdrop-blur-sm rounded-lg flex items-center justify-center text-gray-300 hover:text-white transition-colors text-lg" aria-label={t('settings')}>{'\u2699\uFE0E'}</button>
       </div>
 
+      {/* Data attribution (required by ODPT license) */}
+      <div className="absolute bottom-1 right-2 z-[1000] text-[10px] text-gray-400/70 pointer-events-none">
+        Data: 公共交通オープンデータセンター / ODPT
+      </div>
+
       {/* Bottom: Now-playing ticker */}
       <div className="absolute bottom-0 left-0 right-0 z-[1000] bg-gradient-to-t from-slate-900/95 to-transparent px-4 pt-4 pb-2">
         {displayedArrivals.length === 0 ? (

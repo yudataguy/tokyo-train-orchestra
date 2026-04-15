@@ -7,6 +7,7 @@ import type { ArrivalEvent, LineConfig, WeatherData, WeatherEffect } from '../ty
 import { EventBus } from '../data/EventBus';
 import { TrainDataService } from '../data/TrainDataService';
 import { DemoDataService } from '../data/DemoDataService';
+import { TimetableDataService } from '../data/TimetableDataService';
 import { WeatherService } from '../data/WeatherService';
 import { MusicEngine } from '../engine/MusicEngine';
 import HUD from './HUD';
@@ -28,7 +29,7 @@ function OrchestraInner() {
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [mutedLines, setMutedLines] = useState<Set<string>>(new Set());
-  const [volume, setVolume] = useState(0.7);
+  const [volume, setVolume] = useState(0.2);
   const [weatherFxEnabled, setWeatherFxEnabled] = useState(false);
 
   const eventBusRef = useRef<EventBus<AppEvents> | null>(null);
@@ -45,14 +46,13 @@ function OrchestraInner() {
     const musicEngine = new MusicEngine(lines);
     const apiKey = process.env.NEXT_PUBLIC_ODPT_API_KEY ?? '';
 
-    // When API key is present: TrainDataService handles Toei live data,
-    // DemoDataService simulates only the 9 Tokyo Metro lines.
-    // When no API key: DemoDataService simulates all lines.
+    // Data sources:
+    //   - With API key: live Toei (TrainDataService) + scheduled Tokyo Metro (TimetableDataService).
+    //   - Without key: random simulation for every line (DemoDataService).
+    const metroLines = lines.filter((l) => l.odptRailway.includes('TokyoMetro'));
     const trainService = apiKey ? new TrainDataService(apiKey, lines, eventBus) : null;
-    const demoLines = apiKey
-      ? lines.filter((l) => l.odptRailway.includes('TokyoMetro'))
-      : lines;
-    const demoService = new DemoDataService(demoLines, eventBus);
+    const timetableService = apiKey ? new TimetableDataService(metroLines, eventBus) : null;
+    const demoService = apiKey ? null : new DemoDataService(lines, eventBus);
 
     const weatherService = new WeatherService();
 
@@ -65,12 +65,20 @@ function OrchestraInner() {
     });
 
     trainService?.start();
-    demoService.start();
+    void timetableService?.start();
+    demoService?.start();
     weatherService.start((w) => setWeather(w));
 
     eventBusRef.current = eventBus;
     musicEngineRef.current = musicEngine;
-    trainServiceRef.current = { start: () => {}, stop: () => { trainService?.stop(); demoService.stop(); } };
+    trainServiceRef.current = {
+      start: () => {},
+      stop: () => {
+        trainService?.stop();
+        timetableService?.stop();
+        demoService?.stop();
+      },
+    };
     weatherServiceRef.current = weatherService;
 
     setStarted(true);
