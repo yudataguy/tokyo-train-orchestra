@@ -47,7 +47,7 @@ export class MusicEngine {
     setTimeout(() => lineState.activeTrains.delete(event.trainId), 5 * 60 * 1000);
 
     const totalStations = lineState.config.stations.length;
-    const note = stationToNote(event.stationIndex, totalStations);
+    const note = stationToNote(event.stationIndex, totalStations, lineState.config.instrument);
 
     const trainCount = lineState.activeTrains.size;
     const boost = Math.min(trainCount * 0.5, 6);
