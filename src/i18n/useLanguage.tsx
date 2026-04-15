@@ -27,6 +27,8 @@ const INSTRUMENTS_JA: Record<string, string> = {
   bass: 'ベース',
   glockenspiel: 'グロッケン',
   xylophone: 'シロフォン',
+  celesta: 'チェレスタ',
+  kalimba: 'カリンバ',
 };
 
 const INSTRUMENTS_EN: Record<string, string> = {
@@ -45,6 +47,8 @@ const INSTRUMENTS_EN: Record<string, string> = {
   bass: 'Bass',
   glockenspiel: 'Glockenspiel',
   xylophone: 'Xylophone',
+  celesta: 'Celesta',
+  kalimba: 'Kalimba',
 };
 
 const TRANSLATIONS = {

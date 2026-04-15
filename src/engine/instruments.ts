@@ -169,6 +169,33 @@ const INSTRUMENT_CONFIGS: Record<string, InstrumentConfig> = {
     }),
     attack: 0.001, decay: 0.6, sustain: 0, release: 0.8,
   },
+  celesta: {
+    id: 'celesta', name: 'Celesta',
+    // Ethereal bell, higher and sweeter than glockenspiel. AM with sine
+    // modulator produces a purer tone than FM at this register.
+    create: () => new Tone.PolySynth(Tone.AMSynth, {
+      harmonicity: 5,
+      oscillator: { type: 'sine' },
+      modulation: { type: 'sine' },
+      envelope: { attack: 0.001, decay: 2.0, sustain: 0, release: 1.8 },
+      modulationEnvelope: { attack: 0.001, decay: 0.1, sustain: 0, release: 0.3 },
+    }),
+    attack: 0.001, decay: 2.0, sustain: 0, release: 1.8,
+  },
+  kalimba: {
+    id: 'kalimba', name: 'Kalimba',
+    // African thumb-piano: warm plucked tine. FM with moderate modulation
+    // gives the characteristic metallic pluck + wooden body resonance.
+    create: () => new Tone.PolySynth(Tone.FMSynth, {
+      harmonicity: 3,
+      modulationIndex: 5,
+      oscillator: { type: 'sine' },
+      modulation: { type: 'triangle' },
+      envelope: { attack: 0.001, decay: 1.2, sustain: 0, release: 1.0 },
+      modulationEnvelope: { attack: 0.001, decay: 0.3, sustain: 0, release: 0.3 },
+    }),
+    attack: 0.001, decay: 1.2, sustain: 0, release: 1.0,
+  },
 };
 
 export function getInstrumentConfig(instrument: string): InstrumentConfig {

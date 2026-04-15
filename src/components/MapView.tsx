@@ -83,10 +83,11 @@ export default function MapView({ lines, recentArrivals }: MapViewProps) {
         const positions = routeCoords
           ? routeCoords
           : line.stations.map((s) => [s.lat, s.lng] as [number, number]);
-        // Yurikamome is a driverless guideway transit line, not a subway; we
-        // draw it dashed to follow the transit-mapping convention and to avoid
-        // visual collision with Toei Mita's near-identical dark blue.
-        const isGuideway = line.id === 'yurikamome';
+        // Yurikamome is a driverless guideway transit line; Marunouchi Branch
+        // shares the same red color as the main Marunouchi trunk. Both are
+        // drawn dashed to follow transit-mapping convention and avoid visual
+        // collision with their solid counterparts.
+        const isDashed = line.id === 'yurikamome' || line.id === 'marunouchi-branch';
         return (
           <Polyline
             key={line.id}
@@ -95,7 +96,7 @@ export default function MapView({ lines, recentArrivals }: MapViewProps) {
               color: line.color,
               weight: 3,
               opacity: 0.6,
-              dashArray: isGuideway ? '6 4' : undefined,
+              dashArray: isDashed ? '6 4' : undefined,
             }}
           />
         );
