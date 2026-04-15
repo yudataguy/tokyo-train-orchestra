@@ -21,17 +21,58 @@ interface MapViewProps {
  * Memoized on color + rounded heading so identical icons are shared.
  */
 function buildAircraftIcon(headingDeg: number, onGround: boolean): L.DivIcon {
-  // Triangular plane pointing upward (nose = 0°); divIcon root is rotated
-  // via CSS transform to match true-track.
-  const size = 16;
+  // Top-down silhouette of a twin-engine passenger jet. Nose points up
+  // (bearing 0°) and the divIcon root is rotated via CSS to match the
+  // true-track heading. Proportions are narrow-body (think 737/A320):
+  // a slender fuselage ~2 units wide on a 24-unit grid, wings swept back
+  // at ~30°, a shorter horizontal stabilizer near the tail, and a tiny
+  // centerline triangle suggesting the vertical fin.
+  const size = 20;
   const opacity = onGround ? 0.45 : 0.9;
-  const fill = '#1f2937'; // slate-800, visible on both tile themes
+  const fill = '#1f2937';     // slate-800 for contrast on both tile themes
   const stroke = '#ffffff';
+
+  // Path walks clockwise starting from the nose tip:
+  //   nose → starboard fuselage → starboard wing (forward, tip, trailing)
+  //   → starboard tail plane (forward, tip, trailing)
+  //   → tail → (mirror on port side back up to nose).
+  const fuselageAndWings = [
+    'M12 2.2',                     // nose
+    'C 12.9 2.2 13.2 3.2 13.2 4.2',// starboard fuselage curve
+    'L 13.2 9',                    // along fuselage to wing root (front)
+    'L 22 13.4',                   // starboard wing leading edge out to tip
+    'L 22 14.4',                   // wingtip trailing corner
+    'L 13.2 12.4',                 // wing trailing edge back to fuselage
+    'L 13.2 16.8',                 // fuselage to horizontal stabilizer root
+    'L 17 18.8',                   // stabilizer leading edge out to tip
+    'L 17 19.4',                   // tip
+    'L 13.2 18.4',                 // stabilizer trailing edge back to fuselage
+    'L 13 21.2',                   // taper to tail cone
+    'L 12 21.6',                   // tail tip (centerline)
+    'L 11 21.2',
+    'L 10.8 18.4',                 // back up port side — mirrors above
+    'L 7 19.4',
+    'L 7 18.8',
+    'L 10.8 16.8',
+    'L 10.8 12.4',
+    'L 2 14.4',
+    'L 2 13.4',
+    'L 10.8 9',
+    'L 10.8 4.2',
+    'C 10.8 3.2 11.1 2.2 12 2.2',
+    'Z',
+  ].join(' ');
+
+  // A small vertical-fin triangle floating above the tail, drawn lighter
+  // so the plane reads as 3-D rather than flat.
+  const verticalFin = `<path d="M 11.6 19.4 L 12.4 19.4 L 12 17.4 Z" fill="${fill}" opacity="0.55" />`;
+
   const svg = `
     <svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24"
          style="transform:rotate(${headingDeg}deg);display:block;opacity:${opacity};">
-      <path d="M12 2 L15 14 L21 16 L21 18 L13 17 L13 21 L15 22 L15 23 L12 22 L9 23 L9 22 L11 21 L11 17 L3 18 L3 16 L9 14 Z"
-            fill="${fill}" stroke="${stroke}" stroke-width="0.8" stroke-linejoin="round"/>
+      <path d="${fuselageAndWings}"
+            fill="${fill}" stroke="${stroke}" stroke-width="0.6" stroke-linejoin="round"/>
+      ${verticalFin}
     </svg>`;
   return L.divIcon({
     className: '',
