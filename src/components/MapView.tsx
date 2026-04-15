@@ -5,6 +5,7 @@ import { MapContainer, TileLayer, Polyline, CircleMarker, Marker } from 'react-l
 import L from 'leaflet';
 import type { LineConfig, ArrivalEvent } from '../types';
 import routesData from '../config/routes.json';
+import { useLanguage } from '../i18n/useLanguage';
 import 'leaflet/dist/leaflet.css';
 
 interface MapViewProps {
@@ -46,13 +47,28 @@ function useTokyoDaylight(): boolean {
   return isDay;
 }
 
-const TILE_DARK = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
-const TILE_LIGHT = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+// CARTO renders labels in Latin script. Good for the English UI.
+const TILE_CARTO_DARK = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+const TILE_CARTO_LIGHT = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+const ATTR_CARTO = '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>';
+
+// GSI Pale (地理院淡色地図) — Japan's Geospatial Information Authority
+// publishes this purpose-built "muted" tile set, the Japanese equivalent of
+// CARTO Positron. Labels are baked in Japanese. No dark variant exists, so
+// Japanese UI stays light at night; the tradeoff is accepting a bright map
+// at night in exchange for native Japanese labels.
+const TILE_GSI_PALE = 'https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png';
+const ATTR_GSI = '<a href="https://maps.gsi.go.jp/development/ichiran.html">地理院タイル</a>';
 
 export default function MapView({ lines, recentArrivals }: MapViewProps) {
   const center: [number, number] = [35.6812, 139.7671];
   const isDay = useTokyoDaylight();
-  const tileUrl = isDay ? TILE_LIGHT : TILE_DARK;
+  const { language } = useLanguage();
+  // Japanese UI → Japanese-labeled OSM tiles. English UI → CARTO with
+  // day/night swap. OSM Japan has no dark tileset, so Japanese stays light
+  // at night — acceptable tradeoff for authentic Japanese labels.
+  const tileUrl = language === 'ja' ? TILE_GSI_PALE : (isDay ? TILE_CARTO_LIGHT : TILE_CARTO_DARK);
+  const tileAttribution = language === 'ja' ? ATTR_GSI : ATTR_CARTO;
 
   const stationLookup = useMemo(() => {
     const lookup = new Map<string, { lat: number; lng: number; color: string }>();
@@ -75,7 +91,7 @@ export default function MapView({ lines, recentArrivals }: MapViewProps) {
       <TileLayer
         key={tileUrl}
         url={tileUrl}
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>'
+        attribution={tileAttribution}
       />
 
       {lines.map((line) => {
