@@ -54,10 +54,10 @@ const INSTRUMENTS_EN: Record<string, string> = {
 const TRANSLATIONS = {
   ja: {
     title: '東京電車オーケストラ',
-    description: '東京メトロが奏でる生きたオーケストラ。各路線は一つの楽器。各駅の到着で音が鳴る。',
-    beginListening: '再生を始める',
+    description: '東京メトロが奏でる、刻々と変化するオーケストラ。各路線はひとつの楽器。各駅への到着が音になる。',
+    beginListening: '発車する',
     demoMode: 'デモモード — シミュレートされた電車データ',
-    hybridMode: 'ライブモード — 都営は実走、メトロは時刻表ベース',
+    hybridMode: 'ライブモード — 都営は実際の運行データ、メトロは時刻表ベース',
     settings: '設定',
     masterVolume: '音量',
     weatherEffects: '天気エフェクト',
