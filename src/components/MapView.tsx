@@ -83,11 +83,20 @@ export default function MapView({ lines, recentArrivals }: MapViewProps) {
         const positions = routeCoords
           ? routeCoords
           : line.stations.map((s) => [s.lat, s.lng] as [number, number]);
+        // Yurikamome is a driverless guideway transit line, not a subway; we
+        // draw it dashed to follow the transit-mapping convention and to avoid
+        // visual collision with Toei Mita's near-identical dark blue.
+        const isGuideway = line.id === 'yurikamome';
         return (
           <Polyline
             key={line.id}
             positions={positions}
-            pathOptions={{ color: line.color, weight: 3, opacity: 0.6 }}
+            pathOptions={{
+              color: line.color,
+              weight: 3,
+              opacity: 0.6,
+              dashArray: isGuideway ? '6 4' : undefined,
+            }}
           />
         );
       })}
