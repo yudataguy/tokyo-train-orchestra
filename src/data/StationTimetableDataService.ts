@@ -1,5 +1,6 @@
 import type { ArrivalEvent, LineConfig } from '../types';
 import { EventBus } from './EventBus';
+import type { AppEvents } from './appEvents';
 import {
   hashOffset,
   pickCalendar,
@@ -54,7 +55,7 @@ export class StationTimetableDataService {
 
   constructor(
     private lines: LineConfig[],
-    private eventBus: EventBus<{ arrival: ArrivalEvent; error: { message: string } }>,
+    private eventBus: EventBus<AppEvents>,
     private fetchUrl = '/station-timetables.json',
     private versionUrl = '/station-timetables-version.json',
   ) {}

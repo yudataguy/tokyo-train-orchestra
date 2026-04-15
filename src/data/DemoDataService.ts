@@ -1,5 +1,6 @@
 import type { ArrivalEvent, LineConfig } from '../types';
 import { EventBus } from './EventBus';
+import type { AppEvents } from './appEvents';
 
 export class DemoDataService {
   // Track simulated trains: each has a line, current station index, direction
@@ -13,7 +14,7 @@ export class DemoDataService {
 
   constructor(
     private lineConfigs: LineConfig[],
-    private eventBus: EventBus<{ arrival: ArrivalEvent; error: { message: string } }>,
+    private eventBus: EventBus<AppEvents>,
   ) {}
 
   private getTokyoHour(): number {

@@ -1,5 +1,6 @@
 import type { ArrivalEvent, TrainSnapshot, LineConfig } from '../types';
 import { EventBus } from './EventBus';
+import type { AppEvents } from './appEvents';
 import { hashOffset } from './TimetableDataService';
 
 interface OdptTrain {
@@ -58,7 +59,7 @@ export class TrainDataService {
   constructor(
     private apiKey: string,
     private lineConfigs: LineConfig[],
-    private eventBus: EventBus<{ arrival: ArrivalEvent; error: { message: string } }>,
+    private eventBus: EventBus<AppEvents>,
   ) {}
 
   private resolveLineId(odptRailway: string): string | null {

@@ -3,7 +3,7 @@
 import { useMemo, useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Polyline, CircleMarker, Marker } from 'react-leaflet';
 import L from 'leaflet';
-import type { LineConfig, ArrivalEvent } from '../types';
+import type { LineConfig, ArrivalEvent, Aircraft } from '../types';
 import routesData from '../config/routes.json';
 import { useLanguage } from '../i18n/useLanguage';
 import 'leaflet/dist/leaflet.css';
@@ -11,6 +11,44 @@ import 'leaflet/dist/leaflet.css';
 interface MapViewProps {
   lines: LineConfig[];
   recentArrivals: ArrivalEvent[];
+  aircraft: Aircraft[];
+}
+
+/**
+ * Small airplane glyph as a Leaflet divIcon. The inline SVG is rotated to
+ * match the aircraft's heading, and stroked white + filled dark so it reads
+ * on both light (GSI Pale / CARTO Positron) and dark (CARTO Dark) tiles.
+ * Memoized on color + rounded heading so identical icons are shared.
+ */
+function buildAircraftIcon(headingDeg: number, onGround: boolean): L.DivIcon {
+  // Triangular plane pointing upward (nose = 0°); divIcon root is rotated
+  // via CSS transform to match true-track.
+  const size = 16;
+  const opacity = onGround ? 0.45 : 0.9;
+  const fill = '#1f2937'; // slate-800, visible on both tile themes
+  const stroke = '#ffffff';
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24"
+         style="transform:rotate(${headingDeg}deg);display:block;opacity:${opacity};">
+      <path d="M12 2 L15 14 L21 16 L21 18 L13 17 L13 21 L15 22 L15 23 L12 22 L9 23 L9 22 L11 21 L11 17 L3 18 L3 16 L9 14 Z"
+            fill="${fill}" stroke="${stroke}" stroke-width="0.8" stroke-linejoin="round"/>
+    </svg>`;
+  return L.divIcon({
+    className: '',
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size / 2],
+    html: svg,
+  });
+}
+
+function AircraftMarker({ plane }: { plane: Aircraft }) {
+  // Round heading to 5° so icons are shared across nearby orientations.
+  const headingBucket = Math.round(plane.heading / 5) * 5;
+  const icon = useMemo(
+    () => buildAircraftIcon(headingBucket, plane.onGround),
+    [headingBucket, plane.onGround],
+  );
+  return <Marker position={[plane.lat, plane.lng]} icon={icon} />;
 }
 
 function TrainDot({ lat, lng, color }: { lat: number; lng: number; color: string }) {
@@ -65,7 +103,7 @@ const ATTR_CARTO = '&copy; <a href="https://www.openstreetmap.org/copyright">OSM
 const TILE_GSI_PALE = 'https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png';
 const ATTR_GSI = '<a href="https://maps.gsi.go.jp/development/ichiran.html">地理院タイル</a>';
 
-export default function MapView({ lines, recentArrivals }: MapViewProps) {
+export default function MapView({ lines, recentArrivals, aircraft }: MapViewProps) {
   const center: [number, number] = [35.6812, 139.7671];
   const isDay = useTokyoDaylight();
   const { language } = useLanguage();
@@ -150,6 +188,10 @@ export default function MapView({ lines, recentArrivals }: MapViewProps) {
           />
         );
       })}
+
+      {aircraft.map((plane) => (
+        <AircraftMarker key={plane.icao24} plane={plane} />
+      ))}
 
       {recentArrivals.map((event) => {
         const coords = stationLookup.get(`${event.line}:${event.station}`);

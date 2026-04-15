@@ -1,5 +1,6 @@
 import type { ArrivalEvent, LineConfig } from '../types';
 import { EventBus } from './EventBus';
+import type { AppEvents } from './appEvents';
 import { loadTimetables } from './timetableCache';
 
 /** One train run, compacted to the fields we actually use at runtime. */
@@ -82,7 +83,7 @@ export class TimetableDataService {
 
   constructor(
     private metroLines: LineConfig[],
-    private eventBus: EventBus<{ arrival: ArrivalEvent; error: { message: string } }>,
+    private eventBus: EventBus<AppEvents>,
     private fetchUrl = '/timetables.json',
     private versionUrl = '/timetables-version.json',
   ) {}
