@@ -2445,16 +2445,16 @@
         "id": "shimbashi",
         "name": "Shimbashi",
         "nameJa": "\u65b0\u6a4b",
-        "lat": 35.66556,
-        "lng": 139.75965,
+        "lat": 35.6654,
+        "lng": 139.7599,
         "index": 0
       },
       {
         "id": "shiodome",
         "name": "Shiodome",
         "nameJa": "\u6c50\u7559",
-        "lat": 35.66281,
-        "lng": 139.75981,
+        "lat": 35.66276,
+        "lng": 139.75986,
         "index": 1
       },
       {
@@ -2469,8 +2469,8 @@
         "id": "hinode",
         "name": "Hinode",
         "nameJa": "\u65e5\u306e\u51fa",
-        "lat": 35.64921,
-        "lng": 139.75912,
+        "lat": 35.6492,
+        "lng": 139.75914,
         "index": 3
       },
       {
@@ -2501,40 +2501,40 @@
         "id": "tokyo-international-cruise-terminal",
         "name": "Tokyo International Cruise Terminal",
         "nameJa": "\u6771\u4eac\u56fd\u969b\u30af\u30eb\u30fc\u30ba\u30bf\u30fc\u30df\u30ca\u30eb",
-        "lat": 35.62135,
-        "lng": 139.77309,
+        "lat": 35.62137,
+        "lng": 139.77312,
         "index": 7
       },
       {
         "id": "telecom-center",
         "name": "Telecom Center",
         "nameJa": "\u30c6\u30ec\u30b3\u30e0\u30bb\u30f3\u30bf\u30fc",
-        "lat": 35.61757,
-        "lng": 139.77938,
+        "lat": 35.61759,
+        "lng": 139.77937,
         "index": 8
       },
       {
         "id": "aomi",
         "name": "Aomi",
         "nameJa": "\u9752\u6d77",
-        "lat": 35.62481,
-        "lng": 139.7813,
+        "lat": 35.62484,
+        "lng": 139.78128,
         "index": 9
       },
       {
         "id": "tokyo-big-sight",
         "name": "Tokyo Big Sight",
         "nameJa": "\u6771\u4eac\u30d3\u30c3\u30b0\u30b5\u30a4\u30c8",
-        "lat": 35.63025,
-        "lng": 139.79134,
+        "lat": 35.63031,
+        "lng": 139.79131,
         "index": 10
       },
       {
         "id": "ariake",
         "name": "Ariake",
         "nameJa": "\u6709\u660e",
-        "lat": 35.63466,
-        "lng": 139.79323,
+        "lat": 35.63457,
+        "lng": 139.79314,
         "index": 11
       },
       {
@@ -2542,15 +2542,15 @@
         "name": "Ariake-tennis-no-mori",
         "nameJa": "\u6709\u660e\u30c6\u30cb\u30b9\u306e\u68ee",
         "lat": 35.63996,
-        "lng": 139.78885,
+        "lng": 139.78884,
         "index": 12
       },
       {
         "id": "shijo-mae",
         "name": "Shij\u014d-mae",
         "nameJa": "\u5e02\u5834\u524d",
-        "lat": 35.64569,
-        "lng": 139.78565,
+        "lat": 35.64574,
+        "lng": 139.78561,
         "index": 13
       },
       {
@@ -2565,8 +2565,8 @@
         "id": "toyosu",
         "name": "Toyosu",
         "nameJa": "\u8c4a\u6d32",
-        "lat": 35.65372,
-        "lng": 139.79548,
+        "lat": 35.6538,
+        "lng": 139.7954,
         "index": 15
       }
     ]
