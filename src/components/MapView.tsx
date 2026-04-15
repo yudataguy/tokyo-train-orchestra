@@ -81,13 +81,24 @@ export default function MapView({ lines, recentArrivals }: MapViewProps) {
   }, [lines]);
 
   return (
-    <MapContainer
-      center={center}
-      zoom={12}
-      style={{ height: '100vh', width: '100vw' }}
-      zoomControl={false}
-      attributionControl={false}
-    >
+    <>
+      {/* GSI Pale's colored roads compete with our subway polylines. Desaturate
+          the tile raster only when the Japanese tile source is active, so the
+          colored subway lines pop against a near-gray backdrop. Polylines are
+          SVG in a separate pane, so their colors are preserved. Injected as a
+          <style> tag rather than a globals.css rule because Tailwind v4 tree-
+          shakes rules targeting classes (leaflet-tile-pane) not present in
+          our JSX. */}
+      {language === 'ja' && (
+        <style>{`.leaflet-tile-pane img.leaflet-tile { filter: saturate(0.35) brightness(1.04); }`}</style>
+      )}
+      <MapContainer
+        center={center}
+        zoom={12}
+        style={{ height: '100vh', width: '100vw' }}
+        zoomControl={false}
+        attributionControl={false}
+      >
       <TileLayer
         key={tileUrl}
         url={tileUrl}
@@ -110,9 +121,9 @@ export default function MapView({ lines, recentArrivals }: MapViewProps) {
             positions={positions}
             pathOptions={{
               color: line.color,
-              weight: 3,
-              opacity: 0.6,
-              dashArray: isDashed ? '6 4' : undefined,
+              weight: 4,
+              opacity: 0.85,
+              dashArray: isDashed ? '8 5' : undefined,
             }}
           />
         );
@@ -133,6 +144,7 @@ export default function MapView({ lines, recentArrivals }: MapViewProps) {
           />
         );
       })}
-    </MapContainer>
+      </MapContainer>
+    </>
   );
 }
