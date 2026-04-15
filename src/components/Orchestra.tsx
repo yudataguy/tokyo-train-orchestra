@@ -140,39 +140,9 @@ function OrchestraInner() {
 
   const apiKeyPresent = !!process.env.NEXT_PUBLIC_ODPT_API_KEY;
 
-  // Auto-fire handleStart 5 s after the start screen mounts, unless the user
-  // clicks first. Note on browser autoplay policy: Tone.start() needs a user
-  // gesture in its call stack; a raw setTimeout is not one. If the visitor
-  // never clicks/taps/presses a key on the page, Chrome will block audio.
-  // Most visitors interact (scroll, tab focus, click link) within 5 s, so
-  // the fallback still usually works. A manual click is always a valid
-  // gesture and preferred.
-  useEffect(() => {
-    if (started) return;
-    const timer = setTimeout(() => { void handleStart(); }, 5000);
-    return () => clearTimeout(timer);
-  }, [started, handleStart]);
-
   if (!started) {
-    // SVG ring that drains over 5 s to visualize the countdown.
-    const ringRadius = 58;
-    const ringCircumference = 2 * Math.PI * ringRadius;
-
     return (
       <div className="h-screen w-screen bg-slate-950 flex flex-col items-center justify-center gap-6 px-6">
-        {/* Inline keyframes for the countdown ring — Tailwind v4 tree-shakes
-            class rules it doesn't see in JSX attributes, and
-            stroke-dashoffset animation needs arbitrary values. */}
-        <style>{`
-          @keyframes tto-countdown {
-            from { stroke-dashoffset: 0; }
-            to { stroke-dashoffset: ${ringCircumference}; }
-          }
-          .tto-countdown-ring {
-            animation: tto-countdown 5s linear forwards;
-          }
-        `}</style>
-
         <h1 className="text-3xl sm:text-4xl font-bold text-white text-center">{t('title')}</h1>
         <p className="text-gray-400 text-center max-w-md text-sm sm:text-base">
           {t('description')}
@@ -183,27 +153,10 @@ function OrchestraInner() {
 
         <button
           onClick={handleStart}
-          className="relative w-32 h-32 rounded-full bg-[#003DA5] hover:bg-[#0050C8] text-white font-semibold transition-colors flex items-center justify-center text-2xl"
+          className="w-24 h-24 rounded-full bg-[#003DA5] hover:bg-[#0050C8] text-white font-semibold transition-colors flex items-center justify-center text-xl"
           aria-label={t('beginListening')}
         >
-          <span className="relative z-10">{t('beginListening')}</span>
-          <svg
-            viewBox="0 0 128 128"
-            className="absolute inset-0 w-full h-full"
-            aria-hidden="true"
-          >
-            <circle
-              cx="64" cy="64" r={ringRadius}
-              fill="none"
-              stroke="rgba(255,255,255,0.9)"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeDasharray={ringCircumference}
-              strokeDashoffset="0"
-              transform="rotate(-90 64 64)"
-              className="tto-countdown-ring"
-            />
-          </svg>
+          {t('beginListening')}
         </button>
       </div>
     );
