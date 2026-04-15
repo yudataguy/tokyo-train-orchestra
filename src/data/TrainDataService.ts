@@ -82,6 +82,7 @@ export class TrainDataService {
       const urls = [
         `https://api.odpt.org/api/v4/odpt:Train?odpt:operator=odpt.Operator:Toei&acl:consumerKey=${this.apiKey}`,
         `https://api.odpt.org/api/v4/odpt:Train?odpt:operator=odpt.Operator:TokyoMetro&acl:consumerKey=${this.apiKey}`,
+        `https://api.odpt.org/api/v4/odpt:Train?odpt:operator=odpt.Operator:YokohamaMunicipal&acl:consumerKey=${this.apiKey}`,
       ];
       const responses = await Promise.all(urls.map(u => fetch(u)));
       const allData = (await Promise.all(responses.map(r => r.ok ? r.json() : []))).flat() as OdptTrain[];

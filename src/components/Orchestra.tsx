@@ -51,10 +51,10 @@ function OrchestraInner() {
     //   - With API key: live Toei (TrainDataService) + scheduled Tokyo Metro (TimetableDataService)
     //     + station-timetable-driven Yurikamome (StationTimetableDataService).
     //   - Without key: random simulation for every line (DemoDataService).
-    const metroLines = lines.filter((l) => l.odptRailway.includes('TokyoMetro'));
+    const timetableLines = lines.filter((l) => l.odptRailway.includes('TokyoMetro') || l.odptRailway.includes('TWR'));
     const yurikamomeLines = lines.filter((l) => l.id === 'yurikamome');
     const trainService = apiKey ? new TrainDataService(apiKey, lines, eventBus) : null;
-    const timetableService = apiKey ? new TimetableDataService(metroLines, eventBus) : null;
+    const timetableService = apiKey ? new TimetableDataService(timetableLines, eventBus) : null;
     const stationTimetableService = apiKey && yurikamomeLines.length
       ? new StationTimetableDataService(yurikamomeLines, eventBus)
       : null;

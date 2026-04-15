@@ -156,6 +156,45 @@ const INSTRUMENT_CONFIGS: Record<string, InstrumentConfig> = {
     }),
     attack: 0.001, decay: 1.8, sustain: 0, release: 1.5,
   },
+  xylophone: {
+    id: 'xylophone', name: 'Xylophone',
+    // Bright wooden mallet — distinct from marimba (darker, lower).
+    create: () => new Tone.PolySynth(Tone.FMSynth, {
+      harmonicity: 4,
+      modulationIndex: 8,
+      oscillator: { type: 'sine' },
+      modulation: { type: 'triangle' },
+      envelope: { attack: 0.001, decay: 0.6, sustain: 0, release: 0.8 },
+      modulationEnvelope: { attack: 0.001, decay: 0.1, sustain: 0, release: 0.2 },
+    }),
+    attack: 0.001, decay: 0.6, sustain: 0, release: 0.8,
+  },
+  saxophone: {
+    id: 'saxophone', name: 'Saxophone',
+    // Warm reedy mid-range — FM gives the breathy jazz-sax character.
+    create: () => new Tone.PolySynth(Tone.FMSynth, {
+      harmonicity: 2,
+      modulationIndex: 4,
+      oscillator: { type: 'sine' },
+      modulation: { type: 'sawtooth' },
+      envelope: { attack: 0.08, decay: 0.25, sustain: 0.5, release: 1.4 },
+      modulationEnvelope: { attack: 0.15, decay: 0.2, sustain: 0.6, release: 1.0 },
+    }),
+    attack: 0.08, decay: 0.25, sustain: 0.5, release: 1.4,
+  },
+  celesta: {
+    id: 'celesta', name: 'Celesta',
+    // Ethereal bell, higher and sweeter than glockenspiel. AM with sine
+    // modulator produces a purer tone than FM at this register.
+    create: () => new Tone.PolySynth(Tone.AMSynth, {
+      harmonicity: 5,
+      oscillator: { type: 'sine' },
+      modulation: { type: 'sine' },
+      envelope: { attack: 0.001, decay: 2.0, sustain: 0, release: 1.8 },
+      modulationEnvelope: { attack: 0.001, decay: 0.1, sustain: 0, release: 0.3 },
+    }),
+    attack: 0.001, decay: 2.0, sustain: 0, release: 1.8,
+  },
 };
 
 export function getInstrumentConfig(instrument: string): InstrumentConfig {
