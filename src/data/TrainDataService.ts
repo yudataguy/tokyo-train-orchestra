@@ -1,5 +1,6 @@
 import type { ArrivalEvent, TrainSnapshot, LineConfig } from '../types';
 import { EventBus } from './EventBus';
+import { hashOffset } from './TimetableDataService';
 
 interface OdptTrain {
   'owl:sameAs': string;
@@ -47,8 +48,12 @@ export function diffSnapshots(
 export class TrainDataService {
   private previousSnapshot = new Map<string, TrainSnapshot>();
   private intervalId: ReturnType<typeof setInterval> | null = null;
+  private pendingTimers = new Set<ReturnType<typeof setTimeout>>();
   private consecutiveFailures = 0;
   private readonly maxRetries = 3;
+  // Live trains are polled every 30s; spread each batch across most of that
+  // window so ~20 simultaneous arrivals don't fire in one JS tick.
+  private readonly spreadWindowMs = 28_000;
 
   constructor(
     private apiKey: string,
@@ -93,14 +98,24 @@ export class TrainDataService {
         if (stationIndex < 0) continue;
         const stationId = lineConfig.stations[stationIndex]?.id ?? arrival.station;
 
-        this.eventBus.emit('arrival', {
-          line: lineId,
-          station: stationId,
-          stationIndex,
-          direction: arrival.direction,
-          trainId: arrival.trainId,
-          timestamp: Date.now(),
-        });
+        // Spread each batch across the poll window using a deterministic
+        // per-train offset. Same train at the same station always lands at
+        // the same offset so overlapping poll batches won't double-fire.
+        const key = `${arrival.trainId}:${stationIndex}`;
+        const offsetMs = hashOffset(key, this.spreadWindowMs);
+
+        const timer = setTimeout(() => {
+          this.pendingTimers.delete(timer);
+          this.eventBus.emit('arrival', {
+            line: lineId,
+            station: stationId,
+            stationIndex,
+            direction: arrival.direction,
+            trainId: arrival.trainId,
+            timestamp: Date.now(),
+          });
+        }, offsetMs);
+        this.pendingTimers.add(timer);
       }
 
       this.previousSnapshot = currentSnapshot;
@@ -124,5 +139,7 @@ export class TrainDataService {
       clearInterval(this.intervalId);
       this.intervalId = null;
     }
+    for (const t of this.pendingTimers) clearTimeout(t);
+    this.pendingTimers.clear();
   }
 }
