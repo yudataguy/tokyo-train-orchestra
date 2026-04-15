@@ -13,16 +13,21 @@ interface MapViewProps {
   recentArrivals: ArrivalEvent[];
 }
 
-function TrainDot({ lat, lng, color, opacity }: { lat: number; lng: number; color: string; opacity: number }) {
+function TrainDot({ lat, lng, color }: { lat: number; lng: number; color: string }) {
+  // Icon memoized on color ALONE so subsequent re-renders (triggered by new
+  // arrivals elsewhere) never rebuild this dot's DOM. Both the expanding
+  // pulse ring and the core-dot fade are driven by CSS keyframe animations,
+  // so each dot's animation runs once on mount and isn't restarted when
+  // other arrivals fire.
   const icon = useMemo(() => L.divIcon({
     className: '',
     iconSize: [30, 30],
     iconAnchor: [15, 15],
     html: `<div style="position:relative;width:30px;height:30px;">
       <div class="station-pulse" style="position:absolute;top:50%;left:50%;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:${color};"></div>
-      <div style="position:absolute;top:50%;left:50%;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:${color};opacity:${opacity * 0.9};"></div>
+      <div class="station-core" style="position:absolute;top:50%;left:50%;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:${color};"></div>
     </div>`,
-  }), [color, opacity]);
+  }), [color]);
 
   return <Marker position={[lat, lng]} icon={icon} />;
 }
@@ -132,15 +137,15 @@ export default function MapView({ lines, recentArrivals }: MapViewProps) {
       {recentArrivals.map((event) => {
         const coords = stationLookup.get(`${event.line}:${event.station}`);
         if (!coords) return null;
-        const age = (Date.now() - event.timestamp) / 1000;
-        const opacity = Math.max(0, 1 - age / 5);
+        // No opacity prop: the CSS animations own the visual lifecycle so
+        // this Marker mounts once per arrival and stays mounted (invisible
+        // after ~5 s) until pushed out of the 20-slot recentArrivals buffer.
         return (
           <TrainDot
             key={`${event.trainId}-${event.timestamp}`}
             lat={coords.lat}
             lng={coords.lng}
             color={coords.color}
-            opacity={opacity}
           />
         );
       })}

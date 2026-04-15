@@ -13,3 +13,13 @@ body {
   animation: station-pulse 1.5s ease-out forwards;
   pointer-events: none;
 }
+
+@keyframes station-core-fade {
+  0% { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+
+.station-core {
+  animation: station-core-fade 5s ease-out forwards;
+  pointer-events: none;
+}
