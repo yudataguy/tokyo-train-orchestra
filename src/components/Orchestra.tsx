@@ -8,6 +8,7 @@ import { EventBus } from '../data/EventBus';
 import { TrainDataService } from '../data/TrainDataService';
 import { DemoDataService } from '../data/DemoDataService';
 import { TimetableDataService } from '../data/TimetableDataService';
+import { StationTimetableDataService } from '../data/StationTimetableDataService';
 import { WeatherService } from '../data/WeatherService';
 import { MusicEngine } from '../engine/MusicEngine';
 import HUD from './HUD';
@@ -47,11 +48,16 @@ function OrchestraInner() {
     const apiKey = process.env.NEXT_PUBLIC_ODPT_API_KEY ?? '';
 
     // Data sources:
-    //   - With API key: live Toei (TrainDataService) + scheduled Tokyo Metro (TimetableDataService).
+    //   - With API key: live Toei (TrainDataService) + scheduled Tokyo Metro (TimetableDataService)
+    //     + station-timetable-driven Yurikamome (StationTimetableDataService).
     //   - Without key: random simulation for every line (DemoDataService).
     const metroLines = lines.filter((l) => l.odptRailway.includes('TokyoMetro'));
+    const yurikamomeLines = lines.filter((l) => l.id === 'yurikamome');
     const trainService = apiKey ? new TrainDataService(apiKey, lines, eventBus) : null;
     const timetableService = apiKey ? new TimetableDataService(metroLines, eventBus) : null;
+    const stationTimetableService = apiKey && yurikamomeLines.length
+      ? new StationTimetableDataService(yurikamomeLines, eventBus)
+      : null;
     const demoService = apiKey ? null : new DemoDataService(lines, eventBus);
 
     const weatherService = new WeatherService();
@@ -66,6 +72,7 @@ function OrchestraInner() {
 
     trainService?.start();
     void timetableService?.start();
+    void stationTimetableService?.start();
     demoService?.start();
     weatherService.start((w) => setWeather(w));
 
@@ -76,6 +83,7 @@ function OrchestraInner() {
       stop: () => {
         trainService?.stop();
         timetableService?.stop();
+        stationTimetableService?.stop();
         demoService?.stop();
       },
     };

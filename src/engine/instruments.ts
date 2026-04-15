@@ -141,6 +141,21 @@ const INSTRUMENT_CONFIGS: Record<string, InstrumentConfig> = {
     }),
     attack: 0.05, decay: 0.3, sustain: 0.4, release: 1.8,
   },
+  glockenspiel: {
+    id: 'glockenspiel', name: 'Glockenspiel',
+    // High-harmonicity FM gives bell-like inharmonic partials. Short mallet
+    // strike, long metallic ring-out; zero sustain so each note is struck
+    // and decays, never held. Fits the automated-guideway Yurikamome voice.
+    create: () => new Tone.PolySynth(Tone.FMSynth, {
+      harmonicity: 3,
+      modulationIndex: 10,
+      oscillator: { type: 'sine' },
+      modulation: { type: 'sine' },
+      envelope: { attack: 0.001, decay: 1.8, sustain: 0, release: 1.5 },
+      modulationEnvelope: { attack: 0.001, decay: 0.15, sustain: 0, release: 0.2 },
+    }),
+    attack: 0.001, decay: 1.8, sustain: 0, release: 1.5,
+  },
 };
 
 export function getInstrumentConfig(instrument: string): InstrumentConfig {

@@ -25,6 +25,7 @@ const INSTRUMENTS_JA: Record<string, string> = {
   trumpet: 'トランペット',
   oboe: 'オーボエ',
   bass: 'ベース',
+  glockenspiel: 'グロッケン',
 };
 
 const INSTRUMENTS_EN: Record<string, string> = {
@@ -41,6 +42,7 @@ const INSTRUMENTS_EN: Record<string, string> = {
   trumpet: 'Trumpet',
   oboe: 'Oboe',
   bass: 'Bass',
+  glockenspiel: 'Glockenspiel',
 };
 
 const TRANSLATIONS = {
