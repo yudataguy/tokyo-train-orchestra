@@ -3028,75 +3028,75 @@
     "odptRailway": "odpt.Railway:JR-East.Yamanote",
     "stations": [
       {
-        "id": "shinagawa-yamanote",
-        "name": "Shinagawa",
-        "nameJa": "品川",
-        "lat": 35.62865,
-        "lng": 139.7384,
+        "id": "ikebukuro-yamanote",
+        "name": "Ikebukuro",
+        "nameJa": "池袋",
+        "lat": 35.73023,
+        "lng": 139.71101,
         "index": 0
       },
       {
-        "id": "takanawa-gateway-yamanote",
-        "name": "Takanawa Gateway",
-        "nameJa": "高輪ゲートウェイ",
-        "lat": 35.63545,
-        "lng": 139.74052,
+        "id": "otsuka-yamanote",
+        "name": "Otsuka",
+        "nameJa": "大塚",
+        "lat": 35.73161,
+        "lng": 139.72858,
         "index": 1
       },
       {
-        "id": "tamachi-yamanote",
-        "name": "Tamachi",
-        "nameJa": "田町",
-        "lat": 35.64577,
-        "lng": 139.74766,
+        "id": "sugamo-yamanote",
+        "name": "Sugamo",
+        "nameJa": "巣鴨",
+        "lat": 35.73338,
+        "lng": 139.73945,
         "index": 2
       },
       {
-        "id": "hamamatsucho-yamanote",
-        "name": "Hamamatsucho",
-        "nameJa": "浜松町",
-        "lat": 35.65512,
-        "lng": 139.75701,
+        "id": "komagome-yamanote",
+        "name": "Komagome",
+        "nameJa": "駒込",
+        "lat": 35.73658,
+        "lng": 139.74725,
         "index": 3
       },
       {
-        "id": "shimbashi-yamanote",
-        "name": "Shimbashi",
-        "nameJa": "新橋",
-        "lat": 35.66617,
-        "lng": 139.75811,
+        "id": "tabata-yamanote",
+        "name": "Tabata",
+        "nameJa": "田端",
+        "lat": 35.73738,
+        "lng": 139.76172,
         "index": 4
       },
       {
-        "id": "yurakucho-yamanote",
-        "name": "Yurakucho",
-        "nameJa": "有楽町",
-        "lat": 35.67501,
-        "lng": 139.76301,
+        "id": "nishinippori-yamanote",
+        "name": "Nishi-Nippori",
+        "nameJa": "西日暮里",
+        "lat": 35.73217,
+        "lng": 139.76663,
         "index": 5
       },
       {
-        "id": "tokyo-yamanote",
-        "name": "Tokyo",
-        "nameJa": "東京",
-        "lat": 35.68125,
-        "lng": 139.76658,
+        "id": "nippori-yamanote",
+        "name": "Nippori",
+        "nameJa": "日暮里",
+        "lat": 35.72798,
+        "lng": 139.77042,
         "index": 6
       },
       {
-        "id": "kanda-yamanote",
-        "name": "Kanda",
-        "nameJa": "神田",
-        "lat": 35.69177,
-        "lng": 139.77099,
+        "id": "uguisudani-yamanote",
+        "name": "Uguisudani",
+        "nameJa": "鶯谷",
+        "lat": 35.7217,
+        "lng": 139.7779,
         "index": 7
       },
       {
-        "id": "akihabara-yamanote",
-        "name": "Akihabara",
-        "nameJa": "秋葉原",
-        "lat": 35.69836,
-        "lng": 139.773,
+        "id": "ueno-yamanote",
+        "name": "Ueno",
+        "nameJa": "上野",
+        "lat": 35.71359,
+        "lng": 139.77609,
         "index": 8
       },
       {
@@ -3108,115 +3108,115 @@
         "index": 9
       },
       {
-        "id": "ueno-yamanote",
-        "name": "Ueno",
-        "nameJa": "上野",
-        "lat": 35.71359,
-        "lng": 139.77609,
+        "id": "akihabara-yamanote",
+        "name": "Akihabara",
+        "nameJa": "秋葉原",
+        "lat": 35.69836,
+        "lng": 139.773,
         "index": 10
       },
       {
-        "id": "uguisudani-yamanote",
-        "name": "Uguisudani",
-        "nameJa": "鶯谷",
-        "lat": 35.7217,
-        "lng": 139.7779,
+        "id": "kanda-yamanote",
+        "name": "Kanda",
+        "nameJa": "神田",
+        "lat": 35.69177,
+        "lng": 139.77099,
         "index": 11
       },
       {
-        "id": "nippori-yamanote",
-        "name": "Nippori",
-        "nameJa": "日暮里",
-        "lat": 35.72798,
-        "lng": 139.77042,
+        "id": "tokyo-yamanote",
+        "name": "Tokyo",
+        "nameJa": "東京",
+        "lat": 35.68125,
+        "lng": 139.76658,
         "index": 12
       },
       {
-        "id": "nishi-nippori-yamanote",
-        "name": "Nishi-Nippori",
-        "nameJa": "西日暮里",
-        "lat": 35.73217,
-        "lng": 139.76663,
+        "id": "yurakucho-yamanote",
+        "name": "Yurakucho",
+        "nameJa": "有楽町",
+        "lat": 35.67501,
+        "lng": 139.76301,
         "index": 13
       },
       {
-        "id": "tabata-yamanote",
-        "name": "Tabata",
-        "nameJa": "田端",
-        "lat": 35.73738,
-        "lng": 139.76172,
+        "id": "shimbashi-yamanote",
+        "name": "Shimbashi",
+        "nameJa": "新橋",
+        "lat": 35.66617,
+        "lng": 139.75811,
         "index": 14
       },
       {
-        "id": "komagome-yamanote",
-        "name": "Komagome",
-        "nameJa": "駒込",
-        "lat": 35.73658,
-        "lng": 139.74725,
+        "id": "hamamatsucho-yamanote",
+        "name": "Hamamatsucho",
+        "nameJa": "浜松町",
+        "lat": 35.65512,
+        "lng": 139.75701,
         "index": 15
       },
       {
-        "id": "sugamo-yamanote",
-        "name": "Sugamo",
-        "nameJa": "巣鴨",
-        "lat": 35.73338,
-        "lng": 139.73945,
+        "id": "tamachi-yamanote",
+        "name": "Tamachi",
+        "nameJa": "田町",
+        "lat": 35.64577,
+        "lng": 139.74766,
         "index": 16
       },
       {
-        "id": "otsuka-yamanote",
-        "name": "Otsuka",
-        "nameJa": "大塚",
-        "lat": 35.73161,
-        "lng": 139.72858,
+        "id": "takanawagateway-yamanote",
+        "name": "Takanawa-Gateway",
+        "nameJa": "高輪ゲートウェイ",
+        "lat": 35.63545,
+        "lng": 139.74052,
         "index": 17
       },
       {
-        "id": "ikebukuro-yamanote",
-        "name": "Ikebukuro",
-        "nameJa": "池袋",
-        "lat": 35.73023,
-        "lng": 139.71101,
+        "id": "shinagawa-yamanote",
+        "name": "Shinagawa",
+        "nameJa": "品川",
+        "lat": 35.62865,
+        "lng": 139.7384,
         "index": 18
       },
       {
-        "id": "mejiro-yamanote",
-        "name": "Mejiro",
-        "nameJa": "目白",
-        "lat": 35.72119,
-        "lng": 139.70649,
+        "id": "osaki-yamanote",
+        "name": "Osaki",
+        "nameJa": "大崎",
+        "lat": 35.61953,
+        "lng": 139.72878,
         "index": 19
       },
       {
-        "id": "takadanobaba-yamanote",
-        "name": "Takadanobaba",
-        "nameJa": "高田馬場",
-        "lat": 35.71267,
-        "lng": 139.70369,
+        "id": "gotanda-yamanote",
+        "name": "Gotanda",
+        "nameJa": "五反田",
+        "lat": 35.6263,
+        "lng": 139.7237,
         "index": 20
       },
       {
-        "id": "shin-kubo-yamanote",
-        "name": "Shin-Ōkubo",
-        "nameJa": "新大久保",
-        "lat": 35.7013,
-        "lng": 139.7003,
+        "id": "meguro-yamanote",
+        "name": "Meguro",
+        "nameJa": "目黒",
+        "lat": 35.63408,
+        "lng": 139.71581,
         "index": 21
       },
       {
-        "id": "shinjuku-yamanote",
-        "name": "Shinjuku",
-        "nameJa": "新宿",
-        "lat": 35.68898,
-        "lng": 139.70031,
+        "id": "ebisu-yamanote",
+        "name": "Ebisu",
+        "nameJa": "恵比寿",
+        "lat": 35.64643,
+        "lng": 139.71018,
         "index": 22
       },
       {
-        "id": "yoyogi-yamanote",
-        "name": "Yoyogi",
-        "nameJa": "代々木",
-        "lat": 35.68394,
-        "lng": 139.70199,
+        "id": "shibuya-yamanote",
+        "name": "Shibuya",
+        "nameJa": "渋谷",
+        "lat": 35.65809,
+        "lng": 139.7018,
         "index": 23
       },
       {
@@ -3228,52 +3228,44 @@
         "index": 24
       },
       {
-        "id": "shibuya-yamanote",
-        "name": "Shibuya",
-        "nameJa": "渋谷",
-        "lat": 35.65809,
-        "lng": 139.7018,
+        "id": "yoyogi-yamanote",
+        "name": "Yoyogi",
+        "nameJa": "代々木",
+        "lat": 35.68394,
+        "lng": 139.70199,
         "index": 25
       },
       {
-        "id": "ebisu-yamanote",
-        "name": "Ebisu",
-        "nameJa": "恵比寿",
-        "lat": 35.64643,
-        "lng": 139.71018,
+        "id": "shinjuku-yamanote",
+        "name": "Shinjuku",
+        "nameJa": "新宿",
+        "lat": 35.68898,
+        "lng": 139.70031,
         "index": 26
       },
       {
-        "id": "meguro-yamanote",
-        "name": "Meguro",
-        "nameJa": "目黒",
-        "lat": 35.63408,
-        "lng": 139.71581,
-        "index": 27
-      },
-      {
-        "id": "gotanda-yamanote",
-        "name": "Gotanda",
-        "nameJa": "五反田",
-        "lat": 35.6263,
-        "lng": 139.7237,
-        "index": 28
-      },
-      {
-        "id": "osaki-yamanote",
-        "name": "Osaki",
-        "nameJa": "大崎",
-        "lat": 35.61953,
-        "lng": 139.72878,
-        "index": 29
-      },
-      {
-        "id": "shinagawa-yamanote",
-        "name": "Shinagawa",
+        "id": "shinokubo-yamanote",
+        "name": "Shin-Okubo",
         "nameJa": "品川",
         "lat": 35.62865,
         "lng": 139.7384,
-        "index": 30
+        "index": 27
+      },
+      {
+        "id": "takadanobaba-yamanote",
+        "name": "Takadanobaba",
+        "nameJa": "高田馬場",
+        "lat": 35.71267,
+        "lng": 139.70369,
+        "index": 28
+      },
+      {
+        "id": "mejiro-yamanote",
+        "name": "Mejiro",
+        "nameJa": "目白",
+        "lat": 35.72119,
+        "lng": 139.70649,
+        "index": 29
       }
     ]
   },
@@ -3334,11 +3326,11 @@
         "index": 5
       },
       {
-        "id": "kenji-chuo-rapid",
-        "name": "Kōenji",
-        "nameJa": "高円寺",
-        "lat": 35.70539,
-        "lng": 139.64995,
+        "id": "koenji-chuo-rapid",
+        "name": "Koenji",
+        "nameJa": "高尾",
+        "lat": 35.64222,
+        "lng": 139.28245,
         "index": 6
       },
       {
@@ -3358,7 +3350,7 @@
         "index": 8
       },
       {
-        "id": "nishi-ogikubo-chuo-rapid",
+        "id": "nishiogikubo-chuo-rapid",
         "name": "Nishi-Ogikubo",
         "nameJa": "西荻窪",
         "lat": 35.7038,
@@ -3382,7 +3374,7 @@
         "index": 11
       },
       {
-        "id": "musashi-sakai-chuo-rapid",
+        "id": "musashisakai-chuo-rapid",
         "name": "Musashi-Sakai",
         "nameJa": "武蔵境",
         "lat": 35.7021,
@@ -3390,7 +3382,7 @@
         "index": 12
       },
       {
-        "id": "higashi-koganei-chuo-rapid",
+        "id": "higashikoganei-chuo-rapid",
         "name": "Higashi-Koganei",
         "nameJa": "東小金井",
         "lat": 35.7015,
@@ -3398,7 +3390,7 @@
         "index": 13
       },
       {
-        "id": "musashi-koganei-chuo-rapid",
+        "id": "musashikoganei-chuo-rapid",
         "name": "Musashi-Koganei",
         "nameJa": "武蔵小金井",
         "lat": 35.701,
@@ -3414,7 +3406,7 @@
         "index": 15
       },
       {
-        "id": "nishi-kokubunji-chuo-rapid",
+        "id": "nishikokubunji-chuo-rapid",
         "name": "Nishi-Kokubunji",
         "nameJa": "西国分寺",
         "lat": 35.6997,
@@ -3462,7 +3454,7 @@
         "index": 21
       },
       {
-        "id": "nishi-hachioji-chuo-rapid",
+        "id": "nishihachioji-chuo-rapid",
         "name": "Nishi-Hachioji",
         "nameJa": "西八王子",
         "lat": 35.65652,
@@ -3488,316 +3480,268 @@
     "odptRailway": "odpt.Railway:JR-East.ChuoSobuLocal",
     "stations": [
       {
-        "id": "mitaka-sobu",
-        "name": "Mitaka",
-        "nameJa": "三鷹",
-        "lat": 35.70251,
-        "lng": 139.56093,
-        "index": 0
-      },
-      {
-        "id": "kichijoji-sobu",
-        "name": "Kichijoji",
-        "nameJa": "吉祥寺",
-        "lat": 35.703,
-        "lng": 139.58022,
-        "index": 1
-      },
-      {
-        "id": "nishi-ogikubo-sobu",
-        "name": "Nishi-Ogikubo",
-        "nameJa": "西荻窪",
-        "lat": 35.7037,
-        "lng": 139.59959,
-        "index": 2
-      },
-      {
-        "id": "ogikubo-sobu",
-        "name": "Ogikubo",
-        "nameJa": "荻窪",
-        "lat": 35.7043,
-        "lng": 139.61941,
-        "index": 3
-      },
-      {
-        "id": "asagaya-sobu",
-        "name": "Asagaya",
-        "nameJa": "阿佐ケ谷",
-        "lat": 35.70479,
-        "lng": 139.63537,
-        "index": 4
-      },
-      {
-        "id": "k-enji-sobu",
-        "name": "Kōenji",
-        "nameJa": "高円寺",
-        "lat": 35.7052,
-        "lng": 139.64994,
-        "index": 5
-      },
-      {
-        "id": "nakano-sobu",
+        "id": "nakano-chuo-sobu",
         "name": "Nakano",
         "nameJa": "中野",
         "lat": 35.7056,
         "lng": 139.66555,
-        "index": 6
+        "index": 0
       },
       {
-        "id": "higashi-nakano-sobu",
+        "id": "higashinakano-chuo-sobu",
         "name": "Higashi-Nakano",
         "nameJa": "東中野",
         "lat": 35.7062,
         "lng": 139.68487,
-        "index": 7
+        "index": 1
       },
       {
-        "id": "okubo-sobu",
+        "id": "okubo-chuo-sobu",
         "name": "Okubo",
         "nameJa": "大久保",
         "lat": 35.70078,
         "lng": 139.69731,
-        "index": 8
+        "index": 2
       },
       {
-        "id": "shinjuku-sobu",
+        "id": "shinjuku-chuo-sobu",
         "name": "Shinjuku",
         "nameJa": "新宿",
         "lat": 35.68897,
         "lng": 139.7002,
-        "index": 9
+        "index": 3
       },
       {
-        "id": "yoyogi-sobu",
+        "id": "yoyogi-chuo-sobu",
         "name": "Yoyogi",
         "nameJa": "代々木",
         "lat": 35.68396,
         "lng": 139.70211,
-        "index": 10
+        "index": 4
       },
       {
-        "id": "sendagaya-sobu",
+        "id": "sendagaya-chuo-sobu",
         "name": "Sendagaya",
         "nameJa": "千駄ケ谷",
         "lat": 35.68121,
         "lng": 139.71135,
-        "index": 11
+        "index": 5
       },
       {
-        "id": "shinanomachi-sobu",
+        "id": "shinanomachi-chuo-sobu",
         "name": "Shinanomachi",
         "nameJa": "信濃町",
         "lat": 35.68,
         "lng": 139.7204,
-        "index": 12
+        "index": 6
       },
       {
-        "id": "yotsuya-sobu",
+        "id": "yotsuya-chuo-sobu",
         "name": "Yotsuya",
         "nameJa": "四ツ谷",
         "lat": 35.68588,
         "lng": 139.7307,
-        "index": 13
+        "index": 7
       },
       {
-        "id": "ichigaya-sobu",
+        "id": "ichigaya-chuo-sobu",
         "name": "Ichigaya",
         "nameJa": "市ケ谷",
         "lat": 35.69128,
         "lng": 139.73557,
-        "index": 14
+        "index": 8
       },
       {
-        "id": "iidabashi-sobu",
+        "id": "iidabashi-chuo-sobu",
         "name": "Iidabashi",
         "nameJa": "飯田橋",
         "lat": 35.70074,
         "lng": 139.74402,
-        "index": 15
+        "index": 9
       },
       {
-        "id": "suidobashi-sobu",
+        "id": "suidobashi-chuo-sobu",
         "name": "Suidobashi",
         "nameJa": "水道橋",
         "lat": 35.702,
         "lng": 139.75374,
-        "index": 16
+        "index": 10
       },
       {
-        "id": "ochanomizu-sobu",
+        "id": "ochanomizu-chuo-sobu",
         "name": "Ochanomizu",
         "nameJa": "御茶ノ水",
         "lat": 35.6996,
         "lng": 139.76502,
-        "index": 17
+        "index": 11
       },
       {
-        "id": "akihabara-sobu",
+        "id": "akihabara-chuo-sobu",
         "name": "Akihabara",
         "nameJa": "秋葉原",
         "lat": 35.6983,
         "lng": 139.77304,
-        "index": 18
+        "index": 12
       },
       {
-        "id": "asakusabashi-sobu",
+        "id": "asakusabashi-chuo-sobu",
         "name": "Asakusabashi",
         "nameJa": "浅草橋",
         "lat": 35.6974,
         "lng": 139.78468,
-        "index": 19
+        "index": 13
       },
       {
-        "id": "ryogoku-sobu",
+        "id": "ryogoku-chuo-sobu",
         "name": "Ryogoku",
         "nameJa": "両国",
         "lat": 35.6958,
         "lng": 139.79297,
-        "index": 20
+        "index": 14
       },
       {
-        "id": "kinshicho-sobu",
+        "id": "kinshicho-chuo-sobu",
         "name": "Kinshicho",
         "nameJa": "錦糸町",
         "lat": 35.6966,
         "lng": 139.81403,
-        "index": 21
+        "index": 15
       },
       {
-        "id": "kameido-sobu",
+        "id": "kameido-chuo-sobu",
         "name": "Kameido",
         "nameJa": "亀戸",
         "lat": 35.6973,
         "lng": 139.82671,
-        "index": 22
+        "index": 16
       },
       {
-        "id": "hirai-sobu",
+        "id": "hirai-chuo-sobu",
         "name": "Hirai",
         "nameJa": "平井",
         "lat": 35.70637,
         "lng": 139.84256,
-        "index": 23
+        "index": 17
       },
       {
-        "id": "shin-koiwa-sobu",
+        "id": "shinkoiwa-chuo-sobu",
         "name": "Shin-Koiwa",
         "nameJa": "新小岩",
         "lat": 35.7168,
         "lng": 139.8581,
-        "index": 24
+        "index": 18
       },
       {
-        "id": "koiwa-sobu",
+        "id": "koiwa-chuo-sobu",
         "name": "Koiwa",
         "nameJa": "小岩",
         "lat": 35.7332,
         "lng": 139.88189,
-        "index": 25
+        "index": 19
       },
       {
-        "id": "ichikawa-sobu",
+        "id": "ichikawa-chuo-sobu",
         "name": "Ichikawa",
         "nameJa": "市川",
         "lat": 35.72872,
         "lng": 139.90806,
-        "index": 26
+        "index": 20
       },
       {
-        "id": "moto-yawata-sobu",
+        "id": "motoyawata-chuo-sobu",
         "name": "Moto-Yawata",
         "nameJa": "本八幡",
         "lat": 35.7209,
         "lng": 139.92719,
-        "index": 27
+        "index": 21
       },
       {
-        "id": "shimosa-nakayama-sobu",
+        "id": "shimosanakayama-chuo-sobu",
         "name": "Shimosa-Nakayama",
         "nameJa": "下総中山",
         "lat": 35.7142,
         "lng": 139.94301,
-        "index": 28
+        "index": 22
       },
       {
-        "id": "nishi-funabashi-sobu",
+        "id": "nishifunabashi-chuo-sobu",
         "name": "Nishi-Funabashi",
         "nameJa": "西船橋",
         "lat": 35.70743,
         "lng": 139.95896,
-        "index": 29
+        "index": 23
       },
       {
-        "id": "funabashi-sobu",
+        "id": "funabashi-chuo-sobu",
         "name": "Funabashi",
         "nameJa": "船橋",
         "lat": 35.7015,
         "lng": 139.98522,
-        "index": 30
+        "index": 24
       },
       {
-        "id": "higashi-funabashi-sobu",
+        "id": "higashifunabashi-chuo-sobu",
         "name": "Higashi-Funabashi",
         "nameJa": "東船橋",
         "lat": 35.6997,
         "lng": 140.00428,
-        "index": 31
+        "index": 25
       },
       {
-        "id": "tsudanuma-sobu",
+        "id": "tsudanuma-chuo-sobu",
         "name": "Tsudanuma",
         "nameJa": "津田沼",
         "lat": 35.69119,
         "lng": 140.02001,
-        "index": 32
+        "index": 26
       },
       {
-        "id": "makuhari-hongo-sobu",
-        "name": "Makuhari-Hongo",
+        "id": "makuharihongo-chuo-sobu",
+        "name": "Makuharihongo",
         "nameJa": "幕張本郷",
         "lat": 35.67266,
         "lng": 140.04225,
-        "index": 33
+        "index": 27
       },
       {
-        "id": "makuhari-sobu",
+        "id": "makuhari-chuo-sobu",
         "name": "Makuhari",
         "nameJa": "幕張",
         "lat": 35.65929,
         "lng": 140.05782,
-        "index": 34
+        "index": 28
       },
       {
-        "id": "shin-kemigawa-sobu",
+        "id": "shinkemigawa-chuo-sobu",
         "name": "Shin-Kemigawa",
         "nameJa": "新検見川",
         "lat": 35.6517,
         "lng": 140.07309,
-        "index": 35
+        "index": 29
       },
       {
-        "id": "inage-sobu",
+        "id": "inage-chuo-sobu",
         "name": "Inage",
         "nameJa": "稲毛",
         "lat": 35.63701,
         "lng": 140.09239,
-        "index": 36
+        "index": 30
       },
       {
-        "id": "nishi-chiba-sobu",
+        "id": "nishichiba-chuo-sobu",
         "name": "Nishi-Chiba",
         "nameJa": "西千葉",
         "lat": 35.62271,
         "lng": 140.10309,
-        "index": 37
+        "index": 31
       },
       {
-        "id": "chiba-sobu",
+        "id": "chiba-chuo-sobu",
         "name": "Chiba",
         "nameJa": "千葉",
         "lat": 35.6133,
         "lng": 140.1123,
-        "index": 38
+        "index": 32
       }
     ]
   },
@@ -3810,91 +3754,91 @@
     "odptRailway": "odpt.Railway:JR-East.KeihinTohokuNegishi",
     "stations": [
       {
-        "id": "yokohama-keihin-tohoku",
-        "name": "Yokohama",
-        "nameJa": "横浜",
-        "lat": 35.46572,
-        "lng": 139.62242,
+        "id": "tabata-keihin-tohoku",
+        "name": "Tabata",
+        "nameJa": "田端",
+        "lat": 35.7373,
+        "lng": 139.7616,
         "index": 0
       },
       {
-        "id": "higashi-kanagawa-keihin-tohoku",
-        "name": "Higashi-Kanagawa",
-        "nameJa": "東神奈川",
-        "lat": 35.47801,
-        "lng": 139.63321,
+        "id": "nishinippori-keihin-tohoku",
+        "name": "Nishi-Nippori",
+        "nameJa": "西日暮里",
+        "lat": 35.73211,
+        "lng": 139.76649,
         "index": 1
       },
       {
-        "id": "shin-koyasu-keihin-tohoku",
-        "name": "Shin-Koyasu",
-        "nameJa": "新子安",
-        "lat": 35.48691,
-        "lng": 139.65413,
+        "id": "nippori-keihin-tohoku",
+        "name": "Nippori",
+        "nameJa": "日暮里",
+        "lat": 35.72789,
+        "lng": 139.77031,
         "index": 2
       },
       {
-        "id": "tsurumi-keihin-tohoku",
-        "name": "Tsurumi",
-        "nameJa": "鶴見",
-        "lat": 35.5083,
-        "lng": 139.6761,
+        "id": "uguisudani-keihin-tohoku",
+        "name": "Uguisudani",
+        "nameJa": "鶯谷",
+        "lat": 35.72162,
+        "lng": 139.77778,
         "index": 3
       },
       {
-        "id": "kawasaki-keihin-tohoku",
-        "name": "Kawasaki",
-        "nameJa": "川崎",
-        "lat": 35.53144,
-        "lng": 139.69685,
+        "id": "ueno-keihin-tohoku",
+        "name": "Ueno",
+        "nameJa": "上野",
+        "lat": 35.71363,
+        "lng": 139.77601,
         "index": 4
       },
       {
-        "id": "kamata-keihin-tohoku",
-        "name": "Kamata",
-        "nameJa": "蒲田",
-        "lat": 35.56204,
-        "lng": 139.71571,
+        "id": "okachimachi-keihin-tohoku",
+        "name": "Okachimachi",
+        "nameJa": "御徒町",
+        "lat": 35.70697,
+        "lng": 139.7745,
         "index": 5
       },
       {
-        "id": "omori-keihin-tohoku",
-        "name": "Omori",
-        "nameJa": "大森",
-        "lat": 35.58852,
-        "lng": 139.72781,
+        "id": "akihabara-keihin-tohoku",
+        "name": "Akihabara",
+        "nameJa": "秋葉原",
+        "lat": 35.69837,
+        "lng": 139.77289,
         "index": 6
       },
       {
-        "id": "oimachi-keihin-tohoku",
-        "name": "Oimachi",
-        "nameJa": "大井町",
-        "lat": 35.6064,
-        "lng": 139.7348,
+        "id": "kanda-keihin-tohoku",
+        "name": "Kanda",
+        "nameJa": "神田",
+        "lat": 35.69179,
+        "lng": 139.77089,
         "index": 7
       },
       {
-        "id": "shinagawa-keihin-tohoku",
-        "name": "Shinagawa",
-        "nameJa": "品川",
-        "lat": 35.62867,
-        "lng": 139.7387,
+        "id": "tokyo-keihin-tohoku",
+        "name": "Tokyo",
+        "nameJa": "東京",
+        "lat": 35.68129,
+        "lng": 139.7664,
         "index": 8
       },
       {
-        "id": "takanawa-gateway-keihin-tohoku",
-        "name": "Takanawa Gateway",
-        "nameJa": "高輪ゲートウェイ",
-        "lat": 35.63539,
-        "lng": 139.74069,
+        "id": "yurakucho-keihin-tohoku",
+        "name": "Yurakucho",
+        "nameJa": "有楽町",
+        "lat": 35.67501,
+        "lng": 139.76291,
         "index": 9
       },
       {
-        "id": "tamachi-keihin-tohoku",
-        "name": "Tamachi",
-        "nameJa": "田町",
-        "lat": 35.64581,
-        "lng": 139.74763,
+        "id": "shimbashi-keihin-tohoku",
+        "name": "Shimbashi",
+        "nameJa": "新橋",
+        "lat": 35.66615,
+        "lng": 139.75798,
         "index": 10
       },
       {
@@ -3906,196 +3850,180 @@
         "index": 11
       },
       {
-        "id": "shimbashi-keihin-tohoku",
-        "name": "Shimbashi",
-        "nameJa": "新橋",
-        "lat": 35.66615,
-        "lng": 139.75798,
+        "id": "tamachi-keihin-tohoku",
+        "name": "Tamachi",
+        "nameJa": "田町",
+        "lat": 35.64581,
+        "lng": 139.74763,
         "index": 12
       },
       {
-        "id": "yurakucho-keihin-tohoku",
-        "name": "Yurakucho",
-        "nameJa": "有楽町",
-        "lat": 35.67501,
-        "lng": 139.76291,
+        "id": "takanawagateway-keihin-tohoku",
+        "name": "Takanawa-Gateway",
+        "nameJa": "高輪ゲートウェイ",
+        "lat": 35.63539,
+        "lng": 139.74069,
         "index": 13
       },
       {
-        "id": "tokyo-keihin-tohoku",
-        "name": "Tokyo",
-        "nameJa": "東京",
-        "lat": 35.68129,
-        "lng": 139.7664,
+        "id": "shinagawa-keihin-tohoku",
+        "name": "Shinagawa",
+        "nameJa": "品川",
+        "lat": 35.62867,
+        "lng": 139.7387,
         "index": 14
       },
       {
-        "id": "kanda-keihin-tohoku",
-        "name": "Kanda",
-        "nameJa": "神田",
-        "lat": 35.69179,
-        "lng": 139.77089,
+        "id": "oimachi-keihin-tohoku",
+        "name": "Oimachi",
+        "nameJa": "大井町",
+        "lat": 35.6064,
+        "lng": 139.7348,
         "index": 15
       },
       {
-        "id": "akihabara-keihin-tohoku",
-        "name": "Akihabara",
-        "nameJa": "秋葉原",
-        "lat": 35.69837,
-        "lng": 139.77289,
+        "id": "omori-keihin-tohoku",
+        "name": "Omori",
+        "nameJa": "大森",
+        "lat": 35.58852,
+        "lng": 139.72781,
         "index": 16
       },
       {
-        "id": "okachimachi-keihin-tohoku",
-        "name": "Okachimachi",
-        "nameJa": "御徒町",
-        "lat": 35.70697,
-        "lng": 139.7745,
+        "id": "kamata-keihin-tohoku",
+        "name": "Kamata",
+        "nameJa": "蒲田",
+        "lat": 35.56204,
+        "lng": 139.71571,
         "index": 17
       },
       {
-        "id": "ueno-keihin-tohoku",
-        "name": "Ueno",
-        "nameJa": "上野",
-        "lat": 35.71363,
-        "lng": 139.77601,
+        "id": "kawasaki-keihin-tohoku",
+        "name": "Kawasaki",
+        "nameJa": "川崎",
+        "lat": 35.53144,
+        "lng": 139.69685,
         "index": 18
       },
       {
-        "id": "uguisudani-keihin-tohoku",
-        "name": "Uguisudani",
-        "nameJa": "鶯谷",
-        "lat": 35.72162,
-        "lng": 139.77778,
+        "id": "tsurumi-keihin-tohoku",
+        "name": "Tsurumi",
+        "nameJa": "鶴見",
+        "lat": 35.5083,
+        "lng": 139.6761,
         "index": 19
       },
       {
-        "id": "nippori-keihin-tohoku",
-        "name": "Nippori",
-        "nameJa": "日暮里",
-        "lat": 35.72789,
-        "lng": 139.77031,
+        "id": "shinkoyasu-keihin-tohoku",
+        "name": "Shin-Koyasu",
+        "nameJa": "新子安",
+        "lat": 35.48691,
+        "lng": 139.65413,
         "index": 20
       },
       {
-        "id": "nishi-nippori-keihin-tohoku",
-        "name": "Nishi-Nippori",
-        "nameJa": "西日暮里",
-        "lat": 35.73211,
-        "lng": 139.76649,
+        "id": "higashikanagawa-keihin-tohoku",
+        "name": "Higashi-Kanagawa",
+        "nameJa": "東神奈川",
+        "lat": 35.47801,
+        "lng": 139.63321,
         "index": 21
       },
       {
-        "id": "tabata-keihin-tohoku",
-        "name": "Tabata",
-        "nameJa": "田端",
-        "lat": 35.7373,
-        "lng": 139.7616,
+        "id": "yokohama-keihin-tohoku",
+        "name": "Yokohama",
+        "nameJa": "横浜",
+        "lat": 35.46572,
+        "lng": 139.62242,
         "index": 22
       },
       {
-        "id": "kami-nakazato-keihin-tohoku",
-        "name": "Kami-Nakazato",
-        "nameJa": "上中里",
-        "lat": 35.74659,
-        "lng": 139.74701,
-        "index": 23
-      },
-      {
-        "id": "ji-keihin-tohoku",
-        "name": "Ōji",
-        "nameJa": "王子",
-        "lat": 35.75231,
-        "lng": 139.7382,
-        "index": 24
-      },
-      {
-        "id": "higashi-jujo-keihin-tohoku",
-        "name": "Higashi-Jujo",
-        "nameJa": "東十条",
-        "lat": 35.76382,
-        "lng": 139.72679,
-        "index": 25
-      },
-      {
-        "id": "akabane-keihin-tohoku",
-        "name": "Akabane",
-        "nameJa": "赤羽",
-        "lat": 35.77819,
-        "lng": 139.72091,
-        "index": 26
-      },
-      {
-        "id": "kawaguchi-keihin-tohoku",
-        "name": "Kawaguchi",
-        "nameJa": "川口",
-        "lat": 35.80187,
-        "lng": 139.71742,
-        "index": 27
-      },
-      {
-        "id": "nishi-kawaguchi-keihin-tohoku",
-        "name": "Nishi-Kawaguchi",
-        "nameJa": "西川口",
-        "lat": 35.81556,
-        "lng": 139.70444,
-        "index": 28
-      },
-      {
-        "id": "warabi-keihin-tohoku",
-        "name": "Warabi",
-        "nameJa": "蕨",
-        "lat": 35.82808,
-        "lng": 139.69032,
-        "index": 29
-      },
-      {
-        "id": "minami-urawa-keihin-tohoku",
-        "name": "Minami-Urawa",
-        "nameJa": "南浦和",
-        "lat": 35.84767,
-        "lng": 139.66903,
-        "index": 30
-      },
-      {
-        "id": "urawa-keihin-tohoku",
-        "name": "Urawa",
-        "nameJa": "浦和",
-        "lat": 35.85902,
-        "lng": 139.65729,
-        "index": 31
-      },
-      {
-        "id": "kita-urawa-keihin-tohoku",
-        "name": "Kita-Urawa",
-        "nameJa": "北浦和",
-        "lat": 35.87214,
-        "lng": 139.64606,
-        "index": 32
-      },
-      {
-        "id": "yono-keihin-tohoku",
-        "name": "Yono",
-        "nameJa": "与野",
-        "lat": 35.88438,
-        "lng": 139.63911,
-        "index": 33
-      },
-      {
-        "id": "saitama-shintoshin-keihin-tohoku",
-        "name": "Saitama-Shintoshin",
-        "nameJa": "さいたま新都心",
-        "lat": 35.89365,
-        "lng": 139.63397,
-        "index": 34
-      },
-      {
-        "id": "omiya-keihin-tohoku",
-        "name": "Omiya",
+        "id": "sakuragicho-keihin-tohoku",
+        "name": "Sakuragicho",
         "nameJa": "大宮",
         "lat": 35.90644,
         "lng": 139.62466,
-        "index": 35
+        "index": 23
+      },
+      {
+        "id": "kannai-keihin-tohoku",
+        "name": "Kannai",
+        "nameJa": "大宮",
+        "lat": 35.90644,
+        "lng": 139.62466,
+        "index": 24
+      },
+      {
+        "id": "ishikawacho-keihin-tohoku",
+        "name": "Ishikawacho",
+        "nameJa": "大宮",
+        "lat": 35.90644,
+        "lng": 139.62466,
+        "index": 25
+      },
+      {
+        "id": "yamate-keihin-tohoku",
+        "name": "Yamate",
+        "nameJa": "大宮",
+        "lat": 35.90644,
+        "lng": 139.62466,
+        "index": 26
+      },
+      {
+        "id": "negishi-keihin-tohoku",
+        "name": "Negishi",
+        "nameJa": "大宮",
+        "lat": 35.90644,
+        "lng": 139.62466,
+        "index": 27
+      },
+      {
+        "id": "isogo-keihin-tohoku",
+        "name": "Isogo",
+        "nameJa": "大宮",
+        "lat": 35.90644,
+        "lng": 139.62466,
+        "index": 28
+      },
+      {
+        "id": "shinsugita-keihin-tohoku",
+        "name": "Shin-Sugita",
+        "nameJa": "大宮",
+        "lat": 35.90644,
+        "lng": 139.62466,
+        "index": 29
+      },
+      {
+        "id": "yokodai-keihin-tohoku",
+        "name": "Yokodai",
+        "nameJa": "大宮",
+        "lat": 35.90644,
+        "lng": 139.62466,
+        "index": 30
+      },
+      {
+        "id": "konandai-keihin-tohoku",
+        "name": "Konandai",
+        "nameJa": "大宮",
+        "lat": 35.90644,
+        "lng": 139.62466,
+        "index": 31
+      },
+      {
+        "id": "hongodai-keihin-tohoku",
+        "name": "Hongodai",
+        "nameJa": "大宮",
+        "lat": 35.90644,
+        "lng": 139.62466,
+        "index": 32
+      },
+      {
+        "id": "ofuna-keihin-tohoku",
+        "name": "Ofuna",
+        "nameJa": "大宮",
+        "lat": 35.90644,
+        "lng": 139.62466,
+        "index": 33
       }
     ]
   },
@@ -4108,36 +4036,12 @@
     "odptRailway": "odpt.Railway:JR-East.SaikyoKawagoe",
     "stations": [
       {
-        "id": "osaki-saikyo",
-        "name": "Osaki",
-        "nameJa": "大崎",
-        "lat": 35.61924,
-        "lng": 139.72816,
-        "index": 0
-      },
-      {
-        "id": "ebisu-saikyo",
-        "name": "Ebisu",
-        "nameJa": "恵比寿",
-        "lat": 35.64643,
-        "lng": 139.71019,
-        "index": 1
-      },
-      {
-        "id": "shibuya-saikyo",
-        "name": "Shibuya",
-        "nameJa": "渋谷",
-        "lat": 35.65809,
-        "lng": 139.7018,
-        "index": 2
-      },
-      {
         "id": "shinjuku-saikyo",
         "name": "Shinjuku",
         "nameJa": "新宿",
         "lat": 35.68916,
         "lng": 139.70122,
-        "index": 3
+        "index": 0
       },
       {
         "id": "ikebukuro-saikyo",
@@ -4145,7 +4049,7 @@
         "nameJa": "池袋",
         "lat": 35.73017,
         "lng": 139.71119,
-        "index": 4
+        "index": 1
       },
       {
         "id": "itabashi-saikyo",
@@ -4153,15 +4057,15 @@
         "nameJa": "板橋",
         "lat": 35.74528,
         "lng": 139.71939,
-        "index": 5
+        "index": 2
       },
       {
-        "id": "jj-saikyo",
-        "name": "Jūjō",
-        "nameJa": "十条",
-        "lat": 35.76001,
-        "lng": 139.7223,
-        "index": 6
+        "id": "jujo-saikyo",
+        "name": "Jujo",
+        "nameJa": "大宮",
+        "lat": 35.9061,
+        "lng": 139.6231,
+        "index": 3
       },
       {
         "id": "akabane-saikyo",
@@ -4169,15 +4073,15 @@
         "nameJa": "赤羽",
         "lat": 35.77797,
         "lng": 139.72042,
-        "index": 7
+        "index": 4
       },
       {
-        "id": "kita-akabane-saikyo",
+        "id": "kitaakabane-saikyo",
         "name": "Kita-Akabane",
         "nameJa": "北赤羽",
         "lat": 35.78671,
         "lng": 139.70597,
-        "index": 8
+        "index": 5
       },
       {
         "id": "ukimafunado-saikyo",
@@ -4185,15 +4089,15 @@
         "nameJa": "浮間舟渡",
         "lat": 35.7911,
         "lng": 139.69148,
-        "index": 9
+        "index": 6
       },
       {
         "id": "todakoen-saikyo",
-        "name": "Todakoen",
+        "name": "Toda-Koen",
         "nameJa": "戸田公園",
         "lat": 35.80788,
         "lng": 139.67812,
-        "index": 10
+        "index": 7
       },
       {
         "id": "toda-saikyo",
@@ -4201,47 +4105,55 @@
         "nameJa": "戸田",
         "lat": 35.81767,
         "lng": 139.66952,
-        "index": 11
+        "index": 8
       },
       {
-        "id": "kita-toda-saikyo",
+        "id": "kitatoda-saikyo",
         "name": "Kita-Toda",
         "nameJa": "北戸田",
         "lat": 35.82762,
         "lng": 139.66007,
-        "index": 12
+        "index": 9
       },
       {
-        "id": "musashi-urawa-saikyo",
+        "id": "musashiurawa-saikyo",
         "name": "Musashi-Urawa",
         "nameJa": "武蔵浦和",
         "lat": 35.84546,
         "lng": 139.64673,
-        "index": 13
+        "index": 10
       },
       {
-        "id": "naka-urawa-saikyo",
+        "id": "nakaurawa-saikyo",
         "name": "Naka-Urawa",
         "nameJa": "中浦和",
         "lat": 35.85349,
         "lng": 139.63761,
-        "index": 14
+        "index": 11
       },
       {
-        "id": "yono-hommachi-saikyo",
+        "id": "minamiyono-saikyo",
+        "name": "Minami-Yono",
+        "nameJa": "大宮",
+        "lat": 35.9061,
+        "lng": 139.6231,
+        "index": 12
+      },
+      {
+        "id": "yonohommachi-saikyo",
         "name": "Yono-Hommachi",
         "nameJa": "与野本町",
         "lat": 35.88121,
         "lng": 139.626,
-        "index": 15
+        "index": 13
       },
       {
-        "id": "kita-yono-saikyo",
+        "id": "kitayono-saikyo",
         "name": "Kita-Yono",
         "nameJa": "北与野",
         "lat": 35.89073,
         "lng": 139.62852,
-        "index": 16
+        "index": 14
       },
       {
         "id": "omiya-saikyo",
@@ -4249,7 +4161,7 @@
         "nameJa": "大宮",
         "lat": 35.9061,
         "lng": 139.6231,
-        "index": 17
+        "index": 15
       }
     ]
   }
