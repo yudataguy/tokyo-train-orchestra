@@ -84,7 +84,7 @@ All voices are synthesized with Tone.js primitives — no samples, no HTTP fetch
 
 ### New files
 
-**`src/engine/edmVoices.ts`** — factories for the 13 EDM voices. Parallels the existing `instruments.ts` pattern. Exports a single `createEdmVoices()` that returns an object keyed by voice id.
+**`src/engine/edmVoices.ts`** — factories for the 16 EDM voices. Parallels the existing `instruments.ts` pattern. Exports a single `createEdmVoices()` that returns an object keyed by voice id.
 
 **`src/engine/edmEngine.ts`** — owns the EDM runtime:
 - Starts / stops `Tone.Transport` at 124 BPM.
@@ -112,7 +112,7 @@ User clicks EDM toggle in SettingsPanel
     → MusicEngine.setMode('edm')
         → stops ambient voices (releaseAll)
         → calls edmEngine.start()
-            → creates 13 voices
+            → creates 16 voices
             → starts Tone.Transport at 124 BPM
             → schedules pad chord sequence
     → future arrivals are routed to edmEngine.triggerArrival(lineId)
@@ -132,7 +132,7 @@ Reverse flow on toggle back to Ambient.
 | Risk | Mitigation |
 |---|---|
 | First mode switch after page load produces a brief glitch (AudioContext suspend/resume). | The app already handles the Web Audio unlock gesture on first interaction; mode switching happens after that point, so this is not a new risk. |
-| 13 pre-created voices at init incur memory cost. | Each Tone synth is a small audio graph; total ~13 nodes × a few oscillators each. Negligible vs. the existing 18 ambient PolySynths that are always live in ambient mode. |
+| 16 pre-created voices at init incur memory cost. | Each Tone synth is a small audio graph; total ~16 nodes × a few oscillators each. Negligible vs. the existing 18 ambient PolySynths that are always live in ambient mode. |
 | User expects per-line distinct voices everywhere; JR and Toei share voices. | Pitch differentiation via `stationToNote` means each line still produces a unique note sequence even within a shared synth. Rationale documented in this spec. |
 | EDM pad loop drifts against arrival quantization. | Both use `Tone.Transport` as the clock, so they share a timebase. `Tone.Sequence` and 16th-note scheduling are both transport-anchored. |
 | Ambient mode breaks during refactor. | MusicEngine gains a router layer; the ambient path is preserved byte-for-byte and selected when `mode === 'ambient'`. Existing ambient tests must pass unchanged. |
