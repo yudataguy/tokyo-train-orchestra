@@ -4,7 +4,8 @@ const transportMock = {
   start: jest.fn(),
   stop: jest.fn(),
   cancel: jest.fn(),
-  scheduleRepeat: jest.fn(),
+  clear: jest.fn(),
+  scheduleRepeat: jest.fn(() => 0),
   bpm: { value: 0 },
 };
 
@@ -107,14 +108,32 @@ describe('EdmEngine.triggerArrival', () => {
 });
 
 describe('EdmEngine pad progression', () => {
-  it('start() schedules a Tone.Sequence for the pad chords', () => {
-    const { Sequence } = jest.requireMock('tone') as { Sequence: jest.Mock };
-    Sequence.mockClear();
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('start() schedules a repeating pad progression on the transport', () => {
     const engine = new EdmEngine();
     engine.start();
-    expect(Sequence).toHaveBeenCalled();
-    // First arg to Sequence is the callback, second is the chord events array.
-    const [, events] = Sequence.mock.calls[0];
-    expect(events).toHaveLength(4); // C, G, Am, F
+    expect(transportMock.scheduleRepeat).toHaveBeenCalled();
+    // scheduleRepeat is called as (callback, interval, startTime)
+    const call = transportMock.scheduleRepeat.mock.calls[0] as unknown as [unknown, string, number?];
+    expect(call[1]).toBe('2m');
+  });
+
+  it('scheduled callback plays chord notes and advances through the 4-chord progression', () => {
+    const engine = new EdmEngine();
+    engine.start();
+    const call = transportMock.scheduleRepeat.mock.calls[0] as unknown as [(time: number) => void];
+    const callback = call[0];
+    const pad = (engine as unknown as { voices: Record<string, unknown> }).voices!.pad as {
+      triggerAttackRelease: (n: string, d: string, t?: number) => void;
+    };
+    const triggerSpy = jest.spyOn(pad, 'triggerAttackRelease');
+    triggerSpy.mockClear();
+
+    // Fire the callback 5 times; each fires 4 notes (one chord), for 20 total.
+    for (let i = 0; i < 5; i++) callback(0);
+    expect(triggerSpy).toHaveBeenCalledTimes(5 * 4);
   });
 });

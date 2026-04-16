@@ -5,31 +5,37 @@ import { FULL_PENTATONIC } from './scales';
 
 const BPM = 124;
 
+// I-V-vi-IV in C major. Two bars per chord, 8-bar loop.
+const PAD_CHORDS: readonly (readonly string[])[] = [
+  ['C3', 'E3', 'G3', 'C4'],   // C
+  ['G2', 'D3', 'G3', 'B3'],   // G
+  ['A2', 'E3', 'A3', 'C4'],   // Am
+  ['F2', 'A2', 'C3', 'F3'],   // F
+];
+
 export class EdmEngine {
   private voices: EdmVoices | null = null;
   private masterFilter: Tone.Filter | null = null;
-  private padSequence: Tone.Sequence | null = null;
+  private padScheduleId: number | null = null;
+  private padChordIdx = 0;
   private started = false;
 
   start(): void {
     if (this.started) return;
     this.masterFilter = new Tone.Filter({ frequency: 6000, type: 'lowpass', rolloff: -12 }).toDestination();
     this.voices = createEdmVoices(this.masterFilter);
-    // I-V-vi-IV in C major, two bars per chord (duration '2m').
-    const chords: string[][] = [
-      ['C3', 'E3', 'G3', 'C4'],   // C
-      ['G2', 'D3', 'G3', 'B3'],   // G
-      ['A2', 'E3', 'A3', 'C4'],   // Am
-      ['F2', 'A2', 'C3', 'F3'],   // F
-    ];
+
+    // Schedule chord changes every 2 bars via Transport.scheduleRepeat.
+    // Each callback play all four voices of the current chord, then advances
+    // the index so the next callback plays the next chord. Wraps on PAD_CHORDS.length.
     const pad = this.voices.pad;
-    this.padSequence = new Tone.Sequence<string[]>(
-      (time, chord) => {
-        chord.forEach((n) => pad.triggerAttackRelease(n, '2m', time));
-      },
-      chords,
-      '2m',
-    ).start(0);
+    this.padChordIdx = 0;
+    this.padScheduleId = Tone.getTransport().scheduleRepeat((time) => {
+      const chord = PAD_CHORDS[this.padChordIdx % PAD_CHORDS.length];
+      for (const note of chord) pad.triggerAttackRelease(note, '2m', time);
+      this.padChordIdx += 1;
+    }, '2m', 0);
+
     Tone.getTransport().bpm.value = BPM;
     Tone.getTransport().start();
     this.started = true;
@@ -38,9 +44,11 @@ export class EdmEngine {
   stop(): void {
     if (!this.started) return;
     Tone.getTransport().stop();
+    if (this.padScheduleId !== null) {
+      Tone.getTransport().clear(this.padScheduleId);
+      this.padScheduleId = null;
+    }
     Tone.getTransport().cancel();
-    this.padSequence?.dispose();
-    this.padSequence = null;
     if (this.voices) {
       for (const voice of Object.values(this.voices)) voice.dispose();
       this.voices = null;
