@@ -29,7 +29,7 @@ function OrchestraInner() {
   const [mutedLines, setMutedLines] = useState<Set<string>>(new Set());
   const [volume, setVolume] = useState(0.16);
   const [weatherFxEnabled, setWeatherFxEnabled] = useState(false);
-  const [musicMode, setMusicMode] = useState<'ambient' | 'edm'>('ambient');
+  const [musicMode, setMusicMode] = useState<'ambient' | 'edm'>('edm');
 
   const arrivalSeqRef = useRef(0);
   const eventBusRef = useRef<EventBus<AppEvents> | null>(null);
@@ -167,6 +167,9 @@ function OrchestraInner() {
         </p>
         <p className="text-[#4A80D4] text-sm">
           {apiKeyPresent ? t('hybridMode') : t('demoMode')}
+        </p>
+        <p className="text-gray-500 text-xs uppercase tracking-wider">
+          {t('musicMode')}: {musicMode === 'edm' ? t('modeEdm') : t('modeAmbient')}
         </p>
 
         <button
