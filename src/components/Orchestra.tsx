@@ -27,7 +27,7 @@ function OrchestraInner() {
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [mutedLines, setMutedLines] = useState<Set<string>>(new Set());
-  const [volume, setVolume] = useState(0.2);
+  const [volume, setVolume] = useState(0.16);
   const [weatherFxEnabled, setWeatherFxEnabled] = useState(false);
   const [musicMode, setMusicMode] = useState<'ambient' | 'edm'>('ambient');
 
@@ -54,7 +54,11 @@ function OrchestraInner() {
 
     const eventBus = new EventBus<AppEvents>();
     const musicEngine = new MusicEngine(lines);
-    const apiKey = process.env.NEXT_PUBLIC_ODPT_API_KEY ?? '';
+    // Dev override: ?demo=1 in the URL forces demo mode even when an ODPT
+    // API key is present — useful for auditioning the app outside rush hour.
+    const forceDemo = typeof window !== 'undefined'
+      && new URLSearchParams(window.location.search).get('demo') === '1';
+    const apiKey = forceDemo ? '' : (process.env.NEXT_PUBLIC_ODPT_API_KEY ?? '');
 
     // Data sources (layered by availability):
     //   Toei: live via ODPT odpt:Train (TrainDataService)
