@@ -54,16 +54,18 @@ function OrchestraInner() {
     const musicEngine = new MusicEngine(lines);
     const apiKey = process.env.NEXT_PUBLIC_ODPT_API_KEY ?? '';
 
-    // Data sources:
-    //   - With API key: live Toei (TrainDataService) + scheduled Tokyo Metro (TimetableDataService)
-    //     + station-timetable-driven Yurikamome (StationTimetableDataService).
-    //   - Without key: random simulation for every line (DemoDataService).
+    // Data sources (layered by availability):
+    //   Toei: live via ODPT odpt:Train (TrainDataService)
+    //   Tokyo Metro + TWR + Tama + Marunouchi Branch + Tsukuba: ODPT TrainTimetable
+    //   Yurikamome + JR lines: StationTimetable (per-station departures)
+    //   No key: random DemoDataService for all lines
     const timetableLines = lines.filter((l) => l.odptRailway.includes('TokyoMetro') || l.odptRailway.includes('TWR'));
-    const yurikamomeLines = lines.filter((l) => l.id === 'yurikamome');
+    const stationTimetableLines = lines.filter((l) =>
+      l.id === 'yurikamome' || l.id.startsWith('jr-'));
     const trainService = apiKey ? new TrainDataService(apiKey, lines, eventBus) : null;
     const timetableService = apiKey ? new TimetableDataService(timetableLines, eventBus) : null;
-    const stationTimetableService = apiKey && yurikamomeLines.length
-      ? new StationTimetableDataService(yurikamomeLines, eventBus)
+    const stationTimetableService = stationTimetableLines.length
+      ? new StationTimetableDataService(stationTimetableLines, eventBus)
       : null;
     const demoService = apiKey ? null : new DemoDataService(lines, eventBus);
 
