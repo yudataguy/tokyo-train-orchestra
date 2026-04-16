@@ -117,6 +117,9 @@ export default function MapView({ lines, recentArrivals }: MapViewProps) {
       <MapContainer
         center={center}
         zoom={12}
+        minZoom={5}
+        maxBounds={[[20, 120], [46, 150]]}
+        maxBoundsViscosity={1.0}
         style={{ height: '100vh', width: '100vw' }}
         zoomControl={false}
         attributionControl={false}
