@@ -18,6 +18,15 @@ export class DemoDataService {
   ) {}
 
   private getTokyoHour(): number {
+    // Dev override: ?demoHour=N in the URL simulates that hour regardless of real time.
+    // Lets us audition the app at rush hour / dead of night without waiting.
+    if (typeof window !== 'undefined') {
+      const override = new URLSearchParams(window.location.search).get('demoHour');
+      if (override !== null) {
+        const n = parseInt(override, 10);
+        if (Number.isFinite(n) && n >= 0 && n < 24) return n;
+      }
+    }
     return parseInt(new Date().toLocaleString('en-US', { timeZone: 'Asia/Tokyo', hour: 'numeric', hour12: false }), 10);
   }
 
