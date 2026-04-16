@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react';
 import dynamic from 'next/dynamic';
-import type { ArrivalEvent, LineConfig, WeatherData, WeatherEffect } from '../types';
+import type { ArrivalEvent, LineConfig, WeatherData } from '../types';
 import { EventBus } from '../data/EventBus';
 import type { AppEvents } from '../data/appEvents';
 import { TrainDataService } from '../data/TrainDataService';
@@ -29,7 +29,6 @@ function OrchestraInner() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [mutedLines, setMutedLines] = useState<Set<string>>(new Set());
   const [volume, setVolume] = useState(0.16);
-  const [weatherFxEnabled, setWeatherFxEnabled] = useState(false);
   const [musicMode, setMusicMode] = useState<'ambient' | 'edm'>('edm');
 
   const arrivalSeqRef = useRef(0);
@@ -149,19 +148,6 @@ function OrchestraInner() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [musicMode]);
 
-  useEffect(() => {
-    if (!musicEngineRef.current || !weather) return;
-    if (!weatherFxEnabled) {
-      musicEngineRef.current.setWeatherEffect('none');
-      return;
-    }
-    let effect: WeatherEffect = 'none';
-    if (weather.condition === 'rain') effect = 'rain';
-    else if (weather.condition === 'snow') effect = 'snow';
-    else if (weather.condition === 'clear' && weather.isNight) effect = 'clear-night';
-    musicEngineRef.current.setWeatherEffect(effect);
-  }, [weather, weatherFxEnabled]);
-
   const handleToggleMute = useCallback((lineId: string) => {
     setMutedLines((prev) => {
       const next = new Set(prev);
@@ -225,8 +211,6 @@ function OrchestraInner() {
         onToggleMute={handleToggleMute}
         volume={volume}
         onVolumeChange={setVolume}
-        weatherFxEnabled={weatherFxEnabled}
-        onWeatherFxToggle={() => setWeatherFxEnabled((prev) => !prev)}
         musicMode={musicMode}
         onMusicModeChange={setMusicMode}
       />

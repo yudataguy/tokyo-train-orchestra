@@ -39,5 +39,3 @@ export interface WeatherData {
   condition: 'clear' | 'cloudy' | 'rain' | 'snow';
   isNight: boolean;
 }
-
-export type WeatherEffect = 'none' | 'rain' | 'clear-night' | 'snow';

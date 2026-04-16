@@ -1,5 +1,5 @@
 import * as Tone from 'tone';
-import type { ArrivalEvent, LineConfig, WeatherEffect } from '../types';
+import type { ArrivalEvent, LineConfig } from '../types';
 import { stationToNote } from './scales';
 import { getInstrumentConfig } from './instruments';
 import { EdmEngine } from './edmEngine';
@@ -15,9 +15,7 @@ interface LineState {
 
 export class MusicEngine {
   private lines = new Map<string, LineState>();
-  private reverb: Tone.Reverb | null = null;
   private masterFilter: Tone.Filter;
-  private currentEffect: WeatherEffect = 'none';
   private masterVolume = 0.7;
   private mode: 'ambient' | 'edm' = 'ambient';
   private edmEngine: EdmEngine | null = null;
@@ -95,47 +93,10 @@ export class MusicEngine {
     if (lineState) lineState.muted = muted;
   }
 
-  setWeatherEffect(effect: WeatherEffect): void {
-    if (effect === this.currentEffect) return;
-
-    if (this.reverb) {
-      this.lines.forEach((state) => {
-        state.synth.disconnect();
-        state.synth.connect(this.masterFilter);
-      });
-      this.reverb.dispose();
-      this.reverb = null;
-    }
-
-    if (effect === 'rain') {
-      this.reverb = new Tone.Reverb({ decay: 4, wet: 0.4 }).connect(this.masterFilter);
-      this.lines.forEach((state) => {
-        state.synth.disconnect();
-        state.synth.connect(this.reverb!);
-      });
-    } else if (effect === 'clear-night') {
-      this.reverb = new Tone.Reverb({ decay: 8, wet: 0.2 }).connect(this.masterFilter);
-      this.lines.forEach((state) => {
-        state.synth.disconnect();
-        state.synth.connect(this.reverb!);
-      });
-    } else if (effect === 'snow') {
-      this.reverb = new Tone.Reverb({ decay: 3, wet: 0.3 }).connect(this.masterFilter);
-      this.lines.forEach((state) => {
-        state.synth.disconnect();
-        state.synth.connect(this.reverb!);
-        state.synth.volume.value = state.baseGain - 3;
-      });
-    }
-
-    this.currentEffect = effect;
-  }
-
   dispose(): void {
     this.edmEngine?.stop();
     this.edmEngine = null;
     this.lines.forEach((state) => state.synth.dispose());
-    this.reverb?.dispose();
     this.masterFilter.dispose();
     this.lines.clear();
   }

@@ -12,8 +12,6 @@ interface SettingsPanelProps {
   onToggleMute: (lineId: string) => void;
   volume: number;
   onVolumeChange: (value: number) => void;
-  weatherFxEnabled: boolean;
-  onWeatherFxToggle: () => void;
   musicMode: 'ambient' | 'edm';
   onMusicModeChange: (mode: 'ambient' | 'edm') => void;
 }
@@ -38,7 +36,7 @@ function companyOf(line: LineConfig): Company {
 }
 
 export default function SettingsPanel({
-  isOpen, onClose, lines, mutedLines, onToggleMute, volume, onVolumeChange, weatherFxEnabled, onWeatherFxToggle, musicMode, onMusicModeChange,
+  isOpen, onClose, lines, mutedLines, onToggleMute, volume, onVolumeChange, musicMode, onMusicModeChange,
 }: SettingsPanelProps) {
   const { language, setLanguage, t, tInstrument } = useLanguage();
   const [expanded, setExpanded] = useState<Set<Company>>(new Set());
@@ -114,13 +112,6 @@ export default function SettingsPanel({
       <div className="mb-6">
         <label className="text-xs uppercase tracking-wider text-gray-500 block mb-2">{t('masterVolume')}</label>
         <input type="range" min={0} max={1} step={0.01} value={volume} onChange={(e) => onVolumeChange(parseFloat(e.target.value))} className="w-full accent-[#003DA5]" />
-      </div>
-
-      <div className="mb-6 flex justify-between items-center">
-        <label className="text-sm text-gray-300">{t('weatherEffects')}</label>
-        <button onClick={onWeatherFxToggle} className={`w-10 h-6 rounded-full transition-colors relative ${weatherFxEnabled ? 'bg-[#003DA5]' : 'bg-slate-600'}`} aria-label="Toggle weather effects">
-          <div className={`w-4 h-4 rounded-full bg-white absolute top-1 transition-transform ${weatherFxEnabled ? 'translate-x-5' : 'translate-x-1'}`} />
-        </button>
       </div>
 
       <div>

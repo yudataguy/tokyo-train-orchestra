@@ -1,5 +1,5 @@
 import { MusicEngine } from '../MusicEngine';
-import type { ArrivalEvent, LineConfig, WeatherEffect } from '../../types';
+import type { ArrivalEvent, LineConfig } from '../../types';
 
 // Mock Tone.js — it requires AudioContext which isn't available in tests
 jest.mock('tone', () => ({
@@ -18,12 +18,6 @@ jest.mock('tone', () => ({
   Filter: jest.fn().mockImplementation(() => ({
     toDestination: jest.fn().mockReturnThis(),
     connect: jest.fn().mockReturnThis(),
-    dispose: jest.fn(),
-  })),
-  Reverb: jest.fn().mockImplementation(() => ({
-    toDestination: jest.fn().mockReturnThis(),
-    connect: jest.fn().mockReturnThis(),
-    wet: { value: 0 },
     dispose: jest.fn(),
   })),
   MembraneSynth: jest.fn().mockImplementation(() => ({
@@ -123,11 +117,6 @@ describe('MusicEngine', () => {
   it('mutes and unmutes lines', () => {
     expect(() => engine.setLineMuted('ginza', true)).not.toThrow();
     expect(() => engine.setLineMuted('ginza', false)).not.toThrow();
-  });
-
-  it('sets weather effect', () => {
-    expect(() => engine.setWeatherEffect('rain')).not.toThrow();
-    expect(() => engine.setWeatherEffect('none')).not.toThrow();
   });
 
   describe('mode switching', () => {
