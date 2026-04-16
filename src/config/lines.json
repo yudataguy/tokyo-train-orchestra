@@ -3024,7 +3024,7 @@
     "name": "Yamanote",
     "nameJa": "山手線",
     "color": "#9ACD32",
-    "instrument": "piano",
+    "instrument": "koto",
     "odptRailway": "odpt.Railway:JR-East.Yamanote",
     "stations": [
       {
@@ -3274,7 +3274,7 @@
     "name": "Chuo Rapid",
     "nameJa": "中央線快速",
     "color": "#F15A22",
-    "instrument": "piano",
+    "instrument": "pipeorgan",
     "odptRailway": "odpt.Railway:JR-East.ChuoRapid",
     "stations": [
       {
@@ -3476,7 +3476,7 @@
     "name": "Chuo-Sobu Local",
     "nameJa": "中央・総武緩行線",
     "color": "#FFD400",
-    "instrument": "piano",
+    "instrument": "shakuhachi",
     "odptRailway": "odpt.Railway:JR-East.ChuoSobuLocal",
     "stations": [
       {
@@ -3750,7 +3750,7 @@
     "name": "Keihin-Tohoku",
     "nameJa": "京浜東北線",
     "color": "#00B2E5",
-    "instrument": "piano",
+    "instrument": "rhodes",
     "odptRailway": "odpt.Railway:JR-East.KeihinTohokuNegishi",
     "stations": [
       {
@@ -4032,7 +4032,7 @@
     "name": "Saikyo",
     "nameJa": "埼京線",
     "color": "#008000",
-    "instrument": "piano",
+    "instrument": "vibraphone",
     "odptRailway": "odpt.Railway:JR-East.SaikyoKawagoe",
     "stations": [
       {

@@ -41,6 +41,10 @@ export const INSTRUMENT_RANGES: Record<string, readonly [number, number]> = {
   xylophone:    [12, 22], // E4 – E6   (xylophone bottoms at F4)
   celesta:      [10, 22], // C4 – E6
   kalimba:      [10, 22], // C4 – E6
+  pipeorgan:    [3, 20],  // G2 – D6   (organ spans huge range; wide window)
+  shakuhachi:   [10, 20], // C4 – D6   (traditional shakuhachi sits mid-high)
+  rhodes:       [5, 19],  // C3 – A5   (electric piano mirrors acoustic range)
+  koto:         [7, 19],  // E3 – A5   (koto's 13 strings span roughly 2 octaves mid-range)
 };
 
 const PIANO_RANGE = INSTRUMENT_RANGES.piano;
