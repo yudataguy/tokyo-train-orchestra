@@ -14,6 +14,8 @@ interface SettingsPanelProps {
   onVolumeChange: (value: number) => void;
   weatherFxEnabled: boolean;
   onWeatherFxToggle: () => void;
+  musicMode: 'ambient' | 'edm';
+  onMusicModeChange: (mode: 'ambient' | 'edm') => void;
 }
 
 type Company = 'tokyoMetro' | 'toei' | 'jrEast' | 'other';
@@ -36,7 +38,7 @@ function companyOf(line: LineConfig): Company {
 }
 
 export default function SettingsPanel({
-  isOpen, onClose, lines, mutedLines, onToggleMute, volume, onVolumeChange, weatherFxEnabled, onWeatherFxToggle,
+  isOpen, onClose, lines, mutedLines, onToggleMute, volume, onVolumeChange, weatherFxEnabled, onWeatherFxToggle, musicMode, onMusicModeChange,
 }: SettingsPanelProps) {
   const { language, setLanguage, t, tInstrument } = useLanguage();
   const [expanded, setExpanded] = useState<Set<Company>>(new Set());
@@ -63,6 +65,28 @@ export default function SettingsPanel({
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-white font-semibold text-lg">{t('settings')}</h2>
         <button onClick={onClose} className="text-gray-400 hover:text-white text-xl" aria-label={t('closeSettings')}>&times;</button>
+      </div>
+
+      <div className="mb-6">
+        <label className="text-xs uppercase tracking-wider text-gray-500 block mb-2">{t('musicMode')}</label>
+        <div className="flex gap-2">
+          <button
+            onClick={() => onMusicModeChange('ambient')}
+            className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
+              musicMode === 'ambient' ? 'bg-[#003DA5] text-white' : 'bg-slate-800 text-gray-400'
+            }`}
+          >
+            {t('modeAmbient')}
+          </button>
+          <button
+            onClick={() => onMusicModeChange('edm')}
+            className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
+              musicMode === 'edm' ? 'bg-[#003DA5] text-white' : 'bg-slate-800 text-gray-400'
+            }`}
+          >
+            {t('modeEdm')}
+          </button>
+        </div>
       </div>
 
       <div className="mb-6">
