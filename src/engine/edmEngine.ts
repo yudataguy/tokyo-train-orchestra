@@ -2,16 +2,21 @@ import * as Tone from 'tone';
 import { createEdmVoices, type EdmVoices } from './edmVoices';
 import { getEdmVoiceId, BASS_REGISTER, LEAD_REGISTER, DWELL_PATTERNS } from './edmMapping';
 import { FULL_PENTATONIC } from './scales';
+import type { EdmVibe } from './edmVibe';
 
-const BPM = 124;
-
-// I-V-vi-IV in C major. Two bars per chord, 8-bar loop.
-const PAD_CHORDS: readonly (readonly string[])[] = [
-  ['C3', 'E3', 'G3', 'C4'],   // C
-  ['G2', 'D3', 'G3', 'B3'],   // G
-  ['A2', 'E3', 'A3', 'C4'],   // Am
-  ['F2', 'A2', 'C3', 'F3'],   // F
-];
+// Fallback vibe used when start() is called without one (tests, safety).
+const DEFAULT_VIBE: EdmVibe = {
+  bpm: 124,
+  chords: [
+    ['C3', 'E3', 'G3', 'C4'],
+    ['G2', 'D3', 'G3', 'B3'],
+    ['A2', 'E3', 'A3', 'C4'],
+    ['F2', 'A2', 'C3', 'F3'],
+  ],
+  padOscillator: 'triangle',
+  mood: 'happy',
+  temp: 'mild',
+};
 
 export class EdmEngine {
   private voices: EdmVoices | null = null;
@@ -24,23 +29,24 @@ export class EdmEngine {
   private activeDwells = new Map<string, number>();
   private started = false;
 
-  start(): void {
+  start(vibe: EdmVibe = DEFAULT_VIBE): void {
     if (this.started) return;
     this.masterFilter = new Tone.Filter({ frequency: 6000, type: 'lowpass', rolloff: -12 }).toDestination();
-    this.voices = createEdmVoices(this.masterFilter);
+    this.voices = createEdmVoices(this.masterFilter, vibe.padOscillator);
 
     // Schedule chord changes every 2 bars via Transport.scheduleRepeat.
-    // Each callback play all four voices of the current chord, then advances
-    // the index so the next callback plays the next chord. Wraps on PAD_CHORDS.length.
+    // Each callback plays all voices of the current chord then advances
+    // the index so the next callback plays the next chord.
     const pad = this.voices.pad;
+    const chords = vibe.chords;
     this.padChordIdx = 0;
     this.padScheduleId = Tone.getTransport().scheduleRepeat((time) => {
-      const chord = PAD_CHORDS[this.padChordIdx % PAD_CHORDS.length];
+      const chord = chords[this.padChordIdx % chords.length];
       for (const note of chord) pad.triggerAttackRelease(note, '2m', time);
       this.padChordIdx += 1;
     }, '2m', 0);
 
-    Tone.getTransport().bpm.value = BPM;
+    Tone.getTransport().bpm.value = vibe.bpm;
     Tone.getTransport().start();
     this.started = true;
   }

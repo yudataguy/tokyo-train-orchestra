@@ -15,6 +15,7 @@ jest.mock('tone', () => {
     disconnect: jest.fn().mockReturnThis(),
     triggerAttackRelease: jest.fn(),
     dispose: jest.fn(),
+    volume: { value: 0 },
   });
   return {
     MembraneSynth: jest.fn(voiceMock),

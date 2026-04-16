@@ -15,7 +15,10 @@ export interface EdmVoice {
 export type EdmVoices = Record<EdmVoiceId, EdmVoice>;
 
 /** Create all 16 EDM voices and connect them to the given destination. */
-export function createEdmVoices(destination: Tone.InputNode): EdmVoices {
+export function createEdmVoices(
+  destination: Tone.InputNode,
+  padOscillator: 'sine' | 'triangle' | 'sawtooth' = 'triangle',
+): EdmVoices {
   const mk = <T extends { connect: (d: Tone.InputNode) => unknown; dispose: () => void }>(
     synth: T,
     triggerFn: (note: string, duration: string, time?: number) => void,
@@ -111,8 +114,10 @@ export function createEdmVoices(destination: Tone.InputNode): EdmVoices {
   });
 
   // --- Pad (base track) ---
+  // Oscillator type is vibe-driven: sine (cold), triangle (mild),
+  // sawtooth (warm). Envelope stays constant so dynamics are unchanged.
   const pad = new Tone.PolySynth(Tone.Synth, {
-    oscillator: { type: 'triangle' },
+    oscillator: { type: padOscillator },
     envelope: { attack: 1.5, decay: 0.5, sustain: 0.7, release: 3.0 },
   });
   // Pad sits clearly in the background (−10 dB ≈ 0.32×) so arrival hits read on top.

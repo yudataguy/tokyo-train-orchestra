@@ -3,6 +3,7 @@ import type { ArrivalEvent, LineConfig, WeatherEffect } from '../types';
 import { stationToNote } from './scales';
 import { getInstrumentConfig } from './instruments';
 import { EdmEngine } from './edmEngine';
+import type { EdmVibe } from './edmVibe';
 
 interface LineState {
   config: LineConfig;
@@ -69,14 +70,14 @@ export class MusicEngine {
     return this.mode;
   }
 
-  setMode(mode: 'ambient' | 'edm'): void {
+  setMode(mode: 'ambient' | 'edm', vibe?: EdmVibe): void {
     if (this.mode === mode) return;
 
     if (mode === 'edm') {
       // Silence ambient voices (release any held notes).
       this.lines.forEach((state) => state.synth.releaseAll?.());
       this.edmEngine = new EdmEngine();
-      this.edmEngine.start();
+      this.edmEngine.start(vibe);
     } else {
       this.edmEngine?.stop();
       this.edmEngine = null;

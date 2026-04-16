@@ -17,6 +17,7 @@ import HUD from './HUD';
 import SettingsPanel from './SettingsPanel';
 import linesData from '../config/lines.json';
 import { LanguageProvider, useLanguage } from '../i18n/useLanguage';
+import { computeVibe } from '../engine/edmVibe';
 
 const MapView = dynamic(() => import('./MapView'), { ssr: false });
 
@@ -39,6 +40,18 @@ function OrchestraInner() {
 
   const lines: LineConfig[] = linesData as LineConfig[];
 
+  // Pre-fetch weather on mount so the vibe shown on the start screen
+  // reflects real conditions before the user clicks Depart.
+  useEffect(() => {
+    let cancelled = false;
+    new WeatherService().fetch().then((w) => {
+      if (!cancelled) setWeather(w);
+    }).catch(() => {});
+    return () => { cancelled = true; };
+  }, []);
+
+  const vibe = computeVibe(weather);
+
   const handleStart = useCallback(async () => {
     // Lazy-load Tone.js and MusicEngine at click time. Module-level imports
     // would cause Tone to create a (suspended) AudioContext at page load
@@ -57,7 +70,7 @@ function OrchestraInner() {
     // Apply the current React-side music mode. MusicEngine defaults to
     // 'ambient' internally; without this call, a first-load EDM default
     // would still play the ambient engine until the user toggled.
-    musicEngine.setMode(musicMode);
+    musicEngine.setMode(musicMode, vibe);
     // Dev override: ?demo=1 in the URL forces demo mode even when an ODPT
     // API key is present — useful for auditioning the app outside rush hour.
     const forceDemo = typeof window !== 'undefined'
@@ -115,7 +128,7 @@ function OrchestraInner() {
     weatherServiceRef.current = weatherService;
 
     setStarted(true);
-  }, [lines, musicMode]);
+  }, [lines, musicMode, vibe]);
 
   useEffect(() => {
     return () => {
@@ -130,7 +143,10 @@ function OrchestraInner() {
   }, [volume]);
 
   useEffect(() => {
-    musicEngineRef.current?.setMode(musicMode);
+    musicEngineRef.current?.setMode(musicMode, vibe);
+    // `vibe` is intentionally read only when musicMode flips — we don't want
+    // a weather poll mid-session to tear down and re-create the EDM engine.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [musicMode]);
 
   useEffect(() => {
@@ -175,6 +191,11 @@ function OrchestraInner() {
         <p className="text-gray-500 text-xs uppercase tracking-wider">
           {t('musicMode')}: {musicMode === 'edm' ? t('modeEdm') : t('modeAmbient')}
         </p>
+        {musicMode === 'edm' && (
+          <p className="text-gray-600 text-xs">
+            {vibe.bpm} {t('bpm')} · {t(`mood${vibe.mood.charAt(0).toUpperCase()}${vibe.mood.slice(1)}` as 'moodHappy')} · {t(`temp${vibe.temp.charAt(0).toUpperCase()}${vibe.temp.slice(1)}` as 'tempCold')}
+          </p>
+        )}
 
         <button
           onClick={handleStart}
