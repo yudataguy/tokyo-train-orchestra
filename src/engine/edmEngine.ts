@@ -1,5 +1,7 @@
 import * as Tone from 'tone';
 import { createEdmVoices, type EdmVoices } from './edmVoices';
+import { getEdmVoiceId, BASS_REGISTER, LEAD_REGISTER } from './edmMapping';
+import { FULL_PENTATONIC } from './scales';
 
 const BPM = 124;
 
@@ -28,5 +30,32 @@ export class EdmEngine {
     this.masterFilter?.dispose();
     this.masterFilter = null;
     this.started = false;
+  }
+
+  triggerArrival(lineId: string, stationIndex: number, totalStations: number): void {
+    if (!this.started || !this.voices) return;
+    const voiceId = getEdmVoiceId(lineId);
+    if (!voiceId) return;
+    const voice = this.voices[voiceId];
+
+    // Pitch for bass/lead only; drums and FX ignore the note arg.
+    let note = 'C4';
+    if (voiceId === 'bass') note = this.pickNote(stationIndex, totalStations, BASS_REGISTER);
+    else if (voiceId === 'lead') note = this.pickNote(stationIndex, totalStations, LEAD_REGISTER);
+
+    // Schedule on the next 16th. '@16n' tells Tone to align to the next 16th grid.
+    voice.triggerAttackRelease(note, '16n');
+  }
+
+  private pickNote(
+    stationIndex: number,
+    totalStations: number,
+    register: readonly [number, number],
+  ): string {
+    const [lo, hi] = register;
+    const windowLen = hi - lo + 1;
+    const denom = Math.max(1, totalStations - 1);
+    const idx = Math.round((stationIndex / denom) * (windowLen - 1));
+    return FULL_PENTATONIC[lo + idx];
   }
 }

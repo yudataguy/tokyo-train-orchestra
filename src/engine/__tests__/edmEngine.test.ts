@@ -62,3 +62,46 @@ describe('EdmEngine', () => {
     expect(transportMock.start).toHaveBeenCalledTimes(1);
   });
 });
+
+describe('EdmEngine.triggerArrival', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('fires the mapped voice for the given line id', () => {
+    const engine = new EdmEngine();
+    engine.start();
+    const triggerSpy = jest.spyOn(
+      (engine as unknown as { voices: Record<string, { triggerAttackRelease: jest.Mock }> }).voices!.kick,
+      'triggerAttackRelease',
+    );
+    engine.triggerArrival('ginza', 0, 19);
+    expect(triggerSpy).toHaveBeenCalled();
+  });
+
+  it('computes a bass pitch in the bass register for JR lines', () => {
+    const engine = new EdmEngine();
+    engine.start();
+    const bassSpy = jest.spyOn(
+      (engine as unknown as { voices: Record<string, { triggerAttackRelease: jest.Mock }> }).voices!.bass,
+      'triggerAttackRelease',
+    );
+    engine.triggerArrival('jr-yamanote', 5, 30);
+    expect(bassSpy).toHaveBeenCalled();
+    const [note] = bassSpy.mock.calls[0];
+    // Bass register is C2 – E3, so pitch must be one of those notes.
+    expect(['C2', 'D2', 'E2', 'G2', 'A2', 'C3', 'D3', 'E3']).toContain(note);
+  });
+
+  it('silently ignores unknown line ids', () => {
+    const engine = new EdmEngine();
+    engine.start();
+    expect(() => engine.triggerArrival('not-a-line', 0, 1)).not.toThrow();
+  });
+
+  it('is a no-op when engine is stopped', () => {
+    const engine = new EdmEngine();
+    // not started
+    expect(() => engine.triggerArrival('ginza', 0, 19)).not.toThrow();
+  });
+});
