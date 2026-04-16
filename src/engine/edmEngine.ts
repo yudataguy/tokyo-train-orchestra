@@ -1,6 +1,6 @@
 import * as Tone from 'tone';
 import { createEdmVoices, type EdmVoices } from './edmVoices';
-import { getEdmVoiceId, BASS_REGISTER, LEAD_REGISTER } from './edmMapping';
+import { getEdmVoiceId, BASS_REGISTER, LEAD_REGISTER, DWELL_PATTERNS } from './edmMapping';
 import { FULL_PENTATONIC } from './scales';
 
 const BPM = 124;
@@ -18,6 +18,10 @@ export class EdmEngine {
   private masterFilter: Tone.Filter | null = null;
   private padScheduleId: number | null = null;
   private padChordIdx = 0;
+  // Active dwell loops keyed by voice id (not line id) — Metro lines have
+  // per-line voices, but JR shares one bass and Toei shares one lead, so
+  // keying by voice gives "recent arrival wins" semantics per company role.
+  private activeDwells = new Map<string, number>();
   private started = false;
 
   start(): void {
@@ -48,6 +52,8 @@ export class EdmEngine {
       Tone.getTransport().clear(this.padScheduleId);
       this.padScheduleId = null;
     }
+    for (const id of this.activeDwells.values()) Tone.getTransport().clear(id);
+    this.activeDwells.clear();
     Tone.getTransport().cancel();
     if (this.voices) {
       for (const voice of Object.values(this.voices)) voice.dispose();
@@ -69,8 +75,46 @@ export class EdmEngine {
     if (voiceId === 'bass') note = this.pickNote(stationIndex, totalStations, BASS_REGISTER);
     else if (voiceId === 'lead') note = this.pickNote(stationIndex, totalStations, LEAD_REGISTER);
 
-    // Schedule on the next 16th. '@16n' tells Tone to align to the next 16th grid.
-    voice.triggerAttackRelease(note, '16n');
+    const pattern = DWELL_PATTERNS[voiceId];
+
+    // One-shot voices (FX): fire immediately and return.
+    if (!pattern) {
+      voice.triggerAttackRelease(note, '16n');
+      return;
+    }
+
+    // Cancel any existing dwell loop on this voice — "recent arrival wins".
+    const existing = this.activeDwells.get(voiceId);
+    if (existing !== undefined) {
+      Tone.getTransport().clear(existing);
+      this.activeDwells.delete(voiceId);
+    }
+
+    const fireIfGated = (tick: number, time?: number) => {
+      if (!pattern.gate || pattern.gate(tick)) {
+        voice.triggerAttackRelease(note, pattern.subdivision, time);
+      }
+    };
+
+    // Fire tick 0 immediately so arrivals feel responsive, then schedule
+    // the remaining ticks on the transport grid.
+    fireIfGated(0);
+
+    let tick = 1;
+    const totalTicks = pattern.totalTicks;
+    const scheduleId = Tone.getTransport().scheduleRepeat((time) => {
+      if (tick >= totalTicks) {
+        Tone.getTransport().clear(scheduleId);
+        // Only delete if we're still the active loop for this voice.
+        if (this.activeDwells.get(voiceId) === scheduleId) {
+          this.activeDwells.delete(voiceId);
+        }
+        return;
+      }
+      fireIfGated(tick, time);
+      tick += 1;
+    }, pattern.subdivision);
+    this.activeDwells.set(voiceId, scheduleId);
   }
 
   private pickNote(
