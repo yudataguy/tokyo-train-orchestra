@@ -1,5 +1,6 @@
 'use client';
 
+import { useMemo, useState } from 'react';
 import type { LineConfig } from '../types';
 import { useLanguage } from '../i18n/useLanguage';
 
@@ -15,12 +16,47 @@ interface SettingsPanelProps {
   onWeatherFxToggle: () => void;
 }
 
+type Company = 'tokyoMetro' | 'toei' | 'jrEast' | 'other';
+
+const COMPANY_ORDER: Company[] = ['tokyoMetro', 'toei', 'jrEast', 'other'];
+
+const COMPANY_LABEL_KEY: Record<Company, 'companyTokyoMetro' | 'companyToei' | 'companyJREast' | 'companyOther'> = {
+  tokyoMetro: 'companyTokyoMetro',
+  toei: 'companyToei',
+  jrEast: 'companyJREast',
+  other: 'companyOther',
+};
+
+function companyOf(line: LineConfig): Company {
+  const r = line.odptRailway;
+  if (r.startsWith('odpt.Railway:TokyoMetro.')) return 'tokyoMetro';
+  if (r.startsWith('odpt.Railway:Toei.')) return 'toei';
+  if (r.startsWith('odpt.Railway:JR-East.')) return 'jrEast';
+  return 'other';
+}
+
 export default function SettingsPanel({
   isOpen, onClose, lines, mutedLines, onToggleMute, volume, onVolumeChange, weatherFxEnabled, onWeatherFxToggle,
 }: SettingsPanelProps) {
   const { language, setLanguage, t, tInstrument } = useLanguage();
+  const [expanded, setExpanded] = useState<Set<Company>>(new Set());
+
+  const groups = useMemo(() => {
+    const g: Record<Company, LineConfig[]> = { tokyoMetro: [], toei: [], jrEast: [], other: [] };
+    for (const line of lines) g[companyOf(line)].push(line);
+    return g;
+  }, [lines]);
 
   if (!isOpen) return null;
+
+  const toggleGroup = (c: Company) => {
+    setExpanded((prev) => {
+      const next = new Set(prev);
+      if (next.has(c)) next.delete(c);
+      else next.add(c);
+      return next;
+    });
+  };
 
   return (
     <div className="absolute top-0 right-0 bottom-0 z-[1100] w-full sm:w-80 bg-slate-900/95 backdrop-blur-lg border-l border-slate-700 p-5 overflow-y-auto">
@@ -66,15 +102,39 @@ export default function SettingsPanel({
       <div>
         <label className="text-xs uppercase tracking-wider text-gray-500 block mb-3">{t('lines')}</label>
         <div className="space-y-2">
-          {lines.map((line) => {
-            const isMuted = mutedLines.has(line.id);
-            const lineName = language === 'ja' ? line.nameJa : line.name;
+          {COMPANY_ORDER.map((company) => {
+            const groupLines = groups[company];
+            if (groupLines.length === 0) return null;
+            const isExpanded = expanded.has(company);
+            const mutedCount = groupLines.filter((l) => mutedLines.has(l.id)).length;
+            const audibleCount = groupLines.length - mutedCount;
             return (
-              <button key={line.id} onClick={() => onToggleMute(line.id)} className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${isMuted ? 'opacity-40' : 'opacity-100'} hover:bg-slate-800`}>
-                <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: line.color }} />
-                <span className="text-sm text-gray-200 flex-1 text-left">{lineName}</span>
-                <span className="text-xs text-gray-500">{tInstrument(line.instrument)}</span>
-              </button>
+              <div key={company}>
+                <button
+                  onClick={() => toggleGroup(company)}
+                  aria-expanded={isExpanded}
+                  className="w-full flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-800/60 hover:bg-slate-800 transition-colors"
+                >
+                  <span className={`text-gray-400 text-xs transition-transform ${isExpanded ? 'rotate-90' : ''}`}>▶</span>
+                  <span className="text-sm font-medium text-gray-100 flex-1 text-left">{t(COMPANY_LABEL_KEY[company])}</span>
+                  <span className="text-xs text-gray-500">{audibleCount}/{groupLines.length}</span>
+                </button>
+                {isExpanded && (
+                  <div className="mt-1 ml-2 space-y-1">
+                    {groupLines.map((line) => {
+                      const isMuted = mutedLines.has(line.id);
+                      const lineName = language === 'ja' ? line.nameJa : line.name;
+                      return (
+                        <button key={line.id} onClick={() => onToggleMute(line.id)} className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${isMuted ? 'opacity-40' : 'opacity-100'} hover:bg-slate-800`}>
+                          <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: line.color }} />
+                          <span className="text-sm text-gray-200 flex-1 text-left">{lineName}</span>
+                          <span className="text-xs text-gray-500">{tInstrument(line.instrument)}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
             );
           })}
         </div>
