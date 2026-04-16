@@ -70,9 +70,13 @@ function OrchestraInner() {
     // 'ambient' internally; without this call, a first-load EDM default
     // would still play the ambient engine until the user toggled.
     musicEngine.setMode(musicMode, vibe);
-    // Dev override: ?demo=1 in the URL forces demo mode even when an ODPT
-    // API key is present — useful for auditioning the app outside rush hour.
-    const forceDemo = typeof window !== 'undefined'
+    // Demo mode is a dev-only convenience. Production builds never fall
+    // back to demo (otherwise a missing deploy-time env key would silently
+    // replace real trains with random ones). Dev: demo kicks in when no
+    // key is set, OR when ?demo=1 forces it for offline auditioning.
+    const isDev = process.env.NODE_ENV === 'development';
+    const forceDemo = isDev
+      && typeof window !== 'undefined'
       && new URLSearchParams(window.location.search).get('demo') === '1';
     const apiKey = forceDemo ? '' : (process.env.NEXT_PUBLIC_ODPT_API_KEY ?? '');
 
@@ -89,7 +93,9 @@ function OrchestraInner() {
     const stationTimetableService = stationTimetableLines.length
       ? new StationTimetableDataService(stationTimetableLines, eventBus)
       : null;
-    const demoService = apiKey ? null : new DemoDataService(lines, eventBus);
+    // Demo service only in development. In production, a missing key means
+    // no data source — never silently substitute simulated trains.
+    const demoService = !apiKey && isDev ? new DemoDataService(lines, eventBus) : null;
 
     const weatherService = new WeatherService();
 
@@ -163,6 +169,9 @@ function OrchestraInner() {
   }, []);
 
   const apiKeyPresent = !!process.env.NEXT_PUBLIC_ODPT_API_KEY;
+  const isDev = process.env.NODE_ENV === 'development';
+  const dataSourceLabel: 'hybridMode' | 'demoMode' | 'missingApiKey' =
+    apiKeyPresent ? 'hybridMode' : isDev ? 'demoMode' : 'missingApiKey';
 
   if (!started) {
     return (
@@ -171,8 +180,8 @@ function OrchestraInner() {
         <p className="text-gray-400 text-center max-w-md text-sm sm:text-base">
           {t('description')}
         </p>
-        <p className="text-[#4A80D4] text-sm">
-          {apiKeyPresent ? t('hybridMode') : t('demoMode')}
+        <p className={`text-sm ${dataSourceLabel === 'missingApiKey' ? 'text-amber-400' : 'text-[#4A80D4]'}`}>
+          {t(dataSourceLabel)}
         </p>
         <p className="text-gray-500 text-xs uppercase tracking-wider">
           {t('musicMode')}: {musicMode === 'edm' ? t('modeEdm') : t('modeAmbient')}
