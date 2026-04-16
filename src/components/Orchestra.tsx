@@ -54,6 +54,10 @@ function OrchestraInner() {
 
     const eventBus = new EventBus<AppEvents>();
     const musicEngine = new MusicEngine(lines);
+    // Apply the current React-side music mode. MusicEngine defaults to
+    // 'ambient' internally; without this call, a first-load EDM default
+    // would still play the ambient engine until the user toggled.
+    musicEngine.setMode(musicMode);
     // Dev override: ?demo=1 in the URL forces demo mode even when an ODPT
     // API key is present — useful for auditioning the app outside rush hour.
     const forceDemo = typeof window !== 'undefined'
@@ -111,7 +115,7 @@ function OrchestraInner() {
     weatherServiceRef.current = weatherService;
 
     setStarted(true);
-  }, [lines]);
+  }, [lines, musicMode]);
 
   useEffect(() => {
     return () => {
