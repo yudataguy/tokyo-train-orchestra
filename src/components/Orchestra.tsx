@@ -97,6 +97,31 @@ function OrchestraInner() {
     // no data source — never silently substitute simulated trains.
     const demoService = !apiKey && isDev ? new DemoDataService(lines, eventBus) : null;
 
+    // Surface the active data-source mode in the console so it's easy to
+    // tell real-vs-simulated at a glance.
+    if (demoService) {
+      const hourOverride = typeof window !== 'undefined'
+        ? new URLSearchParams(window.location.search).get('demoHour')
+        : null;
+      console.log(
+        `%c[tokyo-train-orchestra]%c DEMO mode — simulated trains${hourOverride ? ` (hour=${hourOverride})` : ''}`,
+        'color:#F59E0B;font-weight:bold',
+        'color:inherit',
+      );
+    } else if (apiKey) {
+      console.log(
+        '%c[tokyo-train-orchestra]%c LIVE mode — real ODPT data',
+        'color:#10B981;font-weight:bold',
+        'color:inherit',
+      );
+    } else {
+      console.warn(
+        '%c[tokyo-train-orchestra]%c No data source — NEXT_PUBLIC_ODPT_API_KEY is missing in this build',
+        'color:#EF4444;font-weight:bold',
+        'color:inherit',
+      );
+    }
+
     const weatherService = new WeatherService();
 
     eventBus.on('arrival', (event) => {
