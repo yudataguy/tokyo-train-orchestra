@@ -72,13 +72,13 @@ Each of the four company groups established in the sidebar (Tokyo Metro / Toei /
 
 All voices are synthesized with Tone.js primitives — no samples, no HTTP fetching, consistent with the existing ambient engine.
 
-- **Drums** — `MembraneSynth` (kick, toms), `NoiseSynth` (snare, claps, hats, shaker), `MetalSynth` (rim, cowbell).
-- **Bass** — `MonoSynth`, sawtooth oscillator, lowpass filter with moderate resonance, decay ~0.4 s.
-- **Lead** — `PolySynth(Synth)`, sawtooth with slight detune, filtered, pluck envelope (attack ~0.005, decay ~0.3, no sustain).
-- **FX** — `NoiseSynth` with filter envelopes (riser, reverse cymbal), `MetalSynth` (zap), `MembraneSynth` with very low pitch (impact).
-- **Pad** — `PolySynth(Synth)`, triangle wave, slow attack ~1.5 s, long release ~3 s. Plays 4-note chord voicings.
+- **Drums** — `MembraneSynth` (kick, low tom), `NoiseSynth` (snare, clap, closed hat, open hat, shaker), `MetalSynth` (rim shot, cowbell). **9 distinct drum voices** — Marunouchi Branch shares the Clap voice with Marunouchi main, so 10 Metro line mappings resolve to 9 underlying voices.
+- **Bass** — `MonoSynth`, sawtooth oscillator, lowpass filter with moderate resonance, decay ~0.4 s. **1 voice**, shared across all 5 JR lines.
+- **Lead** — `PolySynth(Synth)`, sawtooth with slight detune, filtered, pluck envelope (attack ~0.005, decay ~0.3, no sustain). **1 voice**, shared across all 4 Toei lines.
+- **FX** — `NoiseSynth` with filter envelopes (riser, reverse cymbal), `MetalSynth` (zap), `MembraneSynth` with very low pitch (impact). **4 distinct voices**.
+- **Pad** — `PolySynth(Synth)`, triangle wave, slow attack ~1.5 s, long release ~3 s. Plays 4-note chord voicings. **1 voice**.
 
-All 13 voices are pre-created at EDM-mode init so the first arrival of each type does not incur Web Audio node creation latency (~20 ms on first use).
+**Total: 16 pre-created voices** (9 drums + 1 bass + 1 lead + 4 FX + 1 pad) at EDM-mode init, so the first arrival of each type does not incur Web Audio node creation latency (~20 ms on first use).
 
 ## Code architecture
 
@@ -92,7 +92,7 @@ All 13 voices are pre-created at EDM-mode init so the first arrival of each type
 - Exposes `triggerArrival(lineId: string)` which maps line → voice via a lookup table and schedules the hit on the next 16th.
 - Exposes `start()` and `stop()` lifecycle methods that create/dispose voices and transport state cleanly.
 
-**`src/engine/edmMapping.ts`** — the line-id → voice-id mapping table and register clamps for bass/lead. Pure data, no Tone.js imports, so it is unit-testable without the Web Audio context.
+**`src/engine/edmMapping.ts`** — the line-id → voice-id mapping table and register clamps for bass/lead. Keys are line **`id`** values from `lines.json` (e.g. `"ginza"`, `"jr-yamanote"`, `"twr-rinkai"`, `"tama-monorail"`), not human-readable display names. Pure data, no Tone.js imports, so it is unit-testable without the Web Audio context.
 
 ### Modified files
 
@@ -102,7 +102,7 @@ All 13 voices are pre-created at EDM-mode init so the first arrival of each type
 
 **`src/i18n/useLanguage.tsx`** — three new keys: `musicMode`, `modeAmbient`, `modeEdm`, for both `ja` and `en`.
 
-**`src/app/page.tsx`** (or wherever MusicEngine is instantiated — TBD during implementation) — pass the mode state and setter into SettingsPanel and MusicEngine.
+**`src/components/Orchestra.tsx`** — the component that instantiates `MusicEngine`. Holds the mode state (`useState<'ambient' | 'edm'>('ambient')`) and passes the setter into SettingsPanel and the value into MusicEngine via `setMode`.
 
 ### Data flow
 
