@@ -2,7 +2,7 @@
   {
     "id": "ginza",
     "name": "Ginza",
-    "nameJa": "\u9280\u5ea7\u7dda",
+    "nameJa": "銀座線",
     "color": "#FF9500",
     "instrument": "piano",
     "odptRailway": "odpt.Railway:TokyoMetro.Ginza",
@@ -10,7 +10,7 @@
       {
         "id": "shibuya",
         "name": "Shibuya",
-        "nameJa": "\u6e0b\u8c37",
+        "nameJa": "渋谷",
         "lat": 35.6591,
         "lng": 139.7024,
         "index": 0
@@ -18,7 +18,7 @@
       {
         "id": "omote-sando",
         "name": "Omote-sando",
-        "nameJa": "\u8868\u53c2\u9053",
+        "nameJa": "表参道",
         "lat": 35.6652,
         "lng": 139.7125,
         "index": 1
@@ -26,7 +26,7 @@
       {
         "id": "gaienmae",
         "name": "Gaienmae",
-        "nameJa": "\u5916\u82d1\u524d",
+        "nameJa": "外苑前",
         "lat": 35.6706,
         "lng": 139.7179,
         "index": 2
@@ -34,7 +34,7 @@
       {
         "id": "aoyama-itchome",
         "name": "Aoyama-itchome",
-        "nameJa": "\u9752\u5c71\u4e00\u4e01\u76ee",
+        "nameJa": "青山一丁目",
         "lat": 35.6729,
         "lng": 139.7246,
         "index": 3
@@ -42,7 +42,7 @@
       {
         "id": "akasaka-mitsuke",
         "name": "Akasaka-mitsuke",
-        "nameJa": "\u8d64\u5742\u898b\u9644",
+        "nameJa": "赤坂見附",
         "lat": 35.6772,
         "lng": 139.7354,
         "index": 4
@@ -50,7 +50,7 @@
       {
         "id": "tameike-sanno",
         "name": "Tameike-sanno",
-        "nameJa": "\u6e9c\u6c60\u5c71\u738b",
+        "nameJa": "溜池山王",
         "lat": 35.6722,
         "lng": 139.7411,
         "index": 5
@@ -58,7 +58,7 @@
       {
         "id": "toranomon",
         "name": "Toranomon",
-        "nameJa": "\u864e\u30ce\u9580",
+        "nameJa": "虎ノ門",
         "lat": 35.6701,
         "lng": 139.75,
         "index": 6
@@ -66,7 +66,7 @@
       {
         "id": "shimbashi",
         "name": "Shimbashi",
-        "nameJa": "\u65b0\u6a4b",
+        "nameJa": "新橋",
         "lat": 35.6674,
         "lng": 139.7585,
         "index": 7
@@ -74,7 +74,7 @@
       {
         "id": "ginza-st",
         "name": "Ginza",
-        "nameJa": "\u9280\u5ea7",
+        "nameJa": "銀座",
         "lat": 35.6714,
         "lng": 139.7651,
         "index": 8
@@ -82,7 +82,7 @@
       {
         "id": "kyobashi",
         "name": "Kyobashi",
-        "nameJa": "\u4eac\u6a4b",
+        "nameJa": "京橋",
         "lat": 35.676,
         "lng": 139.7696,
         "index": 9
@@ -90,7 +90,7 @@
       {
         "id": "nihombashi",
         "name": "Nihombashi",
-        "nameJa": "\u65e5\u672c\u6a4b",
+        "nameJa": "日本橋",
         "lat": 35.6828,
         "lng": 139.7739,
         "index": 10
@@ -98,7 +98,7 @@
       {
         "id": "mitsukoshimae",
         "name": "Mitsukoshimae",
-        "nameJa": "\u4e09\u8d8a\u524d",
+        "nameJa": "三越前",
         "lat": 35.6841,
         "lng": 139.7742,
         "index": 11
@@ -106,7 +106,7 @@
       {
         "id": "kanda",
         "name": "Kanda",
-        "nameJa": "\u795e\u7530",
+        "nameJa": "神田",
         "lat": 35.6919,
         "lng": 139.7716,
         "index": 12
@@ -114,7 +114,7 @@
       {
         "id": "suehirocho",
         "name": "Suehirocho",
-        "nameJa": "\u672b\u5e83\u753a",
+        "nameJa": "末広町",
         "lat": 35.7029,
         "lng": 139.7717,
         "index": 13
@@ -122,7 +122,7 @@
       {
         "id": "ueno-hirokoji",
         "name": "Ueno-hirokoji",
-        "nameJa": "\u4e0a\u91ce\u5e83\u5c0f\u8def",
+        "nameJa": "上野広小路",
         "lat": 35.7074,
         "lng": 139.7729,
         "index": 14
@@ -130,7 +130,7 @@
       {
         "id": "ueno",
         "name": "Ueno",
-        "nameJa": "\u4e0a\u91ce",
+        "nameJa": "上野",
         "lat": 35.7119,
         "lng": 139.7766,
         "index": 15
@@ -138,7 +138,7 @@
       {
         "id": "inaricho",
         "name": "Inaricho",
-        "nameJa": "\u7a32\u8377\u753a",
+        "nameJa": "稲荷町",
         "lat": 35.7112,
         "lng": 139.7842,
         "index": 16
@@ -146,7 +146,7 @@
       {
         "id": "tawaramachi",
         "name": "Tawaramachi",
-        "nameJa": "\u7530\u539f\u753a",
+        "nameJa": "田原町",
         "lat": 35.7095,
         "lng": 139.7924,
         "index": 17
@@ -154,7 +154,7 @@
       {
         "id": "asakusa",
         "name": "Asakusa",
-        "nameJa": "\u6d45\u8349",
+        "nameJa": "浅草",
         "lat": 35.7107,
         "lng": 139.7977,
         "index": 18
@@ -164,7 +164,7 @@
   {
     "id": "marunouchi",
     "name": "Marunouchi",
-    "nameJa": "\u4e38\u30ce\u5185\u7dda",
+    "nameJa": "丸ノ内線",
     "color": "#F62E36",
     "instrument": "violin",
     "odptRailway": "odpt.Railway:TokyoMetro.Marunouchi",
@@ -172,7 +172,7 @@
       {
         "id": "ogikubo",
         "name": "Ogikubo",
-        "nameJa": "\u837b\u7aaa",
+        "nameJa": "荻窪",
         "lat": 35.7043,
         "lng": 139.62,
         "index": 0
@@ -180,7 +180,7 @@
       {
         "id": "minami-asagaya",
         "name": "Minami-asagaya",
-        "nameJa": "\u5357\u963f\u4f50\u30b1\u8c37",
+        "nameJa": "南阿佐ケ谷",
         "lat": 35.6999,
         "lng": 139.6346,
         "index": 1
@@ -188,7 +188,7 @@
       {
         "id": "shin-koenji",
         "name": "Shin-koenji",
-        "nameJa": "\u65b0\u9ad8\u5186\u5bfa",
+        "nameJa": "新高円寺",
         "lat": 35.6979,
         "lng": 139.6491,
         "index": 2
@@ -196,7 +196,7 @@
       {
         "id": "higashi-koenji",
         "name": "Higashi-koenji",
-        "nameJa": "\u6771\u9ad8\u5186\u5bfa",
+        "nameJa": "東高円寺",
         "lat": 35.698,
         "lng": 139.6584,
         "index": 3
@@ -204,7 +204,7 @@
       {
         "id": "shin-nakano",
         "name": "Shin-nakano",
-        "nameJa": "\u65b0\u4e2d\u91ce",
+        "nameJa": "新中野",
         "lat": 35.6974,
         "lng": 139.6659,
         "index": 4
@@ -212,7 +212,7 @@
       {
         "id": "nakano-sakaue",
         "name": "Nakano-sakaue",
-        "nameJa": "\u4e2d\u91ce\u5742\u4e0a",
+        "nameJa": "中野坂上",
         "lat": 35.6977,
         "lng": 139.6742,
         "index": 5
@@ -220,7 +220,7 @@
       {
         "id": "nishi-shinjuku",
         "name": "Nishi-shinjuku",
-        "nameJa": "\u897f\u65b0\u5bbf",
+        "nameJa": "西新宿",
         "lat": 35.6953,
         "lng": 139.6903,
         "index": 6
@@ -228,7 +228,7 @@
       {
         "id": "shinjuku",
         "name": "Shinjuku",
-        "nameJa": "\u65b0\u5bbf",
+        "nameJa": "新宿",
         "lat": 35.6923,
         "lng": 139.7002,
         "index": 7
@@ -236,7 +236,7 @@
       {
         "id": "shinjuku-sanchome",
         "name": "Shinjuku-sanchome",
-        "nameJa": "\u65b0\u5bbf\u4e09\u4e01\u76ee",
+        "nameJa": "新宿三丁目",
         "lat": 35.69,
         "lng": 139.7068,
         "index": 8
@@ -244,7 +244,7 @@
       {
         "id": "shinjuku-gyoenmae",
         "name": "Shinjuku-gyoenmae",
-        "nameJa": "\u65b0\u5bbf\u5fa1\u82d1\u524d",
+        "nameJa": "新宿御苑前",
         "lat": 35.6886,
         "lng": 139.7108,
         "index": 9
@@ -252,7 +252,7 @@
       {
         "id": "yotsuya-sanchome",
         "name": "Yotsuya-sanchome",
-        "nameJa": "\u56db\u8c37\u4e09\u4e01\u76ee",
+        "nameJa": "四谷三丁目",
         "lat": 35.688,
         "lng": 139.7202,
         "index": 10
@@ -260,7 +260,7 @@
       {
         "id": "yotsuya",
         "name": "Yotsuya",
-        "nameJa": "\u56db\u30c4\u8c37",
+        "nameJa": "四ツ谷",
         "lat": 35.6871,
         "lng": 139.7259,
         "index": 11
@@ -268,7 +268,7 @@
       {
         "id": "akasaka-mitsuke-m",
         "name": "Akasaka-mitsuke",
-        "nameJa": "\u8d64\u5742\u898b\u9644",
+        "nameJa": "赤坂見附",
         "lat": 35.6766,
         "lng": 139.7374,
         "index": 12
@@ -276,7 +276,7 @@
       {
         "id": "kokkai-gijidomae",
         "name": "Kokkai-gijidomae",
-        "nameJa": "\u56fd\u4f1a\u8b70\u4e8b\u5802\u524d",
+        "nameJa": "国会議事堂前",
         "lat": 35.6746,
         "lng": 139.7455,
         "index": 13
@@ -284,7 +284,7 @@
       {
         "id": "kasumigaseki",
         "name": "Kasumigaseki",
-        "nameJa": "\u971e\u30b1\u95a2",
+        "nameJa": "霞ケ関",
         "lat": 35.6753,
         "lng": 139.7501,
         "index": 14
@@ -292,7 +292,7 @@
       {
         "id": "ginza-m",
         "name": "Ginza",
-        "nameJa": "\u9280\u5ea7",
+        "nameJa": "銀座",
         "lat": 35.6732,
         "lng": 139.7642,
         "index": 15
@@ -300,7 +300,7 @@
       {
         "id": "tokyo",
         "name": "Tokyo",
-        "nameJa": "\u6771\u4eac",
+        "nameJa": "東京",
         "lat": 35.6804,
         "lng": 139.7652,
         "index": 16
@@ -308,7 +308,7 @@
       {
         "id": "otemachi",
         "name": "Otemachi",
-        "nameJa": "\u5927\u624b\u753a",
+        "nameJa": "大手町",
         "lat": 35.6856,
         "lng": 139.7659,
         "index": 17
@@ -316,7 +316,7 @@
       {
         "id": "awajicho",
         "name": "Awajicho",
-        "nameJa": "\u6de1\u8def\u753a",
+        "nameJa": "淡路町",
         "lat": 35.6942,
         "lng": 139.7674,
         "index": 18
@@ -324,7 +324,7 @@
       {
         "id": "ochanomizu",
         "name": "Ochanomizu",
-        "nameJa": "\u5fa1\u8336\u30ce\u6c34",
+        "nameJa": "御茶ノ水",
         "lat": 35.7,
         "lng": 139.7656,
         "index": 19
@@ -332,7 +332,7 @@
       {
         "id": "hongo-sanchome",
         "name": "Hongo-sanchome",
-        "nameJa": "\u672c\u90f7\u4e09\u4e01\u76ee",
+        "nameJa": "本郷三丁目",
         "lat": 35.7068,
         "lng": 139.7598,
         "index": 20
@@ -340,7 +340,7 @@
       {
         "id": "korakuen",
         "name": "Korakuen",
-        "nameJa": "\u5f8c\u697d\u5712",
+        "nameJa": "後楽園",
         "lat": 35.7073,
         "lng": 139.752,
         "index": 21
@@ -348,7 +348,7 @@
       {
         "id": "myogadani",
         "name": "Myogadani",
-        "nameJa": "\u8317\u8377\u8c37",
+        "nameJa": "茗荷谷",
         "lat": 35.7172,
         "lng": 139.7369,
         "index": 22
@@ -356,7 +356,7 @@
       {
         "id": "shin-otsuka",
         "name": "Shin-otsuka",
-        "nameJa": "\u65b0\u5927\u585a",
+        "nameJa": "新大塚",
         "lat": 35.7258,
         "lng": 139.7299,
         "index": 23
@@ -364,7 +364,7 @@
       {
         "id": "ikebukuro",
         "name": "Ikebukuro",
-        "nameJa": "\u6c60\u888b",
+        "nameJa": "池袋",
         "lat": 35.7301,
         "lng": 139.7117,
         "index": 24
@@ -374,7 +374,7 @@
   {
     "id": "hibiya",
     "name": "Hibiya",
-    "nameJa": "\u65e5\u6bd4\u8c37\u7dda",
+    "nameJa": "日比谷線",
     "color": "#b5b5ac",
     "instrument": "frenchhorn",
     "odptRailway": "odpt.Railway:TokyoMetro.Hibiya",
@@ -382,7 +382,7 @@
       {
         "id": "naka-meguro",
         "name": "Naka-meguro",
-        "nameJa": "\u4e2d\u76ee\u9ed2",
+        "nameJa": "中目黒",
         "lat": 35.6445,
         "lng": 139.6993,
         "index": 0
@@ -390,7 +390,7 @@
       {
         "id": "ebisu",
         "name": "Ebisu",
-        "nameJa": "\u6075\u6bd4\u5bff",
+        "nameJa": "恵比寿",
         "lat": 35.6476,
         "lng": 139.7093,
         "index": 1
@@ -398,7 +398,7 @@
       {
         "id": "hiroo",
         "name": "Hiroo",
-        "nameJa": "\u5e83\u5c3e",
+        "nameJa": "広尾",
         "lat": 35.6493,
         "lng": 139.72,
         "index": 2
@@ -406,7 +406,7 @@
       {
         "id": "roppongi",
         "name": "Roppongi",
-        "nameJa": "\u516d\u672c\u6728",
+        "nameJa": "六本木",
         "lat": 35.6625,
         "lng": 139.7307,
         "index": 3
@@ -414,7 +414,7 @@
       {
         "id": "kamiyacho",
         "name": "Kamiyacho",
-        "nameJa": "\u795e\u8c37\u753a",
+        "nameJa": "神谷町",
         "lat": 35.6644,
         "lng": 139.7464,
         "index": 4
@@ -422,7 +422,7 @@
       {
         "id": "toranomon-hills",
         "name": "Toranomon Hills",
-        "nameJa": "\u864e\u30ce\u9580\u30d2\u30eb\u30ba",
+        "nameJa": "虎ノ門ヒルズ",
         "lat": 35.6671,
         "lng": 139.7477,
         "index": 5
@@ -430,7 +430,7 @@
       {
         "id": "kasumigaseki-h",
         "name": "Kasumigaseki",
-        "nameJa": "\u971e\u30b1\u95a2",
+        "nameJa": "霞ケ関",
         "lat": 35.6737,
         "lng": 139.751,
         "index": 6
@@ -438,7 +438,7 @@
       {
         "id": "hibiya-st",
         "name": "Hibiya",
-        "nameJa": "\u65e5\u6bd4\u8c37",
+        "nameJa": "日比谷",
         "lat": 35.6747,
         "lng": 139.76,
         "index": 7
@@ -446,7 +446,7 @@
       {
         "id": "ginza-h",
         "name": "Ginza",
-        "nameJa": "\u9280\u5ea7",
+        "nameJa": "銀座",
         "lat": 35.6714,
         "lng": 139.7647,
         "index": 8
@@ -454,7 +454,7 @@
       {
         "id": "higashi-ginza",
         "name": "Higashi-ginza",
-        "nameJa": "\u6771\u9280\u5ea7",
+        "nameJa": "東銀座",
         "lat": 35.6677,
         "lng": 139.7692,
         "index": 9
@@ -462,7 +462,7 @@
       {
         "id": "tsukiji",
         "name": "Tsukiji",
-        "nameJa": "\u7bc9\u5730",
+        "nameJa": "築地",
         "lat": 35.6686,
         "lng": 139.7733,
         "index": 10
@@ -470,7 +470,7 @@
       {
         "id": "hatchobori",
         "name": "Hatchobori",
-        "nameJa": "\u516b\u4e01\u5800",
+        "nameJa": "八丁堀",
         "lat": 35.6744,
         "lng": 139.7767,
         "index": 11
@@ -478,7 +478,7 @@
       {
         "id": "kayabacho",
         "name": "Kayabacho",
-        "nameJa": "\u8305\u5834\u753a",
+        "nameJa": "茅場町",
         "lat": 35.6803,
         "lng": 139.7803,
         "index": 12
@@ -486,7 +486,7 @@
       {
         "id": "ningyocho",
         "name": "Ningyocho",
-        "nameJa": "\u4eba\u5f62\u753a",
+        "nameJa": "人形町",
         "lat": 35.6859,
         "lng": 139.7827,
         "index": 13
@@ -494,7 +494,7 @@
       {
         "id": "kodemmacho",
         "name": "Kodemmacho",
-        "nameJa": "\u5c0f\u4f1d\u99ac\u753a",
+        "nameJa": "小伝馬町",
         "lat": 35.69,
         "lng": 139.7792,
         "index": 14
@@ -502,7 +502,7 @@
       {
         "id": "akihabara",
         "name": "Akihabara",
-        "nameJa": "\u79cb\u8449\u539f",
+        "nameJa": "秋葉原",
         "lat": 35.6982,
         "lng": 139.7755,
         "index": 15
@@ -510,7 +510,7 @@
       {
         "id": "naka-okachimachi",
         "name": "Naka-okachimachi",
-        "nameJa": "\u4ef2\u5fa1\u5f92\u753a",
+        "nameJa": "仲御徒町",
         "lat": 35.7059,
         "lng": 139.7761,
         "index": 16
@@ -518,7 +518,7 @@
       {
         "id": "ueno-h",
         "name": "Ueno",
-        "nameJa": "\u4e0a\u91ce",
+        "nameJa": "上野",
         "lat": 35.7108,
         "lng": 139.7767,
         "index": 17
@@ -526,7 +526,7 @@
       {
         "id": "iriya",
         "name": "Iriya",
-        "nameJa": "\u5165\u8c37",
+        "nameJa": "入谷",
         "lat": 35.7196,
         "lng": 139.7837,
         "index": 18
@@ -534,7 +534,7 @@
       {
         "id": "minowa",
         "name": "Minowa",
-        "nameJa": "\u4e09\u30ce\u8f2a",
+        "nameJa": "三ノ輪",
         "lat": 35.7259,
         "lng": 139.7885,
         "index": 19
@@ -542,7 +542,7 @@
       {
         "id": "minami-senju",
         "name": "Minami-senju",
-        "nameJa": "\u5357\u5343\u4f4f",
+        "nameJa": "南千住",
         "lat": 35.7349,
         "lng": 139.8005,
         "index": 20
@@ -550,7 +550,7 @@
       {
         "id": "kita-senju",
         "name": "Kita-senju",
-        "nameJa": "\u5317\u5343\u4f4f",
+        "nameJa": "北千住",
         "lat": 35.7495,
         "lng": 139.8056,
         "index": 21
@@ -560,7 +560,7 @@
   {
     "id": "tozai",
     "name": "Tozai",
-    "nameJa": "\u6771\u897f\u7dda",
+    "nameJa": "東西線",
     "color": "#009bbf",
     "instrument": "flute",
     "odptRailway": "odpt.Railway:TokyoMetro.Tozai",
@@ -568,7 +568,7 @@
       {
         "id": "nakano",
         "name": "Nakano",
-        "nameJa": "\u4e2d\u91ce",
+        "nameJa": "中野",
         "lat": 35.7057,
         "lng": 139.6638,
         "index": 0
@@ -576,7 +576,7 @@
       {
         "id": "ochiai",
         "name": "Ochiai",
-        "nameJa": "\u843d\u5408",
+        "nameJa": "落合",
         "lat": 35.7109,
         "lng": 139.687,
         "index": 1
@@ -584,7 +584,7 @@
       {
         "id": "takadanobaba",
         "name": "Takadanobaba",
-        "nameJa": "\u9ad8\u7530\u99ac\u5834",
+        "nameJa": "高田馬場",
         "lat": 35.7137,
         "lng": 139.703,
         "index": 2
@@ -592,7 +592,7 @@
       {
         "id": "waseda",
         "name": "Waseda",
-        "nameJa": "\u65e9\u7a32\u7530",
+        "nameJa": "早稲田",
         "lat": 35.7058,
         "lng": 139.7217,
         "index": 3
@@ -600,7 +600,7 @@
       {
         "id": "kagurazaka",
         "name": "Kagurazaka",
-        "nameJa": "\u795e\u697d\u5742",
+        "nameJa": "神楽坂",
         "lat": 35.7038,
         "lng": 139.7347,
         "index": 4
@@ -608,7 +608,7 @@
       {
         "id": "iidabashi-t",
         "name": "Iidabashi",
-        "nameJa": "\u98ef\u7530\u6a4b",
+        "nameJa": "飯田橋",
         "lat": 35.7024,
         "lng": 139.7451,
         "index": 5
@@ -616,7 +616,7 @@
       {
         "id": "kudanshita",
         "name": "Kudanshita",
-        "nameJa": "\u4e5d\u6bb5\u4e0b",
+        "nameJa": "九段下",
         "lat": 35.6955,
         "lng": 139.7514,
         "index": 6
@@ -624,7 +624,7 @@
       {
         "id": "takebashi",
         "name": "Takebashi",
-        "nameJa": "\u7af9\u6a4b",
+        "nameJa": "竹橋",
         "lat": 35.6907,
         "lng": 139.757,
         "index": 7
@@ -632,7 +632,7 @@
       {
         "id": "otemachi-t",
         "name": "Otemachi",
-        "nameJa": "\u5927\u624b\u753a",
+        "nameJa": "大手町",
         "lat": 35.6853,
         "lng": 139.7627,
         "index": 8
@@ -640,7 +640,7 @@
       {
         "id": "nihombashi-t",
         "name": "Nihombashi",
-        "nameJa": "\u65e5\u672c\u6a4b",
+        "nameJa": "日本橋",
         "lat": 35.6823,
         "lng": 139.7741,
         "index": 9
@@ -648,7 +648,7 @@
       {
         "id": "kayabacho-t",
         "name": "Kayabacho",
-        "nameJa": "\u8305\u5834\u753a",
+        "nameJa": "茅場町",
         "lat": 35.6796,
         "lng": 139.7809,
         "index": 10
@@ -656,7 +656,7 @@
       {
         "id": "monzen-nakacho",
         "name": "Monzen-nakacho",
-        "nameJa": "\u9580\u524d\u4ef2\u753a",
+        "nameJa": "門前仲町",
         "lat": 35.6721,
         "lng": 139.7955,
         "index": 11
@@ -664,7 +664,7 @@
       {
         "id": "kiba",
         "name": "Kiba",
-        "nameJa": "\u6728\u5834",
+        "nameJa": "木場",
         "lat": 35.6693,
         "lng": 139.8059,
         "index": 12
@@ -672,7 +672,7 @@
       {
         "id": "toyocho",
         "name": "Toyocho",
-        "nameJa": "\u6771\u967d\u753a",
+        "nameJa": "東陽町",
         "lat": 35.6696,
         "lng": 139.8172,
         "index": 13
@@ -680,7 +680,7 @@
       {
         "id": "minami-sunamachi",
         "name": "Minami-sunamachi",
-        "nameJa": "\u5357\u7802\u753a",
+        "nameJa": "南砂町",
         "lat": 35.6674,
         "lng": 139.8347,
         "index": 14
@@ -688,7 +688,7 @@
       {
         "id": "nishi-kasai",
         "name": "Nishi-kasai",
-        "nameJa": "\u897f\u845b\u897f",
+        "nameJa": "西葛西",
         "lat": 35.6649,
         "lng": 139.8556,
         "index": 15
@@ -696,7 +696,7 @@
       {
         "id": "kasai",
         "name": "Kasai",
-        "nameJa": "\u845b\u897f",
+        "nameJa": "葛西",
         "lat": 35.6635,
         "lng": 139.8756,
         "index": 16
@@ -704,7 +704,7 @@
       {
         "id": "urayasu",
         "name": "Urayasu",
-        "nameJa": "\u6d66\u5b89",
+        "nameJa": "浦安",
         "lat": 35.6642,
         "lng": 139.8896,
         "index": 17
@@ -712,7 +712,7 @@
       {
         "id": "minami-gyotoku",
         "name": "Minami-gyotoku",
-        "nameJa": "\u5357\u884c\u5fb3",
+        "nameJa": "南行徳",
         "lat": 35.6715,
         "lng": 139.9009,
         "index": 18
@@ -720,7 +720,7 @@
       {
         "id": "gyotoku",
         "name": "Gyotoku",
-        "nameJa": "\u884c\u5fb3",
+        "nameJa": "行徳",
         "lat": 35.6811,
         "lng": 139.9123,
         "index": 19
@@ -728,7 +728,7 @@
       {
         "id": "myoden",
         "name": "Myoden",
-        "nameJa": "\u5999\u5178",
+        "nameJa": "妙典",
         "lat": 35.6899,
         "lng": 139.9231,
         "index": 20
@@ -736,7 +736,7 @@
       {
         "id": "baraki-nakayama",
         "name": "Baraki-nakayama",
-        "nameJa": "\u539f\u6728\u4e2d\u5c71",
+        "nameJa": "原木中山",
         "lat": 35.7003,
         "lng": 139.9385,
         "index": 21
@@ -744,7 +744,7 @@
       {
         "id": "nishi-funabashi",
         "name": "Nishi-funabashi",
-        "nameJa": "\u897f\u8239\u6a4b",
+        "nameJa": "西船橋",
         "lat": 35.7078,
         "lng": 139.9578,
         "index": 22
@@ -754,7 +754,7 @@
   {
     "id": "chiyoda",
     "name": "Chiyoda",
-    "nameJa": "\u5343\u4ee3\u7530\u7dda",
+    "nameJa": "千代田線",
     "color": "#00bb85",
     "instrument": "clarinet",
     "odptRailway": "odpt.Railway:TokyoMetro.Chiyoda",
@@ -762,7 +762,7 @@
       {
         "id": "yoyogi-uehara",
         "name": "Yoyogi-uehara",
-        "nameJa": "\u4ee3\u3005\u6728\u4e0a\u539f",
+        "nameJa": "代々木上原",
         "lat": 35.669,
         "lng": 139.6797,
         "index": 0
@@ -770,7 +770,7 @@
       {
         "id": "yoyogi-koen",
         "name": "Yoyogi-koen",
-        "nameJa": "\u4ee3\u3005\u6728\u516c\u5712",
+        "nameJa": "代々木公園",
         "lat": 35.6692,
         "lng": 139.6892,
         "index": 1
@@ -778,7 +778,7 @@
       {
         "id": "meiji-jingumae",
         "name": "Meiji-jingumae",
-        "nameJa": "\u660e\u6cbb\u795e\u5bae\u524d",
+        "nameJa": "明治神宮前",
         "lat": 35.6693,
         "lng": 139.7037,
         "index": 2
@@ -786,7 +786,7 @@
       {
         "id": "omote-sando-c",
         "name": "Omote-sando",
-        "nameJa": "\u8868\u53c2\u9053",
+        "nameJa": "表参道",
         "lat": 35.6653,
         "lng": 139.7124,
         "index": 3
@@ -794,7 +794,7 @@
       {
         "id": "nogizaka",
         "name": "Nogizaka",
-        "nameJa": "\u4e43\u6728\u5742",
+        "nameJa": "乃木坂",
         "lat": 35.667,
         "lng": 139.7266,
         "index": 4
@@ -802,7 +802,7 @@
       {
         "id": "akasaka",
         "name": "Akasaka",
-        "nameJa": "\u8d64\u5742",
+        "nameJa": "赤坂",
         "lat": 35.6725,
         "lng": 139.7367,
         "index": 5
@@ -810,7 +810,7 @@
       {
         "id": "kokkai-gijidomae-c",
         "name": "Kokkai-gijidomae",
-        "nameJa": "\u56fd\u4f1a\u8b70\u4e8b\u5802\u524d",
+        "nameJa": "国会議事堂前",
         "lat": 35.6739,
         "lng": 139.7448,
         "index": 6
@@ -818,7 +818,7 @@
       {
         "id": "kasumigaseki-c",
         "name": "Kasumigaseki",
-        "nameJa": "\u971e\u30b1\u95a2",
+        "nameJa": "霞ケ関",
         "lat": 35.6735,
         "lng": 139.7494,
         "index": 7
@@ -826,7 +826,7 @@
       {
         "id": "hibiya-c",
         "name": "Hibiya",
-        "nameJa": "\u65e5\u6bd4\u8c37",
+        "nameJa": "日比谷",
         "lat": 35.6747,
         "lng": 139.7592,
         "index": 8
@@ -834,7 +834,7 @@
       {
         "id": "nijubashimae",
         "name": "Nijubashimae",
-        "nameJa": "\u4e8c\u91cd\u6a4b\u524d",
+        "nameJa": "二重橋前",
         "lat": 35.679,
         "lng": 139.7612,
         "index": 9
@@ -842,7 +842,7 @@
       {
         "id": "otemachi-c",
         "name": "Otemachi",
-        "nameJa": "\u5927\u624b\u753a",
+        "nameJa": "大手町",
         "lat": 35.6863,
         "lng": 139.7634,
         "index": 10
@@ -850,7 +850,7 @@
       {
         "id": "shin-ochanomizu",
         "name": "Shin-ochanomizu",
-        "nameJa": "\u65b0\u5fa1\u8336\u30ce\u6c34",
+        "nameJa": "新御茶ノ水",
         "lat": 35.6979,
         "lng": 139.7658,
         "index": 11
@@ -858,7 +858,7 @@
       {
         "id": "yushima",
         "name": "Yushima",
-        "nameJa": "\u6e6f\u5cf6",
+        "nameJa": "湯島",
         "lat": 35.7082,
         "lng": 139.7699,
         "index": 12
@@ -866,7 +866,7 @@
       {
         "id": "nezu",
         "name": "Nezu",
-        "nameJa": "\u6839\u6d25",
+        "nameJa": "根津",
         "lat": 35.7195,
         "lng": 139.7636,
         "index": 13
@@ -874,7 +874,7 @@
       {
         "id": "sendagi",
         "name": "Sendagi",
-        "nameJa": "\u5343\u99c4\u6728",
+        "nameJa": "千駄木",
         "lat": 35.7251,
         "lng": 139.7632,
         "index": 14
@@ -882,7 +882,7 @@
       {
         "id": "nishi-nippori",
         "name": "Nishi-nippori",
-        "nameJa": "\u897f\u65e5\u66ae\u91cc",
+        "nameJa": "西日暮里",
         "lat": 35.7328,
         "lng": 139.7675,
         "index": 15
@@ -890,7 +890,7 @@
       {
         "id": "machiya",
         "name": "Machiya",
-        "nameJa": "\u753a\u5c4b",
+        "nameJa": "町屋",
         "lat": 35.7397,
         "lng": 139.7784,
         "index": 16
@@ -898,7 +898,7 @@
       {
         "id": "kita-senju-c",
         "name": "Kita-senju",
-        "nameJa": "\u5317\u5343\u4f4f",
+        "nameJa": "北千住",
         "lat": 35.7467,
         "lng": 139.8005,
         "index": 17
@@ -906,7 +906,7 @@
       {
         "id": "ayase",
         "name": "Ayase",
-        "nameJa": "\u7dbe\u702c",
+        "nameJa": "綾瀬",
         "lat": 35.7621,
         "lng": 139.8245,
         "index": 18
@@ -914,7 +914,7 @@
       {
         "id": "kita-ayase",
         "name": "Kita-ayase",
-        "nameJa": "\u5317\u7dbe\u702c",
+        "nameJa": "北綾瀬",
         "lat": 35.7619,
         "lng": 139.8223,
         "index": 19
@@ -924,7 +924,7 @@
   {
     "id": "yurakucho",
     "name": "Yurakucho",
-    "nameJa": "\u6709\u697d\u753a\u7dda",
+    "nameJa": "有楽町線",
     "color": "#c1a470",
     "instrument": "harp",
     "odptRailway": "odpt.Railway:TokyoMetro.Yurakucho",
@@ -932,7 +932,7 @@
       {
         "id": "wakoshi",
         "name": "Wakoshi",
-        "nameJa": "\u548c\u5149\u5e02",
+        "nameJa": "和光市",
         "lat": 35.7884,
         "lng": 139.6129,
         "index": 0
@@ -940,7 +940,7 @@
       {
         "id": "chikatetsu-narimasu",
         "name": "Chikatetsu-narimasu",
-        "nameJa": "\u5730\u4e0b\u9244\u6210\u5897",
+        "nameJa": "地下鉄成増",
         "lat": 35.7847,
         "lng": 139.6219,
         "index": 1
@@ -948,7 +948,7 @@
       {
         "id": "chikatetsu-akatsuka",
         "name": "Chikatetsu-akatsuka",
-        "nameJa": "\u5730\u4e0b\u9244\u8d64\u585a",
+        "nameJa": "地下鉄赤塚",
         "lat": 35.7746,
         "lng": 139.6349,
         "index": 2
@@ -956,7 +956,7 @@
       {
         "id": "heiwadai",
         "name": "Heiwadai",
-        "nameJa": "\u5e73\u548c\u53f0",
+        "nameJa": "平和台",
         "lat": 35.768,
         "lng": 139.6494,
         "index": 3
@@ -964,7 +964,7 @@
       {
         "id": "hikawadai",
         "name": "Hikawadai",
-        "nameJa": "\u6c37\u5ddd\u53f0",
+        "nameJa": "氷川台",
         "lat": 35.7643,
         "lng": 139.6508,
         "index": 4
@@ -972,7 +972,7 @@
       {
         "id": "kotake-mukaihara",
         "name": "Kotake-mukaihara",
-        "nameJa": "\u5c0f\u7af9\u5411\u539f",
+        "nameJa": "小竹向原",
         "lat": 35.7492,
         "lng": 139.6666,
         "index": 5
@@ -980,7 +980,7 @@
       {
         "id": "senkawa-y",
         "name": "Senkawa",
-        "nameJa": "\u5343\u5ddd",
+        "nameJa": "千川",
         "lat": 35.7383,
         "lng": 139.6894,
         "index": 6
@@ -988,7 +988,7 @@
       {
         "id": "kanamecho-y",
         "name": "Kanamecho",
-        "nameJa": "\u8981\u753a",
+        "nameJa": "要町",
         "lat": 35.7333,
         "lng": 139.6989,
         "index": 7
@@ -996,7 +996,7 @@
       {
         "id": "ikebukuro-y",
         "name": "Ikebukuro",
-        "nameJa": "\u6c60\u888b",
+        "nameJa": "池袋",
         "lat": 35.7299,
         "lng": 139.7093,
         "index": 8
@@ -1004,7 +1004,7 @@
       {
         "id": "higashi-ikebukuro",
         "name": "Higashi-ikebukuro",
-        "nameJa": "\u6771\u6c60\u888b",
+        "nameJa": "東池袋",
         "lat": 35.7258,
         "lng": 139.7195,
         "index": 9
@@ -1012,7 +1012,7 @@
       {
         "id": "gokokuji",
         "name": "Gokokuji",
-        "nameJa": "\u8b77\u56fd\u5bfa",
+        "nameJa": "護国寺",
         "lat": 35.7171,
         "lng": 139.7285,
         "index": 10
@@ -1020,7 +1020,7 @@
       {
         "id": "edogawabashi",
         "name": "Edogawabashi",
-        "nameJa": "\u6c5f\u6238\u5ddd\u6a4b",
+        "nameJa": "江戸川橋",
         "lat": 35.7087,
         "lng": 139.7376,
         "index": 11
@@ -1028,7 +1028,7 @@
       {
         "id": "iidabashi-y",
         "name": "Iidabashi",
-        "nameJa": "\u98ef\u7530\u6a4b",
+        "nameJa": "飯田橋",
         "lat": 35.7026,
         "lng": 139.7444,
         "index": 12
@@ -1036,7 +1036,7 @@
       {
         "id": "ichigaya",
         "name": "Ichigaya",
-        "nameJa": "\u5e02\u30f6\u8c37",
+        "nameJa": "市ヶ谷",
         "lat": 35.6928,
         "lng": 139.7371,
         "index": 13
@@ -1044,7 +1044,7 @@
       {
         "id": "kojimachi",
         "name": "Kojimachi",
-        "nameJa": "\u9eb9\u753a",
+        "nameJa": "麹町",
         "lat": 35.6862,
         "lng": 139.7367,
         "index": 14
@@ -1052,7 +1052,7 @@
       {
         "id": "nagatacho-y",
         "name": "Nagatacho",
-        "nameJa": "\u6c38\u7530\u753a",
+        "nameJa": "永田町",
         "lat": 35.6775,
         "lng": 139.7432,
         "index": 15
@@ -1060,7 +1060,7 @@
       {
         "id": "sakuradamon",
         "name": "Sakuradamon",
-        "nameJa": "\u685c\u7530\u9580",
+        "nameJa": "桜田門",
         "lat": 35.6776,
         "lng": 139.7543,
         "index": 16
@@ -1068,7 +1068,7 @@
       {
         "id": "yurakucho-st",
         "name": "Yurakucho",
-        "nameJa": "\u6709\u697d\u753a",
+        "nameJa": "有楽町",
         "lat": 35.6758,
         "lng": 139.7633,
         "index": 17
@@ -1076,7 +1076,7 @@
       {
         "id": "ginza-itchome",
         "name": "Ginza-itchome",
-        "nameJa": "\u9280\u5ea7\u4e00\u4e01\u76ee",
+        "nameJa": "銀座一丁目",
         "lat": 35.6733,
         "lng": 139.7686,
         "index": 18
@@ -1084,7 +1084,7 @@
       {
         "id": "shintomicho",
         "name": "Shintomicho",
-        "nameJa": "\u65b0\u5bcc\u753a",
+        "nameJa": "新富町",
         "lat": 35.6704,
         "lng": 139.7743,
         "index": 19
@@ -1092,7 +1092,7 @@
       {
         "id": "tsukishima",
         "name": "Tsukishima",
-        "nameJa": "\u6708\u5cf6",
+        "nameJa": "月島",
         "lat": 35.6647,
         "lng": 139.7847,
         "index": 20
@@ -1100,7 +1100,7 @@
       {
         "id": "toyosu",
         "name": "Toyosu",
-        "nameJa": "\u8c4a\u6d32",
+        "nameJa": "豊洲",
         "lat": 35.6541,
         "lng": 139.7973,
         "index": 21
@@ -1108,7 +1108,7 @@
       {
         "id": "tatsumi-y",
         "name": "Tatsumi",
-        "nameJa": "\u8fb0\u5df3",
+        "nameJa": "辰巳",
         "lat": 35.6523,
         "lng": 139.7991,
         "index": 22
@@ -1116,7 +1116,7 @@
       {
         "id": "shin-kiba",
         "name": "Shin-kiba",
-        "nameJa": "\u65b0\u6728\u5834",
+        "nameJa": "新木場",
         "lat": 35.6457,
         "lng": 139.8237,
         "index": 23
@@ -1126,7 +1126,7 @@
   {
     "id": "hanzomon",
     "name": "Hanzomon",
-    "nameJa": "\u534a\u8535\u9580\u7dda",
+    "nameJa": "半蔵門線",
     "color": "#8F76D6",
     "instrument": "cello",
     "odptRailway": "odpt.Railway:TokyoMetro.Hanzomon",
@@ -1134,7 +1134,7 @@
       {
         "id": "shibuya-hz",
         "name": "Shibuya",
-        "nameJa": "\u6e0b\u8c37",
+        "nameJa": "渋谷",
         "lat": 35.6595,
         "lng": 139.7021,
         "index": 0
@@ -1142,7 +1142,7 @@
       {
         "id": "omote-sando-hz",
         "name": "Omote-sando",
-        "nameJa": "\u8868\u53c2\u9053",
+        "nameJa": "表参道",
         "lat": 35.6652,
         "lng": 139.7127,
         "index": 1
@@ -1150,7 +1150,7 @@
       {
         "id": "aoyama-itchome-hz",
         "name": "Aoyama-itchome",
-        "nameJa": "\u9752\u5c71\u4e00\u4e01\u76ee",
+        "nameJa": "青山一丁目",
         "lat": 35.673,
         "lng": 139.7245,
         "index": 2
@@ -1158,7 +1158,7 @@
       {
         "id": "nagatacho-hz",
         "name": "Nagatacho",
-        "nameJa": "\u6c38\u7530\u753a",
+        "nameJa": "永田町",
         "lat": 35.6791,
         "lng": 139.7412,
         "index": 3
@@ -1166,7 +1166,7 @@
       {
         "id": "hanzomon-st",
         "name": "Hanzomon",
-        "nameJa": "\u534a\u8535\u9580",
+        "nameJa": "半蔵門",
         "lat": 35.6823,
         "lng": 139.7419,
         "index": 4
@@ -1174,7 +1174,7 @@
       {
         "id": "kudanshita-hz",
         "name": "Kudanshita",
-        "nameJa": "\u4e5d\u6bb5\u4e0b",
+        "nameJa": "九段下",
         "lat": 35.6952,
         "lng": 139.7503,
         "index": 5
@@ -1182,7 +1182,7 @@
       {
         "id": "jimbocho",
         "name": "Jimbocho",
-        "nameJa": "\u795e\u4fdd\u753a",
+        "nameJa": "神保町",
         "lat": 35.6959,
         "lng": 139.7578,
         "index": 6
@@ -1190,7 +1190,7 @@
       {
         "id": "otemachi-hz",
         "name": "Otemachi",
-        "nameJa": "\u5927\u624b\u753a",
+        "nameJa": "大手町",
         "lat": 35.687,
         "lng": 139.7632,
         "index": 7
@@ -1198,7 +1198,7 @@
       {
         "id": "mitsukoshimae-hz",
         "name": "Mitsukoshimae",
-        "nameJa": "\u4e09\u8d8a\u524d",
+        "nameJa": "三越前",
         "lat": 35.6846,
         "lng": 139.7744,
         "index": 8
@@ -1206,7 +1206,7 @@
       {
         "id": "suitengumae",
         "name": "Suitengumae",
-        "nameJa": "\u6c34\u5929\u5bae\u524d",
+        "nameJa": "水天宮前",
         "lat": 35.6844,
         "lng": 139.784,
         "index": 9
@@ -1214,7 +1214,7 @@
       {
         "id": "kiyosumi-shirakawa",
         "name": "Kiyosumi-shirakawa",
-        "nameJa": "\u6e05\u6f84\u767d\u6cb3",
+        "nameJa": "清澄白河",
         "lat": 35.6819,
         "lng": 139.7975,
         "index": 10
@@ -1222,7 +1222,7 @@
       {
         "id": "sumiyoshi",
         "name": "Sumiyoshi",
-        "nameJa": "\u4f4f\u5409",
+        "nameJa": "住吉",
         "lat": 35.6871,
         "lng": 139.8158,
         "index": 11
@@ -1230,7 +1230,7 @@
       {
         "id": "kinshicho",
         "name": "Kinshicho",
-        "nameJa": "\u9326\u7cf8\u753a",
+        "nameJa": "錦糸町",
         "lat": 35.696,
         "lng": 139.8151,
         "index": 12
@@ -1238,7 +1238,7 @@
       {
         "id": "oshiage",
         "name": "Oshiage",
-        "nameJa": "\u62bc\u4e0a",
+        "nameJa": "押上",
         "lat": 35.7101,
         "lng": 139.8133,
         "index": 13
@@ -1248,7 +1248,7 @@
   {
     "id": "namboku",
     "name": "Namboku",
-    "nameJa": "\u5357\u5317\u7dda",
+    "nameJa": "南北線",
     "color": "#00ac9b",
     "instrument": "marimba",
     "odptRailway": "odpt.Railway:TokyoMetro.Namboku",
@@ -1256,7 +1256,7 @@
       {
         "id": "meguro",
         "name": "Meguro",
-        "nameJa": "\u76ee\u9ed2",
+        "nameJa": "目黒",
         "lat": 35.6333,
         "lng": 139.7156,
         "index": 0
@@ -1264,7 +1264,7 @@
       {
         "id": "shirokanedai",
         "name": "Shirokanedai",
-        "nameJa": "\u767d\u91d1\u53f0",
+        "nameJa": "白金台",
         "lat": 35.6385,
         "lng": 139.7274,
         "index": 1
@@ -1272,7 +1272,7 @@
       {
         "id": "shirokane-takanawa",
         "name": "Shirokane-takanawa",
-        "nameJa": "\u767d\u91d1\u9ad8\u8f2a",
+        "nameJa": "白金高輪",
         "lat": 35.644,
         "lng": 139.7348,
         "index": 2
@@ -1280,7 +1280,7 @@
       {
         "id": "azabu-juban",
         "name": "Azabu-juban",
-        "nameJa": "\u9ebb\u5e03\u5341\u756a",
+        "nameJa": "麻布十番",
         "lat": 35.6573,
         "lng": 139.7369,
         "index": 3
@@ -1288,7 +1288,7 @@
       {
         "id": "roppongi-itchome",
         "name": "Roppongi-itchome",
-        "nameJa": "\u516d\u672c\u6728\u4e00\u4e01\u76ee",
+        "nameJa": "六本木一丁目",
         "lat": 35.6639,
         "lng": 139.7387,
         "index": 4
@@ -1296,7 +1296,7 @@
       {
         "id": "tameike-sanno-n",
         "name": "Tameike-sanno",
-        "nameJa": "\u6e9c\u6c60\u5c71\u738b",
+        "nameJa": "溜池山王",
         "lat": 35.6742,
         "lng": 139.7415,
         "index": 5
@@ -1304,7 +1304,7 @@
       {
         "id": "nagatacho-n",
         "name": "Nagatacho",
-        "nameJa": "\u6c38\u7530\u753a",
+        "nameJa": "永田町",
         "lat": 35.676,
         "lng": 139.7416,
         "index": 6
@@ -1312,7 +1312,7 @@
       {
         "id": "yotsuya-n",
         "name": "Yotsuya",
-        "nameJa": "\u56db\u30c4\u8c37",
+        "nameJa": "四ツ谷",
         "lat": 35.6867,
         "lng": 139.7299,
         "index": 7
@@ -1320,7 +1320,7 @@
       {
         "id": "ichigaya-n",
         "name": "Ichigaya",
-        "nameJa": "\u5e02\u30f6\u8c37",
+        "nameJa": "市ヶ谷",
         "lat": 35.6932,
         "lng": 139.7368,
         "index": 8
@@ -1328,7 +1328,7 @@
       {
         "id": "iidabashi-n",
         "name": "Iidabashi",
-        "nameJa": "\u98ef\u7530\u6a4b",
+        "nameJa": "飯田橋",
         "lat": 35.7024,
         "lng": 139.7446,
         "index": 9
@@ -1336,7 +1336,7 @@
       {
         "id": "korakuen-n",
         "name": "Korakuen",
-        "nameJa": "\u5f8c\u697d\u5712",
+        "nameJa": "後楽園",
         "lat": 35.7073,
         "lng": 139.7518,
         "index": 10
@@ -1344,7 +1344,7 @@
       {
         "id": "todaimae",
         "name": "Todaimae",
-        "nameJa": "\u6771\u5927\u524d",
+        "nameJa": "東大前",
         "lat": 35.7182,
         "lng": 139.7579,
         "index": 11
@@ -1352,7 +1352,7 @@
       {
         "id": "hon-komagome",
         "name": "Hon-komagome",
-        "nameJa": "\u672c\u99d2\u8fbc",
+        "nameJa": "本駒込",
         "lat": 35.7287,
         "lng": 139.7519,
         "index": 12
@@ -1360,7 +1360,7 @@
       {
         "id": "komagome",
         "name": "Komagome",
-        "nameJa": "\u99d2\u8fbc",
+        "nameJa": "駒込",
         "lat": 35.7356,
         "lng": 139.747,
         "index": 13
@@ -1368,7 +1368,7 @@
       {
         "id": "nishigahara",
         "name": "Nishigahara",
-        "nameJa": "\u897f\u30b1\u539f",
+        "nameJa": "西ケ原",
         "lat": 35.7446,
         "lng": 139.7442,
         "index": 14
@@ -1376,7 +1376,7 @@
       {
         "id": "oji",
         "name": "Oji",
-        "nameJa": "\u738b\u5b50",
+        "nameJa": "王子",
         "lat": 35.7557,
         "lng": 139.7371,
         "index": 15
@@ -1384,7 +1384,7 @@
       {
         "id": "oji-kamiya",
         "name": "Oji-kamiya",
-        "nameJa": "\u738b\u5b50\u795e\u8c37",
+        "nameJa": "王子神谷",
         "lat": 35.7651,
         "lng": 139.7357,
         "index": 16
@@ -1392,7 +1392,7 @@
       {
         "id": "shimo",
         "name": "Shimo",
-        "nameJa": "\u5fd7\u8302",
+        "nameJa": "志茂",
         "lat": 35.773,
         "lng": 139.7331,
         "index": 17
@@ -1400,7 +1400,7 @@
       {
         "id": "akabane-iwabuchi",
         "name": "Akabane-iwabuchi",
-        "nameJa": "\u8d64\u7fbd\u5ca9\u6df5",
+        "nameJa": "赤羽岩淵",
         "lat": 35.7835,
         "lng": 139.7219,
         "index": 18
@@ -1410,7 +1410,7 @@
   {
     "id": "fukutoshin",
     "name": "Fukutoshin",
-    "nameJa": "\u526f\u90fd\u5fc3\u7dda",
+    "nameJa": "副都心線",
     "color": "#9C5E31",
     "instrument": "vibraphone",
     "odptRailway": "odpt.Railway:TokyoMetro.Fukutoshin",
@@ -1418,7 +1418,7 @@
       {
         "id": "wakoshi-f",
         "name": "Wakoshi",
-        "nameJa": "\u548c\u5149\u5e02",
+        "nameJa": "和光市",
         "lat": 35.7883,
         "lng": 139.6129,
         "index": 0
@@ -1426,7 +1426,7 @@
       {
         "id": "chikatetsu-narimasu-f",
         "name": "Chikatetsu-narimasu",
-        "nameJa": "\u5730\u4e0b\u9244\u6210\u5897",
+        "nameJa": "地下鉄成増",
         "lat": 35.7846,
         "lng": 139.622,
         "index": 1
@@ -1434,7 +1434,7 @@
       {
         "id": "chikatetsu-akatsuka-f",
         "name": "Chikatetsu-akatsuka",
-        "nameJa": "\u5730\u4e0b\u9244\u8d64\u585a",
+        "nameJa": "地下鉄赤塚",
         "lat": 35.7745,
         "lng": 139.6349,
         "index": 2
@@ -1442,7 +1442,7 @@
       {
         "id": "heiwadai-f",
         "name": "Heiwadai",
-        "nameJa": "\u5e73\u548c\u53f0",
+        "nameJa": "平和台",
         "lat": 35.7679,
         "lng": 139.6494,
         "index": 3
@@ -1450,7 +1450,7 @@
       {
         "id": "hikawadai-f",
         "name": "Hikawadai",
-        "nameJa": "\u6c37\u5ddd\u53f0",
+        "nameJa": "氷川台",
         "lat": 35.7645,
         "lng": 139.6506,
         "index": 4
@@ -1458,7 +1458,7 @@
       {
         "id": "kotake-mukaihara-f",
         "name": "Kotake-mukaihara",
-        "nameJa": "\u5c0f\u7af9\u5411\u539f",
+        "nameJa": "小竹向原",
         "lat": 35.7492,
         "lng": 139.6664,
         "index": 5
@@ -1466,7 +1466,7 @@
       {
         "id": "senkawa-f",
         "name": "Senkawa",
-        "nameJa": "\u5343\u5ddd",
+        "nameJa": "千川",
         "lat": 35.7382,
         "lng": 139.6894,
         "index": 6
@@ -1474,7 +1474,7 @@
       {
         "id": "kanamecho-f",
         "name": "Kanamecho",
-        "nameJa": "\u8981\u753a",
+        "nameJa": "要町",
         "lat": 35.7332,
         "lng": 139.6989,
         "index": 7
@@ -1482,7 +1482,7 @@
       {
         "id": "ikebukuro-f",
         "name": "Ikebukuro",
-        "nameJa": "\u6c60\u888b",
+        "nameJa": "池袋",
         "lat": 35.7309,
         "lng": 139.7094,
         "index": 8
@@ -1490,7 +1490,7 @@
       {
         "id": "zoshigaya",
         "name": "Zoshigaya",
-        "nameJa": "\u96d1\u53f8\u304c\u8c37",
+        "nameJa": "雑司が谷",
         "lat": 35.7202,
         "lng": 139.7147,
         "index": 9
@@ -1498,7 +1498,7 @@
       {
         "id": "nishi-waseda-f",
         "name": "Nishi-waseda",
-        "nameJa": "\u897f\u65e9\u7a32\u7530",
+        "nameJa": "西早稲田",
         "lat": 35.7113,
         "lng": 139.7099,
         "index": 10
@@ -1506,7 +1506,7 @@
       {
         "id": "higashi-shinjuku-f",
         "name": "Higashi-shinjuku",
-        "nameJa": "\u6771\u65b0\u5bbf",
+        "nameJa": "東新宿",
         "lat": 35.6943,
         "lng": 139.7067,
         "index": 11
@@ -1514,7 +1514,7 @@
       {
         "id": "shinjuku-sanchome-f",
         "name": "Shinjuku-sanchome",
-        "nameJa": "\u65b0\u5bbf\u4e09\u4e01\u76ee",
+        "nameJa": "新宿三丁目",
         "lat": 35.6906,
         "lng": 139.7046,
         "index": 12
@@ -1522,7 +1522,7 @@
       {
         "id": "kita-sando",
         "name": "Kita-sando",
-        "nameJa": "\u5317\u53c2\u9053",
+        "nameJa": "北参道",
         "lat": 35.6708,
         "lng": 139.7071,
         "index": 13
@@ -1530,7 +1530,7 @@
       {
         "id": "meiji-jingumae-f",
         "name": "Meiji-jingumae",
-        "nameJa": "\u660e\u6cbb\u795e\u5bae\u524d",
+        "nameJa": "明治神宮前",
         "lat": 35.6651,
         "lng": 139.7029,
         "index": 14
@@ -1538,7 +1538,7 @@
       {
         "id": "shibuya-f",
         "name": "Shibuya",
-        "nameJa": "\u6e0b\u8c37",
+        "nameJa": "渋谷",
         "lat": 35.659,
         "lng": 139.7025,
         "index": 15
@@ -1548,7 +1548,7 @@
   {
     "id": "asakusa-toei",
     "name": "Asakusa",
-    "nameJa": "\u6d45\u8349\u7dda",
+    "nameJa": "浅草線",
     "color": "#E85298",
     "instrument": "guitar",
     "odptRailway": "odpt.Railway:Toei.Asakusa",
@@ -1556,7 +1556,7 @@
       {
         "id": "nishi-magome-a",
         "name": "Nishi-magome",
-        "nameJa": "\u897f\u99ac\u8fbc",
+        "nameJa": "西馬込",
         "lat": 35.58705,
         "lng": 139.706086,
         "index": 0
@@ -1564,7 +1564,7 @@
       {
         "id": "magome-a",
         "name": "Magome",
-        "nameJa": "\u99ac\u8fbc",
+        "nameJa": "馬込",
         "lat": 35.596773,
         "lng": 139.711884,
         "index": 1
@@ -1572,7 +1572,7 @@
       {
         "id": "nakanobu-a",
         "name": "Nakanobu",
-        "nameJa": "\u4e2d\u5ef6",
+        "nameJa": "中延",
         "lat": 35.605274,
         "lng": 139.713645,
         "index": 2
@@ -1580,7 +1580,7 @@
       {
         "id": "togoshi-a",
         "name": "Togoshi",
-        "nameJa": "\u6238\u8d8a",
+        "nameJa": "戸越",
         "lat": 35.614421,
         "lng": 139.716315,
         "index": 3
@@ -1588,7 +1588,7 @@
       {
         "id": "gotanda-a",
         "name": "Gotanda",
-        "nameJa": "\u4e94\u53cd\u7530",
+        "nameJa": "五反田",
         "lat": 35.626878,
         "lng": 139.723965,
         "index": 4
@@ -1596,7 +1596,7 @@
       {
         "id": "takanawadai-a",
         "name": "Takanawadai",
-        "nameJa": "\u9ad8\u8f2a\u53f0",
+        "nameJa": "高輪台",
         "lat": 35.631751,
         "lng": 139.730384,
         "index": 5
@@ -1604,7 +1604,7 @@
       {
         "id": "sengakuji-a",
         "name": "Sengakuji",
-        "nameJa": "\u6cc9\u5cb3\u5bfa",
+        "nameJa": "泉岳寺",
         "lat": 35.638715,
         "lng": 139.739993,
         "index": 6
@@ -1612,7 +1612,7 @@
       {
         "id": "mita-a",
         "name": "Mita",
-        "nameJa": "\u4e09\u7530",
+        "nameJa": "三田",
         "lat": 35.646749,
         "lng": 139.746877,
         "index": 7
@@ -1620,7 +1620,7 @@
       {
         "id": "daimon-a",
         "name": "Daimon",
-        "nameJa": "\u5927\u9580",
+        "nameJa": "大門",
         "lat": 35.65687,
         "lng": 139.754679,
         "index": 8
@@ -1628,7 +1628,7 @@
       {
         "id": "shimbashi-a",
         "name": "Shimbashi",
-        "nameJa": "\u65b0\u6a4b",
+        "nameJa": "新橋",
         "lat": 35.665386,
         "lng": 139.759338,
         "index": 9
@@ -1636,7 +1636,7 @@
       {
         "id": "higashi-ginza-a",
         "name": "Higashi-ginza",
-        "nameJa": "\u6771\u9280\u5ea7",
+        "nameJa": "東銀座",
         "lat": 35.669915,
         "lng": 139.76735,
         "index": 10
@@ -1644,7 +1644,7 @@
       {
         "id": "takaracho-a",
         "name": "Takaracho",
-        "nameJa": "\u5b9d\u753a",
+        "nameJa": "宝町",
         "lat": 35.675606,
         "lng": 139.771966,
         "index": 11
@@ -1652,7 +1652,7 @@
       {
         "id": "nihombashi-a",
         "name": "Nihombashi",
-        "nameJa": "\u65e5\u672c\u6a4b",
+        "nameJa": "日本橋",
         "lat": 35.681796,
         "lng": 139.775814,
         "index": 12
@@ -1660,7 +1660,7 @@
       {
         "id": "ningyocho-a",
         "name": "Ningyocho",
-        "nameJa": "\u4eba\u5f62\u753a",
+        "nameJa": "人形町",
         "lat": 35.686345,
         "lng": 139.782276,
         "index": 13
@@ -1668,7 +1668,7 @@
       {
         "id": "higashi-nihombashi-a",
         "name": "Higashi-nihombashi",
-        "nameJa": "\u6771\u65e5\u672c\u6a4b",
+        "nameJa": "東日本橋",
         "lat": 35.692123,
         "lng": 139.784886,
         "index": 14
@@ -1676,7 +1676,7 @@
       {
         "id": "asakusabashi-a",
         "name": "Asakusabashi",
-        "nameJa": "\u6d45\u8349\u6a4b",
+        "nameJa": "浅草橋",
         "lat": 35.697494,
         "lng": 139.786335,
         "index": 15
@@ -1684,7 +1684,7 @@
       {
         "id": "kuramae-a",
         "name": "Kuramae",
-        "nameJa": "\u8535\u524d",
+        "nameJa": "蔵前",
         "lat": 35.703128,
         "lng": 139.790858,
         "index": 16
@@ -1692,7 +1692,7 @@
       {
         "id": "asakusa-a",
         "name": "Asakusa",
-        "nameJa": "\u6d45\u8349",
+        "nameJa": "浅草",
         "lat": 35.70892,
         "lng": 139.796542,
         "index": 17
@@ -1700,7 +1700,7 @@
       {
         "id": "honjo-azumabashi-a",
         "name": "Honjo-azumabashi",
-        "nameJa": "\u672c\u6240\u543e\u59bb\u6a4b",
+        "nameJa": "本所吾妻橋",
         "lat": 35.708565,
         "lng": 139.804397,
         "index": 18
@@ -1708,7 +1708,7 @@
       {
         "id": "oshiage-a",
         "name": "Oshiage",
-        "nameJa": "\u62bc\u4e0a",
+        "nameJa": "押上",
         "lat": 35.710824,
         "lng": 139.812993,
         "index": 19
@@ -1718,7 +1718,7 @@
   {
     "id": "mita-toei",
     "name": "Mita",
-    "nameJa": "\u4e09\u7530\u7dda",
+    "nameJa": "三田線",
     "color": "#006AB8",
     "instrument": "trumpet",
     "odptRailway": "odpt.Railway:Toei.Mita",
@@ -1726,7 +1726,7 @@
       {
         "id": "meguro-m",
         "name": "Meguro",
-        "nameJa": "\u76ee\u9ed2",
+        "nameJa": "目黒",
         "lat": 35.633635,
         "lng": 139.715444,
         "index": 0
@@ -1734,7 +1734,7 @@
       {
         "id": "shirokanedai-m",
         "name": "Shirokanedai",
-        "nameJa": "\u767d\u91d1\u53f0",
+        "nameJa": "白金台",
         "lat": 35.637851,
         "lng": 139.726007,
         "index": 1
@@ -1742,7 +1742,7 @@
       {
         "id": "shirokane-takanawa-m",
         "name": "Shirokane-takanawa",
-        "nameJa": "\u767d\u91d1\u9ad8\u8f2a",
+        "nameJa": "白金高輪",
         "lat": 35.643283,
         "lng": 139.734344,
         "index": 2
@@ -1750,7 +1750,7 @@
       {
         "id": "mita-m",
         "name": "Mita",
-        "nameJa": "\u4e09\u7530",
+        "nameJa": "三田",
         "lat": 35.64865,
         "lng": 139.748998,
         "index": 3
@@ -1758,7 +1758,7 @@
       {
         "id": "shibakoen-m",
         "name": "Shibakoen",
-        "nameJa": "\u829d\u516c\u5712",
+        "nameJa": "芝公園",
         "lat": 35.654186,
         "lng": 139.74985,
         "index": 4
@@ -1766,7 +1766,7 @@
       {
         "id": "onarimon-m",
         "name": "Onarimon",
-        "nameJa": "\u5fa1\u6210\u9580",
+        "nameJa": "御成門",
         "lat": 35.660774,
         "lng": 139.751366,
         "index": 5
@@ -1774,7 +1774,7 @@
       {
         "id": "uchisaiwaicho-m",
         "name": "Uchisaiwaicho",
-        "nameJa": "\u5185\u5e78\u753a",
+        "nameJa": "内幸町",
         "lat": 35.669344,
         "lng": 139.75533,
         "index": 6
@@ -1782,7 +1782,7 @@
       {
         "id": "hibiya-m",
         "name": "Hibiya",
-        "nameJa": "\u65e5\u6bd4\u8c37",
+        "nameJa": "日比谷",
         "lat": 35.676585,
         "lng": 139.760274,
         "index": 7
@@ -1790,7 +1790,7 @@
       {
         "id": "otemachi-m",
         "name": "Otemachi",
-        "nameJa": "\u5927\u624b\u753a",
+        "nameJa": "大手町",
         "lat": 35.684093,
         "lng": 139.762798,
         "index": 8
@@ -1798,7 +1798,7 @@
       {
         "id": "jimbocho-m",
         "name": "Jimbocho",
-        "nameJa": "\u795e\u4fdd\u753a",
+        "nameJa": "神保町",
         "lat": 35.695331,
         "lng": 139.758213,
         "index": 9
@@ -1806,7 +1806,7 @@
       {
         "id": "suidobashi-m",
         "name": "Suidobashi",
-        "nameJa": "\u6c34\u9053\u6a4b",
+        "nameJa": "水道橋",
         "lat": 35.70346,
         "lng": 139.755147,
         "index": 10
@@ -1814,7 +1814,7 @@
       {
         "id": "kasuga-m",
         "name": "Kasuga",
-        "nameJa": "\u6625\u65e5",
+        "nameJa": "春日",
         "lat": 35.709532,
         "lng": 139.753287,
         "index": 11
@@ -1822,7 +1822,7 @@
       {
         "id": "hakusan-m",
         "name": "Hakusan",
-        "nameJa": "\u767d\u5c71",
+        "nameJa": "白山",
         "lat": 35.721682,
         "lng": 139.752134,
         "index": 12
@@ -1830,7 +1830,7 @@
       {
         "id": "sengoku-m",
         "name": "Sengoku",
-        "nameJa": "\u5343\u77f3",
+        "nameJa": "千石",
         "lat": 35.727772,
         "lng": 139.744984,
         "index": 13
@@ -1838,7 +1838,7 @@
       {
         "id": "sugamo-m",
         "name": "Sugamo",
-        "nameJa": "\u5de3\u9d28",
+        "nameJa": "巣鴨",
         "lat": 35.733793,
         "lng": 139.738154,
         "index": 14
@@ -1846,7 +1846,7 @@
       {
         "id": "nishi-sugamo-m",
         "name": "Nishi-sugamo",
-        "nameJa": "\u897f\u5de3\u9d28",
+        "nameJa": "西巣鴨",
         "lat": 35.743568,
         "lng": 139.728703,
         "index": 15
@@ -1854,7 +1854,7 @@
       {
         "id": "shin-itabashi-m",
         "name": "Shin-itabashi",
-        "nameJa": "\u65b0\u677f\u6a4b",
+        "nameJa": "新板橋",
         "lat": 35.748772,
         "lng": 139.719808,
         "index": 16
@@ -1862,7 +1862,7 @@
       {
         "id": "itabashi-kuyakushomae-m",
         "name": "Itabashi-kuyakushomae",
-        "nameJa": "\u677f\u6a4b\u533a\u5f79\u6240\u524d",
+        "nameJa": "板橋区役所前",
         "lat": 35.751372,
         "lng": 139.71012,
         "index": 17
@@ -1870,7 +1870,7 @@
       {
         "id": "itabashihoncho-m",
         "name": "Itabashihoncho",
-        "nameJa": "\u677f\u6a4b\u672c\u753a",
+        "nameJa": "板橋本町",
         "lat": 35.761309,
         "lng": 139.705544,
         "index": 18
@@ -1878,7 +1878,7 @@
       {
         "id": "motohasunuma-m",
         "name": "Motohasunuma",
-        "nameJa": "\u672c\u84ee\u6cbc",
+        "nameJa": "本蓮沼",
         "lat": 35.768566,
         "lng": 139.70241,
         "index": 19
@@ -1886,7 +1886,7 @@
       {
         "id": "shimura-sakaue-m",
         "name": "Shimura-sakaue",
-        "nameJa": "\u5fd7\u6751\u5742\u4e0a",
+        "nameJa": "志村坂上",
         "lat": 35.776082,
         "lng": 139.695097,
         "index": 20
@@ -1894,7 +1894,7 @@
       {
         "id": "shimura-sanchome-m",
         "name": "Shimura-sanchome",
-        "nameJa": "\u5fd7\u6751\u4e09\u4e01\u76ee",
+        "nameJa": "志村三丁目",
         "lat": 35.777468,
         "lng": 139.685751,
         "index": 21
@@ -1902,7 +1902,7 @@
       {
         "id": "hasune-m",
         "name": "Hasune",
-        "nameJa": "\u84ee\u6839",
+        "nameJa": "蓮根",
         "lat": 35.784262,
         "lng": 139.678947,
         "index": 22
@@ -1910,7 +1910,7 @@
       {
         "id": "nishidai-m",
         "name": "Nishidai",
-        "nameJa": "\u897f\u53f0",
+        "nameJa": "西台",
         "lat": 35.787074,
         "lng": 139.672867,
         "index": 23
@@ -1918,7 +1918,7 @@
       {
         "id": "takashimadaira-m",
         "name": "Takashimadaira",
-        "nameJa": "\u9ad8\u5cf6\u5e73",
+        "nameJa": "高島平",
         "lat": 35.788908,
         "lng": 139.661361,
         "index": 24
@@ -1926,7 +1926,7 @@
       {
         "id": "shin-takashimadaira-m",
         "name": "Shin-takashimadaira",
-        "nameJa": "\u65b0\u9ad8\u5cf6\u5e73",
+        "nameJa": "新高島平",
         "lat": 35.790289,
         "lng": 139.65405,
         "index": 25
@@ -1934,7 +1934,7 @@
       {
         "id": "nishi-takashimadaira-m",
         "name": "Nishi-takashimadaira",
-        "nameJa": "\u897f\u9ad8\u5cf6\u5e73",
+        "nameJa": "西高島平",
         "lat": 35.791965,
         "lng": 139.645421,
         "index": 26
@@ -1944,7 +1944,7 @@
   {
     "id": "shinjuku-toei",
     "name": "Shinjuku",
-    "nameJa": "\u65b0\u5bbf\u7dda",
+    "nameJa": "新宿線",
     "color": "#6CBB5A",
     "instrument": "oboe",
     "odptRailway": "odpt.Railway:Toei.Shinjuku",
@@ -1952,7 +1952,7 @@
       {
         "id": "shinjuku-s",
         "name": "Shinjuku",
-        "nameJa": "\u65b0\u5bbf",
+        "nameJa": "新宿",
         "lat": 35.688433,
         "lng": 139.698418,
         "index": 0
@@ -1960,7 +1960,7 @@
       {
         "id": "shinjuku-sanchome-s",
         "name": "Shinjuku-sanchome",
-        "nameJa": "\u65b0\u5bbf\u4e09\u4e01\u76ee",
+        "nameJa": "新宿三丁目",
         "lat": 35.691016,
         "lng": 139.706794,
         "index": 1
@@ -1968,7 +1968,7 @@
       {
         "id": "akebonobashi-s",
         "name": "Akebonobashi",
-        "nameJa": "\u66d9\u6a4b",
+        "nameJa": "曙橋",
         "lat": 35.692402,
         "lng": 139.722317,
         "index": 2
@@ -1976,7 +1976,7 @@
       {
         "id": "ichigaya-s",
         "name": "Ichigaya",
-        "nameJa": "\u5e02\u30f6\u8c37",
+        "nameJa": "市ヶ谷",
         "lat": 35.69153,
         "lng": 139.737588,
         "index": 3
@@ -1984,7 +1984,7 @@
       {
         "id": "kudanshita-s",
         "name": "Kudanshita",
-        "nameJa": "\u4e5d\u6bb5\u4e0b",
+        "nameJa": "九段下",
         "lat": 35.695546,
         "lng": 139.751738,
         "index": 4
@@ -1992,7 +1992,7 @@
       {
         "id": "jimbocho-s",
         "name": "Jimbocho",
-        "nameJa": "\u795e\u4fdd\u753a",
+        "nameJa": "神保町",
         "lat": 35.695972,
         "lng": 139.757981,
         "index": 5
@@ -2000,7 +2000,7 @@
       {
         "id": "ogawamachi-s",
         "name": "Ogawamachi",
-        "nameJa": "\u5c0f\u5ddd\u753a",
+        "nameJa": "小川町",
         "lat": 35.695005,
         "lng": 139.766449,
         "index": 6
@@ -2008,7 +2008,7 @@
       {
         "id": "iwamotocho-s",
         "name": "Iwamotocho",
-        "nameJa": "\u5ca9\u672c\u753a",
+        "nameJa": "岩本町",
         "lat": 35.695607,
         "lng": 139.775115,
         "index": 7
@@ -2016,7 +2016,7 @@
       {
         "id": "bakuro-yokoyama-s",
         "name": "Bakuro-yokoyama",
-        "nameJa": "\u99ac\u55b0\u6a2a\u5c71",
+        "nameJa": "馬喰横山",
         "lat": 35.69193,
         "lng": 139.783006,
         "index": 8
@@ -2024,7 +2024,7 @@
       {
         "id": "hamacho-s",
         "name": "Hamacho",
-        "nameJa": "\u6d5c\u753a",
+        "nameJa": "浜町",
         "lat": 35.688601,
         "lng": 139.787725,
         "index": 9
@@ -2032,7 +2032,7 @@
       {
         "id": "morishita-s",
         "name": "Morishita",
-        "nameJa": "\u68ee\u4e0b",
+        "nameJa": "森下",
         "lat": 35.687982,
         "lng": 139.796623,
         "index": 10
@@ -2040,7 +2040,7 @@
       {
         "id": "kikukawa-s",
         "name": "Kikukawa",
-        "nameJa": "\u83ca\u5ddd",
+        "nameJa": "菊川",
         "lat": 35.688399,
         "lng": 139.806057,
         "index": 11
@@ -2048,7 +2048,7 @@
       {
         "id": "sumiyoshi-s",
         "name": "Sumiyoshi",
-        "nameJa": "\u4f4f\u5409",
+        "nameJa": "住吉",
         "lat": 35.68904,
         "lng": 139.815723,
         "index": 12
@@ -2056,7 +2056,7 @@
       {
         "id": "nishi-ojima-s",
         "name": "Nishi-ojima",
-        "nameJa": "\u897f\u5927\u5cf6",
+        "nameJa": "西大島",
         "lat": 35.689391,
         "lng": 139.826231,
         "index": 13
@@ -2064,7 +2064,7 @@
       {
         "id": "ojima-s",
         "name": "Ojima",
-        "nameJa": "\u5927\u5cf6",
+        "nameJa": "大島",
         "lat": 35.689752,
         "lng": 139.834705,
         "index": 14
@@ -2072,7 +2072,7 @@
       {
         "id": "higashi-ojima-s",
         "name": "Higashi-ojima",
-        "nameJa": "\u6771\u5927\u5cf6",
+        "nameJa": "東大島",
         "lat": 35.689959,
         "lng": 139.847255,
         "index": 15
@@ -2080,7 +2080,7 @@
       {
         "id": "funabori-s",
         "name": "Funabori",
-        "nameJa": "\u8239\u5800",
+        "nameJa": "船堀",
         "lat": 35.68376,
         "lng": 139.863955,
         "index": 16
@@ -2088,7 +2088,7 @@
       {
         "id": "ichinoe-s",
         "name": "Ichinoe",
-        "nameJa": "\u4e00\u4e4b\u6c5f",
+        "nameJa": "一之江",
         "lat": 35.685987,
         "lng": 139.882586,
         "index": 17
@@ -2096,7 +2096,7 @@
       {
         "id": "mizue-s",
         "name": "Mizue",
-        "nameJa": "\u745e\u6c5f",
+        "nameJa": "瑞江",
         "lat": 35.69351,
         "lng": 139.8977,
         "index": 18
@@ -2104,7 +2104,7 @@
       {
         "id": "shinozaki-s",
         "name": "Shinozaki",
-        "nameJa": "\u7be0\u5d0e",
+        "nameJa": "篠崎",
         "lat": 35.706022,
         "lng": 139.903796,
         "index": 19
@@ -2112,7 +2112,7 @@
       {
         "id": "motoyawata-s",
         "name": "Motoyawata",
-        "nameJa": "\u672c\u516b\u5e61",
+        "nameJa": "本八幡",
         "lat": 35.722819,
         "lng": 139.926613,
         "index": 20
@@ -2122,7 +2122,7 @@
   {
     "id": "oedo-toei",
     "name": "Oedo",
-    "nameJa": "\u5927\u6c5f\u6238\u7dda",
+    "nameJa": "大江戸線",
     "color": "#B6007A",
     "instrument": "bass",
     "odptRailway": "odpt.Railway:Toei.Oedo",
@@ -2130,7 +2130,7 @@
       {
         "id": "tochomae-e",
         "name": "Tochomae",
-        "nameJa": "\u90fd\u5e81\u524d",
+        "nameJa": "都庁前",
         "lat": 35.690607,
         "lng": 139.692677,
         "index": 0
@@ -2138,7 +2138,7 @@
       {
         "id": "shinjuku-nishiguchi-e",
         "name": "Shinjuku-nishiguchi",
-        "nameJa": "\u65b0\u5bbf\u897f\u53e3",
+        "nameJa": "新宿西口",
         "lat": 35.693367,
         "lng": 139.699121,
         "index": 1
@@ -2146,7 +2146,7 @@
       {
         "id": "higashi-shinjuku-e",
         "name": "Higashi-shinjuku",
-        "nameJa": "\u6771\u65b0\u5bbf",
+        "nameJa": "東新宿",
         "lat": 35.697957,
         "lng": 139.707434,
         "index": 2
@@ -2154,7 +2154,7 @@
       {
         "id": "wakamatsu-kawada-e",
         "name": "Wakamatsu-kawada",
-        "nameJa": "\u82e5\u677e\u6cb3\u7530",
+        "nameJa": "若松河田",
         "lat": 35.699188,
         "lng": 139.718043,
         "index": 3
@@ -2162,7 +2162,7 @@
       {
         "id": "ushigome-yanagicho-e",
         "name": "Ushigome-yanagicho",
-        "nameJa": "\u725b\u8fbc\u67f3\u753a",
+        "nameJa": "牛込柳町",
         "lat": 35.699501,
         "lng": 139.72504,
         "index": 4
@@ -2170,7 +2170,7 @@
       {
         "id": "ushigome-kagurazaka-e",
         "name": "Ushigome-kagurazaka",
-        "nameJa": "\u725b\u8fbc\u795e\u697d\u5742",
+        "nameJa": "牛込神楽坂",
         "lat": 35.700911,
         "lng": 139.735894,
         "index": 5
@@ -2178,7 +2178,7 @@
       {
         "id": "iidabashi-e",
         "name": "Iidabashi",
-        "nameJa": "\u98ef\u7530\u6a4b",
+        "nameJa": "飯田橋",
         "lat": 35.702952,
         "lng": 139.745257,
         "index": 6
@@ -2186,7 +2186,7 @@
       {
         "id": "kasuga-e",
         "name": "Kasuga",
-        "nameJa": "\u6625\u65e5",
+        "nameJa": "春日",
         "lat": 35.708493,
         "lng": 139.752487,
         "index": 7
@@ -2194,7 +2194,7 @@
       {
         "id": "hongo-sanchome-e",
         "name": "Hongo-sanchome",
-        "nameJa": "\u672c\u90f7\u4e09\u4e01\u76ee",
+        "nameJa": "本郷三丁目",
         "lat": 35.70751,
         "lng": 139.760524,
         "index": 8
@@ -2202,7 +2202,7 @@
       {
         "id": "ueno-okachimachi-e",
         "name": "Ueno-okachimachi",
-        "nameJa": "\u4e0a\u91ce\u5fa1\u5f92\u753a",
+        "nameJa": "上野御徒町",
         "lat": 35.707949,
         "lng": 139.773351,
         "index": 9
@@ -2210,7 +2210,7 @@
       {
         "id": "shin-okachimachi-e",
         "name": "Shin-okachimachi",
-        "nameJa": "\u65b0\u5fa1\u5f92\u753a",
+        "nameJa": "新御徒町",
         "lat": 35.707009,
         "lng": 139.782166,
         "index": 10
@@ -2218,7 +2218,7 @@
       {
         "id": "kuramae-e",
         "name": "Kuramae",
-        "nameJa": "\u8535\u524d",
+        "nameJa": "蔵前",
         "lat": 35.705587,
         "lng": 139.792244,
         "index": 11
@@ -2226,7 +2226,7 @@
       {
         "id": "ryogoku-e",
         "name": "Ryogoku",
-        "nameJa": "\u4e21\u56fd",
+        "nameJa": "両国",
         "lat": 35.696807,
         "lng": 139.797469,
         "index": 12
@@ -2234,7 +2234,7 @@
       {
         "id": "morishita-e",
         "name": "Morishita",
-        "nameJa": "\u68ee\u4e0b",
+        "nameJa": "森下",
         "lat": 35.687926,
         "lng": 139.798251,
         "index": 13
@@ -2242,7 +2242,7 @@
       {
         "id": "kiyosumi-shirakawa-e",
         "name": "Kiyosumi-shirakawa",
-        "nameJa": "\u6e05\u6f84\u767d\u6cb3",
+        "nameJa": "清澄白河",
         "lat": 35.682355,
         "lng": 139.798758,
         "index": 14
@@ -2250,7 +2250,7 @@
       {
         "id": "monzen-nakacho-e",
         "name": "Monzen-nakacho",
-        "nameJa": "\u9580\u524d\u4ef2\u753a",
+        "nameJa": "門前仲町",
         "lat": 35.672772,
         "lng": 139.795124,
         "index": 15
@@ -2258,7 +2258,7 @@
       {
         "id": "tsukishima-e",
         "name": "Tsukishima",
-        "nameJa": "\u6708\u5cf6",
+        "nameJa": "月島",
         "lat": 35.663757,
         "lng": 139.783912,
         "index": 16
@@ -2266,7 +2266,7 @@
       {
         "id": "kachidoki-e",
         "name": "Kachidoki",
-        "nameJa": "\u52dd\u3069\u304d",
+        "nameJa": "勝どき",
         "lat": 35.658934,
         "lng": 139.777138,
         "index": 17
@@ -2274,7 +2274,7 @@
       {
         "id": "tsukijishijo-e",
         "name": "Tsukijishijo",
-        "nameJa": "\u7bc9\u5730\u5e02\u5834",
+        "nameJa": "築地市場",
         "lat": 35.664919,
         "lng": 139.766929,
         "index": 18
@@ -2282,7 +2282,7 @@
       {
         "id": "shiodome-e",
         "name": "Shiodome",
-        "nameJa": "\u6c50\u7559",
+        "nameJa": "汐留",
         "lat": 35.663193,
         "lng": 139.760225,
         "index": 19
@@ -2290,7 +2290,7 @@
       {
         "id": "daimon-e",
         "name": "Daimon",
-        "nameJa": "\u5927\u9580",
+        "nameJa": "大門",
         "lat": 35.656671,
         "lng": 139.755696,
         "index": 20
@@ -2298,7 +2298,7 @@
       {
         "id": "akabanebashi-e",
         "name": "Akabanebashi",
-        "nameJa": "\u8d64\u7fbd\u6a4b",
+        "nameJa": "赤羽橋",
         "lat": 35.654985,
         "lng": 139.743989,
         "index": 21
@@ -2306,7 +2306,7 @@
       {
         "id": "azabu-juban-e",
         "name": "Azabu-juban",
-        "nameJa": "\u9ebb\u5e03\u5341\u756a",
+        "nameJa": "麻布十番",
         "lat": 35.656448,
         "lng": 139.73633,
         "index": 22
@@ -2314,7 +2314,7 @@
       {
         "id": "roppongi-e",
         "name": "Roppongi",
-        "nameJa": "\u516d\u672c\u6728",
+        "nameJa": "六本木",
         "lat": 35.664106,
         "lng": 139.731354,
         "index": 23
@@ -2322,7 +2322,7 @@
       {
         "id": "aoyama-itchome-e",
         "name": "Aoyama-itchome",
-        "nameJa": "\u9752\u5c71\u4e00\u4e01\u76ee",
+        "nameJa": "青山一丁目",
         "lat": 35.673067,
         "lng": 139.723925,
         "index": 24
@@ -2330,7 +2330,7 @@
       {
         "id": "kokuritsu-kyogijo-e",
         "name": "Kokuritsu-kyogijo",
-        "nameJa": "\u56fd\u7acb\u7af6\u6280\u5834",
+        "nameJa": "国立競技場",
         "lat": 35.679896,
         "lng": 139.714667,
         "index": 25
@@ -2338,7 +2338,7 @@
       {
         "id": "yoyogi-e",
         "name": "Yoyogi",
-        "nameJa": "\u4ee3\u3005\u6728",
+        "nameJa": "代々木",
         "lat": 35.683505,
         "lng": 139.701603,
         "index": 26
@@ -2346,7 +2346,7 @@
       {
         "id": "shinjuku-e",
         "name": "Shinjuku",
-        "nameJa": "\u65b0\u5bbf",
+        "nameJa": "新宿",
         "lat": 35.688462,
         "lng": 139.699019,
         "index": 27
@@ -2354,7 +2354,7 @@
       {
         "id": "nishi-shinjuku-gochome-e",
         "name": "Nishi-shinjuku-gochome",
-        "nameJa": "\u897f\u65b0\u5bbf\u4e94\u4e01\u76ee",
+        "nameJa": "西新宿五丁目",
         "lat": 35.689892,
         "lng": 139.684545,
         "index": 29
@@ -2362,7 +2362,7 @@
       {
         "id": "nakano-sakaue-e",
         "name": "Nakano-sakaue",
-        "nameJa": "\u4e2d\u91ce\u5742\u4e0a",
+        "nameJa": "中野坂上",
         "lat": 35.697887,
         "lng": 139.682899,
         "index": 30
@@ -2370,7 +2370,7 @@
       {
         "id": "higashi-nakano-e",
         "name": "Higashi-nakano",
-        "nameJa": "\u6771\u4e2d\u91ce",
+        "nameJa": "東中野",
         "lat": 35.70716,
         "lng": 139.683112,
         "index": 31
@@ -2378,7 +2378,7 @@
       {
         "id": "nakai-e",
         "name": "Nakai",
-        "nameJa": "\u4e2d\u4e95",
+        "nameJa": "中井",
         "lat": 35.713935,
         "lng": 139.686296,
         "index": 32
@@ -2386,7 +2386,7 @@
       {
         "id": "ochiai-minami-nagasaki-e",
         "name": "Ochiai-minami-nagasaki",
-        "nameJa": "\u843d\u5408\u5357\u9577\u5d0e",
+        "nameJa": "落合南長崎",
         "lat": 35.723435,
         "lng": 139.683389,
         "index": 33
@@ -2394,7 +2394,7 @@
       {
         "id": "shin-egota-e",
         "name": "Shin-egota",
-        "nameJa": "\u65b0\u6c5f\u53e4\u7530",
+        "nameJa": "新江古田",
         "lat": 35.732579,
         "lng": 139.670498,
         "index": 34
@@ -2402,7 +2402,7 @@
       {
         "id": "nerima-e",
         "name": "Nerima",
-        "nameJa": "\u7df4\u99ac",
+        "nameJa": "練馬",
         "lat": 35.737411,
         "lng": 139.654762,
         "index": 35
@@ -2410,7 +2410,7 @@
       {
         "id": "toshimaen-e",
         "name": "Toshimaen",
-        "nameJa": "\u8c4a\u5cf6\u5712",
+        "nameJa": "豊島園",
         "lat": 35.741711,
         "lng": 139.649116,
         "index": 36
@@ -2418,7 +2418,7 @@
       {
         "id": "nerima-kasugacho-e",
         "name": "Nerima-kasugacho",
-        "nameJa": "\u7df4\u99ac\u6625\u65e5\u753a",
+        "nameJa": "練馬春日町",
         "lat": 35.75141,
         "lng": 139.6403,
         "index": 37
@@ -2426,7 +2426,7 @@
       {
         "id": "hikarigaoka-e",
         "name": "Hikarigaoka",
-        "nameJa": "\u5149\u304c\u4e18",
+        "nameJa": "光が丘",
         "lat": 35.758527,
         "lng": 139.628901,
         "index": 38
@@ -2436,7 +2436,7 @@
   {
     "id": "yurikamome",
     "name": "Yurikamome",
-    "nameJa": "\u3086\u308a\u304b\u3082\u3081",
+    "nameJa": "ゆりかもめ",
     "color": "#0065A6",
     "instrument": "glockenspiel",
     "odptRailway": "odpt.Railway:Yurikamome.Yurikamome",
@@ -2444,7 +2444,7 @@
       {
         "id": "shimbashi",
         "name": "Shimbashi",
-        "nameJa": "\u65b0\u6a4b",
+        "nameJa": "新橋",
         "lat": 35.6654,
         "lng": 139.7599,
         "index": 0
@@ -2452,7 +2452,7 @@
       {
         "id": "shiodome",
         "name": "Shiodome",
-        "nameJa": "\u6c50\u7559",
+        "nameJa": "汐留",
         "lat": 35.66276,
         "lng": 139.75986,
         "index": 1
@@ -2460,7 +2460,7 @@
       {
         "id": "takeshiba",
         "name": "Takeshiba",
-        "nameJa": "\u7af9\u829d",
+        "nameJa": "竹芝",
         "lat": 35.65401,
         "lng": 139.76191,
         "index": 2
@@ -2468,23 +2468,23 @@
       {
         "id": "hinode",
         "name": "Hinode",
-        "nameJa": "\u65e5\u306e\u51fa",
+        "nameJa": "日の出",
         "lat": 35.6492,
         "lng": 139.75914,
         "index": 3
       },
       {
         "id": "shibaura-futo",
-        "name": "Shibaura-fut\u014d",
-        "nameJa": "\u829d\u6d66\u3075\u982d",
+        "name": "Shibaura-futō",
+        "nameJa": "芝浦ふ頭",
         "lat": 35.64178,
         "lng": 139.7578,
         "index": 4
       },
       {
         "id": "odaiba-kaihinkoen",
-        "name": "Odaiba-kaihink\u014den",
-        "nameJa": "\u304a\u53f0\u5834\u6d77\u6d5c\u516c\u5712",
+        "name": "Odaiba-kaihinkōen",
+        "nameJa": "お台場海浜公園",
         "lat": 35.62989,
         "lng": 139.77879,
         "index": 5
@@ -2492,7 +2492,7 @@
       {
         "id": "daiba",
         "name": "Daiba",
-        "nameJa": "\u53f0\u5834",
+        "nameJa": "台場",
         "lat": 35.62591,
         "lng": 139.77142,
         "index": 6
@@ -2500,7 +2500,7 @@
       {
         "id": "tokyo-international-cruise-terminal",
         "name": "Tokyo International Cruise Terminal",
-        "nameJa": "\u6771\u4eac\u56fd\u969b\u30af\u30eb\u30fc\u30ba\u30bf\u30fc\u30df\u30ca\u30eb",
+        "nameJa": "東京国際クルーズターミナル",
         "lat": 35.62137,
         "lng": 139.77312,
         "index": 7
@@ -2508,7 +2508,7 @@
       {
         "id": "telecom-center",
         "name": "Telecom Center",
-        "nameJa": "\u30c6\u30ec\u30b3\u30e0\u30bb\u30f3\u30bf\u30fc",
+        "nameJa": "テレコムセンター",
         "lat": 35.61759,
         "lng": 139.77937,
         "index": 8
@@ -2516,7 +2516,7 @@
       {
         "id": "aomi",
         "name": "Aomi",
-        "nameJa": "\u9752\u6d77",
+        "nameJa": "青海",
         "lat": 35.62484,
         "lng": 139.78128,
         "index": 9
@@ -2524,7 +2524,7 @@
       {
         "id": "tokyo-big-sight",
         "name": "Tokyo Big Sight",
-        "nameJa": "\u6771\u4eac\u30d3\u30c3\u30b0\u30b5\u30a4\u30c8",
+        "nameJa": "東京ビッグサイト",
         "lat": 35.63031,
         "lng": 139.79131,
         "index": 10
@@ -2532,7 +2532,7 @@
       {
         "id": "ariake",
         "name": "Ariake",
-        "nameJa": "\u6709\u660e",
+        "nameJa": "有明",
         "lat": 35.63457,
         "lng": 139.79314,
         "index": 11
@@ -2540,15 +2540,15 @@
       {
         "id": "ariake-tennis-no-mori",
         "name": "Ariake-tennis-no-mori",
-        "nameJa": "\u6709\u660e\u30c6\u30cb\u30b9\u306e\u68ee",
+        "nameJa": "有明テニスの森",
         "lat": 35.63996,
         "lng": 139.78884,
         "index": 12
       },
       {
         "id": "shijo-mae",
-        "name": "Shij\u014d-mae",
-        "nameJa": "\u5e02\u5834\u524d",
+        "name": "Shijō-mae",
+        "nameJa": "市場前",
         "lat": 35.64574,
         "lng": 139.78561,
         "index": 13
@@ -2556,7 +2556,7 @@
       {
         "id": "shin-toyosu",
         "name": "Shin-Toyosu",
-        "nameJa": "\u65b0\u8c4a\u6d32",
+        "nameJa": "新豊洲",
         "lat": 35.64868,
         "lng": 139.79003,
         "index": 14
@@ -2564,7 +2564,7 @@
       {
         "id": "toyosu",
         "name": "Toyosu",
-        "nameJa": "\u8c4a\u6d32",
+        "nameJa": "豊洲",
         "lat": 35.6538,
         "lng": 139.7954,
         "index": 15
@@ -2574,7 +2574,7 @@
   {
     "id": "twr-rinkai",
     "name": "Rinkai",
-    "nameJa": "\u308a\u3093\u304b\u3044\u7dda",
+    "nameJa": "りんかい線",
     "color": "#222D65",
     "instrument": "xylophone",
     "odptRailway": "odpt.Railway:TWR.Rinkai",
@@ -2582,7 +2582,7 @@
       {
         "id": "shin-kiba-twr",
         "name": "Shin-kiba",
-        "nameJa": "\u65b0\u6728\u5834",
+        "nameJa": "新木場",
         "lat": 35.64607,
         "lng": 139.82678,
         "index": 0
@@ -2590,7 +2590,7 @@
       {
         "id": "shinonome-twr",
         "name": "Shinonome",
-        "nameJa": "\u6771\u96f2",
+        "nameJa": "東雲",
         "lat": 35.64057,
         "lng": 139.80329,
         "index": 1
@@ -2598,7 +2598,7 @@
       {
         "id": "kokusai-tenjijo-twr",
         "name": "Kokusai-tenjijo",
-        "nameJa": "\u56fd\u969b\u5c55\u793a\u5834",
+        "nameJa": "国際展示場",
         "lat": 35.63437,
         "lng": 139.79173,
         "index": 2
@@ -2606,7 +2606,7 @@
       {
         "id": "tokyo-teleport-twr",
         "name": "Tokyo Teleport",
-        "nameJa": "\u6771\u4eac\u30c6\u30ec\u30dd\u30fc\u30c8",
+        "nameJa": "東京テレポート",
         "lat": 35.62751,
         "lng": 139.77887,
         "index": 3
@@ -2614,7 +2614,7 @@
       {
         "id": "tennozu-isle-twr",
         "name": "Tennozu Isle",
-        "nameJa": "\u5929\u738b\u6d32\u30a2\u30a4\u30eb",
+        "nameJa": "天王洲アイル",
         "lat": 35.62038,
         "lng": 139.75089,
         "index": 4
@@ -2622,7 +2622,7 @@
       {
         "id": "shinagawa-seaside-twr",
         "name": "Shinagawa Seaside",
-        "nameJa": "\u54c1\u5ddd\u30b7\u30fc\u30b5\u30a4\u30c9",
+        "nameJa": "品川シーサイド",
         "lat": 35.60894,
         "lng": 139.74979,
         "index": 5
@@ -2630,7 +2630,7 @@
       {
         "id": "oimachi-twr",
         "name": "Oimachi",
-        "nameJa": "\u5927\u4e95\u753a",
+        "nameJa": "大井町",
         "lat": 35.60737,
         "lng": 139.73474,
         "index": 6
@@ -2638,7 +2638,7 @@
       {
         "id": "osaki-twr",
         "name": "Osaki",
-        "nameJa": "\u5927\u5d0e",
+        "nameJa": "大崎",
         "lat": 35.6193,
         "lng": 139.7283,
         "index": 7
@@ -2648,7 +2648,7 @@
   {
     "id": "tama-monorail",
     "name": "Tama Monorail",
-    "nameJa": "\u591a\u6469\u90fd\u5e02\u30e2\u30ce\u30ec\u30fc\u30eb",
+    "nameJa": "多摩都市モノレール",
     "color": "#286460",
     "instrument": "celesta",
     "odptRailway": "odpt.Railway:TamaMonorail.TamaMonorail",
@@ -2656,7 +2656,7 @@
       {
         "id": "tama-center-t",
         "name": "Tama Center",
-        "nameJa": "\u591a\u6469\u30bb\u30f3\u30bf\u30fc",
+        "nameJa": "多摩センター",
         "lat": 35.6239,
         "lng": 139.4228,
         "index": 0
@@ -2664,7 +2664,7 @@
       {
         "id": "matsugaya-t",
         "name": "Matsugaya",
-        "nameJa": "\u677e\u304c\u8c37",
+        "nameJa": "松が谷",
         "lat": 35.6318,
         "lng": 139.422,
         "index": 1
@@ -2672,7 +2672,7 @@
       {
         "id": "otsuka-teikyo-daigaku-t",
         "name": "Otsuka-Teikyo-Daigaku",
-        "nameJa": "\u5927\u585a\u30fb\u5e1d\u4eac\u5927\u5b66",
+        "nameJa": "大塚・帝京大学",
         "lat": 35.6369,
         "lng": 139.4164,
         "index": 2
@@ -2680,7 +2680,7 @@
       {
         "id": "chuo-daigaku-meisei-daigaku-t",
         "name": "Chuo-Daigaku-Meisei-Daigaku",
-        "nameJa": "\u4e2d\u592e\u5927\u5b66\u30fb\u660e\u661f\u5927\u5b66",
+        "nameJa": "中央大学・明星大学",
         "lat": 35.6419,
         "lng": 139.4087,
         "index": 3
@@ -2688,7 +2688,7 @@
       {
         "id": "tama-dobutsukoen-t",
         "name": "Tama-Dobutsukoen",
-        "nameJa": "\u591a\u6469\u52d5\u7269\u516c\u5712",
+        "nameJa": "多摩動物公園",
         "lat": 35.6485,
         "lng": 139.4038,
         "index": 4
@@ -2696,7 +2696,7 @@
       {
         "id": "hodokubo-t",
         "name": "Hodokubo",
-        "nameJa": "\u7a0b\u4e45\u4fdd",
+        "nameJa": "程久保",
         "lat": 35.6552,
         "lng": 139.4108,
         "index": 5
@@ -2704,7 +2704,7 @@
       {
         "id": "takahatafudo-t",
         "name": "Takahatafudo",
-        "nameJa": "\u9ad8\u5e61\u4e0d\u52d5",
+        "nameJa": "高幡不動",
         "lat": 35.6613,
         "lng": 139.4152,
         "index": 6
@@ -2712,7 +2712,7 @@
       {
         "id": "manganji-t",
         "name": "Manganji",
-        "nameJa": "\u4e07\u9858\u5bfa",
+        "nameJa": "万願寺",
         "lat": 35.6713,
         "lng": 139.4199,
         "index": 7
@@ -2720,7 +2720,7 @@
       {
         "id": "koshukaido-t",
         "name": "Koshukaido",
-        "nameJa": "\u7532\u5dde\u8857\u9053",
+        "nameJa": "甲州街道",
         "lat": 35.6782,
         "lng": 139.4092,
         "index": 8
@@ -2728,7 +2728,7 @@
       {
         "id": "shibasaki-taiikukan-t",
         "name": "Shibasaki-Taiikukan",
-        "nameJa": "\u67f4\u5d0e\u4f53\u80b2\u9928",
+        "nameJa": "柴崎体育館",
         "lat": 35.6898,
         "lng": 139.4093,
         "index": 9
@@ -2736,7 +2736,7 @@
       {
         "id": "tachikawa-minami-t",
         "name": "Tachikawa-Minami",
-        "nameJa": "\u7acb\u5ddd\u5357",
+        "nameJa": "立川南",
         "lat": 35.6962,
         "lng": 139.4126,
         "index": 10
@@ -2744,7 +2744,7 @@
       {
         "id": "tachikawa-kita-t",
         "name": "Tachikawa-Kita",
-        "nameJa": "\u7acb\u5ddd\u5317",
+        "nameJa": "立川北",
         "lat": 35.6995,
         "lng": 139.4127,
         "index": 11
@@ -2752,7 +2752,7 @@
       {
         "id": "takamatsu-t",
         "name": "Takamatsu",
-        "nameJa": "\u9ad8\u677e",
+        "nameJa": "高松",
         "lat": 35.71,
         "lng": 139.4133,
         "index": 12
@@ -2760,7 +2760,7 @@
       {
         "id": "tachihi-t",
         "name": "Tachihi",
-        "nameJa": "\u7acb\u98db",
+        "nameJa": "立飛",
         "lat": 35.7143,
         "lng": 139.4171,
         "index": 13
@@ -2768,7 +2768,7 @@
       {
         "id": "izumi-taiikukan-t",
         "name": "Izumi-Taiikukan",
-        "nameJa": "\u6cc9\u4f53\u80b2\u9928",
+        "nameJa": "泉体育館",
         "lat": 35.7188,
         "lng": 139.4196,
         "index": 14
@@ -2776,7 +2776,7 @@
       {
         "id": "sunagawa-nanaban-t",
         "name": "Sunagawa-Nanaban",
-        "nameJa": "\u7802\u5ddd\u4e03\u756a",
+        "nameJa": "砂川七番",
         "lat": 35.7234,
         "lng": 139.4181,
         "index": 15
@@ -2784,7 +2784,7 @@
       {
         "id": "tamagawa-josui-t",
         "name": "Tamagawa-Josui",
-        "nameJa": "\u7389\u5ddd\u4e0a\u6c34",
+        "nameJa": "玉川上水",
         "lat": 35.7322,
         "lng": 139.4177,
         "index": 16
@@ -2792,7 +2792,7 @@
       {
         "id": "sakurakaido-t",
         "name": "Sakurakaido",
-        "nameJa": "\u685c\u8857\u9053",
+        "nameJa": "桜街道",
         "lat": 35.739,
         "lng": 139.4166,
         "index": 17
@@ -2800,7 +2800,7 @@
       {
         "id": "kamikitadai-t",
         "name": "Kamikitadai",
-        "nameJa": "\u4e0a\u5317\u53f0",
+        "nameJa": "上北台",
         "lat": 35.7458,
         "lng": 139.4159,
         "index": 18
@@ -2810,7 +2810,7 @@
   {
     "id": "marunouchi-branch",
     "name": "Marunouchi Branch",
-    "nameJa": "\u4e38\u30ce\u5185\u7dda\u652f\u7dda",
+    "nameJa": "丸ノ内線支線",
     "color": "#F62E36",
     "instrument": "violin",
     "odptRailway": "odpt.Railway:TokyoMetro.MarunouchiBranch",
@@ -2818,7 +2818,7 @@
       {
         "id": "honancho-mb",
         "name": "Honancho",
-        "nameJa": "\u65b9\u5357\u753a",
+        "nameJa": "方南町",
         "lat": 35.683515,
         "lng": 139.657935,
         "index": 0
@@ -2826,7 +2826,7 @@
       {
         "id": "nakano-fujimicho-mb",
         "name": "Nakano-fujimicho",
-        "nameJa": "\u4e2d\u91ce\u5bcc\u58eb\u898b\u753a",
+        "nameJa": "中野富士見町",
         "lat": 35.69082,
         "lng": 139.668155,
         "index": 1
@@ -2834,7 +2834,7 @@
       {
         "id": "nakano-shimbashi-mb",
         "name": "Nakano-Shimbashi",
-        "nameJa": "\u4e2d\u91ce\u65b0\u6a4b",
+        "nameJa": "中野新橋",
         "lat": 35.691685,
         "lng": 139.674001,
         "index": 2
@@ -2842,7 +2842,7 @@
       {
         "id": "nakano-sakaue-mb",
         "name": "Nakano-sakaue",
-        "nameJa": "\u4e2d\u91ce\u5742\u4e0a",
+        "nameJa": "中野坂上",
         "lat": 35.697085,
         "lng": 139.682205,
         "index": 3
@@ -2852,7 +2852,7 @@
   {
     "id": "tsukuba-express",
     "name": "Tsukuba Express",
-    "nameJa": "\u3064\u304f\u3070\u30a8\u30af\u30b9\u30d7\u30ec\u30b9",
+    "nameJa": "つくばエクスプレス",
     "color": "#00A650",
     "instrument": "kalimba",
     "odptRailway": "odpt.Railway:MIR.TsukubaExpress",
@@ -2860,7 +2860,7 @@
       {
         "id": "akihabara-tx",
         "name": "Akihabara",
-        "nameJa": "\u79cb\u8449\u539f",
+        "nameJa": "秋葉原",
         "lat": 35.69894,
         "lng": 139.77428,
         "index": 0
@@ -2868,7 +2868,7 @@
       {
         "id": "shin-okachimachi-tx",
         "name": "Shin-Okachimachi",
-        "nameJa": "\u65b0\u5fa1\u5f92\u753a",
+        "nameJa": "新御徒町",
         "lat": 35.70711,
         "lng": 139.78194,
         "index": 1
@@ -2876,7 +2876,7 @@
       {
         "id": "asakusa-tx",
         "name": "Asakusa",
-        "nameJa": "\u6d45\u8349",
+        "nameJa": "浅草",
         "lat": 35.714,
         "lng": 139.79239,
         "index": 2
@@ -2884,7 +2884,7 @@
       {
         "id": "minami-senju-tx",
         "name": "Minami-Senju",
-        "nameJa": "\u5357\u5343\u4f4f",
+        "nameJa": "南千住",
         "lat": 35.73344,
         "lng": 139.79911,
         "index": 3
@@ -2892,7 +2892,7 @@
       {
         "id": "kita-senju-tx",
         "name": "Kita-Senju",
-        "nameJa": "\u5317\u5343\u4f4f",
+        "nameJa": "北千住",
         "lat": 35.74975,
         "lng": 139.80533,
         "index": 4
@@ -2900,15 +2900,15 @@
       {
         "id": "aoi-tx",
         "name": "Aoi",
-        "nameJa": "\u9752\u4e95",
+        "nameJa": "青井",
         "lat": 35.7725,
         "lng": 139.82033,
         "index": 5
       },
       {
         "id": "rokucho-tx",
-        "name": "Rokuch\u014d",
-        "nameJa": "\u516d\u753a",
+        "name": "Rokuchō",
+        "nameJa": "六町",
         "lat": 35.78492,
         "lng": 139.82181,
         "index": 6
@@ -2916,15 +2916,15 @@
       {
         "id": "yashio-tx",
         "name": "Yashio",
-        "nameJa": "\u516b\u6f6e",
+        "nameJa": "八潮",
         "lat": 35.80786,
         "lng": 139.84483,
         "index": 7
       },
       {
         "id": "misato-chuo-tx",
-        "name": "Misato-ch\u016b\u014d",
-        "nameJa": "\u4e09\u90f7\u4e2d\u592e",
+        "name": "Misato-chūō",
+        "nameJa": "三郷中央",
         "lat": 35.82417,
         "lng": 139.87806,
         "index": 8
@@ -2932,7 +2932,7 @@
       {
         "id": "minami-nagareyama-tx",
         "name": "Minami-Nagareyama",
-        "nameJa": "\u5357\u6d41\u5c71",
+        "nameJa": "南流山",
         "lat": 35.83786,
         "lng": 139.90433,
         "index": 9
@@ -2940,15 +2940,15 @@
       {
         "id": "nagareyama-central-park-tx",
         "name": "Nagareyama-centralpark",
-        "nameJa": "\u6d41\u5c71\u30bb\u30f3\u30c8\u30e9\u30eb\u30d1\u30fc\u30af",
+        "nameJa": "流山セントラルパーク",
         "lat": 35.85447,
         "lng": 139.91522,
         "index": 10
       },
       {
         "id": "nagareyama-otakanomori-tx",
-        "name": "Nagareyama-\u014dtakanomori",
-        "nameJa": "\u6d41\u5c71\u304a\u304a\u305f\u304b\u306e\u68ee",
+        "name": "Nagareyama-ōtakanomori",
+        "nameJa": "流山おおたかの森",
         "lat": 35.87186,
         "lng": 139.92506,
         "index": 11
@@ -2956,7 +2956,7 @@
       {
         "id": "kashiwanoha-campus-tx",
         "name": "Kashiwanoha-campus",
-        "nameJa": "\u67cf\u306e\u8449\u30ad\u30e3\u30f3\u30d1\u30b9",
+        "nameJa": "柏の葉キャンパス",
         "lat": 35.89336,
         "lng": 139.9525,
         "index": 12
@@ -2964,7 +2964,7 @@
       {
         "id": "kashiwa-tanaka-tx",
         "name": "Kashiwa-Tanaka",
-        "nameJa": "\u67cf\u305f\u306a\u304b",
+        "nameJa": "柏たなか",
         "lat": 35.911,
         "lng": 139.9575,
         "index": 13
@@ -2972,7 +2972,7 @@
       {
         "id": "moriya-tx",
         "name": "Moriya",
-        "nameJa": "\u5b88\u8c37",
+        "nameJa": "守谷",
         "lat": 35.95069,
         "lng": 139.99225,
         "index": 14
@@ -2980,7 +2980,7 @@
       {
         "id": "miraidaira-tx",
         "name": "Miraidaira",
-        "nameJa": "\u307f\u3089\u3044\u5e73",
+        "nameJa": "みらい平",
         "lat": 35.99475,
         "lng": 140.03831,
         "index": 15
@@ -2988,23 +2988,23 @@
       {
         "id": "midorino-tx",
         "name": "Midorino",
-        "nameJa": "\u307f\u3069\u308a\u306e",
+        "nameJa": "みどりの",
         "lat": 36.02994,
         "lng": 140.05625,
         "index": 16
       },
       {
         "id": "bampaku-kinen-koen-tx",
-        "name": "Bampaku-kinenk\u014den",
-        "nameJa": "\u4e07\u535a\u8a18\u5ff5\u516c\u5712",
+        "name": "Bampaku-kinenkōen",
+        "nameJa": "万博記念公園",
         "lat": 36.05847,
         "lng": 140.05944,
         "index": 17
       },
       {
         "id": "kenkyu-gakuen-tx",
-        "name": "Kenky\u016b-gakuen",
-        "nameJa": "\u7814\u7a76\u5b66\u5712",
+        "name": "Kenkyū-gakuen",
+        "nameJa": "研究学園",
         "lat": 36.08217,
         "lng": 140.08239,
         "index": 18
@@ -3012,10 +3012,1284 @@
       {
         "id": "tsukuba-tx",
         "name": "Tsukuba",
-        "nameJa": "\u3064\u304f\u3070",
+        "nameJa": "つくば",
         "lat": 36.08256,
         "lng": 140.11169,
         "index": 19
+      }
+    ]
+  },
+  {
+    "id": "jr-yamanote",
+    "name": "Yamanote",
+    "nameJa": "山手線",
+    "color": "#9ACD32",
+    "instrument": "piano",
+    "odptRailway": "odpt.Railway:JR-East.Yamanote",
+    "stations": [
+      {
+        "id": "shinagawa-yamanote",
+        "name": "Shinagawa",
+        "nameJa": "品川",
+        "lat": 35.62865,
+        "lng": 139.7384,
+        "index": 0
+      },
+      {
+        "id": "takanawa-gateway-yamanote",
+        "name": "Takanawa Gateway",
+        "nameJa": "高輪ゲートウェイ",
+        "lat": 35.63545,
+        "lng": 139.74052,
+        "index": 1
+      },
+      {
+        "id": "tamachi-yamanote",
+        "name": "Tamachi",
+        "nameJa": "田町",
+        "lat": 35.64577,
+        "lng": 139.74766,
+        "index": 2
+      },
+      {
+        "id": "hamamatsucho-yamanote",
+        "name": "Hamamatsucho",
+        "nameJa": "浜松町",
+        "lat": 35.65512,
+        "lng": 139.75701,
+        "index": 3
+      },
+      {
+        "id": "shimbashi-yamanote",
+        "name": "Shimbashi",
+        "nameJa": "新橋",
+        "lat": 35.66617,
+        "lng": 139.75811,
+        "index": 4
+      },
+      {
+        "id": "yurakucho-yamanote",
+        "name": "Yurakucho",
+        "nameJa": "有楽町",
+        "lat": 35.67501,
+        "lng": 139.76301,
+        "index": 5
+      },
+      {
+        "id": "tokyo-yamanote",
+        "name": "Tokyo",
+        "nameJa": "東京",
+        "lat": 35.68125,
+        "lng": 139.76658,
+        "index": 6
+      },
+      {
+        "id": "kanda-yamanote",
+        "name": "Kanda",
+        "nameJa": "神田",
+        "lat": 35.69177,
+        "lng": 139.77099,
+        "index": 7
+      },
+      {
+        "id": "akihabara-yamanote",
+        "name": "Akihabara",
+        "nameJa": "秋葉原",
+        "lat": 35.69836,
+        "lng": 139.773,
+        "index": 8
+      },
+      {
+        "id": "okachimachi-yamanote",
+        "name": "Okachimachi",
+        "nameJa": "御徒町",
+        "lat": 35.70696,
+        "lng": 139.7746,
+        "index": 9
+      },
+      {
+        "id": "ueno-yamanote",
+        "name": "Ueno",
+        "nameJa": "上野",
+        "lat": 35.71359,
+        "lng": 139.77609,
+        "index": 10
+      },
+      {
+        "id": "uguisudani-yamanote",
+        "name": "Uguisudani",
+        "nameJa": "鶯谷",
+        "lat": 35.7217,
+        "lng": 139.7779,
+        "index": 11
+      },
+      {
+        "id": "nippori-yamanote",
+        "name": "Nippori",
+        "nameJa": "日暮里",
+        "lat": 35.72798,
+        "lng": 139.77042,
+        "index": 12
+      },
+      {
+        "id": "nishi-nippori-yamanote",
+        "name": "Nishi-Nippori",
+        "nameJa": "西日暮里",
+        "lat": 35.73217,
+        "lng": 139.76663,
+        "index": 13
+      },
+      {
+        "id": "tabata-yamanote",
+        "name": "Tabata",
+        "nameJa": "田端",
+        "lat": 35.73738,
+        "lng": 139.76172,
+        "index": 14
+      },
+      {
+        "id": "komagome-yamanote",
+        "name": "Komagome",
+        "nameJa": "駒込",
+        "lat": 35.73658,
+        "lng": 139.74725,
+        "index": 15
+      },
+      {
+        "id": "sugamo-yamanote",
+        "name": "Sugamo",
+        "nameJa": "巣鴨",
+        "lat": 35.73338,
+        "lng": 139.73945,
+        "index": 16
+      },
+      {
+        "id": "otsuka-yamanote",
+        "name": "Otsuka",
+        "nameJa": "大塚",
+        "lat": 35.73161,
+        "lng": 139.72858,
+        "index": 17
+      },
+      {
+        "id": "ikebukuro-yamanote",
+        "name": "Ikebukuro",
+        "nameJa": "池袋",
+        "lat": 35.73023,
+        "lng": 139.71101,
+        "index": 18
+      },
+      {
+        "id": "mejiro-yamanote",
+        "name": "Mejiro",
+        "nameJa": "目白",
+        "lat": 35.72119,
+        "lng": 139.70649,
+        "index": 19
+      },
+      {
+        "id": "takadanobaba-yamanote",
+        "name": "Takadanobaba",
+        "nameJa": "高田馬場",
+        "lat": 35.71267,
+        "lng": 139.70369,
+        "index": 20
+      },
+      {
+        "id": "shin-kubo-yamanote",
+        "name": "Shin-Ōkubo",
+        "nameJa": "新大久保",
+        "lat": 35.7013,
+        "lng": 139.7003,
+        "index": 21
+      },
+      {
+        "id": "shinjuku-yamanote",
+        "name": "Shinjuku",
+        "nameJa": "新宿",
+        "lat": 35.68898,
+        "lng": 139.70031,
+        "index": 22
+      },
+      {
+        "id": "yoyogi-yamanote",
+        "name": "Yoyogi",
+        "nameJa": "代々木",
+        "lat": 35.68394,
+        "lng": 139.70199,
+        "index": 23
+      },
+      {
+        "id": "harajuku-yamanote",
+        "name": "Harajuku",
+        "nameJa": "原宿",
+        "lat": 35.67022,
+        "lng": 139.7025,
+        "index": 24
+      },
+      {
+        "id": "shibuya-yamanote",
+        "name": "Shibuya",
+        "nameJa": "渋谷",
+        "lat": 35.65809,
+        "lng": 139.7018,
+        "index": 25
+      },
+      {
+        "id": "ebisu-yamanote",
+        "name": "Ebisu",
+        "nameJa": "恵比寿",
+        "lat": 35.64643,
+        "lng": 139.71018,
+        "index": 26
+      },
+      {
+        "id": "meguro-yamanote",
+        "name": "Meguro",
+        "nameJa": "目黒",
+        "lat": 35.63408,
+        "lng": 139.71581,
+        "index": 27
+      },
+      {
+        "id": "gotanda-yamanote",
+        "name": "Gotanda",
+        "nameJa": "五反田",
+        "lat": 35.6263,
+        "lng": 139.7237,
+        "index": 28
+      },
+      {
+        "id": "osaki-yamanote",
+        "name": "Osaki",
+        "nameJa": "大崎",
+        "lat": 35.61953,
+        "lng": 139.72878,
+        "index": 29
+      },
+      {
+        "id": "shinagawa-yamanote",
+        "name": "Shinagawa",
+        "nameJa": "品川",
+        "lat": 35.62865,
+        "lng": 139.7384,
+        "index": 30
+      }
+    ]
+  },
+  {
+    "id": "jr-chuo-rapid",
+    "name": "Chuo Rapid",
+    "nameJa": "中央線快速",
+    "color": "#F15A22",
+    "instrument": "piano",
+    "odptRailway": "odpt.Railway:JR-East.ChuoRapid",
+    "stations": [
+      {
+        "id": "tokyo-chuo-rapid",
+        "name": "Tokyo",
+        "nameJa": "東京",
+        "lat": 35.68133,
+        "lng": 139.76621,
+        "index": 0
+      },
+      {
+        "id": "kanda-chuo-rapid",
+        "name": "Kanda",
+        "nameJa": "神田",
+        "lat": 35.69184,
+        "lng": 139.77072,
+        "index": 1
+      },
+      {
+        "id": "ochanomizu-chuo-rapid",
+        "name": "Ochanomizu",
+        "nameJa": "御茶ノ水",
+        "lat": 35.6995,
+        "lng": 139.76498,
+        "index": 2
+      },
+      {
+        "id": "yotsuya-chuo-rapid",
+        "name": "Yotsuya",
+        "nameJa": "四ツ谷",
+        "lat": 35.68593,
+        "lng": 139.73053,
+        "index": 3
+      },
+      {
+        "id": "shinjuku-chuo-rapid",
+        "name": "Shinjuku",
+        "nameJa": "新宿",
+        "lat": 35.68903,
+        "lng": 139.70048,
+        "index": 4
+      },
+      {
+        "id": "nakano-chuo-rapid",
+        "name": "Nakano",
+        "nameJa": "中野",
+        "lat": 35.70591,
+        "lng": 139.66554,
+        "index": 5
+      },
+      {
+        "id": "kenji-chuo-rapid",
+        "name": "Kōenji",
+        "nameJa": "高円寺",
+        "lat": 35.70539,
+        "lng": 139.64995,
+        "index": 6
+      },
+      {
+        "id": "asagaya-chuo-rapid",
+        "name": "Asagaya",
+        "nameJa": "阿佐ケ谷",
+        "lat": 35.7049,
+        "lng": 139.63536,
+        "index": 7
+      },
+      {
+        "id": "ogikubo-chuo-rapid",
+        "name": "Ogikubo",
+        "nameJa": "荻窪",
+        "lat": 35.7045,
+        "lng": 139.62023,
+        "index": 8
+      },
+      {
+        "id": "nishi-ogikubo-chuo-rapid",
+        "name": "Nishi-Ogikubo",
+        "nameJa": "西荻窪",
+        "lat": 35.7038,
+        "lng": 139.59958,
+        "index": 9
+      },
+      {
+        "id": "kichijoji-chuo-rapid",
+        "name": "Kichijoji",
+        "nameJa": "吉祥寺",
+        "lat": 35.7032,
+        "lng": 139.58022,
+        "index": 10
+      },
+      {
+        "id": "mitaka-chuo-rapid",
+        "name": "Mitaka",
+        "nameJa": "三鷹",
+        "lat": 35.7027,
+        "lng": 139.56093,
+        "index": 11
+      },
+      {
+        "id": "musashi-sakai-chuo-rapid",
+        "name": "Musashi-Sakai",
+        "nameJa": "武蔵境",
+        "lat": 35.7021,
+        "lng": 139.54408,
+        "index": 12
+      },
+      {
+        "id": "higashi-koganei-chuo-rapid",
+        "name": "Higashi-Koganei",
+        "nameJa": "東小金井",
+        "lat": 35.7015,
+        "lng": 139.52406,
+        "index": 13
+      },
+      {
+        "id": "musashi-koganei-chuo-rapid",
+        "name": "Musashi-Koganei",
+        "nameJa": "武蔵小金井",
+        "lat": 35.701,
+        "lng": 139.50679,
+        "index": 14
+      },
+      {
+        "id": "kokubunji-chuo-rapid",
+        "name": "Kokubunji",
+        "nameJa": "国分寺",
+        "lat": 35.7001,
+        "lng": 139.48036,
+        "index": 15
+      },
+      {
+        "id": "nishi-kokubunji-chuo-rapid",
+        "name": "Nishi-Kokubunji",
+        "nameJa": "西国分寺",
+        "lat": 35.6997,
+        "lng": 139.46574,
+        "index": 16
+      },
+      {
+        "id": "kunitachi-chuo-rapid",
+        "name": "Kunitachi",
+        "nameJa": "国立",
+        "lat": 35.6992,
+        "lng": 139.44653,
+        "index": 17
+      },
+      {
+        "id": "tachikawa-chuo-rapid",
+        "name": "Tachikawa",
+        "nameJa": "立川",
+        "lat": 35.6978,
+        "lng": 139.41355,
+        "index": 18
+      },
+      {
+        "id": "hino-chuo-rapid",
+        "name": "Hino",
+        "nameJa": "日野",
+        "lat": 35.679,
+        "lng": 139.3937,
+        "index": 19
+      },
+      {
+        "id": "toyoda-chuo-rapid",
+        "name": "Toyoda",
+        "nameJa": "豊田",
+        "lat": 35.65952,
+        "lng": 139.38152,
+        "index": 20
+      },
+      {
+        "id": "hachioji-chuo-rapid",
+        "name": "Hachioji",
+        "nameJa": "八王子",
+        "lat": 35.65531,
+        "lng": 139.33946,
+        "index": 21
+      },
+      {
+        "id": "nishi-hachioji-chuo-rapid",
+        "name": "Nishi-Hachioji",
+        "nameJa": "西八王子",
+        "lat": 35.65652,
+        "lng": 139.31244,
+        "index": 22
+      },
+      {
+        "id": "takao-chuo-rapid",
+        "name": "Takao",
+        "nameJa": "高尾",
+        "lat": 35.64222,
+        "lng": 139.28245,
+        "index": 23
+      },
+      {
+        "id": "sagamiko-chuo-rapid",
+        "name": "Sagamiko",
+        "nameJa": "相模湖",
+        "lat": 35.61731,
+        "lng": 139.18846,
+        "index": 24
+      },
+      {
+        "id": "fujino-chuo-rapid",
+        "name": "Fujino",
+        "nameJa": "藤野",
+        "lat": 35.6159,
+        "lng": 139.15241,
+        "index": 25
+      },
+      {
+        "id": "uenohara-chuo-rapid",
+        "name": "Uenohara",
+        "nameJa": "上野原",
+        "lat": 35.61881,
+        "lng": 139.11611,
+        "index": 26
+      },
+      {
+        "id": "shiotsu-chuo-rapid",
+        "name": "Shiotsu",
+        "nameJa": "四方津",
+        "lat": 35.6141,
+        "lng": 139.07343,
+        "index": 27
+      },
+      {
+        "id": "yanagawa-chuo-rapid",
+        "name": "Yanagawa",
+        "nameJa": "梁川",
+        "lat": 35.60597,
+        "lng": 139.03763,
+        "index": 28
+      },
+      {
+        "id": "torisawa-chuo-rapid",
+        "name": "Torisawa",
+        "nameJa": "鳥沢",
+        "lat": 35.6081,
+        "lng": 139.00312,
+        "index": 29
+      },
+      {
+        "id": "saruhashi-chuo-rapid",
+        "name": "Saruhashi",
+        "nameJa": "猿橋",
+        "lat": 35.61271,
+        "lng": 138.96813,
+        "index": 30
+      },
+      {
+        "id": "otsuki-chuo-rapid",
+        "name": "Otsuki",
+        "nameJa": "大月",
+        "lat": 35.61309,
+        "lng": 138.94218,
+        "index": 31
+      },
+      {
+        "id": "hatsukari-chuo-rapid",
+        "name": "Hatsukari",
+        "nameJa": "初狩",
+        "lat": 35.5942,
+        "lng": 138.88433,
+        "index": 32
+      },
+      {
+        "id": "sasago-chuo-rapid",
+        "name": "Sasago",
+        "nameJa": "笹子",
+        "lat": 35.6039,
+        "lng": 138.82536,
+        "index": 33
+      },
+      {
+        "id": "kai-yamato-chuo-rapid",
+        "name": "Kai-Yamato",
+        "nameJa": "甲斐大和",
+        "lat": 35.6395,
+        "lng": 138.78081,
+        "index": 34
+      },
+      {
+        "id": "katsunumabudokyo-chuo-rapid",
+        "name": "Katsunumabudokyo",
+        "nameJa": "勝沼ぶどう郷",
+        "lat": 35.67231,
+        "lng": 138.7432,
+        "index": 35
+      },
+      {
+        "id": "enzan-chuo-rapid",
+        "name": "Enzan",
+        "nameJa": "塩山",
+        "lat": 35.7054,
+        "lng": 138.73416,
+        "index": 36
+      },
+      {
+        "id": "higashi-yamanashi-chuo-rapid",
+        "name": "Higashi-Yamanashi",
+        "nameJa": "東山梨",
+        "lat": 35.69419,
+        "lng": 138.70278,
+        "index": 37
+      },
+      {
+        "id": "yamanashishi-chuo-rapid",
+        "name": "Yamanashishi",
+        "nameJa": "山梨市",
+        "lat": 35.6849,
+        "lng": 138.68299,
+        "index": 38
+      },
+      {
+        "id": "kasugaicho-chuo-rapid",
+        "name": "Kasugaicho",
+        "nameJa": "春日居町",
+        "lat": 35.67349,
+        "lng": 138.65898,
+        "index": 39
+      },
+      {
+        "id": "isawa-onsen-chuo-rapid",
+        "name": "Isawa-Onsen",
+        "nameJa": "石和温泉",
+        "lat": 35.6577,
+        "lng": 138.63544,
+        "index": 40
+      },
+      {
+        "id": "kofu-chuo-rapid",
+        "name": "Kofu",
+        "nameJa": "甲府",
+        "lat": 35.6672,
+        "lng": 138.569,
+        "index": 41
+      },
+      {
+        "id": "ryuo-chuo-rapid",
+        "name": "Ryuo",
+        "nameJa": "竜王",
+        "lat": 35.66871,
+        "lng": 138.51935,
+        "index": 42
+      },
+      {
+        "id": "shiozaki-chuo-rapid",
+        "name": "Shiozaki",
+        "nameJa": "塩崎",
+        "lat": 35.68789,
+        "lng": 138.48761,
+        "index": 43
+      },
+      {
+        "id": "nirasaki-chuo-rapid",
+        "name": "Nirasaki",
+        "nameJa": "韮崎",
+        "lat": 35.71019,
+        "lng": 138.45091,
+        "index": 44
+      },
+      {
+        "id": "shimpu-chuo-rapid",
+        "name": "Shimpu",
+        "nameJa": "新府",
+        "lat": 35.73738,
+        "lng": 138.43329,
+        "index": 45
+      },
+      {
+        "id": "anayama-chuo-rapid",
+        "name": "Anayama",
+        "nameJa": "穴山",
+        "lat": 35.75141,
+        "lng": 138.4138,
+        "index": 46
+      },
+      {
+        "id": "hinoharu-chuo-rapid",
+        "name": "Hinoharu",
+        "nameJa": "日野春",
+        "lat": 35.79007,
+        "lng": 138.39483,
+        "index": 47
+      },
+      {
+        "id": "nagasaka-chuo-rapid",
+        "name": "Nagasaka",
+        "nameJa": "長坂",
+        "lat": 35.82751,
+        "lng": 138.36661,
+        "index": 48
+      },
+      {
+        "id": "kobuchizawa-chuo-rapid",
+        "name": "Kobuchizawa",
+        "nameJa": "小淵沢",
+        "lat": 35.86389,
+        "lng": 138.31594,
+        "index": 49
+      },
+      {
+        "id": "shinano-sakai-chuo-rapid",
+        "name": "Shinano-Sakai",
+        "nameJa": "信濃境",
+        "lat": 35.88469,
+        "lng": 138.27583,
+        "index": 50
+      },
+      {
+        "id": "fujimi-chuo-rapid",
+        "name": "Fujimi",
+        "nameJa": "富士見",
+        "lat": 35.91209,
+        "lng": 138.23844,
+        "index": 51
+      },
+      {
+        "id": "suzurannosato-chuo-rapid",
+        "name": "Suzurannosato",
+        "nameJa": "すずらんの里",
+        "lat": 35.93048,
+        "lng": 138.21182,
+        "index": 52
+      },
+      {
+        "id": "aoyagi-chuo-rapid",
+        "name": "Aoyagi",
+        "nameJa": "青柳",
+        "lat": 35.94242,
+        "lng": 138.19778,
+        "index": 53
+      },
+      {
+        "id": "chino-chuo-rapid",
+        "name": "Chino",
+        "nameJa": "茅野",
+        "lat": 35.99439,
+        "lng": 138.15221,
+        "index": 54
+      },
+      {
+        "id": "kami-suwa-chuo-rapid",
+        "name": "Kami-Suwa",
+        "nameJa": "上諏訪",
+        "lat": 36.04662,
+        "lng": 138.11629,
+        "index": 55
+      },
+      {
+        "id": "shimo-suwa-chuo-rapid",
+        "name": "Shimo-Suwa",
+        "nameJa": "下諏訪",
+        "lat": 36.072,
+        "lng": 138.08481,
+        "index": 56
+      },
+      {
+        "id": "okaya-chuo-rapid",
+        "name": "Okaya",
+        "nameJa": "岡谷",
+        "lat": 36.05652,
+        "lng": 138.04474,
+        "index": 57
+      },
+      {
+        "id": "shiojiri-chuo-rapid",
+        "name": "Shiojiri",
+        "nameJa": "塩尻",
+        "lat": 36.11448,
+        "lng": 137.9479,
+        "index": 58
+      }
+    ]
+  },
+  {
+    "id": "jr-chuo-sobu",
+    "name": "Chuo-Sobu Local",
+    "nameJa": "中央・総武緩行線",
+    "color": "#FFD400",
+    "instrument": "piano",
+    "odptRailway": "odpt.Railway:JR-East.ChuoSobuLocal",
+    "stations": [
+      {
+        "id": "iidabashi-chuo-sobu",
+        "name": "Iidabashi",
+        "nameJa": "飯田橋",
+        "lat": 35.70082,
+        "lng": 139.74392,
+        "index": 0
+      },
+      {
+        "id": "chiba-chuo-sobu",
+        "name": "Chiba",
+        "nameJa": "千葉",
+        "lat": 35.61343,
+        "lng": 140.11235,
+        "index": 1
+      },
+      {
+        "id": "nishi-chiba-chuo-sobu",
+        "name": "Nishi-Chiba",
+        "nameJa": "西千葉",
+        "lat": 35.62279,
+        "lng": 140.10321,
+        "index": 2
+      },
+      {
+        "id": "inage-chuo-sobu",
+        "name": "Inage",
+        "nameJa": "稲毛",
+        "lat": 35.63705,
+        "lng": 140.09254,
+        "index": 3
+      },
+      {
+        "id": "shin-kemigawa-chuo-sobu",
+        "name": "Shin-Kemigawa",
+        "nameJa": "新検見川",
+        "lat": 35.6518,
+        "lng": 140.07309,
+        "index": 4
+      },
+      {
+        "id": "makuhari-chuo-sobu",
+        "name": "Makuhari",
+        "nameJa": "幕張",
+        "lat": 35.6594,
+        "lng": 140.05801,
+        "index": 5
+      },
+      {
+        "id": "makuhari-hongo-chuo-sobu",
+        "name": "Makuhari-Hongo",
+        "nameJa": "幕張本郷",
+        "lat": 35.67273,
+        "lng": 140.04236,
+        "index": 6
+      },
+      {
+        "id": "tsudanuma-chuo-sobu",
+        "name": "Tsudanuma",
+        "nameJa": "津田沼",
+        "lat": 35.69136,
+        "lng": 140.02015,
+        "index": 7
+      },
+      {
+        "id": "higashi-funabashi-chuo-sobu",
+        "name": "Higashi-Funabashi",
+        "nameJa": "東船橋",
+        "lat": 35.6998,
+        "lng": 140.00429,
+        "index": 8
+      }
+    ]
+  },
+  {
+    "id": "jr-keihin-tohoku",
+    "name": "Keihin-Tohoku",
+    "nameJa": "京浜東北線",
+    "color": "#00B2E5",
+    "instrument": "piano",
+    "odptRailway": "odpt.Railway:JR-East.KeihinTohokuNegishi",
+    "stations": [
+      {
+        "id": "yokohama-keihin-tohoku",
+        "name": "Yokohama",
+        "nameJa": "横浜",
+        "lat": 35.46572,
+        "lng": 139.62242,
+        "index": 0
+      },
+      {
+        "id": "higashi-kanagawa-keihin-tohoku",
+        "name": "Higashi-Kanagawa",
+        "nameJa": "東神奈川",
+        "lat": 35.47801,
+        "lng": 139.63321,
+        "index": 1
+      },
+      {
+        "id": "shin-koyasu-keihin-tohoku",
+        "name": "Shin-Koyasu",
+        "nameJa": "新子安",
+        "lat": 35.48691,
+        "lng": 139.65413,
+        "index": 2
+      },
+      {
+        "id": "tsurumi-keihin-tohoku",
+        "name": "Tsurumi",
+        "nameJa": "鶴見",
+        "lat": 35.5083,
+        "lng": 139.6761,
+        "index": 3
+      },
+      {
+        "id": "kawasaki-keihin-tohoku",
+        "name": "Kawasaki",
+        "nameJa": "川崎",
+        "lat": 35.53144,
+        "lng": 139.69685,
+        "index": 4
+      },
+      {
+        "id": "kamata-keihin-tohoku",
+        "name": "Kamata",
+        "nameJa": "蒲田",
+        "lat": 35.56204,
+        "lng": 139.71571,
+        "index": 5
+      },
+      {
+        "id": "omori-keihin-tohoku",
+        "name": "Omori",
+        "nameJa": "大森",
+        "lat": 35.58852,
+        "lng": 139.72781,
+        "index": 6
+      },
+      {
+        "id": "oimachi-keihin-tohoku",
+        "name": "Oimachi",
+        "nameJa": "大井町",
+        "lat": 35.6064,
+        "lng": 139.7348,
+        "index": 7
+      },
+      {
+        "id": "shinagawa-keihin-tohoku",
+        "name": "Shinagawa",
+        "nameJa": "品川",
+        "lat": 35.62867,
+        "lng": 139.7387,
+        "index": 8
+      },
+      {
+        "id": "takanawa-gateway-keihin-tohoku",
+        "name": "Takanawa Gateway",
+        "nameJa": "高輪ゲートウェイ",
+        "lat": 35.63539,
+        "lng": 139.74069,
+        "index": 9
+      },
+      {
+        "id": "tamachi-keihin-tohoku",
+        "name": "Tamachi",
+        "nameJa": "田町",
+        "lat": 35.64581,
+        "lng": 139.74763,
+        "index": 10
+      },
+      {
+        "id": "hamamatsucho-keihin-tohoku",
+        "name": "Hamamatsucho",
+        "nameJa": "浜松町",
+        "lat": 35.65513,
+        "lng": 139.75691,
+        "index": 11
+      },
+      {
+        "id": "shimbashi-keihin-tohoku",
+        "name": "Shimbashi",
+        "nameJa": "新橋",
+        "lat": 35.66615,
+        "lng": 139.75798,
+        "index": 12
+      },
+      {
+        "id": "yurakucho-keihin-tohoku",
+        "name": "Yurakucho",
+        "nameJa": "有楽町",
+        "lat": 35.67501,
+        "lng": 139.76291,
+        "index": 13
+      },
+      {
+        "id": "tokyo-keihin-tohoku",
+        "name": "Tokyo",
+        "nameJa": "東京",
+        "lat": 35.68129,
+        "lng": 139.7664,
+        "index": 14
+      },
+      {
+        "id": "kanda-keihin-tohoku",
+        "name": "Kanda",
+        "nameJa": "神田",
+        "lat": 35.69179,
+        "lng": 139.77089,
+        "index": 15
+      },
+      {
+        "id": "akihabara-keihin-tohoku",
+        "name": "Akihabara",
+        "nameJa": "秋葉原",
+        "lat": 35.69837,
+        "lng": 139.77289,
+        "index": 16
+      },
+      {
+        "id": "okachimachi-keihin-tohoku",
+        "name": "Okachimachi",
+        "nameJa": "御徒町",
+        "lat": 35.70697,
+        "lng": 139.7745,
+        "index": 17
+      },
+      {
+        "id": "ueno-keihin-tohoku",
+        "name": "Ueno",
+        "nameJa": "上野",
+        "lat": 35.71363,
+        "lng": 139.77601,
+        "index": 18
+      },
+      {
+        "id": "uguisudani-keihin-tohoku",
+        "name": "Uguisudani",
+        "nameJa": "鶯谷",
+        "lat": 35.72162,
+        "lng": 139.77778,
+        "index": 19
+      },
+      {
+        "id": "nippori-keihin-tohoku",
+        "name": "Nippori",
+        "nameJa": "日暮里",
+        "lat": 35.72789,
+        "lng": 139.77031,
+        "index": 20
+      },
+      {
+        "id": "nishi-nippori-keihin-tohoku",
+        "name": "Nishi-Nippori",
+        "nameJa": "西日暮里",
+        "lat": 35.73211,
+        "lng": 139.76649,
+        "index": 21
+      },
+      {
+        "id": "tabata-keihin-tohoku",
+        "name": "Tabata",
+        "nameJa": "田端",
+        "lat": 35.7373,
+        "lng": 139.7616,
+        "index": 22
+      },
+      {
+        "id": "kami-nakazato-keihin-tohoku",
+        "name": "Kami-Nakazato",
+        "nameJa": "上中里",
+        "lat": 35.74659,
+        "lng": 139.74701,
+        "index": 23
+      },
+      {
+        "id": "ji-keihin-tohoku",
+        "name": "Ōji",
+        "nameJa": "王子",
+        "lat": 35.75231,
+        "lng": 139.7382,
+        "index": 24
+      },
+      {
+        "id": "higashi-jujo-keihin-tohoku",
+        "name": "Higashi-Jujo",
+        "nameJa": "東十条",
+        "lat": 35.76382,
+        "lng": 139.72679,
+        "index": 25
+      },
+      {
+        "id": "akabane-keihin-tohoku",
+        "name": "Akabane",
+        "nameJa": "赤羽",
+        "lat": 35.77819,
+        "lng": 139.72091,
+        "index": 26
+      },
+      {
+        "id": "kawaguchi-keihin-tohoku",
+        "name": "Kawaguchi",
+        "nameJa": "川口",
+        "lat": 35.80187,
+        "lng": 139.71742,
+        "index": 27
+      },
+      {
+        "id": "nishi-kawaguchi-keihin-tohoku",
+        "name": "Nishi-Kawaguchi",
+        "nameJa": "西川口",
+        "lat": 35.81556,
+        "lng": 139.70444,
+        "index": 28
+      },
+      {
+        "id": "warabi-keihin-tohoku",
+        "name": "Warabi",
+        "nameJa": "蕨",
+        "lat": 35.82808,
+        "lng": 139.69032,
+        "index": 29
+      },
+      {
+        "id": "minami-urawa-keihin-tohoku",
+        "name": "Minami-Urawa",
+        "nameJa": "南浦和",
+        "lat": 35.84767,
+        "lng": 139.66903,
+        "index": 30
+      },
+      {
+        "id": "urawa-keihin-tohoku",
+        "name": "Urawa",
+        "nameJa": "浦和",
+        "lat": 35.85902,
+        "lng": 139.65729,
+        "index": 31
+      },
+      {
+        "id": "kita-urawa-keihin-tohoku",
+        "name": "Kita-Urawa",
+        "nameJa": "北浦和",
+        "lat": 35.87214,
+        "lng": 139.64606,
+        "index": 32
+      },
+      {
+        "id": "yono-keihin-tohoku",
+        "name": "Yono",
+        "nameJa": "与野",
+        "lat": 35.88438,
+        "lng": 139.63911,
+        "index": 33
+      },
+      {
+        "id": "saitama-shintoshin-keihin-tohoku",
+        "name": "Saitama-Shintoshin",
+        "nameJa": "さいたま新都心",
+        "lat": 35.89365,
+        "lng": 139.63397,
+        "index": 34
+      },
+      {
+        "id": "omiya-keihin-tohoku",
+        "name": "Omiya",
+        "nameJa": "大宮",
+        "lat": 35.90644,
+        "lng": 139.62466,
+        "index": 35
+      }
+    ]
+  },
+  {
+    "id": "jr-saikyo",
+    "name": "Saikyo",
+    "nameJa": "埼京線",
+    "color": "#008000",
+    "instrument": "piano",
+    "odptRailway": "odpt.Railway:JR-East.SaikyoKawagoe",
+    "stations": [
+      {
+        "id": "osaki-saikyo",
+        "name": "Osaki",
+        "nameJa": "大崎",
+        "lat": 35.61924,
+        "lng": 139.72816,
+        "index": 0
+      },
+      {
+        "id": "ebisu-saikyo",
+        "name": "Ebisu",
+        "nameJa": "恵比寿",
+        "lat": 35.64643,
+        "lng": 139.71019,
+        "index": 1
+      },
+      {
+        "id": "shibuya-saikyo",
+        "name": "Shibuya",
+        "nameJa": "渋谷",
+        "lat": 35.65809,
+        "lng": 139.7018,
+        "index": 2
+      },
+      {
+        "id": "shinjuku-saikyo",
+        "name": "Shinjuku",
+        "nameJa": "新宿",
+        "lat": 35.68916,
+        "lng": 139.70122,
+        "index": 3
+      },
+      {
+        "id": "ikebukuro-saikyo",
+        "name": "Ikebukuro",
+        "nameJa": "池袋",
+        "lat": 35.73017,
+        "lng": 139.71119,
+        "index": 4
+      },
+      {
+        "id": "itabashi-saikyo",
+        "name": "Itabashi",
+        "nameJa": "板橋",
+        "lat": 35.74528,
+        "lng": 139.71939,
+        "index": 5
+      },
+      {
+        "id": "jj-saikyo",
+        "name": "Jūjō",
+        "nameJa": "十条",
+        "lat": 35.76001,
+        "lng": 139.7223,
+        "index": 6
+      },
+      {
+        "id": "akabane-saikyo",
+        "name": "Akabane",
+        "nameJa": "赤羽",
+        "lat": 35.77797,
+        "lng": 139.72042,
+        "index": 7
+      },
+      {
+        "id": "kita-akabane-saikyo",
+        "name": "Kita-Akabane",
+        "nameJa": "北赤羽",
+        "lat": 35.78671,
+        "lng": 139.70597,
+        "index": 8
+      },
+      {
+        "id": "ukimafunado-saikyo",
+        "name": "Ukimafunado",
+        "nameJa": "浮間舟渡",
+        "lat": 35.7911,
+        "lng": 139.69148,
+        "index": 9
+      },
+      {
+        "id": "todakoen-saikyo",
+        "name": "Todakoen",
+        "nameJa": "戸田公園",
+        "lat": 35.80788,
+        "lng": 139.67812,
+        "index": 10
+      },
+      {
+        "id": "toda-saikyo",
+        "name": "Toda",
+        "nameJa": "戸田",
+        "lat": 35.81767,
+        "lng": 139.66952,
+        "index": 11
+      },
+      {
+        "id": "kita-toda-saikyo",
+        "name": "Kita-Toda",
+        "nameJa": "北戸田",
+        "lat": 35.82762,
+        "lng": 139.66007,
+        "index": 12
+      },
+      {
+        "id": "musashi-urawa-saikyo",
+        "name": "Musashi-Urawa",
+        "nameJa": "武蔵浦和",
+        "lat": 35.84546,
+        "lng": 139.64673,
+        "index": 13
+      },
+      {
+        "id": "naka-urawa-saikyo",
+        "name": "Naka-Urawa",
+        "nameJa": "中浦和",
+        "lat": 35.85349,
+        "lng": 139.63761,
+        "index": 14
+      },
+      {
+        "id": "yono-hommachi-saikyo",
+        "name": "Yono-Hommachi",
+        "nameJa": "与野本町",
+        "lat": 35.88121,
+        "lng": 139.626,
+        "index": 15
+      },
+      {
+        "id": "kita-yono-saikyo",
+        "name": "Kita-Yono",
+        "nameJa": "北与野",
+        "lat": 35.89073,
+        "lng": 139.62852,
+        "index": 16
+      },
+      {
+        "id": "omiya-saikyo",
+        "name": "Omiya",
+        "nameJa": "大宮",
+        "lat": 35.9061,
+        "lng": 139.6231,
+        "index": 17
       }
     ]
   }
