@@ -29,6 +29,7 @@ function OrchestraInner() {
   const [mutedLines, setMutedLines] = useState<Set<string>>(new Set());
   const [volume, setVolume] = useState(0.2);
   const [weatherFxEnabled, setWeatherFxEnabled] = useState(false);
+  const [musicMode, setMusicMode] = useState<'ambient' | 'edm'>('ambient');
 
   const arrivalSeqRef = useRef(0);
   const eventBusRef = useRef<EventBus<AppEvents> | null>(null);
@@ -121,6 +122,10 @@ function OrchestraInner() {
   }, [volume]);
 
   useEffect(() => {
+    musicEngineRef.current?.setMode(musicMode);
+  }, [musicMode]);
+
+  useEffect(() => {
     if (!musicEngineRef.current || !weather) return;
     if (!weatherFxEnabled) {
       musicEngineRef.current.setWeatherEffect('none');
@@ -190,6 +195,8 @@ function OrchestraInner() {
         onVolumeChange={setVolume}
         weatherFxEnabled={weatherFxEnabled}
         onWeatherFxToggle={() => setWeatherFxEnabled((prev) => !prev)}
+        musicMode={musicMode}
+        onMusicModeChange={setMusicMode}
       />
     </div>
   );
