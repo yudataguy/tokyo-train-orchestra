@@ -2,6 +2,7 @@ import * as Tone from 'tone';
 import type { ArrivalEvent, LineConfig, WeatherEffect } from '../types';
 import { stationToNote } from './scales';
 import { getInstrumentConfig } from './instruments';
+import { EdmEngine } from './edmEngine';
 
 interface LineState {
   config: LineConfig;
@@ -17,6 +18,8 @@ export class MusicEngine {
   private masterFilter: Tone.Filter;
   private currentEffect: WeatherEffect = 'none';
   private masterVolume = 0.7;
+  private mode: 'ambient' | 'edm' = 'ambient';
+  private edmEngine: EdmEngine | null = null;
 
   constructor(lineConfigs: LineConfig[]) {
     // Gentle lowpass on the master bus tames raw-oscillator brightness.
@@ -42,6 +45,12 @@ export class MusicEngine {
     const lineState = this.lines.get(event.line);
     if (!lineState || lineState.muted) return;
 
+    if (this.mode === 'edm') {
+      this.edmEngine?.triggerArrival(event.line, event.stationIndex, lineState.config.stations.length);
+      return;
+    }
+
+    // ambient path — existing behavior
     lineState.activeTrains.add(event.trainId);
     // Auto-cleanup after 5 minutes to prevent unbounded growth
     setTimeout(() => lineState.activeTrains.delete(event.trainId), 5 * 60 * 1000);
@@ -54,6 +63,25 @@ export class MusicEngine {
     lineState.synth.volume.value = lineState.baseGain + boost;
 
     lineState.synth.triggerAttackRelease(note, '4n');
+  }
+
+  getMode(): 'ambient' | 'edm' {
+    return this.mode;
+  }
+
+  setMode(mode: 'ambient' | 'edm'): void {
+    if (this.mode === mode) return;
+
+    if (mode === 'edm') {
+      // Silence ambient voices (release any held notes).
+      this.lines.forEach((state) => state.synth.releaseAll?.());
+      this.edmEngine = new EdmEngine();
+      this.edmEngine.start();
+    } else {
+      this.edmEngine?.stop();
+      this.edmEngine = null;
+    }
+    this.mode = mode;
   }
 
   setMasterVolume(value: number): void {
@@ -103,6 +131,8 @@ export class MusicEngine {
   }
 
   dispose(): void {
+    this.edmEngine?.stop();
+    this.edmEngine = null;
     this.lines.forEach((state) => state.synth.dispose());
     this.reverb?.dispose();
     this.masterFilter.dispose();

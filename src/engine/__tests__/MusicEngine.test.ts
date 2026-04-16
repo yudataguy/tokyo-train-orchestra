@@ -10,6 +10,7 @@ jest.mock('tone', () => ({
     triggerAttackRelease: jest.fn(),
     volume: { value: 0 },
     dispose: jest.fn(),
+    releaseAll: jest.fn(),
   })),
   Synth: jest.fn(),
   FMSynth: jest.fn(),
@@ -25,6 +26,42 @@ jest.mock('tone', () => ({
     wet: { value: 0 },
     dispose: jest.fn(),
   })),
+  MembraneSynth: jest.fn().mockImplementation(() => ({
+    connect: jest.fn().mockReturnThis(),
+    disconnect: jest.fn().mockReturnThis(),
+    triggerAttackRelease: jest.fn(),
+    dispose: jest.fn(),
+  })),
+  NoiseSynth: jest.fn().mockImplementation(() => ({
+    connect: jest.fn().mockReturnThis(),
+    disconnect: jest.fn().mockReturnThis(),
+    triggerAttackRelease: jest.fn(),
+    dispose: jest.fn(),
+  })),
+  MetalSynth: jest.fn().mockImplementation(() => ({
+    connect: jest.fn().mockReturnThis(),
+    disconnect: jest.fn().mockReturnThis(),
+    triggerAttackRelease: jest.fn(),
+    dispose: jest.fn(),
+  })),
+  MonoSynth: jest.fn().mockImplementation(() => ({
+    connect: jest.fn().mockReturnThis(),
+    disconnect: jest.fn().mockReturnThis(),
+    triggerAttackRelease: jest.fn(),
+    dispose: jest.fn(),
+  })),
+  Sequence: jest.fn().mockImplementation(() => ({
+    start: jest.fn().mockReturnThis(),
+    stop: jest.fn().mockReturnThis(),
+    dispose: jest.fn(),
+  })),
+  getTransport: jest.fn().mockReturnValue({
+    start: jest.fn(),
+    stop: jest.fn(),
+    cancel: jest.fn(),
+    scheduleRepeat: jest.fn(),
+    bpm: { value: 0 },
+  }),
   start: jest.fn(),
   getDestination: jest.fn().mockReturnValue({ volume: { value: 0 } }),
   gainToDb: jest.fn((v: number) => 20 * Math.log10(v)),
@@ -90,5 +127,35 @@ describe('MusicEngine', () => {
   it('sets weather effect', () => {
     expect(() => engine.setWeatherEffect('rain')).not.toThrow();
     expect(() => engine.setWeatherEffect('none')).not.toThrow();
+  });
+
+  describe('mode switching', () => {
+    it('defaults to ambient mode', () => {
+      const engine = new MusicEngine([mockLine]);
+      expect(engine.getMode()).toBe('ambient');
+    });
+
+    it('setMode("edm") starts the EDM engine', () => {
+      const engine = new MusicEngine([mockLine]);
+      engine.setMode('edm');
+      expect(engine.getMode()).toBe('edm');
+    });
+
+    it('arrivals route to EDM engine when mode is edm', () => {
+      const engine = new MusicEngine([mockLine]);
+      engine.setMode('edm');
+      const arrival: ArrivalEvent = {
+        line: 'ginza', station: 'shibuya', stationIndex: 0,
+        direction: 'up', trainId: 't1', timestamp: Date.now(),
+      };
+      expect(() => engine.handleArrival(arrival)).not.toThrow();
+    });
+
+    it('setMode back to ambient stops the EDM engine', () => {
+      const engine = new MusicEngine([mockLine]);
+      engine.setMode('edm');
+      engine.setMode('ambient');
+      expect(engine.getMode()).toBe('ambient');
+    });
   });
 });
