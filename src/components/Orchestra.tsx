@@ -30,6 +30,7 @@ function OrchestraInner() {
   const [volume, setVolume] = useState(0.2);
   const [weatherFxEnabled, setWeatherFxEnabled] = useState(false);
 
+  const arrivalSeqRef = useRef(0);
   const eventBusRef = useRef<EventBus<AppEvents> | null>(null);
   const musicEngineRef = useRef<MusicEngineT | null>(null);
   const trainServiceRef = useRef<{ start: () => void; stop: () => void } | null>(null);
@@ -73,8 +74,14 @@ function OrchestraInner() {
 
     eventBus.on('arrival', (event) => {
       musicEngine.handleArrival(event);
+      // Stamp each event with a monotonically increasing sequence number so
+      // the React key is always unique even when two departures produce
+      // identical trainId + timestamp combos (same station, same minute,
+      // same direction, same millisecond from Date.now()).
+      const seq = ++arrivalSeqRef.current;
+      const tagged = { ...event, _seq: seq };
       setRecentArrivals((prev) => {
-        const next = [...prev, event];
+        const next = [...prev, tagged];
         return next.length > 20 ? next.slice(-20) : next;
       });
     });

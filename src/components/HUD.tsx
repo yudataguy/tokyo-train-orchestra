@@ -80,7 +80,7 @@ export default function HUD({ lines, recentArrivals, weather, onSettingsClick }:
               const lineName = language === 'ja' ? line.nameJa : line.name;
               const stationName = language === 'ja' ? (station?.nameJa ?? event.station) : (station?.name ?? event.station);
               return (
-                <div key={`${event.trainId}-${event.timestamp}`} className="flex items-center gap-2 whitespace-nowrap">
+                <div key={(event as any)._seq ?? `${event.trainId}-${event.timestamp}`} className="flex items-center gap-2 whitespace-nowrap">
                   <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: line.color }} />
                   <span className="text-xs font-semibold" style={{ color: line.color }}>{lineName}</span>
                   <span className="text-xs text-gray-500">{tInstrument(line.instrument)} &middot; {stationName}</span>

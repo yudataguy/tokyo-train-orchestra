@@ -159,7 +159,7 @@ export default function MapView({ lines, recentArrivals }: MapViewProps) {
         // after ~5 s) until pushed out of the 20-slot recentArrivals buffer.
         return (
           <TrainDot
-            key={`${event.trainId}-${event.timestamp}`}
+            key={(event as any)._seq ?? `${event.trainId}-${event.timestamp}`}
             lat={coords.lat}
             lng={coords.lng}
             color={coords.color}
