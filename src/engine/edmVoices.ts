@@ -115,8 +115,8 @@ export function createEdmVoices(destination: Tone.InputNode): EdmVoices {
     oscillator: { type: 'triangle' },
     envelope: { attack: 1.5, decay: 0.5, sustain: 0.7, release: 3.0 },
   });
-  // Pad sits well back in the mix (−6 dB ≈ half volume) so arrival hits read on top.
-  pad.volume.value = -6;
+  // Pad sits clearly in the background (−10 dB ≈ 0.32×) so arrival hits read on top.
+  pad.volume.value = -10;
 
   return {
     kick: mk(kick, (_n, d, t) => kick.triggerAttackRelease('C1', d, t)),
