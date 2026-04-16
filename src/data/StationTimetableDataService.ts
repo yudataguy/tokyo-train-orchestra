@@ -98,12 +98,14 @@ export class StationTimetableDataService {
       const departures = this.data[line.id]?.[calendar];
       if (!departures) continue;
       const hits = findStationDeparturesAt(departures, hhmm);
-      for (const hit of hits) {
+      for (let hi = 0; hi < hits.length; hi++) {
+        const hit = hits[hi];
         const station = line.stations[hit.stationIndex];
         if (!station) continue;
 
-        // Spread by deterministic per-(station,direction) offset.
-        const key = `${line.id}:${hit.stationIndex}:${hit.direction}`;
+        // Include the hit index so multiple departures at the same
+        // station+minute+direction produce unique keys.
+        const key = `${line.id}:${hit.stationIndex}:${hit.direction}:${hi}`;
         const offsetMs = hashOffset(key, remainingMs);
 
         const timer = setTimeout(() => {
@@ -113,7 +115,7 @@ export class StationTimetableDataService {
             station: station.id,
             stationIndex: hit.stationIndex,
             direction: hit.direction,
-            trainId: `stt-${line.id}-${station.id}-${hhmm}-${hit.direction}`,
+            trainId: `stt-${line.id}-${station.id}-${hhmm}-${hit.direction}-${hi}`,
             timestamp: Date.now(),
           });
         }, offsetMs);
