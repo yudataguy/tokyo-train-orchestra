@@ -63,12 +63,12 @@ export function getEdmVoiceId(lineId: string): EdmVoiceId | undefined {
 
 /**
  * Each arrival starts a bounded rhythmic loop on its voice for the train's
- * simulated dwell time (4 bars ≈ 7.7 s at 124 BPM). A later arrival on
+ * simulated dwell time (8 bars ≈ 15.5 s at 124 BPM). A later arrival on
  * the same voice restarts the loop. `null` means "one-shot, no loop" —
  * used for FX whose tails already fill a long duration.
  *
  * - `subdivision`: Tone.js time string for the repeat interval.
- * - `totalTicks`: number of subdivisions before the loop stops (4 bars).
+ * - `totalTicks`: number of subdivisions before the loop stops (8 bars).
  * - `gate(tick)`: optional — only fire on ticks where this returns true.
  */
 export interface DwellPattern {
@@ -77,20 +77,20 @@ export interface DwellPattern {
   gate?: (tick: number) => boolean;
 }
 
-// At 4 bars:
-//   1m (whole) → 4 ticks, 2n (half) → 8, 4n (quarter) → 16, 8n (eighth) → 32
+// At 8 bars:
+//   1m (whole) → 8 ticks, 2n (half) → 16, 4n (quarter) → 32, 8n (eighth) → 64
 export const DWELL_PATTERNS: Record<EdmVoiceId, DwellPattern | null> = {
-  kick: { subdivision: '4n', totalTicks: 16 },                          // four-on-the-floor
-  snare: { subdivision: '4n', totalTicks: 16, gate: (t) => t % 4 === 1 || t % 4 === 3 }, // 2 & 4
-  clap: { subdivision: '4n', totalTicks: 16, gate: (t) => t % 4 === 2 },                 // beat 3
-  closedHat: { subdivision: '8n', totalTicks: 32 },                     // steady 8ths
-  openHat: { subdivision: '2n', totalTicks: 8 },                        // half-note pulse
-  shaker: { subdivision: '8n', totalTicks: 32, gate: (t) => t % 2 === 1 },               // off-beat 8ths
-  rim: { subdivision: '1m', totalTicks: 4 },                            // downbeat only
-  cowbell: { subdivision: '1m', totalTicks: 4 },
-  lowTom: { subdivision: '1m', totalTicks: 4 },
-  bass: { subdivision: '2n', totalTicks: 8 },                           // root on 1 & 3
-  lead: { subdivision: '1m', totalTicks: 4 },                           // stab on beat 1 of each bar
+  kick: { subdivision: '4n', totalTicks: 32 },                          // four-on-the-floor
+  snare: { subdivision: '4n', totalTicks: 32, gate: (t) => t % 4 === 1 || t % 4 === 3 }, // 2 & 4
+  clap: { subdivision: '4n', totalTicks: 32, gate: (t) => t % 4 === 2 },                 // beat 3
+  closedHat: { subdivision: '8n', totalTicks: 64 },                     // steady 8ths
+  openHat: { subdivision: '2n', totalTicks: 16 },                       // half-note pulse
+  shaker: { subdivision: '8n', totalTicks: 64, gate: (t) => t % 2 === 1 },               // off-beat 8ths
+  rim: { subdivision: '1m', totalTicks: 8 },                            // downbeat only
+  cowbell: { subdivision: '1m', totalTicks: 8 },
+  lowTom: { subdivision: '1m', totalTicks: 8 },
+  bass: { subdivision: '2n', totalTicks: 16 },                          // root on 1 & 3
+  lead: { subdivision: '1m', totalTicks: 8 },                           // stab on beat 1 of each bar
   fxRiser: null,
   fxReverseCymbal: null,
   fxZap: null,
