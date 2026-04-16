@@ -127,24 +127,24 @@ export default function MapView({ lines, recentArrivals }: MapViewProps) {
         attribution={tileAttribution}
       />
 
-      {lines.map((line) => {
+      {/* Render all lines except Yamanote first, then Yamanote on top so
+          the iconic green loop is always visible above other overlapping
+          lines (Chuo, Keihin-Tohoku, Saikyo share much of the same corridor). */}
+      {[...lines.filter(l => l.id !== 'jr-yamanote'), ...lines.filter(l => l.id === 'jr-yamanote')].map((line) => {
         const routeCoords = (routesData as unknown as Record<string, [number, number][]>)[line.id];
         const positions = routeCoords
           ? routeCoords
           : line.stations.map((s) => [s.lat, s.lng] as [number, number]);
-        // Yurikamome is a driverless guideway transit line; Marunouchi Branch
-        // shares the same red color as the main Marunouchi trunk. Both are
-        // drawn dashed to follow transit-mapping convention and avoid visual
-        // collision with their solid counterparts.
         const isDashed = line.id === 'yurikamome' || line.id === 'marunouchi-branch';
+        const isYamanote = line.id === 'jr-yamanote';
         return (
           <Polyline
             key={line.id}
             positions={positions}
             pathOptions={{
               color: line.color,
-              weight: 4,
-              opacity: 0.85,
+              weight: isYamanote ? 5 : 4,
+              opacity: isYamanote ? 1.0 : 0.85,
               dashArray: isDashed ? '8 5' : undefined,
             }}
           />
