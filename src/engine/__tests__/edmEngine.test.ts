@@ -105,3 +105,16 @@ describe('EdmEngine.triggerArrival', () => {
     expect(() => engine.triggerArrival('ginza', 0, 19)).not.toThrow();
   });
 });
+
+describe('EdmEngine pad progression', () => {
+  it('start() schedules a Tone.Sequence for the pad chords', () => {
+    const { Sequence } = jest.requireMock('tone') as { Sequence: jest.Mock };
+    Sequence.mockClear();
+    const engine = new EdmEngine();
+    engine.start();
+    expect(Sequence).toHaveBeenCalled();
+    // First arg to Sequence is the callback, second is the chord events array.
+    const [, events] = Sequence.mock.calls[0];
+    expect(events).toHaveLength(4); // C, G, Am, F
+  });
+});
