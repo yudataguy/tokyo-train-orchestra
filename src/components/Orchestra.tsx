@@ -51,7 +51,7 @@ function OrchestraInner() {
 
   const vibe = computeVibe(weather);
 
-  const handleStart = useCallback(async () => {
+  const handleStart = useCallback(async (mode: 'ambient' | 'edm') => {
     // Lazy-load Tone.js and MusicEngine at click time. Module-level imports
     // would cause Tone to create a (suspended) AudioContext at page load
     // before any user gesture — Chrome logs an autoplay-policy warning for
@@ -69,7 +69,8 @@ function OrchestraInner() {
     // Apply the current React-side music mode. MusicEngine defaults to
     // 'ambient' internally; without this call, a first-load EDM default
     // would still play the ambient engine until the user toggled.
-    musicEngine.setMode(musicMode, vibe);
+    setMusicMode(mode);
+    musicEngine.setMode(mode, vibe);
     // Demo mode is a dev-only convenience. Production builds never fall
     // back to demo (otherwise a missing deploy-time env key would silently
     // replace real trains with random ones). Dev: demo kicks in when no
@@ -158,7 +159,7 @@ function OrchestraInner() {
     weatherServiceRef.current = weatherService;
 
     setStarted(true);
-  }, [lines, musicMode, vibe]);
+  }, [lines, vibe]);
 
   useEffect(() => {
     return () => {
@@ -208,22 +209,28 @@ function OrchestraInner() {
         <p className={`text-sm ${dataSourceLabel === 'missingApiKey' ? 'text-amber-400' : 'text-[#4A80D4]'}`}>
           {t(dataSourceLabel)}
         </p>
-        <p className="text-gray-500 text-xs uppercase tracking-wider">
-          {t('musicMode')}: {musicMode === 'edm' ? t('modeEdm') : t('modeAmbient')}
-        </p>
-        {musicMode === 'edm' && (
-          <p className="text-gray-600 text-xs">
-            {vibe.bpm} {t('bpm')} · {t(`mood${vibe.mood.charAt(0).toUpperCase()}${vibe.mood.slice(1)}` as 'moodHappy')} · {t(`temp${vibe.temp.charAt(0).toUpperCase()}${vibe.temp.slice(1)}` as 'tempCold')}
-          </p>
-        )}
+        <p className="text-gray-500 text-xs uppercase tracking-wider">{t('musicMode')}</p>
 
-        <button
-          onClick={handleStart}
-          className="w-24 h-24 rounded-full bg-[#003DA5] hover:bg-[#0050C8] text-white font-semibold transition-colors flex items-center justify-center text-xl"
-          aria-label={t('beginListening')}
-        >
-          {t('beginListening')}
-        </button>
+        <div className="flex flex-col sm:flex-row gap-4 mt-2">
+          <button
+            onClick={() => handleStart('ambient')}
+            className="flex flex-col items-center justify-center gap-1 w-40 h-28 rounded-2xl bg-[#003DA5] hover:bg-[#0050C8] text-white font-semibold transition-colors px-4"
+            aria-label={`${t('beginListening')} — ${t('modeAmbient')}`}
+          >
+            <span className="text-lg">{t('modeAmbient')}</span>
+            <span className="text-[11px] font-normal text-blue-100/80">{t('modeClassicTagline')}</span>
+          </button>
+          <button
+            onClick={() => handleStart('edm')}
+            className="flex flex-col items-center justify-center gap-1 w-40 h-28 rounded-2xl bg-[#8A1A9B] hover:bg-[#A722BA] text-white font-semibold transition-colors px-4"
+            aria-label={`${t('beginListening')} — ${t('modeEdm')}`}
+          >
+            <span className="text-lg">{t('modeEdm')}</span>
+            <span className="text-[11px] font-normal text-fuchsia-100/80">
+              {vibe.bpm} {t('bpm')} · {t(`mood${vibe.mood.charAt(0).toUpperCase()}${vibe.mood.slice(1)}` as 'moodHappy')} · {t(`temp${vibe.temp.charAt(0).toUpperCase()}${vibe.temp.slice(1)}` as 'tempCold')}
+            </span>
+          </button>
+        </div>
       </div>
     );
   }
