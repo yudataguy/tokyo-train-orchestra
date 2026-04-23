@@ -110,6 +110,13 @@ export default function MapView({ lines, recentArrivals }: MapViewProps) {
           animation: tto-core-fade 5s ease-out forwards;
           pointer-events: none;
         }
+        /* Respect the system-level reduced-motion preference. The arrival
+           pulse is decorative — users who've opted out of motion still see
+           the dot briefly (short fade) but skip the expanding ring entirely. */
+        @media (prefers-reduced-motion: reduce) {
+          .station-pulse { animation: none; display: none; }
+          .station-core { animation: tto-core-fade 1s linear forwards; }
+        }
       `}</style>
       {language === 'ja' && (
         <style>{`.leaflet-tile-pane img.leaflet-tile { filter: saturate(0.35) brightness(1.04); }`}</style>
@@ -123,6 +130,7 @@ export default function MapView({ lines, recentArrivals }: MapViewProps) {
         style={{ height: '100vh', width: '100vw' }}
         zoomControl={false}
         attributionControl={false}
+        aria-label={language === 'ja' ? '東京の鉄道路線地図' : 'Tokyo rail network map'}
       >
       <TileLayer
         key={tileUrl}

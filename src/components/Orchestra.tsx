@@ -200,38 +200,41 @@ function OrchestraInner() {
     apiKeyPresent ? 'hybridMode' : isDev ? 'demoMode' : 'missingApiKey';
 
   if (!started) {
+    const edmDetail = `${vibe.bpm} ${t('bpm')} · ${t(`mood${vibe.mood.charAt(0).toUpperCase()}${vibe.mood.slice(1)}` as 'moodHappy')} · ${t(`temp${vibe.temp.charAt(0).toUpperCase()}${vibe.temp.slice(1)}` as 'tempCold')}`;
     return (
-      <div className="h-screen w-screen bg-slate-950 flex flex-col items-center justify-center gap-6 px-6">
+      <main className="h-screen w-screen bg-slate-950 flex flex-col items-center justify-center gap-6 px-6">
         <h1 className="text-3xl sm:text-4xl font-bold text-white text-center">{t('title')}</h1>
         <p className="text-gray-400 text-center max-w-md text-sm sm:text-base">
           {t('description')}
         </p>
-        <p className={`text-sm ${dataSourceLabel === 'missingApiKey' ? 'text-amber-400' : 'text-[#4A80D4]'}`}>
+        <p className={`text-sm ${dataSourceLabel === 'missingApiKey' ? 'text-amber-300' : 'text-[#7AB0FF]'}`}>
           {t(dataSourceLabel)}
         </p>
-        <p className="text-gray-500 text-xs uppercase tracking-wider">{t('musicMode')}</p>
+        <p id="music-mode-label" className="text-gray-300 text-xs uppercase tracking-wider">{t('musicMode')}</p>
 
-        <div className="flex flex-col sm:flex-row gap-4 mt-2">
+        <div role="group" aria-labelledby="music-mode-label" className="flex flex-col sm:flex-row gap-4 mt-2">
           <button
+            type="button"
             onClick={() => handleStart('ambient')}
             className="flex flex-col items-center justify-center gap-1 w-40 h-28 rounded-2xl bg-[#003DA5] hover:bg-[#0050C8] text-white font-semibold transition-colors px-4"
-            aria-label={`${t('beginListening')} — ${t('modeAmbient')}`}
+            aria-label={`${t('beginListening')} — ${t('modeAmbient')} — ${t('modeClassicTagline')}`}
           >
-            <span className="text-lg">{t('modeAmbient')}</span>
-            <span className="text-[11px] font-normal text-blue-100/80">{t('modeClassicTagline')}</span>
+            <span className="text-lg" aria-hidden="true">{t('modeAmbient')}</span>
+            <span className="text-[11px] font-normal text-blue-50" aria-hidden="true">{t('modeClassicTagline')}</span>
           </button>
           <button
+            type="button"
             onClick={() => handleStart('edm')}
             className="flex flex-col items-center justify-center gap-1 w-40 h-28 rounded-2xl bg-[#8A1A9B] hover:bg-[#A722BA] text-white font-semibold transition-colors px-4"
-            aria-label={`${t('beginListening')} — ${t('modeEdm')}`}
+            aria-label={`${t('beginListening')} — ${t('modeEdm')} — ${edmDetail}`}
           >
-            <span className="text-lg">{t('modeEdm')}</span>
-            <span className="text-[11px] font-normal text-fuchsia-100/80">
-              {vibe.bpm} {t('bpm')} · {t(`mood${vibe.mood.charAt(0).toUpperCase()}${vibe.mood.slice(1)}` as 'moodHappy')} · {t(`temp${vibe.temp.charAt(0).toUpperCase()}${vibe.temp.slice(1)}` as 'tempCold')}
+            <span className="text-lg" aria-hidden="true">{t('modeEdm')}</span>
+            <span className="text-[11px] font-normal text-fuchsia-50" aria-hidden="true">
+              {edmDetail}
             </span>
           </button>
         </div>
-      </div>
+      </main>
     );
   }
 
