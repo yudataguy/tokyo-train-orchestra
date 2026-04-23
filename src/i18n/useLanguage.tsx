@@ -29,6 +29,10 @@ const INSTRUMENTS_JA: Record<string, string> = {
   xylophone: 'シロフォン',
   celesta: 'チェレスタ',
   kalimba: 'カリンバ',
+  koto: '琴',
+  shakuhachi: '尺八',
+  pipeorgan: 'パイプオルガン',
+  rhodes: 'ローズピアノ',
 };
 
 const INSTRUMENTS_EN: Record<string, string> = {
@@ -49,6 +53,10 @@ const INSTRUMENTS_EN: Record<string, string> = {
   xylophone: 'Xylophone',
   celesta: 'Celesta',
   kalimba: 'Kalimba',
+  koto: 'Koto',
+  shakuhachi: 'Shakuhachi',
+  pipeorgan: 'Pipe Organ',
+  rhodes: 'Rhodes Piano',
 };
 
 const TRANSLATIONS = {
@@ -125,7 +133,18 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const t = (key: keyof typeof TRANSLATIONS['ja']) => TRANSLATIONS[language][key];
   const tInstrument = (instrument: string) => {
     const map = language === 'ja' ? INSTRUMENTS_JA : INSTRUMENTS_EN;
-    return map[instrument] ?? instrument;
+    const translated = map[instrument];
+    if (translated === undefined) {
+      // In dev, surface missing translations loudly so a new instrument
+      // added to lines.json can't silently render as its raw English key
+      // in the middle of Japanese UI (the original bug this guards).
+      if (process.env.NODE_ENV === 'development') {
+        // eslint-disable-next-line no-console
+        console.warn(`[i18n] Missing ${language} translation for instrument: "${instrument}"`);
+      }
+      return instrument;
+    }
+    return translated;
   };
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t, tInstrument }}>
