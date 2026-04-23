@@ -97,7 +97,19 @@ export class TrainDataService {
         const lineConfig = this.lineConfigs.find((l) => l.id === lineId)!;
         const stationIndex = this.resolveStationIndex(arrival.station, lineConfig);
         if (stationIndex < 0) continue;
-        const stationId = lineConfig.stations[stationIndex]?.id ?? arrival.station;
+        // Guard: resolveStationIndex may return a value from station.index that
+        // overruns the array (e.g. historical data drift). Without this check,
+        // the raw ODPT URI leaked into ArrivalEvent.station and then rendered
+        // as "odpt.Station:Toei.Oedo.Hikarigaoka" in the ticker.
+        const resolved = lineConfig.stations[stationIndex];
+        if (!resolved) {
+          if (process.env.NODE_ENV === 'development') {
+            // eslint-disable-next-line no-console
+            console.warn(`[TrainDataService] Out-of-bounds stationIndex ${stationIndex} for line ${lineId} (len=${lineConfig.stations.length}); skipping arrival ${arrival.station}`);
+          }
+          continue;
+        }
+        const stationId = resolved.id;
 
         // Spread each batch across the poll window using a deterministic
         // per-train offset. Same train at the same station always lands at

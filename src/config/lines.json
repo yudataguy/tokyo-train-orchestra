@@ -2357,7 +2357,7 @@
         "nameJa": "西新宿五丁目",
         "lat": 35.689892,
         "lng": 139.684545,
-        "index": 29
+        "index": 28
       },
       {
         "id": "nakano-sakaue-e",
@@ -2365,7 +2365,7 @@
         "nameJa": "中野坂上",
         "lat": 35.697887,
         "lng": 139.682899,
-        "index": 30
+        "index": 29
       },
       {
         "id": "higashi-nakano-e",
@@ -2373,7 +2373,7 @@
         "nameJa": "東中野",
         "lat": 35.70716,
         "lng": 139.683112,
-        "index": 31
+        "index": 30
       },
       {
         "id": "nakai-e",
@@ -2381,7 +2381,7 @@
         "nameJa": "中井",
         "lat": 35.713935,
         "lng": 139.686296,
-        "index": 32
+        "index": 31
       },
       {
         "id": "ochiai-minami-nagasaki-e",
@@ -2389,7 +2389,7 @@
         "nameJa": "落合南長崎",
         "lat": 35.723435,
         "lng": 139.683389,
-        "index": 33
+        "index": 32
       },
       {
         "id": "shin-egota-e",
@@ -2397,7 +2397,7 @@
         "nameJa": "新江古田",
         "lat": 35.732579,
         "lng": 139.670498,
-        "index": 34
+        "index": 33
       },
       {
         "id": "nerima-e",
@@ -2405,7 +2405,7 @@
         "nameJa": "練馬",
         "lat": 35.737411,
         "lng": 139.654762,
-        "index": 35
+        "index": 34
       },
       {
         "id": "toshimaen-e",
@@ -2413,7 +2413,7 @@
         "nameJa": "豊島園",
         "lat": 35.741711,
         "lng": 139.649116,
-        "index": 36
+        "index": 35
       },
       {
         "id": "nerima-kasugacho-e",
@@ -2421,7 +2421,7 @@
         "nameJa": "練馬春日町",
         "lat": 35.75141,
         "lng": 139.6403,
-        "index": 37
+        "index": 36
       },
       {
         "id": "hikarigaoka-e",
@@ -2429,7 +2429,7 @@
         "nameJa": "光が丘",
         "lat": 35.758527,
         "lng": 139.628901,
-        "index": 38
+        "index": 37
       }
     ]
   },
