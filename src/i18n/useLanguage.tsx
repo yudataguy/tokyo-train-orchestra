@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useContext, useState, ReactNode } from 'react';
+import { INSTRUMENTS_JA, INSTRUMENTS_EN } from '../lib/instruments';
 
 export type Language = 'ja' | 'en';
 
@@ -10,54 +11,6 @@ interface LanguageContextValue {
   t: (key: keyof typeof TRANSLATIONS['ja']) => string;
   tInstrument: (instrument: string) => string;
 }
-
-const INSTRUMENTS_JA: Record<string, string> = {
-  piano: 'ピアノ',
-  violin: 'バイオリン',
-  frenchhorn: 'フレンチホルン',
-  flute: 'フルート',
-  clarinet: 'クラリネット',
-  harp: 'ハープ',
-  cello: 'チェロ',
-  marimba: 'マリンバ',
-  vibraphone: 'ビブラフォン',
-  guitar: 'ギター',
-  trumpet: 'トランペット',
-  oboe: 'オーボエ',
-  bass: 'ベース',
-  glockenspiel: 'グロッケン',
-  xylophone: 'シロフォン',
-  celesta: 'チェレスタ',
-  kalimba: 'カリンバ',
-  koto: '琴',
-  shakuhachi: '尺八',
-  pipeorgan: 'パイプオルガン',
-  rhodes: 'ローズピアノ',
-};
-
-const INSTRUMENTS_EN: Record<string, string> = {
-  piano: 'Piano',
-  violin: 'Violin',
-  frenchhorn: 'French Horn',
-  flute: 'Flute',
-  clarinet: 'Clarinet',
-  harp: 'Harp',
-  cello: 'Cello',
-  marimba: 'Marimba',
-  vibraphone: 'Vibraphone',
-  guitar: 'Guitar',
-  trumpet: 'Trumpet',
-  oboe: 'Oboe',
-  bass: 'Bass',
-  glockenspiel: 'Glockenspiel',
-  xylophone: 'Xylophone',
-  celesta: 'Celesta',
-  kalimba: 'Kalimba',
-  koto: 'Koto',
-  shakuhachi: 'Shakuhachi',
-  pipeorgan: 'Pipe Organ',
-  rhodes: 'Rhodes Piano',
-};
 
 const TRANSLATIONS = {
   ja: {
@@ -88,6 +41,9 @@ const TRANSLATIONS = {
     tempWarm: '暖かい',
     bpm: 'BPM',
     citySleeps: '街は眠っている...',
+    instrumentColumn: '楽器',
+    moodLabel: '気分',
+    tempLabel: '気温',
     tokyo: '東京',
     language: '言語',
     closeSettings: '設定を閉じる',
@@ -120,6 +76,9 @@ const TRANSLATIONS = {
     tempWarm: 'warm',
     bpm: 'BPM',
     citySleeps: 'The city sleeps...',
+    instrumentColumn: 'Instrument',
+    moodLabel: 'Mood',
+    tempLabel: 'Temperature',
     tokyo: 'Tokyo',
     language: 'Language',
     closeSettings: 'Close settings',

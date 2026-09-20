@@ -1,16 +1,128 @@
 @import "tailwindcss";
 
+/* Start-screen ("platform timetable") palette. Deliberately a cool, faintly
+   green off-white rather than a warm cream — this is the printed station
+   panel Tokyo timetables actually live on, and it keeps the 23 official line
+   colors as the only warmth on the page. */
+:root {
+  --paper: #EBEDE8;
+  --ink: #15171A;
+  --ink-2: #565B57;
+  --rule: #C6CBC4;
+}
+
 body {
   font-family: var(--font-noto-sans-jp), system-ui, -apple-system, sans-serif;
 }
 
 /* Keyboard focus ring — visible on all interactive elements when traversing
    via Tab. Without this, Tailwind's default outline:none leaves keyboard
-   users with no indication of focus. */
+   users with no indication of focus. Ink rather than the old dark-surface
+   blue, which fell to ~1.7:1 once every surface became paper. */
 :focus-visible {
-  outline: 2px solid #7AB0FF;
+  outline: 2px solid var(--ink);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: 2px;
+}
+
+/* Tabular figures keep the clock from reflowing as digits change. */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Mode plates. Each carries its own --accent (an official line color); the
+   tint is what signals "press me" on a page whose every other surface is
+   flat paper. Tailwind v4 resets <button> to cursor:default, so the pointer
+   has to be asked for explicitly or these read as static panels. */
+.plate {
+  cursor: pointer;
+  /* Text-safe variant of the accent. Marunouchi red on its own 7% tint is
+     3.0:1 — fine for a 3px bar, too weak for a label. Darkening to 72%
+     takes it to 5.2:1 (the blue goes to 9.8:1) without leaving the hue. */
+  --accent-ink: color-mix(in srgb, var(--accent) 72%, #000);
+  background: color-mix(in srgb, var(--accent) 7%, var(--paper));
+  border-color: color-mix(in srgb, var(--accent) 32%, var(--paper));
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.plate:hover {
+  background: color-mix(in srgb, var(--accent) 15%, var(--paper));
+  border-color: var(--accent);
+}
+
+/* Segmented toggles in the settings drawer, built from the same parts as the
+   start-screen plates: hairline rule at rest, accent tint plus a 3px accent
+   bar when on. The selected state keys off [aria-pressed="true"] rather than
+   a separate class, so the visual and the accessibility state cannot drift
+   apart — set one and you have set both. */
+.chip {
+  cursor: pointer;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--ink-2);
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.chip:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+.chip[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--accent) 12%, var(--paper));
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--paper));
+  color: var(--ink);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+/* Volume fader. WebKit has no ::-webkit-slider-progress, so the filled part
+   is painted as a hard-stop gradient on the track, driven by --fill which the
+   component sets from the current value. The thumb is a fader bar, not a
+   knob: square corners keep it in the same family as the plates and chips. */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 16px;
+  background: transparent;
+  cursor: pointer;
+}
+.slider::-webkit-slider-runnable-track {
+  height: 3px;
+  background: linear-gradient(to right, var(--ink) var(--fill), var(--rule) var(--fill));
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 11px;
+  height: 17px;
+  margin-top: -7px;
+  border-radius: 2px;
+  background: var(--ink);
+}
+.slider::-moz-range-track {
+  height: 3px;
+  background: var(--rule);
+}
+.slider::-moz-range-progress {
+  height: 3px;
+  background: var(--ink);
+}
+.slider::-moz-range-thumb {
+  width: 11px;
+  height: 17px;
+  border: 0;
+  border-radius: 2px;
+  background: var(--ink);
+}
+
+/* One orchestrated page-load moment: the line-color band wipes in once,
+   left to right. The global reduced-motion rule above neutralizes it. */
+@keyframes band-wipe {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+.band-seg {
+  transform-origin: left center;
+  animation: band-wipe 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 /* Honor the user's reduced-motion preference. Leaflet station pulses and

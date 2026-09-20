@@ -3,6 +3,8 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import type { LineConfig } from '../types';
 import { useLanguage } from '../i18n/useLanguage';
+import { type Company, COMPANY_ORDER, COMPANY_LABEL_KEY, companyOf } from '../lib/company';
+import { ACCENT_AMBIENT, ACCENT_EDM } from '../lib/accents';
 
 interface SettingsPanelProps {
   isOpen: boolean;
@@ -14,25 +16,6 @@ interface SettingsPanelProps {
   onVolumeChange: (value: number) => void;
   musicMode: 'ambient' | 'edm';
   onMusicModeChange: (mode: 'ambient' | 'edm') => void;
-}
-
-type Company = 'tokyoMetro' | 'toei' | 'jrEast' | 'other';
-
-const COMPANY_ORDER: Company[] = ['tokyoMetro', 'toei', 'jrEast', 'other'];
-
-const COMPANY_LABEL_KEY: Record<Company, 'companyTokyoMetro' | 'companyToei' | 'companyJREast' | 'companyOther'> = {
-  tokyoMetro: 'companyTokyoMetro',
-  toei: 'companyToei',
-  jrEast: 'companyJREast',
-  other: 'companyOther',
-};
-
-function companyOf(line: LineConfig): Company {
-  const r = line.odptRailway;
-  if (r.startsWith('odpt.Railway:TokyoMetro.')) return 'tokyoMetro';
-  if (r.startsWith('odpt.Railway:Toei.')) return 'toei';
-  if (r.startsWith('odpt.Railway:JR-East.')) return 'jrEast';
-  return 'other';
 }
 
 export default function SettingsPanel({
@@ -105,15 +88,15 @@ export default function SettingsPanel({
       role="dialog"
       aria-modal="true"
       aria-labelledby={titleId}
-      className="absolute top-0 right-0 bottom-0 z-[1100] w-full sm:w-80 bg-slate-900/95 backdrop-blur-lg border-l border-slate-700 p-5 overflow-y-auto"
+      className="paper absolute top-0 right-0 bottom-0 z-[1100] w-full sm:w-80 bg-[var(--paper)]/97 backdrop-blur-lg border-l border-[var(--rule)] p-5 overflow-y-auto"
     >
       <div className="flex justify-between items-center mb-6">
-        <h2 id={titleId} className="text-white font-semibold text-lg">{t('settings')}</h2>
+        <h2 id={titleId} className="text-[var(--ink)] font-bold text-lg">{t('settings')}</h2>
         <button
           ref={closeButtonRef}
           type="button"
           onClick={onClose}
-          className="text-gray-300 hover:text-white text-xl w-8 h-8 flex items-center justify-center rounded"
+          className="text-[var(--ink-2)] hover:text-[var(--ink)] text-xl w-8 h-8 flex items-center justify-center rounded-[2px] cursor-pointer transition-colors"
           aria-label={t('closeSettings')}
         >
           <span aria-hidden="true">&times;</span>
@@ -121,15 +104,14 @@ export default function SettingsPanel({
       </div>
 
       <fieldset className="mb-6 border-0 p-0 m-0">
-        <legend className="text-xs uppercase tracking-wider text-gray-300 block mb-2">{t('musicMode')}</legend>
+        <legend className="text-[12px] text-[var(--ink-2)] block mb-2">{t('musicMode')}</legend>
         <div className="flex gap-2">
           <button
             type="button"
             onClick={() => onMusicModeChange('ambient')}
             aria-pressed={musicMode === 'ambient'}
-            className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
-              musicMode === 'ambient' ? 'bg-[#003DA5] text-white' : 'bg-slate-800 text-gray-200'
-            }`}
+            style={{ '--accent': ACCENT_AMBIENT } as React.CSSProperties}
+            className="chip flex-1 py-2 text-sm font-medium"
           >
             {t('modeAmbient')}
           </button>
@@ -137,9 +119,8 @@ export default function SettingsPanel({
             type="button"
             onClick={() => onMusicModeChange('edm')}
             aria-pressed={musicMode === 'edm'}
-            className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
-              musicMode === 'edm' ? 'bg-[#003DA5] text-white' : 'bg-slate-800 text-gray-200'
-            }`}
+            style={{ '--accent': ACCENT_EDM } as React.CSSProperties}
+            className="chip flex-1 py-2 text-sm font-medium"
           >
             {t('modeEdm')}
           </button>
@@ -147,16 +128,15 @@ export default function SettingsPanel({
       </fieldset>
 
       <fieldset className="mb-6 border-0 p-0 m-0">
-        <legend className="text-xs uppercase tracking-wider text-gray-300 block mb-2">{t('language')}</legend>
+        <legend className="text-[12px] text-[var(--ink-2)] block mb-2">{t('language')}</legend>
         <div className="flex gap-2">
           <button
             type="button"
             onClick={() => setLanguage('ja')}
             aria-pressed={language === 'ja'}
             lang="ja"
-            className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
-              language === 'ja' ? 'bg-[#003DA5] text-white' : 'bg-slate-800 text-gray-200'
-            }`}
+            style={{ '--accent': 'var(--ink)' } as React.CSSProperties}
+            className="chip flex-1 py-2 text-sm font-medium"
           >
             日本語
           </button>
@@ -165,9 +145,8 @@ export default function SettingsPanel({
             onClick={() => setLanguage('en')}
             aria-pressed={language === 'en'}
             lang="en"
-            className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
-              language === 'en' ? 'bg-[#003DA5] text-white' : 'bg-slate-800 text-gray-200'
-            }`}
+            style={{ '--accent': 'var(--ink)' } as React.CSSProperties}
+            className="chip flex-1 py-2 text-sm font-medium"
           >
             English
           </button>
@@ -175,7 +154,7 @@ export default function SettingsPanel({
       </fieldset>
 
       <div className="mb-6">
-        <label htmlFor={volumeId} className="text-xs uppercase tracking-wider text-gray-300 block mb-2">{t('masterVolume')}</label>
+        <label htmlFor={volumeId} className="text-[12px] text-[var(--ink-2)] block mb-2">{t('masterVolume')}</label>
         <input
           id={volumeId}
           type="range"
@@ -185,12 +164,13 @@ export default function SettingsPanel({
           value={volume}
           onChange={(e) => onVolumeChange(parseFloat(e.target.value))}
           aria-valuetext={`${Math.round(volume * 100)}%`}
-          className="w-full accent-[#003DA5]"
+          style={{ '--fill': `${volume * 100}%` } as React.CSSProperties}
+          className="slider"
         />
       </div>
 
       <div>
-        <h3 className="text-xs uppercase tracking-wider text-gray-300 block mb-3">{t('lines')}</h3>
+        <h3 className="text-[12px] text-[var(--ink-2)] block mb-3">{t('lines')}</h3>
         <div className="space-y-2">
           {COMPANY_ORDER.map((company) => {
             const groupLines = groups[company];
@@ -206,11 +186,11 @@ export default function SettingsPanel({
                   onClick={() => toggleGroup(company)}
                   aria-expanded={isExpanded}
                   aria-controls={groupId}
-                  className="w-full flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-800/60 hover:bg-slate-800 transition-colors"
+                  className="w-full flex items-center gap-2 px-3 py-2 rounded-[2px] bg-[color-mix(in_srgb,var(--ink)_5%,transparent)] hover:bg-[color-mix(in_srgb,var(--ink)_10%,transparent)] cursor-pointer transition-colors"
                 >
-                  <span aria-hidden="true" className={`text-gray-300 text-xs transition-transform ${isExpanded ? 'rotate-90' : ''}`}>▶</span>
-                  <span className="text-sm font-medium text-gray-100 flex-1 text-left">{t(COMPANY_LABEL_KEY[company])}</span>
-                  <span className="text-xs text-gray-300">
+                  <span aria-hidden="true" className={`text-[var(--ink-2)] text-xs transition-transform ${isExpanded ? 'rotate-90' : ''}`}>▶</span>
+                  <span className="text-sm font-medium text-[var(--ink)] flex-1 text-left">{t(COMPANY_LABEL_KEY[company])}</span>
+                  <span className="text-xs text-[var(--ink-2)]">
                     <span aria-hidden="true">{audibleCount}/{groupLines.length}</span>
                     <span className="sr-only">{audibleCount} of {groupLines.length} lines audible</span>
                   </span>
@@ -226,11 +206,11 @@ export default function SettingsPanel({
                             type="button"
                             onClick={() => onToggleMute(line.id)}
                             aria-pressed={!isMuted}
-                            className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${isMuted ? 'opacity-50' : 'opacity-100'} hover:bg-slate-800`}
+                            className={`w-full flex items-center gap-3 px-3 py-2 rounded-[2px] cursor-pointer transition-colors ${isMuted ? 'opacity-45' : 'opacity-100'} hover:bg-[color-mix(in_srgb,var(--ink)_8%,transparent)]`}
                           >
                             <span aria-hidden="true" className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: line.color }} />
-                            <span className="text-sm text-gray-100 flex-1 text-left">{lineName}</span>
-                            <span className="text-xs text-gray-300">{tInstrument(line.instrument)}</span>
+                            <span className="text-sm text-[var(--ink)] flex-1 text-left">{lineName}</span>
+                            <span className="text-xs text-[var(--ink-2)]">{tInstrument(line.instrument)}</span>
                           </button>
                         </li>
                       );

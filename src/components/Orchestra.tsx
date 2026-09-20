@@ -15,14 +15,14 @@ import { WeatherService } from '../data/WeatherService';
 import type { MusicEngine as MusicEngineT } from '../engine/MusicEngine';
 import HUD from './HUD';
 import SettingsPanel from './SettingsPanel';
+import StartScreen from './StartScreen';
 import linesData from '../config/lines.json';
-import { LanguageProvider, useLanguage } from '../i18n/useLanguage';
+import { LanguageProvider } from '../i18n/useLanguage';
 import { computeVibe } from '../engine/edmVibe';
 
 const MapView = dynamic(() => import('./MapView'), { ssr: false });
 
 function OrchestraInner() {
-  const { t } = useLanguage();
   const [started, setStarted] = useState(false);
   const [recentArrivals, setRecentArrivals] = useState<ArrivalEvent[]>([]);
   const [weather, setWeather] = useState<WeatherData | null>(null);
@@ -200,41 +200,14 @@ function OrchestraInner() {
     apiKeyPresent ? 'hybridMode' : isDev ? 'demoMode' : 'missingApiKey';
 
   if (!started) {
-    const edmDetail = `${vibe.bpm} ${t('bpm')} · ${t(`mood${vibe.mood.charAt(0).toUpperCase()}${vibe.mood.slice(1)}` as 'moodHappy')} · ${t(`temp${vibe.temp.charAt(0).toUpperCase()}${vibe.temp.slice(1)}` as 'tempCold')}`;
     return (
-      <main className="h-screen w-screen bg-slate-950 flex flex-col items-center justify-center gap-6 px-6">
-        <h1 className="text-3xl sm:text-4xl font-bold text-white text-center">{t('title')}</h1>
-        <p className="text-gray-400 text-center max-w-md text-sm sm:text-base">
-          {t('description')}
-        </p>
-        <p className={`text-sm ${dataSourceLabel === 'missingApiKey' ? 'text-amber-300' : 'text-[#7AB0FF]'}`}>
-          {t(dataSourceLabel)}
-        </p>
-        <p id="music-mode-label" className="text-gray-300 text-xs uppercase tracking-wider">{t('musicMode')}</p>
-
-        <div role="group" aria-labelledby="music-mode-label" className="flex flex-col sm:flex-row gap-4 mt-2">
-          <button
-            type="button"
-            onClick={() => handleStart('ambient')}
-            className="flex flex-col items-center justify-center gap-1 w-40 h-28 rounded-2xl bg-[#003DA5] hover:bg-[#0050C8] text-white font-semibold transition-colors px-4"
-            aria-label={`${t('beginListening')} — ${t('modeAmbient')} — ${t('modeClassicTagline')}`}
-          >
-            <span className="text-lg" aria-hidden="true">{t('modeAmbient')}</span>
-            <span className="text-[11px] font-normal text-blue-50" aria-hidden="true">{t('modeClassicTagline')}</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => handleStart('edm')}
-            className="flex flex-col items-center justify-center gap-1 w-40 h-28 rounded-2xl bg-[#8A1A9B] hover:bg-[#A722BA] text-white font-semibold transition-colors px-4"
-            aria-label={`${t('beginListening')} — ${t('modeEdm')} — ${edmDetail}`}
-          >
-            <span className="text-lg" aria-hidden="true">{t('modeEdm')}</span>
-            <span className="text-[11px] font-normal text-fuchsia-50" aria-hidden="true">
-              {edmDetail}
-            </span>
-          </button>
-        </div>
-      </main>
+      <StartScreen
+        lines={lines}
+        weather={weather}
+        vibe={vibe}
+        dataSourceLabel={dataSourceLabel}
+        onStart={handleStart}
+      />
     );
   }
 
