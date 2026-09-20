@@ -24,3 +24,18 @@
   for = "/robots.txt"
   [headers.values]
     Content-Type = "text/plain; charset=utf-8"
+
+# Netlify does not 301 the built-in *.netlify.app subdomain when a custom
+# domain is set as primary — that setting only redirects other *custom*
+# domains, and the netlify.app URL keeps serving 200. Both hosts therefore
+# served identical content. The in-HTML canonical already pointed search
+# engines at the right place; this makes it a real redirect, so crawlers that
+# do not parse HTML and anyone holding an old bookmark also land on the
+# canonical host. Scoped to that one hostname, so the primary domain is
+# untouched and cannot loop. `force` is required to win over the static file
+# that would otherwise be served.
+[[redirects]]
+  from = "https://tokyo-train-orchestra.netlify.app/*"
+  to = "https://tokyotrainmusic.japantv.app/:splat"
+  status = 301
+  force = true
