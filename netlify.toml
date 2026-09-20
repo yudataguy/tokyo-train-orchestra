@@ -1,0 +1,26 @@
+# Headers only — deliberately no [build] section. The build command and
+# publish directory are already configured in the Netlify UI and working;
+# declaring them here would override that (and would fight the Next.js build
+# plugin if it is enabled). Add them here later if you want the whole config
+# in git, but check the dashboard first.
+
+# Next emits the OG card as `out/opengraph-image`, with no file extension, so
+# a static host has nothing to infer the type from and falls back to
+# application/octet-stream. Every social crawler requires image/* and drops
+# the preview otherwise — the tags and the PNG are both fine, the card just
+# never renders. This states the type explicitly.
+[[headers]]
+  for = "/opengraph-image"
+  [headers.values]
+    Content-Type = "image/png"
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Content-Type = "application/xml; charset=utf-8"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
