@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Noto_Sans_JP } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 import {
   SITE_URL,
@@ -9,6 +10,7 @@ import {
   SITE_DESCRIPTION_EN,
 } from '../lib/site';
 import { INSTRUMENTS_JA } from '../lib/instruments';
+import { cfBeaconScript } from '../lib/analytics';
 import linesData from '../config/lines.json';
 import type { LineConfig } from '../types';
 
@@ -114,6 +116,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <p>Data: 公共交通オープンデータセンター / ODPT</p>
         </noscript>
         {children}
+        {/* Cookieless pageviews (Cloudflare Web Analytics), behind the same
+            ?notrack opt-out as japantv.app; see lib/analytics.ts. Injected
+            client-side after hydration, so it cannot affect the app's start. */}
+        <Script id="cf-beacon" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: cfBeaconScript }} />
       </body>
     </html>
   );
