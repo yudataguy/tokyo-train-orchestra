@@ -3,10 +3,14 @@
 import { useRef, useState } from 'react';
 import { useLanguage } from '../../i18n/useLanguage';
 import { classifyYouTubeError, parseYouTubeId } from '../../race/youtube';
+import { MANUAL_LENGTHS_MIN, MAX_RACE_SEC, raceLengthForVideo } from '../../race/songLength';
 import YouTubePlayer from './YouTubePlayer';
 import type { SongChoice } from './types';
 
-const LENGTH_OPTIONS = [2, 3, 4, 5];
+/** getDuration() can read 0 until the video's metadata arrives; one late
+ *  re-check separates "not loaded yet" from a genuine live stream. */
+const DURATION_RETRY_MS = 1500;
+const DEFAULT_MINUTES = MANUAL_LENGTHS_MIN[MANUAL_LENGTHS_MIN.length - 1];
 
 /** What the preview player told us about a specific video ID. Keyed by ID so
  *  editing the URL invalidates it without an effect. */
@@ -22,7 +26,11 @@ export default function SongStep({ initial, onNext }: SongStepProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [manual, setManual] = useState(initial !== null && initial.videoId === null);
   const [input, setInput] = useState(initial?.videoId ? `https://youtu.be/${initial.videoId}` : '');
-  const [minutes, setMinutes] = useState(initial?.endsOnTime ? Math.round(initial.durationSec / 60) : 3);
+  const [minutes, setMinutes] = useState<number>(
+    initial?.endsOnTime
+      ? Math.min(DEFAULT_MINUTES, Math.max(MANUAL_LENGTHS_MIN[0], Math.round(initial.durationSec / 60)))
+      : DEFAULT_MINUTES,
+  );
   const [probe, setProbe] = useState<Probe | null>(null);
 
   const videoId = manual ? null : parseYouTubeId(input);
@@ -33,7 +41,7 @@ export default function SongStep({ initial, onNext }: SongStepProps) {
 
   const handleNext = () => {
     if (manual) onNext({ videoId: null, durationSec: minutes * 60, endsOnTime: true });
-    else if (videoId && probe && status === 'ready') onNext({ videoId, durationSec: probe.durationSec, endsOnTime: false });
+    else if (videoId && probe && status === 'ready') onNext({ videoId, ...raceLengthForVideo(probe.durationSec) });
     else if (videoId && status === 'live') onNext({ videoId, durationSec: minutes * 60, endsOnTime: true });
   };
 
@@ -65,8 +73,19 @@ export default function SongStep({ initial, onNext }: SongStepProps) {
                 videoId={videoId}
                 className="aspect-video w-full overflow-hidden rounded-[2px] bg-black/5"
                 onReady={(player) => {
+                  const settle = (d: number) => setProbe({ id: videoId, status: d > 0 ? 'ready' : 'live', durationSec: d });
                   const d = player.getDuration();
-                  setProbe({ id: videoId, status: d > 0 ? 'ready' : 'live', durationSec: d });
+                  if (d > 0) {
+                    settle(d);
+                    return;
+                  }
+                  setTimeout(() => {
+                    try {
+                      settle(player.getDuration());
+                    } catch {
+                      settle(0); // player already destroyed: URL changed meanwhile
+                    }
+                  }, DURATION_RETRY_MS);
                 }}
                 onError={(code) => {
                   setProbe({ id: videoId, status: classifyYouTubeError(code), durationSec: 0 });
@@ -75,6 +94,7 @@ export default function SongStep({ initial, onNext }: SongStepProps) {
               />
               <p role="status" className="pt-2 text-[12.5px] text-[var(--ink-2)]">
                 {status === 'loading' && t('raceSongLoading')}
+                {status === 'ready' && probe && probe.durationSec > MAX_RACE_SEC && t('raceCapped')}
                 {status === 'live' && t('raceSongLive')}
                 {status === 'unavailable' && <span className="text-[#A8420B]">{t('raceSongUnavailable')}</span>}
                 {status === 'notEmbeddable' && (
@@ -97,7 +117,7 @@ export default function SongStep({ initial, onNext }: SongStepProps) {
         <div className="mt-4">
           <h2 id="race-length-label" className="pb-1.5 text-[12px] text-[var(--ink-2)]">{t('raceLength')}</h2>
           <div role="group" aria-labelledby="race-length-label" className="flex gap-2">
-            {LENGTH_OPTIONS.map((m) => (
+            {MANUAL_LENGTHS_MIN.map((m) => (
               <button
                 key={m}
                 type="button"

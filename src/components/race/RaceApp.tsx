@@ -11,7 +11,7 @@ import LineupStep from './LineupStep';
 import DrawStep from './DrawStep';
 import RaceStep from './RaceStep';
 import RaceResults from './RaceResults';
-import type { Entry, SongChoice, Step } from './types';
+import type { SongChoice, Step } from './types';
 
 const LINES = linesData as LineConfig[];
 const LINES_BY_ID = new Map(LINES.map((l) => [l.id, l]));
@@ -27,13 +27,13 @@ function RaceInner() {
   const { language, setLanguage, t } = useLanguage();
   const [step, setStep] = useState<Step>('song');
   const [song, setSong] = useState<SongChoice | null>(null);
-  const [entries, setEntriesRaw] = useState<Entry[]>([]);
+  const [lineup, setLineupRaw] = useState<string[]>([]);
   const [assignment, setAssignment] = useState<Record<string, number> | null>(null);
   const [result, setResult] = useState<RaceState | null>(null);
 
   // A changed lineup invalidates any previous draw.
-  const setEntries = (next: Entry[]) => {
-    setEntriesRaw(next);
+  const setLineup = (next: string[]) => {
+    setLineupRaw(next);
     setAssignment(null);
   };
 
@@ -89,8 +89,8 @@ function RaceInner() {
         {step === 'lineup' && (
           <LineupStep
             lines={LINES}
-            entries={entries}
-            onChange={setEntries}
+            lineup={lineup}
+            onChange={setLineup}
             onBack={() => setStep('song')}
             onNext={() => setStep('draw')}
           />
@@ -98,7 +98,7 @@ function RaceInner() {
         {step === 'draw' && (
           <DrawStep
             linesById={LINES_BY_ID}
-            entries={entries}
+            lineup={lineup}
             assignment={assignment}
             onDraw={setAssignment}
             onBack={() => setStep('lineup')}
@@ -109,7 +109,7 @@ function RaceInner() {
           <RaceStep
             linesById={LINES_BY_ID}
             song={song}
-            entries={entries}
+            lineup={lineup}
             assignment={assignment}
             onBack={() => setStep('draw')}
             onFinish={(final) => {
@@ -121,7 +121,6 @@ function RaceInner() {
         {step === 'results' && result && (
           <RaceResults
             linesById={LINES_BY_ID}
-            entries={entries}
             state={result}
             onRematch={() => {
               setAssignment(null);

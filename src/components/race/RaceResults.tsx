@@ -5,19 +5,16 @@ import { useLanguage } from '../../i18n/useLanguage';
 import { PITCH_NAMES } from '../../race/chroma';
 import { formatClock, standings, type RaceState } from '../../race/raceEngine';
 import NoteBars, { noteColors } from './NoteBars';
-import type { Entry } from './types';
 
 interface RaceResultsProps {
   linesById: Map<string, LineConfig>;
-  entries: Entry[];
   state: RaceState;
   onRematch: () => void;
   onNewSong: () => void;
 }
 
-export default function RaceResults({ linesById, entries, state, onRematch, onNewSong }: RaceResultsProps) {
+export default function RaceResults({ linesById, state, onRematch, onNewSong }: RaceResultsProps) {
   const { language, t } = useLanguage();
-  const players = new Map(entries.map((e) => [e.lineId, e.player]));
 
   return (
     <section className="max-w-2xl">
@@ -25,7 +22,6 @@ export default function RaceResults({ linesById, entries, state, onRematch, onNe
       <ol className="border-t border-[var(--rule)]">
         {standings(state).map((lane, i) => {
           const line = linesById.get(lane.lineId)!;
-          const player = players.get(lane.lineId);
           return (
             <li
               key={lane.lineId}
@@ -36,7 +32,6 @@ export default function RaceResults({ linesById, entries, state, onRematch, onNe
               <span className="self-stretch" style={{ background: line.color }} aria-hidden="true" />
               <span className={i === 0 ? 'text-[17px] font-bold' : 'text-[14px]'}>
                 {language === 'ja' ? line.nameJa : line.name}
-                {player && <span className="font-normal text-[var(--ink-2)]"> · {player}</span>}
               </span>
               <span className="tnum text-[13px] text-[var(--ink-2)]">
                 {lane.finishedAtSec !== null

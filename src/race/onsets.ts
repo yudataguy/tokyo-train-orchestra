@@ -13,6 +13,8 @@ export const SILENCE_FACTOR = 2;
  *  mean: players chanting "3, 2, 1!" (or a song started early) would drag a
  *  mean up and gate out most of the race. */
 export const CALIBRATION_PERCENTILE = 0.2;
+/** Room frames required before a race may start (~1/3 s at 30 fps). */
+export const MIN_CALIBRATION_FRAMES = 10;
 /** A class's rise must be at least this fraction of the loudest class's
  *  energy in the same frame. Any attack lifts every bin a little (FFT
  *  leakage, broadband transients); without this floor every quiet class
@@ -49,6 +51,13 @@ export class OnsetDetector {
 
   get silenceFloor(): number {
     return this.floor;
+  }
+
+  /** Room frames heard so far. The race waits for some: a countdown run in
+   *  a hidden tab (no animation frames) would otherwise leave the floor at
+   *  0 and the loudness gate off. */
+  get calibrationFrames(): number {
+    return this.calibSums.length;
   }
 
   push(chroma: number[], nowMs: number): boolean[] {

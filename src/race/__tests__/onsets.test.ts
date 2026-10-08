@@ -35,6 +35,13 @@ describe('OnsetDetector', () => {
     expect(d.silenceFloor).toBe(SILENCE_FACTOR * 6);
   });
 
+  it('reports how many room frames it has heard', () => {
+    const d = new OnsetDetector();
+    expect(d.calibrationFrames).toBe(0);
+    for (let i = 0; i < 4; i++) d.calibrate(new Array(12).fill(0.5));
+    expect(d.calibrationFrames).toBe(4);
+  });
+
   it('keeps the floor at room level when someone shouts the countdown', () => {
     const d = new OnsetDetector();
     for (let i = 0; i < 8; i++) d.calibrate(new Array(12).fill(0.5)); // room: sum 6

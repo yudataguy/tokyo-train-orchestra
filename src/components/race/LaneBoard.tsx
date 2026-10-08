@@ -2,17 +2,14 @@ import type { LineConfig } from '../../types';
 import { useLanguage } from '../../i18n/useLanguage';
 import { PITCH_NAMES } from '../../race/chroma';
 import { currentStationIndex, formatClock, type RaceState } from '../../race/raceEngine';
-import type { Entry } from './types';
 
 interface LaneBoardProps {
   linesById: Map<string, LineConfig>;
-  entries: Entry[];
   state: RaceState;
 }
 
-export default function LaneBoard({ linesById, entries, state }: LaneBoardProps) {
+export default function LaneBoard({ linesById, state }: LaneBoardProps) {
   const { language, t } = useLanguage();
-  const players = new Map(entries.map((e) => [e.lineId, e.player]));
 
   return (
     <ol className="border-t border-[var(--rule)]">
@@ -20,7 +17,6 @@ export default function LaneBoard({ linesById, entries, state }: LaneBoardProps)
         const line = linesById.get(lane.lineId)!;
         const n = lane.stationCount;
         const station = line.stations[currentStationIndex(lane)];
-        const player = players.get(lane.lineId);
         const finished = lane.finishedAtSec !== null;
         return (
           <li
@@ -32,7 +28,6 @@ export default function LaneBoard({ linesById, entries, state }: LaneBoardProps)
             <span className="min-w-0">
               <span className="block truncate text-[13.5px] font-medium">
                 {language === 'ja' ? line.nameJa : line.name}
-                {player && <span className="font-normal text-[var(--ink-2)]"> · {player}</span>}
               </span>
               <span className="block truncate text-[11.5px] text-[var(--ink-2)]">
                 {finished

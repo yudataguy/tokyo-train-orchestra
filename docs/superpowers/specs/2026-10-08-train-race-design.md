@@ -33,13 +33,14 @@ The app turns trains into music. This mode does the reverse: music drives the tr
 
 1. **Song**
    - Paste a YouTube URL. Accepted forms: `youtube.com/watch?v=`, `youtu.be/`, `youtube.com/shorts/`, `music.youtube.com/watch?v=`. A valid ID loads an embedded preview, and invalid input shows an inline error.
-   - Fallback, **"I'll play it myself"**: choose a race length of 2, 3, 4 or 5 minutes and play the song on any device in earshot.
+   - Fallback, **"I'll play it myself"**: choose a race length of 1, 2 or 3 minutes and play the song on any device in earshot.
+   - **Races are capped at 3 minutes** (`MAX_RACE_SEC = 180`, `src/race/songLength.ts`). A longer song races for its first 3:00, then the video pauses and the race ends on the race clock; the song step says so.
 2. **Lineup**
    - Choose 2–12 lines from the roster, grouped by operator like the start screen.
-   - Each chosen lane takes an optional player name (max 16 chars).
 3. **Draw** — pressing **抽選 / Draw** shuffles the 12 pitch classes and assigns one to each chosen line, with a short reveal animation. Unassigned pitch classes still count toward the movement budget (below) but have no train.
 4. **Race**
-   - Pressing **Start** requests the mic and creates or resumes the `AudioContext` inside that click, so it counts as the user gesture. Then a 3-2-1 countdown runs and `playVideo()` is called.
+   - Pressing **Start** requests the mic and creates or resumes the `AudioContext` inside that click, so it counts as the user gesture. It also pauses and rewinds the video. Then a 3-2-1 countdown runs (players stay quiet; it measures the room) and `playVideo()` is called.
+   - The race starts only after at least `MIN_CALIBRATION_FRAMES` room frames have been heard, so a countdown that ran in a hidden tab doesn't start a race with no silence floor.
    - The race clock runs only while the player reports `PLAYING`, and the YouTube `ENDED` event ends the race.
    - In "play it myself" mode the clock starts after the countdown. The race ends at the chosen length or on **Stop**, and there is a **Pause** button. Both modes have **Stop**, which ends the race with the current standings.
 5. **Results**
@@ -53,7 +54,6 @@ One horizontal lane per racing line, all the same length (normalized, 0 → 1). 
 
 - the assigned note (e.g. `A#`)
 - the line color bar and name (Japanese or English, following the current language)
-- the optional player name
 - the track, with station `i` of `n` placed at `i / (n − 1)`
 - the train
 - a finish post
@@ -148,7 +148,7 @@ BUDGET = 1 / (LEADER_SHARE · FINISH_AT · durationSec)
 - **`src/components/race/`** step components:
   - `SongStep.tsx`
   - `LineupStep.tsx`
-  - `DrawReveal.tsx`
+  - `DrawStep.tsx`
   - `LaneBoard.tsx`
   - `NoteBars.tsx` (live chroma meter and results histogram, one component)
   - `RaceResults.tsx`
@@ -162,6 +162,7 @@ All step components use the existing station-timetable design system: the `paper
 - **`lib/accents.ts`**: `ACCENT_RACE = '#8F76D6'` (Hanzomon purple, an official line color like the other two accents).
 - **`i18n/useLanguage.tsx`**: all race strings, in both `ja` and `en`.
 - **`app/sitemap.ts`**: add `${SITE_URL}/race`.
+- **Share cards**: `app/race/opengraph-image.tsx` and `app/race/twitter-image.tsx` render one card (`lib/raceShareCard.tsx`): the line-color band and a lane board mid-race on real lines, Latin copy only (no CJK font in `ImageResponse`). The page sets its own `twitter` title and description, and `netlify.toml` serves both images as `image/png`.
 
 ## Error handling
 
@@ -170,7 +171,10 @@ All step components use the existing station-timetable design system: the `paper
 | Unparseable URL | Inline error. **Next** is disabled. |
 | YT error 101 / 150 (embedding disabled) | "This video can't be played here." Offers **Play it myself**, pre-filling the race length from the duration when it is known. |
 | YT error 2 / 5 / 100 | "Video not found or unavailable." Focus returns to the URL field. |
-| `getDuration()` returns 0 (live stream) | Switch to the manual race-length picker. |
+| `getDuration()` returns 0 | Re-check once after 1.5 s (metadata may still be loading); still 0 means a live stream, so switch to the manual race-length picker. |
+| Player loads after the countdown ends | Start playback in `onReady`. |
+| YT error during the race | Show the error message and disable Start; **Stop** still ends the race. |
+| Mic disconnects mid-race (track `ended`) | "Microphone disconnected" replaces the can't-hear hint; **Stop** shows the standings so far. |
 | Mic permission denied | Explains how to re-allow the mic from the address bar, with a **Retry** button. The race cannot start. No simulated fallback. |
 | No mic, or insecure context (`navigator.mediaDevices` undefined) | Says a microphone and HTTPS are required. |
 | No onsets for 8 s while `PLAYING` | A non-blocking hint: "Can't hear the song — turn up the speakers." |

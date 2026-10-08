@@ -3,14 +3,14 @@
 import { useEffect, useRef, useState } from 'react';
 import type { LineConfig } from '../../types';
 import { useLanguage } from '../../i18n/useLanguage';
-import { OnsetDetector } from '../../race/onsets';
+import { MIN_CALIBRATION_FRAMES, OnsetDetector } from '../../race/onsets';
 import { advance, createRace, formatClock, frameDt, type RaceState } from '../../race/raceEngine';
 import { MicError, openMic, type MicAnalyser, type MicErrorKind } from '../../race/micAnalyser';
-import { YT_STATE, type YTPlayer } from '../../race/youtube';
+import { classifyYouTubeError, YT_STATE, type YTPlayer } from '../../race/youtube';
 import YouTubePlayer from './YouTubePlayer';
 import LaneBoard from './LaneBoard';
 import NoteBars, { noteColors } from './NoteBars';
-import type { Entry, SongChoice } from './types';
+import type { SongChoice } from './types';
 
 const COUNTDOWN_SEC = 3;
 /** Seconds of race clock with no onsets before suggesting louder speakers. */
@@ -24,25 +24,30 @@ const MIC_ERROR_KEY = {
   unavailable: 'raceMicUnavailable',
 } as const;
 
+const PLAYER_ERROR_KEY = {
+  notEmbeddable: 'raceSongNotEmbeddable',
+  unavailable: 'raceSongUnavailable',
+} as const;
+
 type Phase = 'ready' | 'countdown' | 'running';
 
 interface RaceStepProps {
   linesById: Map<string, LineConfig>;
   song: SongChoice;
-  entries: Entry[];
+  lineup: string[];
   assignment: Record<string, number>;
   onBack: () => void;
   onFinish: (state: RaceState) => void;
 }
 
-export default function RaceStep({ linesById, song, entries, assignment, onBack, onFinish }: RaceStepProps) {
+export default function RaceStep({ linesById, song, lineup, assignment, onBack, onFinish }: RaceStepProps) {
   const { t } = useLanguage();
   const [race, setRace] = useState<RaceState>(() =>
     createRace(
-      entries.map((e) => ({
-        lineId: e.lineId,
-        pitchClass: assignment[e.lineId],
-        stationCount: linesById.get(e.lineId)!.stations.length,
+      lineup.map((lineId) => ({
+        lineId,
+        pitchClass: assignment[lineId],
+        stationCount: linesById.get(lineId)!.stations.length,
       })),
       song.durationSec,
     ),
@@ -52,6 +57,8 @@ export default function RaceStep({ linesById, song, entries, assignment, onBack,
   const [mic, setMic] = useState<MicAnalyser | null>(null);
   const [starting, setStarting] = useState(false);
   const [micError, setMicError] = useState<MicErrorKind | null>(null);
+  const [micLost, setMicLost] = useState(false);
+  const [playerError, setPlayerError] = useState<'notEmbeddable' | 'unavailable' | null>(null);
   const [chroma, setChroma] = useState<number[]>(() => new Array(12).fill(0));
   const [cantHear, setCantHear] = useState(false);
   const [needsTap, setNeedsTap] = useState(false);
@@ -66,10 +73,12 @@ export default function RaceStep({ linesById, song, entries, assignment, onBack,
   const playerRef = useRef<YTPlayer | null>(null);
   const lastFrameRef = useRef<number | null>(null);
   const lastOnsetAtRef = useRef(0);
+  const countdownDoneRef = useRef(false);
   const finishedRef = useRef(false);
   const mountedRef = useRef(true);
   const onFinishRef = useRef(onFinish);
   const onFrameRef = useRef<(chroma: number[], nowMs: number) => void>(() => {});
+  const beginRef = useRef<() => void>(() => {});
 
   const finish = () => {
     if (finishedRef.current) return;
@@ -80,12 +89,26 @@ export default function RaceStep({ linesById, song, entries, assignment, onBack,
   const isPlaying = () =>
     song.videoId ? playerRef.current?.getPlayerState() === YT_STATE.PLAYING : !pausedRef.current;
 
+  /** Countdown over → race on, but only once the room has actually been
+   *  heard: a countdown that ran in a hidden tab got no frames, and starting
+   *  then would leave the silence floor at 0. */
+  const begin = () => {
+    const detector = detectorRef.current;
+    if (phaseRef.current !== 'countdown' || !countdownDoneRef.current) return;
+    if (!detector || detector.calibrationFrames < MIN_CALIBRATION_FRAMES) return;
+    phaseRef.current = 'running';
+    lastFrameRef.current = null;
+    setPhase('running');
+    if (song.videoId) playerRef.current?.playVideo();
+  };
+
   const onFrame = (frame: number[], nowMs: number) => {
     setChroma(frame);
     const detector = detectorRef.current;
     if (!detector) return;
     if (phaseRef.current === 'countdown') {
       detector.calibrate(frame);
+      begin();
       return;
     }
     if (phaseRef.current !== 'running' || finishedRef.current) return;
@@ -98,12 +121,16 @@ export default function RaceStep({ linesById, song, entries, assignment, onBack,
     raceRef.current = next;
     setRace(next);
     setCantHear(next.elapsedSec - lastOnsetAtRef.current > CANT_HEAR_SEC);
-    if (song.endsOnTime && next.elapsedSec >= song.durationSec) finish();
+    if (song.endsOnTime && next.elapsedSec >= song.durationSec) {
+      playerRef.current?.pauseVideo();
+      finish();
+    }
   };
 
   useEffect(() => {
     onFinishRef.current = onFinish;
     onFrameRef.current = onFrame;
+    beginRef.current = begin;
   });
 
   useEffect(() => {
@@ -132,13 +159,11 @@ export default function RaceStep({ linesById, song, entries, assignment, onBack,
       timers.push(setTimeout(() => setCountdown(COUNTDOWN_SEC - i), i * 1000));
     }
     timers.push(setTimeout(() => {
-      phaseRef.current = 'running';
-      lastFrameRef.current = null;
-      setPhase('running');
-      if (song.videoId) playerRef.current?.playVideo();
+      countdownDoneRef.current = true;
+      beginRef.current();
     }, COUNTDOWN_SEC * 1000));
     return () => timers.forEach(clearTimeout);
-  }, [phase, song.videoId]);
+  }, [phase]);
 
   useEffect(() => {
     if (phase !== 'running' || !song.videoId) return;
@@ -150,9 +175,10 @@ export default function RaceStep({ linesById, song, entries, assignment, onBack,
 
   const handleStart = async () => {
     setMicError(null);
+    setMicLost(false);
     setStarting(true);
     try {
-      const opened = await openMic();
+      const opened = await openMic(() => setMicLost(true));
       if (!mountedRef.current) {
         void opened.close();
         return;
@@ -164,6 +190,7 @@ export default function RaceStep({ linesById, song, entries, assignment, onBack,
         playerRef.current?.seekTo(0, true);
       }
       detectorRef.current = new OnsetDetector();
+      countdownDoneRef.current = false;
       phaseRef.current = 'countdown';
       setCountdown(COUNTDOWN_SEC);
       setPhase('countdown');
@@ -197,16 +224,22 @@ export default function RaceStep({ linesById, song, entries, assignment, onBack,
               className="aspect-video w-full overflow-hidden rounded-[2px] bg-black/5"
               onReady={(player) => {
                 playerRef.current = player;
+                // Slow load: the countdown may already be over.
+                if (phaseRef.current === 'running') player.playVideo();
               }}
               onStateChange={(state) => {
                 if (state === YT_STATE.PLAYING) setNeedsTap(false);
                 if (state === YT_STATE.ENDED && phaseRef.current === 'running') finish();
               }}
+              onError={(code) => {
+                setPlayerError(classifyYouTubeError(code));
+                setNeedsTap(false);
+              }}
             />
             {/* A hint, not a button: where autoplay is blocked (Safari,
                 mobile) only a tap on YouTube's own player counts as a user
                 gesture, so taps must pass through to it. */}
-            {needsTap && (
+            {needsTap && !playerError && (
               <p
                 role="status"
                 className="pointer-events-none absolute inset-x-0 top-0 bg-[var(--ink)]/85 px-3 py-1.5 text-center text-[13px] text-[var(--paper)]"
@@ -222,6 +255,10 @@ export default function RaceStep({ linesById, song, entries, assignment, onBack,
         )}
 
         <div className="flex min-w-0 flex-col justify-between gap-3">
+          {playerError && (
+            <p role="alert" className="text-[13px] text-[#A8420B]">{t(PLAYER_ERROR_KEY[playerError])}</p>
+          )}
+
           {phase === 'ready' && (
             <div>
               <p className="pb-3 text-[13px] text-[var(--ink-2)]">{t('raceMicNeeded')}</p>
@@ -229,7 +266,7 @@ export default function RaceStep({ linesById, song, entries, assignment, onBack,
                 <p role="alert" className="pb-3 text-[13px] text-[#A8420B]">{t(MIC_ERROR_KEY[micError])}</p>
               )}
               <div className="flex gap-3">
-                <button type="button" className="race-primary" disabled={starting} onClick={handleStart}>
+                <button type="button" className="race-primary" disabled={starting || playerError !== null} onClick={handleStart}>
                   {micError ? t('raceRetry') : t('raceStart')}
                 </button>
                 <button type="button" className="chip px-3 py-1.5 text-[13px]" onClick={onBack}>{t('raceBack')}</button>
@@ -247,7 +284,11 @@ export default function RaceStep({ linesById, song, entries, assignment, onBack,
                 {formatClock(race.elapsedSec)}
                 <span className="text-[16px] text-[var(--ink-2)]"> / {formatClock(song.durationSec)}</span>
               </div>
-              {cantHear && <p role="status" className="pt-2 text-[13px] text-[#A8420B]">{t('raceCantHear')}</p>}
+              {micLost ? (
+                <p role="alert" className="pt-2 text-[13px] text-[#A8420B]">{t('raceMicLost')}</p>
+              ) : (
+                cantHear && <p role="status" className="pt-2 text-[13px] text-[#A8420B]">{t('raceCantHear')}</p>
+              )}
               <div className="flex gap-3 pt-3">
                 {!song.videoId && (
                   <button type="button" className="chip px-3 py-1.5 text-[13px]" onClick={togglePause}>
@@ -268,7 +309,7 @@ export default function RaceStep({ linesById, song, entries, assignment, onBack,
         </div>
       </div>
 
-      <LaneBoard linesById={linesById} entries={entries} state={race} />
+      <LaneBoard linesById={linesById} state={race} />
     </section>
   );
 }

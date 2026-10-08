@@ -16,14 +16,14 @@ export class MicError extends Error {
 export interface MicAnalyser {
   /** Start (or restart) emitting chroma frames on animation frames. */
   start(onFrame: (chroma: number[], nowMs: number) => void): void;
-  /** Stop emitting; the mic stays open. */
-  stop(): void;
   /** Stop, release the mic, and close the audio context. */
   close(): Promise<void>;
 }
 
-/** Open the microphone for music analysis. Call from a click handler. */
-export async function openMic(): Promise<MicAnalyser> {
+/** Open the microphone for music analysis. Call from a click handler.
+ *  `onEnded` fires if the mic goes away mid-use (unplugged, Bluetooth drop,
+ *  permission revoked), so the UI can say so instead of "can't hear". */
+export async function openMic(onEnded?: () => void): Promise<MicAnalyser> {
   if (typeof navigator === 'undefined' || !navigator.mediaDevices?.getUserMedia || typeof AudioContext === 'undefined') {
     throw new MicError('unsupported', 'getUserMedia/AudioContext unavailable (needs HTTPS and a modern browser)');
   }
@@ -45,6 +45,12 @@ export async function openMic(): Promise<MicAnalyser> {
     throw new MicError(kind, String(err));
   }
   if (ctx.state === 'suspended') await ctx.resume();
+  let closing = false;
+  for (const track of stream.getAudioTracks()) {
+    track.addEventListener('ended', () => {
+      if (!closing) onEnded?.();
+    });
+  }
 
   const source = ctx.createMediaStreamSource(stream);
   const analyser = ctx.createAnalyser();
@@ -71,11 +77,8 @@ export async function openMic(): Promise<MicAnalyser> {
       };
       raf = requestAnimationFrame(loop);
     },
-    stop() {
-      cancelAnimationFrame(raf);
-      raf = 0;
-    },
     async close() {
+      closing = true;
       cancelAnimationFrame(raf);
       raf = 0;
       stream.getTracks().forEach((track) => track.stop());

@@ -1,11 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import type { LineConfig, WeatherData } from '../types';
 import { useLanguage } from '../i18n/useLanguage';
 import { groupByCompany, COMPANY_LABEL_KEY } from '../lib/company';
 import { computeVibe } from '../engine/edmVibe';
-import Link from 'next/link';
 import { ACCENT_AMBIENT, ACCENT_EDM, ACCENT_RACE } from '../lib/accents';
 import { formatTokyoClock } from '../lib/tokyoTime';
 

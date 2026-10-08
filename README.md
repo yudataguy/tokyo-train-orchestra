@@ -18,7 +18,7 @@ current weather and time of day.
   draw a random note (C…B) for each. The microphone listens; every onset of a
   line's note moves its train toward the terminal. Finishers rank by arrival
   time, the rest by distance, and the results show the song's 12-note
-  fingerprint.
+  fingerprint. Races last at most 3 minutes.
 - **Daily vibe engine** — BPM, chord progression, and pad timbre drift with the
   current weather and hour in Tokyo.
 - **Settings panel** — music mode, master volume, language (i18n), line toggles
