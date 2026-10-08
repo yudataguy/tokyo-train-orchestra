@@ -7,6 +7,7 @@ import { groupByCompany, COMPANY_LABEL_KEY } from '../lib/company';
 import { computeVibe } from '../engine/edmVibe';
 import Link from 'next/link';
 import { ACCENT_AMBIENT, ACCENT_EDM, ACCENT_RACE } from '../lib/accents';
+import { formatTokyoClock } from '../lib/tokyoTime';
 
 interface StartScreenProps {
   lines: LineConfig[];
@@ -16,7 +17,8 @@ interface StartScreenProps {
   onStart: (mode: 'ambient' | 'edm') => void;
 }
 
-/** Wall-clock HH:MM, re-rendered on the minute.
+/** Tokyo wall-clock HH:MM, re-rendered on the minute. Tokyo, not the
+ *  viewer's zone: the trains on screen run on Tokyo time.
  *
  *  Deliberately starts as null and fills in from an effect: this is a static
  *  export, so rendering a time during the first paint would bake the build
@@ -27,8 +29,7 @@ function useClock(): string | null {
 
   useEffect(() => {
     const render = () => {
-      const d = new Date();
-      setNow(`${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`);
+      setNow(formatTokyoClock(new Date()));
     };
     render();
     // Align the first tick to the top of the next minute so the display never
