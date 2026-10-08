@@ -1,0 +1,55 @@
+import { OnsetDetector, SILENCE_FACTOR } from '../onsets';
+
+const zeros = () => new Array<number>(12).fill(0);
+const only = (pc: number, v: number) => { const a = zeros(); a[pc] = v; return a; };
+const countFor = (frames: boolean[][], pc: number) => frames.filter((f) => f[pc]).length;
+const total = (frames: boolean[][]) => frames.flat().filter(Boolean).length;
+
+describe('OnsetDetector', () => {
+  it('fires once when a note starts and not again while it is held', () => {
+    const d = new OnsetDetector();
+    const out: boolean[][] = [];
+    let t = 0;
+    for (let i = 0; i < 10; i++) out.push(d.push(zeros(), (t += 33)));
+    for (let i = 0; i < 10; i++) out.push(d.push(only(9, 1), (t += 33)));
+    expect(countFor(out, 9)).toBe(1);
+    expect(total(out)).toBe(1);
+  });
+
+  it('suppresses a second rise inside the refractory window', () => {
+    const d = new OnsetDetector();
+    const out: boolean[][] = [];
+    let t = 0;
+    for (let i = 0; i < 5; i++) out.push(d.push(zeros(), (t += 33)));
+    out.push(d.push(only(9, 1), (t += 33)));  // onset
+    out.push(d.push(zeros(), (t += 33)));
+    out.push(d.push(only(9, 1), (t += 33)));  // 66 ms later: suppressed
+    out.push(d.push(zeros(), (t += 33)));
+    out.push(d.push(only(9, 1), (t += 100))); // well past 120 ms: fires
+    expect(countFor(out, 9)).toBe(2);
+  });
+
+  it('calibrates the silence floor from countdown frames', () => {
+    const d = new OnsetDetector();
+    for (let i = 0; i < 3; i++) d.calibrate(new Array(12).fill(0.5));
+    expect(d.silenceFloor).toBe(SILENCE_FACTOR * 6);
+  });
+
+  it('ignores rises quieter than the silence floor', () => {
+    const d = new OnsetDetector();
+    for (let i = 0; i < 3; i++) d.calibrate(new Array(12).fill(0.5)); // floor = 12
+    let t = 0;
+    d.push(zeros(), (t += 33));
+    expect(d.push(only(9, 5), (t += 33))[9]).toBe(false);
+    d.push(zeros(), (t += 500));
+    expect(d.push(only(9, 20), (t += 33))[9]).toBe(true);
+  });
+
+  it('never fires on a silent mic', () => {
+    const d = new OnsetDetector();
+    let t = 0;
+    const out: boolean[][] = [];
+    for (let i = 0; i < 60; i++) out.push(d.push(zeros(), (t += 33)));
+    expect(total(out)).toBe(0);
+  });
+});
