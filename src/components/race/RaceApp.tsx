@@ -9,6 +9,7 @@ import type { RaceState } from '../../race/raceEngine';
 import SongStep from './SongStep';
 import LineupStep from './LineupStep';
 import DrawStep from './DrawStep';
+import RaceStep from './RaceStep';
 import type { Entry, SongChoice, Step } from './types';
 
 const LINES = linesData as LineConfig[];
@@ -101,6 +102,19 @@ function RaceInner() {
             onDraw={setAssignment}
             onBack={() => setStep('lineup')}
             onNext={() => setStep('race')}
+          />
+        )}
+        {step === 'race' && song && assignment && (
+          <RaceStep
+            linesById={LINES_BY_ID}
+            song={song}
+            entries={entries}
+            assignment={assignment}
+            onBack={() => setStep('draw')}
+            onFinish={(final) => {
+              setResult(final);
+              setStep('results');
+            }}
           />
         )}
         {/* steps */}
