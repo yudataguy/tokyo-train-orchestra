@@ -6,6 +6,7 @@ import type { LineConfig } from '../../types';
 import linesData from '../../config/lines.json';
 import { LanguageProvider, useLanguage } from '../../i18n/useLanguage';
 import type { RaceState } from '../../race/raceEngine';
+import SongStep from './SongStep';
 import type { Entry, SongChoice, Step } from './types';
 
 const LINES = linesData as LineConfig[];
@@ -72,6 +73,15 @@ function RaceInner() {
           </div>
         </header>
 
+        {step === 'song' && (
+          <SongStep
+            initial={song}
+            onNext={(next) => {
+              setSong(next);
+              setStep('lineup');
+            }}
+          />
+        )}
         {/* steps */}
       </div>
     </main>
