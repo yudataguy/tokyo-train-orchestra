@@ -57,20 +57,14 @@ export function createRace(lanes: LaneSpec[], durationSec: number): RaceState {
   };
 }
 
-/** One lane, one analysis frame: what a single note does to a single train.
- *
- *  - `fired`: did this lane's pitch class have an onset this frame?
- *  - `step`: distance one onset is worth right now (already budget-scaled).
- *  - `elapsedSec`: race clock, to stamp `finishedAtSec` on arrival.
- *
- *  Must return a new Lane (never mutate), keep `progress` within 0 … 1,
- *  set `finishedAtSec` only the first time progress reaches 1, and count
- *  `onsets` (used for tie-breaks). What a finished train does with further
- *  onsets is the design choice: the spec has it wait at the terminal. */
+/** One lane, one frame. A finished train keeps counting onsets (tie-breaks)
+ *  but waits at the terminal, wheels spinning. */
 export function advanceLane(lane: Lane, fired: boolean, step: number, elapsedSec: number): Lane {
-  // TODO(you): 5–8 lines. Run `npx jest src/race/__tests__/raceEngine.test.ts`.
-  void lane; void fired; void step; void elapsedSec;
-  throw new Error('advanceLane not implemented yet');
+  if (!fired) return lane;
+  const onsets = lane.onsets + 1;
+  if (lane.finishedAtSec !== null) return { ...lane, onsets };
+  const progress = Math.min(1, lane.progress + step);
+  return { ...lane, onsets, progress, finishedAtSec: progress >= 1 ? elapsedSec : null };
 }
 
 export function advance(state: RaceState, onsets: boolean[], dtSec: number): RaceState {
