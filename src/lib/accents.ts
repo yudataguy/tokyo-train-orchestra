@@ -4,3 +4,5 @@
  *  orchestra, Marunouchi red for EDM. */
 export const ACCENT_AMBIENT = '#003DA5';
 export const ACCENT_EDM = '#F62E36';
+/** Train Race: Hanzomon purple, distinct from both existing mode accents. */
+export const ACCENT_RACE = '#8F76D6';

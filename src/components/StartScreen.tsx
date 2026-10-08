@@ -5,7 +5,8 @@ import type { LineConfig, WeatherData } from '../types';
 import { useLanguage } from '../i18n/useLanguage';
 import { groupByCompany, COMPANY_LABEL_KEY } from '../lib/company';
 import { computeVibe } from '../engine/edmVibe';
-import { ACCENT_AMBIENT, ACCENT_EDM } from '../lib/accents';
+import Link from 'next/link';
+import { ACCENT_AMBIENT, ACCENT_EDM, ACCENT_RACE } from '../lib/accents';
 
 interface StartScreenProps {
   lines: LineConfig[];
@@ -113,7 +114,7 @@ export default function StartScreen({ lines, vibe, dataSourceLabel, onStart }: S
             on this page you act on — behind 23 rows it was below the fold. */}
         <div className="pb-6">
           <h2 id="music-mode-label" className="pb-2 text-[12px] text-[var(--ink-2)]">{t('musicMode')}</h2>
-          <div role="group" aria-labelledby="music-mode-label" className="grid gap-3 sm:grid-cols-2">
+          <div role="group" aria-labelledby="music-mode-label" className="grid gap-3 sm:grid-cols-3">
             <button
               type="button"
               onClick={() => onStart('ambient')}
@@ -159,6 +160,26 @@ export default function StartScreen({ lines, vibe, dataSourceLabel, onStart }: S
                 {t('beginListening')}
               </span>
             </button>
+
+            <Link
+              href="/race"
+              style={{ '--accent': ACCENT_RACE } as React.CSSProperties}
+              className="plate group grid grid-cols-[3px_1fr_auto] items-stretch gap-x-4 rounded-[2px] border text-left"
+              aria-label={`${t('raceEnter')} — ${t('modeRace')}`}
+            >
+              <span className="bg-[var(--accent)]" aria-hidden="true" />
+              <span className="py-3">
+                <span className="block text-[15px] font-bold">{t('modeRace')}</span>
+                <span className="mt-0.5 block text-[12px] text-[var(--ink-2)]">{t('modeRaceTagline')}</span>
+                <dl className="mt-1.5 grid grid-cols-[auto_1fr] gap-x-3 text-[12px] text-[var(--ink-2)]">
+                  <dt>{t('raceNotesLabel')}</dt>
+                  <dd className="tnum">12</dd>
+                </dl>
+              </span>
+              <span className="self-center pr-4 text-[13px] font-medium text-[var(--accent-ink)]" aria-hidden="true">
+                {t('raceEnter')}
+              </span>
+            </Link>
           </div>
         </div>
 

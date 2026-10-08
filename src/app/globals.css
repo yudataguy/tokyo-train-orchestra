@@ -125,6 +125,61 @@ body {
   animation: band-wipe 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+/* Train Race. The train is a line-colored car with a window strip; it glides
+   between onset hops (short linear transition) so 30 fps state updates read
+   as motion, not flicker. A finished train idles in place: "spinning its
+   wheels" at the terminal, as in the reference installation. */
+.race-train {
+  position: absolute;
+  top: 50%;
+  width: 22px;
+  height: 12px;
+  border-radius: 3px;
+  transform: translate(-50%, -50%);
+  box-shadow: inset 0 -3px 0 rgb(0 0 0 / 0.18);
+  transition: left 0.2s linear;
+}
+.race-train::after {
+  content: '';
+  position: absolute;
+  inset: 3px 4px auto 4px;
+  height: 3px;
+  border-radius: 1px;
+  background: rgb(255 255 255 / 0.85);
+}
+.race-fill {
+  transition: width 0.2s linear;
+}
+@keyframes race-idle {
+  0%, 100% { transform: translate(-50%, -50%); }
+  50%      { transform: translate(calc(-50% - 2px), -50%); }
+}
+.race-idle {
+  animation: race-idle 0.18s linear infinite;
+}
+@keyframes race-reveal {
+  from { opacity: 0; transform: translateY(-6px) scale(0.8); }
+  to   { opacity: 1; transform: none; }
+}
+.race-reveal {
+  animation: race-reveal 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+/* Primary action on race steps: solid ink, the only filled control on the
+   page, so "what do I press next" is never ambiguous. */
+.race-primary {
+  cursor: pointer;
+  border-radius: 2px;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.5rem 1.25rem;
+  font-size: 14px;
+  font-weight: 500;
+}
+.race-primary:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+
 /* Honor the user's reduced-motion preference. Leaflet station pulses and
    transitions are cosmetic; disabling them prevents vestibular discomfort
    without losing any information. */
