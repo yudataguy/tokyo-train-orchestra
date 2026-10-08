@@ -157,6 +157,12 @@ export default function RaceStep({ linesById, song, entries, assignment, onBack,
         void opened.close();
         return;
       }
+      // The countdown measures the room, so the song must not already be
+      // playing — and the race budget assumes it starts from the top.
+      if (song.videoId) {
+        playerRef.current?.pauseVideo();
+        playerRef.current?.seekTo(0, true);
+      }
       detectorRef.current = new OnsetDetector();
       phaseRef.current = 'countdown';
       setCountdown(COUNTDOWN_SEC);
@@ -197,19 +203,21 @@ export default function RaceStep({ linesById, song, entries, assignment, onBack,
                 if (state === YT_STATE.ENDED && phaseRef.current === 'running') finish();
               }}
             />
+            {/* A hint, not a button: where autoplay is blocked (Safari,
+                mobile) only a tap on YouTube's own player counts as a user
+                gesture, so taps must pass through to it. */}
             {needsTap && (
-              <button
-                type="button"
-                className="race-primary absolute inset-0 m-auto h-fit w-fit"
-                onClick={() => playerRef.current?.playVideo()}
+              <p
+                role="status"
+                className="pointer-events-none absolute inset-x-0 top-0 bg-[var(--ink)]/85 px-3 py-1.5 text-center text-[13px] text-[var(--paper)]"
               >
                 {t('raceTapToPlay')}
-              </button>
+              </p>
             )}
           </div>
         ) : (
           <div className="flex aspect-video items-center justify-center rounded-[2px] border border-[var(--rule)] p-4 text-center text-[14px] text-[var(--ink-2)]">
-            {phase === 'running' ? t('racePlayNow') : t('racePlayMyselfHint')}
+            {phase === 'running' ? t('racePlayNow') : t('raceWaitCountdown')}
           </div>
         )}
 

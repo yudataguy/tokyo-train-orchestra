@@ -9,6 +9,10 @@ export const ONSET_REFRACTORY_MS = 120;
  *  the countdown. Calibrated rather than fixed: mic sensitivity varies too
  *  much between devices for a single constant. */
 export const SILENCE_FACTOR = 2;
+/** Room level = this percentile of the countdown's frame loudness, not the
+ *  mean: players chanting "3, 2, 1!" (or a song started early) would drag a
+ *  mean up and gate out most of the race. */
+export const CALIBRATION_PERCENTILE = 0.2;
 /** A class's rise must be at least this fraction of the loudest class's
  *  energy in the same frame. Any attack lifts every bin a little (FFT
  *  leakage, broadband transients); without this floor every quiet class
@@ -32,15 +36,15 @@ export class OnsetDetector {
   private prev: number[] | null = null;
   private readonly history: number[][] = Array.from({ length: 12 }, () => []);
   private readonly lastOnsetMs: number[] = new Array<number>(12).fill(-Infinity);
-  private calibSum = 0;
-  private calibFrames = 0;
+  private readonly calibSums: number[] = [];
   private floor = 0;
 
   /** Feed a room-noise frame (countdown, before the song starts). */
   calibrate(chroma: number[]): void {
-    this.calibSum += sum(chroma);
-    this.calibFrames += 1;
-    this.floor = SILENCE_FACTOR * (this.calibSum / this.calibFrames);
+    this.calibSums.push(sum(chroma));
+    const sorted = [...this.calibSums].sort((a, b) => a - b);
+    const room = sorted[Math.floor(CALIBRATION_PERCENTILE * (sorted.length - 1))];
+    this.floor = SILENCE_FACTOR * room;
   }
 
   get silenceFloor(): number {
