@@ -22,6 +22,13 @@ export const metadata: Metadata = {
     locale: 'ja_JP',
     alternateLocale: ['en_US'],
   },
+  // Likewise for twitter: without this the card keeps the home page's title
+  // and description. The images come from opengraph-image / twitter-image.
+  twitter: {
+    card: 'summary_large_image',
+    title: TITLE,
+    description: DESCRIPTION,
+  },
 };
 
 export default function RacePage() {
