@@ -44,6 +44,19 @@ describe('foldChroma', () => {
     expect(argsortDesc(foldChroma(spectrum([261.63]), SR, FFT))[0]).toBe(0);
   });
 
+  it('credits a smeared tone to its peak class, not its shoulders', () => {
+    // A note that starts mid-window has a widened main lobe spilling into the
+    // neighbouring semitones' bins. Only the spectral peak names the note.
+    const db = spectrum([]);
+    const center = Math.round(293.66 / BIN_HZ); // D4
+    const lobe = [-14, -9, -5, -2, 0, -2, -5, -9, -14]; // dB, ±4 bins
+    lobe.forEach((v, i) => { db[center - 4 + i] = v; });
+    const chroma = foldChroma(db, SR, FFT);
+    expect(argsortDesc(chroma)[0]).toBe(2);
+    expect(chroma[1]).toBe(0); // C#
+    expect(chroma[3]).toBe(0); // D#
+  });
+
   it('ignores energy below C3 and above C7', () => {
     const chroma = foldChroma(spectrum([100, 3000]), SR, FFT);
     expect(chroma.reduce((a, b) => a + b, 0)).toBe(0);

@@ -41,7 +41,7 @@ The app turns trains into music. This mode does the reverse: music drives the tr
 4. **Race**
    - Pressing **Start** requests the mic and creates or resumes the `AudioContext` inside that click, so it counts as the user gesture. Then a 3-2-1 countdown runs and `playVideo()` is called.
    - The race clock runs only while the player reports `PLAYING`, and the YouTube `ENDED` event ends the race.
-   - In "play it myself" mode the clock starts after the countdown. The race ends at the chosen length or on **Stop**, and there is a **Pause** button.
+   - In "play it myself" mode the clock starts after the countdown. The race ends at the chosen length or on **Stop**, and there is a **Pause** button. Both modes have **Stop**, which ends the race with the current standings.
 5. **Results**
    - A podium: finishers by arrival time, then the rest by distance.
    - A 12-bar histogram of onset counts per pitch class.
@@ -80,6 +80,7 @@ The loop runs on `requestAnimationFrame`, which is capped at about 30 Hz by skip
 
 - Only bins between C3 (130.81 Hz) and C7 (2093 Hz) count. Below C3, a bin (≈5.9 Hz at 48 kHz) is wider than half a semitone gap, so neighboring notes blur together.
 - Each bin's dB value is converted to linear magnitude, then added to pitch class `round(12 · log2(f / 440) + 9) mod 12`.
+- Only spectral peaks (local maxima) count. A note that starts inside the ~170 ms window has a widened main lobe whose shoulders fall in neighbouring semitones' bins. Summing every bin made every attack light up C#, D# and so on next to the real note (found in playtest).
 
 ### Onsets (`src/race/onsets.ts`)
 
@@ -88,6 +89,7 @@ The loop runs on `requestAnimationFrame`, which is capped at about 30 Hz by skip
 - Per class, the flux is `max(0, energy − previousEnergy)`.
 - An onset fires when the flux is greater than `mean + ONSET_K · stddev`, computed over that class's last `ONSET_WINDOW` frames.
 - After an onset, the class is in a refractory period: no new onset for `ONSET_REFRACTORY_MS` (120 ms).
+- Relative floor: a class's flux must also be at least `ONSET_REL_MIN = 0.1` × the loudest class's energy in that frame, so quiet classes rising in lockstep with a loud attack (leakage, transients) don't fire (found in playtest).
 - Loudness gate: if the total chroma energy is below the silence floor, no onsets fire. Room hum must not move trains.
 - The floor is calibrated, not hard-coded: during the 3-2-1 countdown, before the video plays, the detector records the room's mean total chroma energy, and the floor becomes `SILENCE_FACTOR` × that value. Mic sensitivity varies too much between devices for a fixed number to work. `OnsetDetector` exposes `calibrate(chroma)` for the countdown frames and `push` for the race.
 
@@ -141,13 +143,14 @@ BUDGET = 1 / (LEADER_SHARE · FINISH_AT · durationSec)
 ## Components
 
 - **`src/app/race/page.tsx`**: route entry. Dynamically imports `RaceApp` with `ssr: false`, like `page.tsx` → `Orchestra`, and exports page `metadata` (title and description).
-- **`src/components/race/RaceApp.tsx`**: wraps everything in `LanguageProvider`. Owns the step state machine, the analyser lifecycle, and the per-frame loop (`chroma → onsets → advance`). Keeps the hot race state in a ref and commits it to React state once per analysis frame.
+- **`src/components/race/RaceEntry.tsx`**: the client wrapper holding `dynamic(…, { ssr: false })`, required because Server Components can't use `ssr: false`.
+- **`src/components/race/RaceApp.tsx`**: wraps everything in `LanguageProvider` and owns the step state machine. `RaceStep.tsx` owns the mic lifecycle and the per-frame loop (`chroma → onsets → advance`), so leaving the step always releases the mic. It keeps the hot race state in a ref and commits it to React state once per analysis frame.
 - **`src/components/race/`** step components:
   - `SongStep.tsx`
   - `LineupStep.tsx`
   - `DrawReveal.tsx`
   - `LaneBoard.tsx`
-  - `ChromaMeter.tsx`
+  - `NoteBars.tsx` (live chroma meter and results histogram, one component)
   - `RaceResults.tsx`
   - `YouTubePlayer.tsx`, which wraps `YT.Player` and exposes `onStateChange`, `onError`, `getDuration`, `playVideo` and `pauseVideo`.
 

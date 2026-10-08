@@ -9,6 +9,12 @@ export const ONSET_REFRACTORY_MS = 120;
  *  the countdown. Calibrated rather than fixed: mic sensitivity varies too
  *  much between devices for a single constant. */
 export const SILENCE_FACTOR = 2;
+/** A class's rise must be at least this fraction of the loudest class's
+ *  energy in the same frame. Any attack lifts every bin a little (FFT
+ *  leakage, broadband transients); without this floor every quiet class
+ *  would "fire" in lockstep with the real note, since each class is
+ *  otherwise judged only against its own near-silent history. */
+export const ONSET_REL_MIN = 0.1;
 
 const sum = (xs: number[]) => xs.reduce((a, b) => a + b, 0);
 
@@ -48,6 +54,7 @@ export class OnsetDetector {
     if (!prev) return out;
 
     const loudEnough = sum(chroma) >= this.floor;
+    const relFloor = ONSET_REL_MIN * Math.max(...chroma);
     for (let c = 0; c < 12; c++) {
       const flux = Math.max(0, chroma[c] - prev[c]);
       const hist = this.history[c];
@@ -55,6 +62,7 @@ export class OnsetDetector {
       if (
         loudEnough
         && flux > 0
+        && flux >= relFloor
         && flux > mean + ONSET_K * std
         && nowMs - this.lastOnsetMs[c] >= ONSET_REFRACTORY_MS
       ) {

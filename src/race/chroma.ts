@@ -16,7 +16,13 @@ export function pitchClassOf(freqHz: number): number {
 }
 
 /** Fold an AnalyserNode dB spectrum into 12 pitch-class energies (linear
- *  magnitude sums). Silent bins arrive as -Infinity and contribute nothing. */
+ *  magnitude sums of spectral peaks). Silent bins arrive as -Infinity and
+ *  contribute nothing.
+ *
+ *  Only local maxima count. A note that starts or stops inside the ~170 ms
+ *  analysis window has a widened main lobe whose shoulders fall in the
+ *  neighbouring semitones' bins; summing every bin would credit those
+ *  neighbours on every attack. The peak alone names the note. */
 export function foldChroma(freqDb: Float32Array, sampleRate: number, fftSize: number): number[] {
   const chroma = new Array<number>(12).fill(0);
   const binHz = sampleRate / fftSize;
@@ -25,6 +31,7 @@ export function foldChroma(freqDb: Float32Array, sampleRate: number, fftSize: nu
   for (let i = lo; i <= hi; i++) {
     const db = freqDb[i];
     if (!Number.isFinite(db)) continue;
+    if (!(db > freqDb[i - 1] && db >= freqDb[i + 1])) continue;
     chroma[pitchClassOf(i * binHz)] += Math.pow(10, db / 20);
   }
   return chroma;

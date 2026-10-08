@@ -45,6 +45,20 @@ describe('OnsetDetector', () => {
     expect(d.push(only(9, 20), (t += 33))[9]).toBe(true);
   });
 
+  it('ignores spectral leakage that rises alongside a loud note', () => {
+    // A struck note lifts every bin a little (FFT leakage). Only the note
+    // itself should count — quiet classes rising in lockstep must not.
+    const d = new OnsetDetector();
+    const out: boolean[][] = [];
+    let t = 0;
+    const leak = (loud: number) => new Array<number>(12).fill(loud * 0.001);
+    for (let i = 0; i < 10; i++) out.push(d.push(zeros(), (t += 33)));
+    const hit = leak(1); hit[9] = 1;
+    out.push(d.push(hit, (t += 33)));
+    expect(countFor(out, 9)).toBe(1);
+    expect(total(out)).toBe(1);
+  });
+
   it('never fires on a silent mic', () => {
     const d = new OnsetDetector();
     let t = 0;
