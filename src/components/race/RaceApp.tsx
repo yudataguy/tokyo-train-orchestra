@@ -10,6 +10,7 @@ import SongStep from './SongStep';
 import LineupStep from './LineupStep';
 import DrawStep from './DrawStep';
 import RaceStep from './RaceStep';
+import RaceResults from './RaceResults';
 import type { Entry, SongChoice, Step } from './types';
 
 const LINES = linesData as LineConfig[];
@@ -117,7 +118,18 @@ function RaceInner() {
             }}
           />
         )}
-        {/* steps */}
+        {step === 'results' && result && (
+          <RaceResults
+            linesById={LINES_BY_ID}
+            entries={entries}
+            state={result}
+            onRematch={() => {
+              setAssignment(null);
+              setStep('draw');
+            }}
+            onNewSong={() => setStep('song')}
+          />
+        )}
       </div>
     </main>
   );

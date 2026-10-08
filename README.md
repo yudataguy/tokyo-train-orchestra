@@ -12,6 +12,13 @@ current weather and time of day.
   - *EDM* — 16-voice Tone.js factory with an I–V–vi–IV pad progression, dwell
     loops that mirror station stopping time, and arrival hits mapped from
     line IDs to voices.
+- **Train Race** (`/race`) — a party game inspired by
+  [Music Train](https://www.asahi-net.or.jp/~hb9t-ktd/music/English/Research/MediaArt/music_train_eng.html).
+  Pick a song (YouTube, or play it from any device), pick 2–12 lines, and
+  draw a random note (C…B) for each. The microphone listens; every onset of a
+  line's note moves its train toward the terminal. Finishers rank by arrival
+  time, the rest by distance, and the results show the song's 12-note
+  fingerprint.
 - **Daily vibe engine** — BPM, chord progression, and pad timbre drift with the
   current weather and hour in Tokyo.
 - **Settings panel** — music mode, master volume, language (i18n), line toggles
@@ -28,6 +35,7 @@ src/
   config/       Static config
   data/         TrainDataService, TimetableDataService, WeatherService, EventBus
   engine/       MusicEngine + instruments (classic) and edm* modules (EDM mode)
+  race/        Train Race analysis: chroma, onsets, race engine, mic, YouTube
   i18n/         Translations
   types/        Shared types
 ```
