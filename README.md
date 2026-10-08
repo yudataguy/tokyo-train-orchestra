@@ -13,7 +13,8 @@ current weather and time of day.
     loops that mirror station stopping time, and arrival hits mapped from
     line IDs to voices.
 - **Train Race** (`/race`) — a party game inspired by
-  [Music Train](https://www.asahi-net.or.jp/~hb9t-ktd/music/English/Research/MediaArt/music_train_eng.html).
+  [Music Train](https://www.asahi-net.or.jp/~hb9t-ktd/music/English/Research/MediaArt/music_train_eng.html)
+  ([ミュージック・トレイン](https://www.asahi-net.or.jp/~hb9t-ktd/music/Japan/Research/MediaArt/music_train.html)).
   Pick a song (YouTube, or play it from any device), pick 2–12 lines, and
   draw a random note (C…B) for each. The microphone listens; every onset of a
   line's note moves its train toward the terminal. Finishers rank by arrival

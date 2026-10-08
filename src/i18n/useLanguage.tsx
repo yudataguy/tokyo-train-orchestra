@@ -95,6 +95,10 @@ const TRANSLATIONS = {
     raceFingerprint: 'この曲の音階',
     raceRematch: '再戦',
     raceNewSong: '別の曲',
+    raceInspiredBy: '着想元：メディアアート作品',
+    raceInspiredWork: '「ミュージック・トレイン」',
+    raceInspiredSource: '（音楽研究所）',
+    raceInspiredUrl: 'https://www.asahi-net.or.jp/~hb9t-ktd/music/Japan/Research/MediaArt/music_train.html',
   },
   en: {
     title: 'Tokyo Train Orchestra',
@@ -178,6 +182,10 @@ const TRANSLATIONS = {
     raceFingerprint: "This song's notes",
     raceRematch: 'Rematch',
     raceNewSong: 'New song',
+    raceInspiredBy: 'Inspired by the media-art piece ',
+    raceInspiredWork: '“Music Train”',
+    raceInspiredSource: ' (音楽研究所)',
+    raceInspiredUrl: 'https://www.asahi-net.or.jp/~hb9t-ktd/music/English/Research/MediaArt/music_train_eng.html',
   },
 } as const;
 

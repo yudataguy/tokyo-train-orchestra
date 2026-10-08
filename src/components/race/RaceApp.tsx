@@ -129,6 +129,20 @@ function RaceInner() {
             onNewSong={() => setStep('song')}
           />
         )}
+        {/* Credit to the work this mode is modelled on, linked in the page's
+            language: the original has English and Japanese pages. */}
+        <footer className="mt-10 border-t border-[var(--rule)] pt-3 text-[12px] text-[var(--ink-2)]">
+          {t('raceInspiredBy')}
+          <a
+            href={t('raceInspiredUrl')}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-[var(--rule)] underline-offset-2 hover:text-[var(--ink)]"
+          >
+            {t('raceInspiredWork')}
+          </a>
+          {t('raceInspiredSource')}
+        </footer>
       </div>
     </main>
   );
