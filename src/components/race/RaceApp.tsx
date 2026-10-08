@@ -7,6 +7,8 @@ import linesData from '../../config/lines.json';
 import { LanguageProvider, useLanguage } from '../../i18n/useLanguage';
 import type { RaceState } from '../../race/raceEngine';
 import SongStep from './SongStep';
+import LineupStep from './LineupStep';
+import DrawStep from './DrawStep';
 import type { Entry, SongChoice, Step } from './types';
 
 const LINES = linesData as LineConfig[];
@@ -80,6 +82,25 @@ function RaceInner() {
               setSong(next);
               setStep('lineup');
             }}
+          />
+        )}
+        {step === 'lineup' && (
+          <LineupStep
+            lines={LINES}
+            entries={entries}
+            onChange={setEntries}
+            onBack={() => setStep('song')}
+            onNext={() => setStep('draw')}
+          />
+        )}
+        {step === 'draw' && (
+          <DrawStep
+            linesById={LINES_BY_ID}
+            entries={entries}
+            assignment={assignment}
+            onDraw={setAssignment}
+            onBack={() => setStep('lineup')}
+            onNext={() => setStep('race')}
           />
         )}
         {/* steps */}
