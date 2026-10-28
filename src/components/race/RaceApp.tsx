@@ -40,7 +40,7 @@ function RaceInner() {
   const activeStep: Step = step === 'results' ? 'race' : step;
 
   return (
-    <main className="h-screen w-screen overflow-y-auto bg-[var(--paper)] text-[var(--ink)]">
+    <main className="h-dvh w-screen overflow-y-auto bg-[var(--paper)] text-[var(--ink)]">
       <div className="flex h-[5px] w-full" aria-hidden="true">
         {LINES.map((line, i) => (
           <div key={line.id} className="band-seg flex-1" style={{ background: line.color, animationDelay: `${i * 18}ms` }} />

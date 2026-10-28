@@ -77,7 +77,7 @@ export default function StartScreen({ lines, vibe, dataSourceLabel, onStart }: S
   const lineCount = language === 'ja' ? `${lines.length}${t('lines')}` : `${lines.length} ${t('lines')}`;
 
   return (
-    <main className="paper min-h-screen w-screen overflow-y-auto flex flex-col bg-[var(--paper)] text-[var(--ink)]">
+    <main className="paper h-dvh w-screen overflow-y-auto flex flex-col bg-[var(--paper)] text-[var(--ink)]">
       {/* The palette, stated up front: every line's official color, in service
           order, as one continuous rule. It is the page's only ornament and the
           only place the 23 colors appear at full strength. */}
